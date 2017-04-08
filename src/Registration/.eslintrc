@@ -1,0 +1,5 @@
+{
+  rules: {
+    react-filenames/filename-matches-component: 0, // Allow exception for numbered files
+  },
+}

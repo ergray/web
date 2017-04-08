@@ -1,0 +1,81 @@
+/* eslint-disable global-require */
+
+export default {
+  1: {
+    name: 'Sandra Fewer',
+    officePhone: '(415) 554-7410',
+    photo: require('./Sandra-Fewer.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  2: {
+    name: 'Mark Farrell',
+    officePhone: '(415) 554-7752',
+    photo: require('./Mark-Farrell.jpg'),
+    pronoun: 'his',
+    score: 95,
+  },
+  3: {
+    name: 'Aaron Peskin',
+    officePhone: '(415) 554-7450',
+    photo: require('./Aaron-Peskin.jpg'),
+    pronoun: 'his',
+    score: 95,
+  },
+  4: {
+    name: 'Katy Tang',
+    officePhone: '(415) 554-7460',
+    photo: require('./Katy-Tang.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  5: {
+    name: 'London Breed',
+    officePhone: '(415) 554-7630',
+    photo: require('./London-Breed.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  6: {
+    name: 'Jane Kim',
+    officePhone: '(415) 554-7970',
+    photo: require('./Jane-Kim.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  7: {
+    name: 'Norman Yee',
+    officePhone: '(415) 554-6516',
+    photo: require('./Norman-Yee.jpg'),
+    pronoun: 'his',
+    score: 95,
+  },
+  8: {
+    name: 'Jeff Sheehy',
+    officePhone: '(415) 554-6968',
+    photo: require('./Jeff-Sheehy.jpg'),
+    pronoun: 'his',
+    score: 95,
+  },
+  9: {
+    name: 'Hillary Ronen',
+    officePhone: '(415) 554-5144',
+    photo: require('./Hillary-Ronen.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  10: {
+    name: 'Malia Cohen',
+    officePhone: '(415) 554-7670',
+    photo: require('./Malia-Cohen.jpg'),
+    pronoun: 'her',
+    score: 95,
+  },
+  11: {
+    name: 'Ahsha Safai',
+    officePhone: '(415) 554-6975',
+    photo: require('./Ahsha-Safai.jpg'),
+    pronoun: 'his',
+    score: 95,
+  },
+}

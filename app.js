@@ -1,9 +1,5 @@
 import React from 'react'
 import ReactNative, { Text } from 'react-native-web'
-
-// Component that renders the app
-const App = (props) => (
-  <Text>Hello world.</Text>
-)
+import App from './src/App'
 
 ReactNative.render(<App />, document.getElementById('react-app'))

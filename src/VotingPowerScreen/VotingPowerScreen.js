@@ -1,0 +1,68 @@
+import React from 'react'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { connect } from 'react-redux'
+import { text as sms } from 'react-native-communications'
+import graphic from './voting_power_graphic.png'
+
+function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
+  return (
+    <View style={{ marginHorizontal: 20 }}>
+      <Text style={{ color: 'white', fontSize: 22, marginTop: 15 }}>
+        { user.first_name } { user.last_name }
+      </Text>
+      <Text style={{ color: 'white', fontSize: 16, fontWeight: '700', marginTop: 10 }}>
+        Voting power: &nbsp;{ votingPower }
+      </Text>
+      <Text style={{ color: 'white', marginTop: 10 }}>
+        This represents all of the people delegating to you, and all the people delegating to them, and so on.
+      </Text>
+
+      <Image
+        source={graphic}
+        style={{
+          alignSelf: 'center',
+          height: 170,
+          marginVertical: 30,
+          width: 252,
+        }}
+      />
+
+      <Text style={{ color: 'white' }}>
+        Invite more people to increase your voting power.
+      </Text>
+
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={{
+          alignItems: 'center',
+          borderColor: '#5DA0FF',
+          borderRadius: 5,
+          borderWidth: 1,
+          height: 38,
+          justifyContent: 'center',
+          marginVertical: 20,
+        }}
+        onPress={() => { sms(null, `Do you know about liquid democracy? Reclaim your voice in government: https://join.liquid.vote/?r=${user.invite_code}`) }}
+      >
+        <Text style={{ color: '#fff', fontSize: 13 }}>
+          INVITE
+        </Text>
+      </TouchableOpacity>
+
+    </View>
+  )
+}
+
+VotingPowerScreen.title = 'VOTING POWER'
+
+VotingPowerScreen.propTypes = {
+  user: React.PropTypes.shape({}),
+  votingPower: React.PropTypes.number,
+}
+
+const mapStateToProps = state => ({
+  user: state.user,
+  votingPower: state.votingPower,
+})
+
+export default connect(mapStateToProps)(VotingPowerScreen)

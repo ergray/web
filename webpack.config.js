@@ -8,7 +8,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react-native': 'react-native-web/core'
+      'react-native': 'react-native-web'
     }
   },
   module: {
@@ -22,6 +22,11 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.(gif|jpe?g|png|svg)$/,
+        loader: 'url-loader',
+        query: { name: '[name].[hash:16].[ext]' }
       }
     ]
   }
