@@ -5,13 +5,20 @@
   "author": "github.com/liquidvote",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --port 3000 --progress --colors --inline"
+    "start": "webpack-dev-server --port 3000 --progress --colors --inline",
+    "test": "eslint ."
   },
   "dependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "7",
     "babel-preset-env": "^1.3.3",
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react-filenames": "dsernst/eslint-plugin-react-filenames",
     "file-loader": "^0.11.1",
     "react": "15.4",
     "react-native-vector-icons": "^4.0.1",

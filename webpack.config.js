@@ -1,15 +1,15 @@
-// webpack.config.js
+/* eslint-disable sort-keys */
 
 module.exports = {
-  entry: "./app.js",
+  entry: './app.js',
   output: {
-      path: __dirname,
-      filename: "bundle.js"
+    path: __dirname,
+    filename: 'bundle.js',
   },
   resolve: {
     alias: {
-      'react-native': 'react-native-web'
-    }
+      'react-native': 'react-native-web',
+    },
   },
   module: {
     rules: [
@@ -19,15 +19,15 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env']
-          }
-        }
+            presets: ['env'],
+          },
+        },
       },
       {
         test: /\.(gif|jpe?g|png|svg)$/,
         loader: 'url-loader',
-        query: { name: '[name].[hash:16].[ext]' }
-      }
-    ]
-  }
+        query: { name: '[name].[hash:16].[ext]' },
+      },
+    ],
+  },
 }

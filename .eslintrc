@@ -1,0 +1,27 @@
+{
+  extends: 'airbnb',
+  globals: {
+    fetch: true, // ships with react-native
+  },
+  plugins: [
+    'react-filenames',
+  ],
+  rules: {
+    camelcase: 0, // api uses snake_case
+    import/extensions: 0, // squelch false positive from react-native-linear-gradient
+    import/named: 2, // prevent typos
+    import/no-unresolved: 0, // squelch false positive from react-native-linear-gradient
+    import/order: 2, // style
+    jsx-a11y/anchor-has-content: 0, // not applicable for React Native
+    max-len: 0,
+    react/jsx-sort-props: [2, {callbacksLast: true, shorthandFirst: true}], // style
+    react/jsx-filename-extension: 0, // react-native can't do .jsx files
+    react/jsx-first-prop-new-line: [2, "multiline-multiprop"], // easier for inline styles
+    react/no-unescaped-entities: 0, // unnecessary for React Native
+    react/no-unused-prop-types: [2, {skipShapeProps: true}], // fix for https://github.com/yannickcr/eslint-plugin-react/issues/871
+    react/require-default-props: 0,
+    react-filenames/filename-matches-component: [2, {decamelize: false}],
+    semi: [2, 'never'], // style
+    sort-keys: [2], // style
+  },
+}
