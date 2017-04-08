@@ -2,7 +2,19 @@
   "name": "liquid-web",
   "version": "0.0.1",
   "description": "React-native-web client to connect to api.liquid.vote",
-  "main": "index.js",
   "author": "github.com/liquidvote",
-  "private": true
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --port 3000 --progress --colors --inline"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "7",
+    "babel-preset-env": "^1.3.3",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "react": "15.4",
+    "react-native-web": "^0.0.81",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  }
 }
