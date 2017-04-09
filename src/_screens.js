@@ -20,7 +20,7 @@ export default {
   FirstNameScreen: require('./Registration/1-FirstNameScreen').default,
   HomeScreen: require('./HomeScreen/HomeScreen').default,
   IdReviewScreen: require('./Registration/3.6-IdReviewScreen').default,
-  InvalidSessionScreen: require('./InvalidSessionScreen').default,
+  AuthErrorScreen: require('./AuthErrorScreen').default,
   LastNameScreen: require('./Registration/1.5-LastNameScreen').default,
   LegalIdScreen: require('./Registration/3-LegalIdScreen').default,
   LoadBillScreen: require('./Legislation/LoadBillScreen').default,
