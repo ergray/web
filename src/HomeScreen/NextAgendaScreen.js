@@ -29,7 +29,7 @@ function NextAgendaScreen(props) {
 
   if (!date) {
     return (
-      <ScrollView indicatorStyle="white" style={{ marginBottom: 37 }}>
+      <ScrollView style={{ marginBottom: 37 }}>
         <Text style={{
           color: '#fff',
           fontSize: 18,
@@ -47,7 +47,7 @@ function NextAgendaScreen(props) {
 
   if (!bills) {
     return (
-      <ScrollView indicatorStyle="white" style={{ marginBottom: 37 }}>
+      <ScrollView style={{ marginBottom: 37 }}>
         <Text style={{ color: '#fff', marginTop: 15, textAlign: 'center' }}>
           NO AGENDA FOR {convertDateToLongFormat(date).toUpperCase()}
         </Text>
