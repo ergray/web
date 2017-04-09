@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --port 3000 --progress --colors --inline",
-    "test": "eslint ."
+    "test": "eslint . --cache"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
