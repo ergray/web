@@ -84,10 +84,10 @@ class HomeScreen extends Component {
   render() {
     return (
       <View>
-        <HomeScreenHeader navigator={this.props.navigator} openDrawer={() => this.drawer.open()} />
+        <HomeScreenHeader navigator={this.props.navigator} />
         <LinearGradient
           colors={['#000', '#292929']}
-          style={{ backgroundColor: 'transparent', flex: 1, justifyContent: 'flex-start' }}
+          style={{ flex: 1, justifyContent: 'flex-start' }}
         >
           <NextAgendaScreen navigator={this.props.navigator} />
           <HomeScreenFooter navigator={this.props.navigator} />
