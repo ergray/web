@@ -32,6 +32,8 @@
     "react-native-web": "^0.0.81",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
+    "redux-persist": "^4.6.0",
+    "remote-redux-devtools": "^0.5.7",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
