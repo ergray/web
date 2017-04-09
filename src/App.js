@@ -5,6 +5,7 @@ import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import devTools from 'remote-redux-devtools'
+import _ from 'lodash'
 import screens from './_screens'
 import reducer, { initialState } from './_reducer'
 import Header from './Header'
@@ -56,9 +57,15 @@ export default class App extends Component {
   }
 
   render() {
-    const route = this.state.stack[0]
+    const route = _.last(this.state.stack)
     const Screen = screens[route.name]
-    const navigator = {}
+    const navigator = {
+      push: (newRoute) => {
+        this.setState({
+          stack: [...this.state.stack, newRoute],
+        })
+      },
+    }
 
     return (
       <Provider store={store}><View style={{ backgroundColor: '#111', flex: 1 }}>
