@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Drawer from 'react-native-drawer'
-import { View } from 'react-native'
 import deepEqual from 'deep-equal'
-import Menu from './Menu'
+import { View } from 'react-native'
+import LinearGradient from '../LinearGradient'
 import HomeScreenHeader from './HomeScreenHeader'
 import NextAgendaScreen from './NextAgendaScreen'
 import HomeScreenFooter from './HomeScreenFooter'
-
-const LinearGradient = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -86,20 +83,7 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <Drawer
-        tapToClose
-        content={<Menu closeDrawer={() => this.drawer.close()} navigator={this.props.navigator} />}
-        openDrawerOffset={100}
-        ref={(ref) => { this.drawer = ref }}
-        tweenHandler={ratio => ({
-          drawer: { left: -150 * (1 - ratio) },
-          mainOverlay: {
-            backgroundColor: '#000',
-            opacity: ratio / 1.1,
-          },
-        })}
-        type="static"
-      >
+      <View>
         <HomeScreenHeader navigator={this.props.navigator} openDrawer={() => this.drawer.open()} />
         <LinearGradient
           colors={['#000', '#292929']}
@@ -108,7 +92,7 @@ class HomeScreen extends Component {
           <NextAgendaScreen navigator={this.props.navigator} />
           <HomeScreenFooter navigator={this.props.navigator} />
         </LinearGradient>
-      </Drawer>
+      </View>
     )
   }
 }

@@ -18,7 +18,6 @@ function HomeScreenHeader({ navigator, openDrawer }) {
       borderColor: '#222',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      marginTop: 21,
     }}
     >
       <TouchableOpacity
