@@ -15,7 +15,7 @@ export default {
   DistrictsMapScreen: require('./ElectedRep/DistrictsMapScreen').default,
   ElectedRepScreen: require('./ElectedRep/ElectedRepScreen').default,
   EmailScreen: require('./Registration/4-EmailScreen').default,
-  EnterSMSCodeScreen: require('./Login/2-EnterSMSCodeScreen').default,
+  EnterSMSCodeScreen: require('./Login/z-EnterSMSCodeScreen').default,
   FeedbackScreen: require('./FeedbackScreen/FeedbackScreen').default,
   FirstNameScreen: require('./Registration/1-FirstNameScreen').default,
   HomeScreen: require('./HomeScreen/HomeScreen').default,

@@ -1,40 +1,21 @@
 import React from 'react'
 import {
-  Image,
   Text,
   View,
 } from 'react-native'
-import logo from '../logo.png'
 
-export default function IntroScreen() {
+export default function IntroDescription() {
   return (
     <View style={{
       paddingHorizontal: 30,
-      width: 450,
+      width: 650,
     }}
     >
-      <Image
-        source={logo}
-        style={{
-          alignSelf: 'center',
-          height: 56,
-          marginBottom: 12,
-          marginTop: 32,
-          width: 59,
-        }}
-      />
-      <Text style={{
-        color: '#fff',
-        fontSize: 22,
-        marginBottom: 2,
-        textAlign: 'center' }}
-      >Welcome to</Text>
       <Text
         style={{
           color: '#fff',
           fontSize: 18,
           fontWeight: 'bold',
-          textAlign: 'center',
         }}
       >REAL POLITICAL REPRESENTATION</Text>
 
@@ -71,8 +52,6 @@ export default function IntroScreen() {
           fontSize: 16,
           marginBottom: 20,
           marginTop: 80,
-          textAlign: 'center',
-          textDecorationLine: 'underline',
         }}
         target="_blank"
       >LEARN MORE</a>
@@ -81,6 +60,5 @@ export default function IntroScreen() {
   )
 }
 
-IntroScreen.propTypes = {
-  navigator: React.PropTypes.shape({}).isRequired,
+IntroDescription.propTypes = {
 }

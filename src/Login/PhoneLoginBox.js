@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  Dimensions,
   Image,
   Text,
   TextInput,
   View,
 } from 'react-native'
-import logo from '../logo.png'
 import usaFlag from './usa-flag.png'
 
-class PhoneLoginScreen extends Component {
+class PhoneLoginBox extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -19,35 +17,23 @@ class PhoneLoginScreen extends Component {
   }
 
   render() {
-    const isSmallScreen = Dimensions.get('window').height < 600
-
     return (
-      <View style={{ width: 450 }}>
-        <Image
-          source={logo}
-          style={{
-            alignSelf: 'center',
-            height: 56,
-            marginBottom: 12,
-            marginTop: 32,
-            width: 59,
-          }}
-        />
-        <Text
-          style={{
-            alignSelf: 'center',
-            color: '#fff',
-            fontSize: 19,
-            fontWeight: '700',
-            marginBottom: isSmallScreen ? 20 : 90,
-          }}
-        >LIQUID DEMOCRACY</Text>
+      <View style={{
+        alignSelf: 'flex-start',
+        backgroundImage: 'linear-gradient(to bottom, #222 0%, #222 95%, #444 100%)',
+        borderColor: '#bbb',
+        borderRadius: 3,
+        borderWidth: 1,
+        paddingVertical: 30,
+        width: 450,
+      }}
+      >
         <Text
           style={{
             color: '#fff',
             fontSize: 48,
             fontWeight: '100',
-            marginBottom: 15,
+            marginBottom: 30,
             marginLeft: 40,
           }}
         >
@@ -57,7 +43,7 @@ class PhoneLoginScreen extends Component {
         </Text>
         <TextInput
           autoCorrect={false}
-          placeholder={`Enter your mobile ${isSmallScreen ? '#' : 'number'}`}
+          placeholder="Enter your mobile number"
           ref={(el) => { this.props.loginField.el = el }}
           style={{
             backgroundColor: '#fff',
@@ -144,7 +130,7 @@ class PhoneLoginScreen extends Component {
             height: 24,
             left: 50,
             position: 'absolute',
-            top: isSmallScreen ? 346 - 70 : 346,
+            top: 179,
             width: 30,
           }}
         />
@@ -152,9 +138,9 @@ class PhoneLoginScreen extends Component {
           style={{
             fontSize: 18,
             fontWeight: '300',
-            left: 89,
+            left: 87,
             position: 'absolute',
-            top: isSmallScreen ? 347 - 70 : 347,
+            top: 181,
           }}
         >+1</Text>
       </View>
@@ -162,7 +148,7 @@ class PhoneLoginScreen extends Component {
   }
 }
 
-PhoneLoginScreen.propTypes = {
+PhoneLoginBox.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   loginField: React.PropTypes.shape({
     el: React.PropTypes.shape({
@@ -174,4 +160,4 @@ PhoneLoginScreen.propTypes = {
   }),
 }
 
-export default connect()(PhoneLoginScreen)
+export default connect()(PhoneLoginBox)

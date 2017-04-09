@@ -1,18 +1,18 @@
 import React from 'react'
 import { View } from 'react-native'
 
-// TODO: Add support for 'colors' prop
-
-const LinearGradient = ({ style, children }) => (
+const LinearGradient = ({ style, children, colors }) => (
   <View
     children={children} // eslint-disable-line
-    style={{ ...style }}
+    style={{ ...style,
+      backgroundImage: `linear-gradient(to bottom, ${colors[0]} 0%, ${colors[1]} 100%)`,
+    }}
   />
 )
 
 LinearGradient.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.node).isRequired,
-  // colors: React.PropTypes.arrayOf(React.PropTypes.string).isRequired, // TODO
+  children: React.PropTypes.arrayOf(React.PropTypes.node),
+  colors: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
   style: React.PropTypes.shape({}),
 }
 

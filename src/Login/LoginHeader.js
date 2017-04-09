@@ -6,17 +6,16 @@ import {
 } from 'react-native'
 import logo from '../logo.png'
 
-export default function GetStartedScreen() {
+export default function LoginHeader() {
   return (
-    <View style={{ width: 450 }}>
+    <View style={{ alignSelf: 'center', marginBottom: 120, marginTop: 20 }}>
       <Image
         source={logo}
         style={{
           alignSelf: 'center',
-          height: 136,
+          height: 100,
           marginBottom: 17,
-          marginTop: 90,
-          width: 144,
+          width: 106,
         }}
       />
       <Text style={{

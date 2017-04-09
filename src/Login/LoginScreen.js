@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-import GetStartedScreen from './1-GetStartedScreen'
-import IntroScreen from './1.3-IntroScreen'
-import PhoneLoginScreen from './1.7-PhoneLoginScreen'
+import LoginHeader from './LoginHeader'
+import IntroDescription from './IntroDescription'
+import PhoneLoginBox from './PhoneLoginBox'
 
 class LoginScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { page: 0 }
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.sessionId) {
       this.props.navigator.replace({ name: 'HomeScreen' })
@@ -19,38 +13,16 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const { page } = this.state
-    const loginField = { el: { focus: () => {} } } // overwritten in PhoneLoginScreen
+    const loginField = { el: { focus: () => {} } } // overwritten in PhoneLoginBox
 
     return (
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
-        <ScrollView
-          horizontal pagingEnabled
-          keyboardDismissMode="on-drag"
-          ref={(el) => { this.scrollView = el }}
-          scrollEventThrottle={16}
-          showsHorizontalScrollIndicator={false}
-          onScroll={(event) => {
-            const x = event.nativeEvent.contentOffset.x
-            const screenWidth = 450
-            const halfWidth = screenWidth / 2
+        <LoginHeader />
 
-            let newPage = 0
-
-            if (x > halfWidth) {
-              newPage = 1
-            }
-            if (x > halfWidth + screenWidth) {
-              newPage = 2
-            }
-
-            this.setState({ page: newPage })
-          }}
-        >
-          <GetStartedScreen />
-          <IntroScreen navigator={this.props.navigator} />
-          <PhoneLoginScreen loginField={loginField} navigator={this.props.navigator} />
-        </ScrollView>
+        <View style={{ flex: 1, flexDirection: 'row' }}>
+          <IntroDescription />
+          <PhoneLoginBox loginField={loginField} navigator={this.props.navigator} />
+        </View>
 
         <View>
           <TouchableOpacity
@@ -62,10 +34,10 @@ class LoginScreen extends Component {
               borderWidth: 3,
               height: 58,
               justifyContent: 'center',
+              marginBottom: 20,
               marginHorizontal: 30,
             }}
             onPress={() => {
-              this.scrollView.scrollToEnd({ animated: true })
               loginField.el.focus()
             }}
           >
@@ -73,18 +45,6 @@ class LoginScreen extends Component {
               GET STARTED
             </Text>
           </TouchableOpacity>
-          <View style={{
-            alignSelf: 'center',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginVertical: 15,
-            width: 50,
-          }}
-          >
-            <FontAwesomeIcon color={page === 0 ? '#ccc' : '#444'} name="circle" size={10} />
-            <FontAwesomeIcon color={page === 1 ? '#ccc' : '#444'} name="circle" size={10} />
-            <FontAwesomeIcon color={page === 2 ? '#ccc' : '#444'} name="circle" size={10} />
-          </View>
         </View>
 
       </View>

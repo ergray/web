@@ -10,7 +10,6 @@ import _ from 'lodash'
 import screens from './_screens'
 import reducer, { initialState } from './_reducer'
 import Header from './Header'
-import LinearGradient from './LinearGradient'
 
 const INITIAL_ROUTE = { name: 'LoginScreen' }
 
@@ -87,22 +86,21 @@ export default class App extends Component {
     }
 
     return (
-      <Provider store={store}><View style={{ backgroundColor: '#111', flex: 1 }}>
-        <LinearGradient
-          colors={['#000', '#292929']}
-          style={{
-            backgroundColor: 'transparent',
-            flex: 1,
-            height: '100%',
-            justifyContent: 'flex-start',
-            marginHorizontal: 'auto',
-            maxWidth: 450,
-          }}
-        >
-          <Header navigator={navigator} route={route} />
-          <Screen navigator={navigator} route={route} />
-        </LinearGradient>
-      </View></Provider>
+      <Provider store={store}>
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              flex: 1,
+              height: '100%',
+              justifyContent: 'flex-start',
+              marginHorizontal: 'auto',
+            }}
+          >
+            <Header navigator={navigator} route={route} />
+            <Screen navigator={navigator} route={route} />
+          </View>
+        </View>
+      </Provider>
     )
   }
 }
