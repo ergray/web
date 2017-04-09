@@ -28,6 +28,8 @@ function Header(props) {
       backgroundColor: '#000',
       borderBottomWidth: 1,
       borderColor: '#222',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     }}
     >
       <View>
@@ -39,7 +41,7 @@ function Header(props) {
         </TouchableOpacity>
       </View>
       <View
-        style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', paddingTop: 10 }}
+        style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}
       >
         <Image
           source={logo}
@@ -58,6 +60,8 @@ function Header(props) {
         >{screen.title}</Text>
         <View style={{ width: 24 }} />
       </View>
+
+      <View style={{ height: 42, paddingRight: 50 }} />
     </View>
   )
 }

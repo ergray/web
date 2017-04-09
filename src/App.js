@@ -88,7 +88,6 @@ export default class App extends Component {
 
     return (
       <Provider store={store}><View style={{ backgroundColor: '#111', flex: 1 }}>
-        <Header route={route} />
         <LinearGradient
           colors={['#000', '#292929']}
           style={{
@@ -100,9 +99,7 @@ export default class App extends Component {
             maxWidth: 450,
           }}
         >
-          { !Screen.disableHeader &&
-            <View style={{ marginTop: 64 }} />
-          }
+          <Header navigator={navigator} route={route} />
           <Screen navigator={navigator} route={route} />
         </LinearGradient>
       </View></Provider>
