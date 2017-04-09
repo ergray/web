@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Alert,
-  Clipboard,
   Text,
   TouchableOpacity,
   TouchableHighlight,
@@ -33,21 +32,6 @@ class BillScreen extends Component {
       this.props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })
       this.setState({ billVotes: votes })
     })
-  }
-
-  pressShareButton() {
-    Alert.alert(
-      this.props.route.bill.uid,
-      'Copy this bill\'s URL to your clipboard?',
-      [
-        { text: 'Cancel' },
-        { onPress: () => {
-          Clipboard.setString(`https://app.liquid.vote/bill/${this.props.route.bill.uid}`)
-          Alert.alert('Copied', null, [{ text: 'Ok' }])
-        },
-          text: 'Copy' },
-      ],
-    )
   }
 
   render() {
@@ -153,11 +137,9 @@ class BillScreen extends Component {
               style={{ paddingHorizontal: 15 }}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.pressShareButton()}>
-            <Text style={{ color: 'white', fontSize: 16, width: 800 }}>
-              {bill.id}: {bill.title}
-            </Text>
-          </TouchableOpacity>
+          <Text style={{ color: 'white', fontSize: 16, width: 800 }}>
+            {bill.id}: {bill.title}
+          </Text>
         </View>
 
         { /* Vote buttons */ }
