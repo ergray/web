@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --port 3000 --progress --colors --inline",
+    "build": "webpack --progress --colors",
     "test": "eslint . --cache"
   },
   "dependencies": {
