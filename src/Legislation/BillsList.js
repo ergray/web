@@ -135,7 +135,7 @@ class BillsList extends Component {
                     flex: 1,
                     flexDirection: 'row',
                     marginTop: 10,
-                    opacity: 0.3,
+                    opacity: 0.6,
                     paddingRight: 30,
                   }}
                   >
