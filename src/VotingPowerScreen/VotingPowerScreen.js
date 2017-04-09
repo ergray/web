@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import graphic from './voting_power_graphic.png'
 
@@ -29,24 +29,6 @@ function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
       <Text style={{ color: 'white' }}>
         Invite more people to increase your voting power.
       </Text>
-
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={{
-          alignItems: 'center',
-          borderColor: '#5DA0FF',
-          borderRadius: 5,
-          borderWidth: 1,
-          height: 38,
-          justifyContent: 'center',
-          marginVertical: 20,
-        }}
-        onPress={() => {}}
-      >
-        <Text style={{ color: '#fff', fontSize: 13 }}>
-          INVITE
-        </Text>
-      </TouchableOpacity>
 
     </View>
   )
