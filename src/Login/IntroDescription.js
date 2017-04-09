@@ -60,9 +60,10 @@ export default function IntroDescription() {
           color: '#5DA0FF',
           fontSize: 16,
           marginLeft: 100,
-          padding: '18 60',
+          padding: '18 0',
+          textAlign: 'center',
           textDecorationLine: 'none',
-          width: 110,
+          width: 232,
         }}
         target="_blank"
       >LEARN MORE</a>
