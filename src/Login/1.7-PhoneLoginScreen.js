@@ -146,7 +146,7 @@ class PhoneLoginScreen extends Component {
             height: 24,
             left: 50,
             position: 'absolute',
-            top: isSmallScreen ? 351 - 70 : 351,
+            top: isSmallScreen ? 346 - 70 : 346,
             width: 30,
           }}
         />
@@ -156,7 +156,7 @@ class PhoneLoginScreen extends Component {
             fontWeight: '300',
             left: 89,
             position: 'absolute',
-            top: isSmallScreen ? 352 - 70 : 352,
+            top: isSmallScreen ? 347 - 70 : 347,
           }}
         >+1</Text>
       </View>
