@@ -1,6 +1,6 @@
 import React from 'react'
 import { Linking, Text, TouchableOpacity, View } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import BlogIcon from 'react-icons/lib/fa/rss-square'
 
 function AboutScreen() {
   const textStyle = {
@@ -47,7 +47,7 @@ function AboutScreen() {
         }}
       >
         <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '500' }}>
-          <Icon color="white" name="rss" size={18} />
+          <BlogIcon color="white" size={18} />
           &nbsp; BLOG
         </Text>
       </TouchableOpacity>

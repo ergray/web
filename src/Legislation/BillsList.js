@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import SortIcon from 'react-icons/lib/md/sort-by-alpha'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from './convert-dates'
@@ -104,7 +104,7 @@ class BillsList extends Component {
               ],
             )}
           >
-            <MaterialCommunityIcons color="#ddd" name="sort-alphabetical" size={22} />
+            <SortIcon color="#ddd" size={30} />
           </TouchableOpacity>
         </View>
 

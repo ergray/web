@@ -28,7 +28,6 @@ export default {
   RegistrationIntroScreen: require('./Registration/0-RegistrationIntroScreen').default,
   RequestsScreen: require('./Delegation/RequestsScreen').default,
   ThankYouScreen: require('./Registration/5-ThankYouScreen').default,
-  TrumpApprovalScreen: require('./TrumpApprovalScreen/TrumpApprovalScreen').default,
   VotingPowerScreen: require('./VotingPowerScreen/VotingPowerScreen').default,
   YourRegistrationScreen: require('./Registration/YourRegistrationScreen').default,
   ZipScreen: require('./Registration/2-ZipScreen').default,

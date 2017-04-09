@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Tabs from 'react-native-tabs'
-import Icon from 'react-native-vector-icons/Ionicons'
+import BackIcon from 'react-icons/lib/md/chevron-left'
 import BillContents from './BillContents'
 import BillArguments from './BillArguments'
 import { hasDatePassed } from './convert-dates'
@@ -148,8 +148,8 @@ class BillScreen extends Component {
         { /* Header */ }
         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 20, paddingRight: 40 }}>
           <TouchableOpacity onPress={() => navigator.pop()}>
-            <Icon
-              color="white" name="ios-arrow-back" size={30}
+            <BackIcon
+              color="white" size={30}
               style={{ paddingHorizontal: 15 }}
             />
           </TouchableOpacity>

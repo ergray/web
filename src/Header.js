@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
+import CloseIcon from 'react-icons/lib/md/close'
+import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from './logo.png'
 import screens from './_screens'
 import NoHeader from './NoHeader'
@@ -23,6 +24,8 @@ function Header(props) {
     return <CustomHeader route={route} {...props} {...screen.headerProps} />
   }
 
+  const Icon = route.transition ? CloseIcon : BackIcon
+
   return (
     <View style={{
       backgroundColor: '#000',
@@ -34,10 +37,10 @@ function Header(props) {
     >
       <View>
         <TouchableOpacity
-          style={{ height: 53, paddingLeft: 15, paddingRight: 20, paddingTop: 5 }}
+          style={{ height: 53, paddingLeft: 15, paddingRight: 20, paddingTop: 12 }}
           onPress={() => { props.navigator.pop() }}
         >
-          <Icon color="white" name={route.transition ? 'md-close' : 'ios-arrow-back'} size={30} />
+          <Icon color="white" size={30} />
         </TouchableOpacity>
       </View>
       <View
