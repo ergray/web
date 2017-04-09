@@ -1,6 +1,6 @@
 import URL from 'url'
 import React, { Component } from 'react'
-import { AppState, AsyncStorage, Linking, Navigator, View } from 'react-native'
+import { AppState, AsyncStorage, Linking, View } from 'react-native'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -8,7 +8,6 @@ import devTools from 'remote-redux-devtools'
 import screens from './_screens'
 import reducer, { initialState } from './_reducer'
 import Header from './Header'
-import NoTransition from './NoTransition'
 
 const INITIAL_ROUTE = { name: 'LoginScreen' }
 
@@ -25,6 +24,7 @@ export default class App extends Component {
     super(props)
     this.state = {
       appState: AppState.currentState,
+      stack: [INITIAL_ROUTE],
     }
   }
 
@@ -56,38 +56,28 @@ export default class App extends Component {
   }
 
   render() {
+    const route = this.state.stack[0]
+    const Screen = screens[route.name]
+    const navigator = {}
+
     return (
       <Provider store={store}><View style={{ backgroundColor: '#111', flex: 1 }}>
-        <Navigator
-          configureScene={(route) => {
-            if (route.transition === null) {
-              return NoTransition
-            }
-
-            if (route.transition) {
-              return Navigator.SceneConfigs[route.transition]
-            }
-
-            return Navigator.SceneConfigs.PushFromRight
+        <Header route={route} />
+        <LinearGradient
+          colors={['#000', '#292929']}
+          style={{
+            backgroundColor: 'transparent',
+            flex: 1,
+            justifyContent: 'flex-start',
+            marginHorizontal: 'auto',
+            maxWidth: 750,
           }}
-          initialRoute={INITIAL_ROUTE}
-          navigationBar={<Header />}
-          ref={(ref) => { this.navigator = ref }}
-          renderScene={(route, navigator) => {
-            const Screen = screens[route.name]
-            return (
-              <LinearGradient
-                colors={['#000', '#292929']}
-                style={{ backgroundColor: 'transparent', flex: 1, justifyContent: 'flex-start' }}
-              >
-                { !Screen.disableHeader &&
-                  <View style={{ marginTop: 64 }} />
-                }
-                <Screen navigator={navigator} route={route} />
-              </LinearGradient>
-            )
-          }}
-        />
+        >
+          { !Screen.disableHeader &&
+            <View style={{ marginTop: 64 }} />
+          }
+          <Screen navigator={navigator} route={route} />
+        </LinearGradient>
       </View></Provider>
     )
   }

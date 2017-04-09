@@ -1,19 +1,11 @@
 import React from 'react'
 import {
-  Navigator,
+  View,
 } from 'react-native'
 
-function NoHeader({ ...props }) {
+function NoHeader() {
   return (
-    <Navigator.NavigationBar
-      {...props}
-      routeMapper={{
-        LeftButton: () => {},
-        RightButton: () => {},
-        Title: () => {},
-      }}
-      style={{ height: 0 }}
-    />
+    <View />
   )
 }
 
