@@ -1,9 +1,10 @@
 import URL from 'url'
 import React, { Component } from 'react'
-import { AppState, AsyncStorage, Linking, View } from 'react-native'
+import { AppState, Linking, View } from 'react-native'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
+import localForage from 'localforage'
 import devTools from 'remote-redux-devtools'
 import _ from 'lodash'
 import screens from './_screens'
@@ -15,7 +16,7 @@ const INITIAL_ROUTE = { name: 'LoginScreen' }
 
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))
 // Store session info to device so it's not lost when closed
-persistStore(store, { storage: AsyncStorage,
+persistStore(store, { storage: localForage,
   whitelist: ['billSort', 'isVerified', 'sessionId', 'user'],
 })
 
