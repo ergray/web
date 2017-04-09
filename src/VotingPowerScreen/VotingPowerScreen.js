@@ -1,7 +1,6 @@
 import React from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-import { text as sms } from 'react-native-communications'
 import graphic from './voting_power_graphic.png'
 
 function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
@@ -42,7 +41,7 @@ function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
           justifyContent: 'center',
           marginVertical: 20,
         }}
-        onPress={() => { sms(null, `Do you know about liquid democracy? Reclaim your voice in government: https://join.liquid.vote/?r=${user.invite_code}`) }}
+        onPress={() => {}}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           INVITE

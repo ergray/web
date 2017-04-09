@@ -6,7 +6,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { email, phonecall } from 'react-native-communications'
 import letterGrade from 'letter-grade'
 import reps from './current-reps'
 
@@ -91,7 +90,7 @@ class ElectedRepScreen extends Component {
             marginHorizontal: 30,
             marginTop: 30,
           }}
-          onPress={() => phonecall(rep.officePhone.replace(/\D/g, ''), false)}
+          onPress={() => {}}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             CALL OFFICE: &nbsp; {rep.officePhone}
@@ -110,7 +109,7 @@ class ElectedRepScreen extends Component {
             marginHorizontal: 30,
             marginTop: 10,
           }}
-          onPress={() => email([`${rep.name.split(' ').join('.')}@sfgov.org`], null, null, null, null)}
+          onPress={() => {}}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org

@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { text as sms } from 'react-native-communications'
 import { connect } from 'react-redux'
 
 class RequestsScreen extends Component {
@@ -71,7 +70,7 @@ class RequestsScreen extends Component {
                   justifyContent: 'center',
                   marginVertical: 20,
                 }}
-                onPress={() => { sms(null, `Do you know about liquid democracy? Reclaim your voice in government: https://join.liquid.vote/?r=${this.props.user.invite_code}`) }}
+                onPress={() => {}}
               >
                 <Text style={{ color: '#fff', fontSize: 13 }}>
                   INVITE

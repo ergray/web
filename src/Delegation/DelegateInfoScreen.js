@@ -4,7 +4,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { text as sms } from 'react-native-communications'
 import { connect } from 'react-redux'
 
 function prettifyPhone(tenDigits) {
@@ -81,9 +80,7 @@ class DelegateInfoScreen extends Component {
 
       UNKNOWN_NUMBER: {
         button: {
-          onPress() {
-            sms(activeDelegate.phone, `Do you know about liquid democracy? Reclaim your voice in government: https://join.liquid.vote/?r=${user.invite_code}`)
-          },
+          onPress() {},
           text: 'INVITE',
         },
         description: 'This number hasn\'t joined the Liquid network yet, would you like to invite them?',
