@@ -154,7 +154,7 @@ class BillScreen extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.pressShareButton()}>
-            <Text style={{ color: 'white', fontSize: 16 }}>
+            <Text style={{ color: 'white', fontSize: 16, width: 400 }}>
               {bill.id}: {bill.title}
             </Text>
           </TouchableOpacity>
