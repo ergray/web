@@ -143,7 +143,7 @@ class BillScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, marginTop: 25 }}>
+      <View style={{ flex: 1, marginTop: 25, width: 850 }}>
 
         { /* Header */ }
         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 20, paddingRight: 40 }}>
@@ -154,7 +154,7 @@ class BillScreen extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => this.pressShareButton()}>
-            <Text style={{ color: 'white', fontSize: 16, width: 400 }}>
+            <Text style={{ color: 'white', fontSize: 16, width: 800 }}>
               {bill.id}: {bill.title}
             </Text>
           </TouchableOpacity>
