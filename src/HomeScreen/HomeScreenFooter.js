@@ -29,7 +29,7 @@ function HomeScreenFooter({ navigator, user, votingPower = '..' }) {
           <Text style={{ color: '#fff', fontSize: 12, fontWeight: '600' }}>ELECTED REP: A+</Text>
         </TouchableOpacity>
 
-        : <TouchableOpacity style={{ borderColor: '#333', borderLeftWidth: 1, flex: 1, paddingHorizontal: 15, paddingVertical: 12 }} onPress={() => navigator.push({ name: 'AllElectedRepsScreen', transition: 'FloatFromBottom' })}>
+        : <TouchableOpacity style={{ borderColor: '#333', borderLeftWidth: 1, flex: 1, paddingHorizontal: 15, paddingVertical: 12 }} onPress={() => navigator.push({ name: 'BoardScreen', transition: 'FloatFromBottom' })}>
           <Text style={{ color: '#fff', fontSize: 12, fontWeight: '600' }}>ELECTED REPS</Text>
         </TouchableOpacity>
       }

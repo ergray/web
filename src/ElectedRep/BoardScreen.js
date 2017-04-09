@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import reps from './current-reps'
 
-function AllElectedRepsScreen({ navigator }) {
+function BoardScreen({ navigator }) {
   const repsArray = Object.keys(reps).reduce((memo, district) => (
     [...memo, { ...reps[district], district }]
   ), [])
@@ -76,12 +76,12 @@ function AllElectedRepsScreen({ navigator }) {
   )
 }
 
-AllElectedRepsScreen.title = 'BOARD OF SUPERVISORS'
+BoardScreen.title = 'BOARD OF SUPERVISORS'
 
-AllElectedRepsScreen.propTypes = {
+BoardScreen.propTypes = {
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
 }
 
-export default AllElectedRepsScreen
+export default BoardScreen

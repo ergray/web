@@ -4,7 +4,7 @@ export default {
   AboutScreen: require('./AboutScreen').default,
   AddressScreen: require('./Registration/2.5-AddressScreen').default,
   AgendaScreen: require('./Legislation/AgendaScreen').default,
-  AllElectedRepsScreen: require('./ElectedRep/AllElectedRepsScreen').default,
+  BoardScreen: require('./ElectedRep/BoardScreen').default,
   AuditVoteScreen: require('./Legislation/AuditVoteScreen').default,
   BillScreen: require('./Legislation/BillScreen').default,
   CameraScreen: require('./Registration/3.3-CameraScreen').default,

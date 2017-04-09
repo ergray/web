@@ -132,7 +132,7 @@ class ElectedRepScreen extends Component {
             marginHorizontal: 30,
             marginTop: 30,
           }}
-          onPress={() => this.props.navigator.push({ name: 'AllElectedRepsScreen' })}
+          onPress={() => this.props.navigator.push({ name: 'BoardScreen' })}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             VIEW ALL ELECTED REPS
