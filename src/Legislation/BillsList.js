@@ -141,7 +141,7 @@ class BillsList extends Component {
                 }}
                 >{ positionIcon[position] }</Text>
               </View>
-              <View>
+              <View style={{ width: 450 }}>
                 <Text style={{ color: '#fff', paddingRight: 20 + 10 }}>
                   {bill.itemNumber}. {bill.id} - {bill.title}
                 </Text>

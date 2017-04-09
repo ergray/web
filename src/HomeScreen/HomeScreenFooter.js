@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Dimensions,
   Text,
   TouchableOpacity,
   View,
@@ -17,7 +16,7 @@ function HomeScreenFooter({ navigator, user, votingPower = '..' }) {
       flexDirection: 'row',
       paddingHorizontal: 11,
       position: 'absolute',
-      width: Dimensions.get('window').width,
+      width: 450,
     }}
     >
 
