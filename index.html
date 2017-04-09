@@ -9,6 +9,14 @@
     background-image: linear-gradient(to bottom, #111 0%, #292929 100%);
     background-repeat: no-repeat;
   ">
+
+    <script>
+      // Force https in production
+      if (location.hostname !== 'localhost' && location.protocol !== 'https:') {
+        location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+      }
+    </script>
+
     <div id="react-app" />
     <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
   </body>
