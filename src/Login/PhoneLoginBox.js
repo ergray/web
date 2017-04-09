@@ -24,7 +24,7 @@ class PhoneLoginBox extends Component {
         borderColor: '#bbb',
         borderRadius: 3,
         borderWidth: 1,
-        paddingVertical: 30,
+        paddingVertical: 60,
         width: 450,
       }}
       >
@@ -33,7 +33,6 @@ class PhoneLoginBox extends Component {
             color: '#fff',
             fontSize: 48,
             fontWeight: '100',
-            marginBottom: 30,
             marginLeft: 40,
           }}
         >
@@ -54,6 +53,7 @@ class PhoneLoginBox extends Component {
             fontWeight: '300',
             height: 42,
             marginHorizontal: 38,
+            marginTop: 41,
             paddingLeft: 75,
           }}
           value={this.state.phone}
@@ -130,7 +130,7 @@ class PhoneLoginBox extends Component {
             height: 24,
             left: 50,
             position: 'absolute',
-            top: 179,
+            top: 220,
             width: 30,
           }}
         />
@@ -140,7 +140,7 @@ class PhoneLoginBox extends Component {
             fontWeight: '300',
             left: 87,
             position: 'absolute',
-            top: 181,
+            top: 222,
           }}
         >+1</Text>
       </View>
