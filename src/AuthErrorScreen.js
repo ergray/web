@@ -1,11 +1,11 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import LogoutIcon from 'react-icons/lib/io/power'
 
-function InvalidSessionScreen({ dispatch, navigator }) {
+function AuthErrorScreen({ dispatch, navigator }) {
   return (
-    <View style={{ marginHorizontal: 30, marginTop: 10 }}>
+    <View style={{ marginHorizontal: 30, marginTop: 10, width: 610 }}>
 
       <Text style={{ color: '#fff', fontSize: 16, marginBottom: 20 }}>It looks like your login session is invalid.</Text>
       <Text style={{ color: '#fff', fontSize: 16, marginBottom: 20 }}>This can happen if you try to sign in multiple places.</Text>
@@ -27,7 +27,7 @@ function InvalidSessionScreen({ dispatch, navigator }) {
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
-          <Ionicons color="darkred" name="md-power" size={16} />
+          <LogoutIcon color="darkred" size={16} style={{ paddingBottom: 5 }} />
           &nbsp; &nbsp;LOG OUT
         </Text>
       </TouchableOpacity>
@@ -36,13 +36,13 @@ function InvalidSessionScreen({ dispatch, navigator }) {
   )
 }
 
-InvalidSessionScreen.title = 'AUTH ERROR'
+AuthErrorScreen.title = 'AUTH ERROR'
 
-InvalidSessionScreen.propTypes = {
+AuthErrorScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   navigator: React.PropTypes.shape({
     popToTop: React.PropTypes.func.isRequired,
   }),
 }
 
-export default connect()(InvalidSessionScreen)
+export default connect()(AuthErrorScreen)
