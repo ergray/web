@@ -72,6 +72,11 @@ export default class App extends Component {
           stack: newStack,
         })
       },
+      resetTo: (newRoute) => {
+        this.setState({
+          stack: [newRoute],
+        })
+      },
     }
 
     return (
