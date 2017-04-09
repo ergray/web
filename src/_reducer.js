@@ -25,9 +25,9 @@ export default function reducer(state, action) {
     case 'LOGOUT':
       return { ...initialState }
 
-    case 'SET_BILL_SORT':
+    case 'TOGGLE_BILL_SORT':
       return { ...state,
-        billSort: action.order,
+        billSort: state.billSort === 'itemNumber' ? 'mostVotes' : 'itemNumber',
       }
 
     case 'SET_FIRST_NAME':

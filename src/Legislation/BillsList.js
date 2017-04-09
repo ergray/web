@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Alert,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -85,24 +84,7 @@ class BillsList extends Component {
           </Text>
           <TouchableOpacity
             style={{ padding: 15 }}
-            onPress={() => Alert.alert(
-              'Sort order',
-              'How would like to sort this agenda?',
-              [
-                {
-                  onPress: () => {
-                    this.props.dispatch({ order: 'itemNumber', type: 'SET_BILL_SORT' })
-                  },
-                  text: `Item number ${billSort === 'itemNumber' ? '(Current)' : ''}`,
-                },
-                {
-                  onPress: () => {
-                    this.props.dispatch({ order: 'mostVotes', type: 'SET_BILL_SORT' })
-                  },
-                  text: `Most votes ${billSort === 'mostVotes' ? '(Current)' : ''}`,
-                },
-              ],
-            )}
+            onPress={() => this.props.dispatch({ type: 'TOGGLE_BILL_SORT' })}
           >
             <SortIcon color="#ddd" size={30} />
           </TouchableOpacity>
