@@ -65,6 +65,13 @@ export default class App extends Component {
           stack: [...this.state.stack, newRoute],
         })
       },
+      replace: (newRoute) => {
+        const newStack = [...this.state.stack]
+        newStack.pop(); newStack.push(newRoute)
+        this.setState({
+          stack: newStack,
+        })
+      },
     }
 
     return (
