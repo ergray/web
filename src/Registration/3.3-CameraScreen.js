@@ -6,9 +6,10 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import Camera from 'react-native-camera'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
 import photoGuides from './photo-guides.png'
+
+const Camera = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
 function CameraScreen({ dispatch, navigator }) {
   const { height, width } = Dimensions.get('window')
