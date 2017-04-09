@@ -2,12 +2,11 @@ import React from 'react'
 import {
   Image,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import logo from '../logo.png'
 
-export default function IntroScreen({ navigator }) {
+export default function IntroScreen() {
   return (
     <View style={{
       paddingHorizontal: 30,
@@ -64,20 +63,19 @@ export default function IntroScreen({ navigator }) {
         }}
       >Remove corruption.</Text>
 
-      <TouchableOpacity
-        style={{ marginTop: 80 }}
-        onPress={() => navigator.push({ name: 'LiquidDotVoteScreen', transition: 'FloatFromBottom' })}
-      >
-        <Text
-          style={{
-            color: '#5DA0FF',
-            fontSize: 16,
-            marginVertical: 20,
-            textAlign: 'center',
-            textDecorationLine: 'underline',
-          }}
-        >LEARN MORE</Text>
-      </TouchableOpacity>
+      <a
+        href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
+        rel="noopener noreferrer"
+        style={{
+          color: '#5DA0FF',
+          fontSize: 16,
+          marginBottom: 20,
+          marginTop: 80,
+          textAlign: 'center',
+          textDecorationLine: 'underline',
+        }}
+        target="_blank"
+      >LEARN MORE</a>
 
     </View>
   )

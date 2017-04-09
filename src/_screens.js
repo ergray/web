@@ -23,7 +23,6 @@ export default {
   InvalidSessionScreen: require('./InvalidSessionScreen').default,
   LastNameScreen: require('./Registration/1.5-LastNameScreen').default,
   LegalIdScreen: require('./Registration/3-LegalIdScreen').default,
-  LiquidDotVoteScreen: require('./Login/LiquidDotVoteScreen').default,
   LoadBillScreen: require('./Legislation/LoadBillScreen').default,
   LoginScreen: require('./Login/LoginScreen').default,
   RegistrationIntroScreen: require('./Registration/0-RegistrationIntroScreen').default,
