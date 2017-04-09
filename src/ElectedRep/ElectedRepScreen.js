@@ -20,7 +20,7 @@ class ElectedRepScreen extends Component {
     const rep = reps[district]
 
     return (
-      <View style={{ flex: 1, marginTop: 10 }}>
+      <View style={{ flex: 1, marginTop: 20 }}>
 
         <View
           style={{
@@ -78,43 +78,47 @@ class ElectedRepScreen extends Component {
         <Text style={{ fontWeight: '700' }}> {rep.score}% </Text>
         of the time.</Text>
 
-        <TouchableOpacity
-          activeOpacity={0.5}
+        <a
+          href={`tel:${rep.officePhone.replace(/\D/g, '')}`}
           style={{
-            alignItems: 'center',
             borderColor: '#05A5D1',
             borderRadius: 5,
+            borderStyle: 'solid',
             borderWidth: 1,
-            height: 38,
-            justifyContent: 'center',
-            marginHorizontal: 30,
+            color: '#fff',
+            cursor: 'pointer',
+            fontSize: 15,
+            marginLeft: 30,
             marginTop: 30,
+            padding: '12 0',
+            textAlign: 'center',
+            textDecorationLine: 'none',
+            width: 553,
           }}
-          onPress={() => {}}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
-            CALL OFFICE: &nbsp; {rep.officePhone}
-          </Text>
-        </TouchableOpacity>
+          CALL OFFICE: &nbsp; {rep.officePhone}
+        </a>
 
-        <TouchableOpacity
-          activeOpacity={0.5}
+        <a
+          href={`mailto:${rep.name.split(' ').join('.')}@sfgov.org`}
           style={{
-            alignItems: 'center',
             borderColor: '#05A5D1',
             borderRadius: 5,
+            borderStyle: 'solid',
             borderWidth: 1,
-            height: 38,
-            justifyContent: 'center',
-            marginHorizontal: 30,
-            marginTop: 10,
+            color: '#fff',
+            cursor: 'pointer',
+            fontSize: 15,
+            marginLeft: 30,
+            marginTop: 30,
+            padding: '12 0',
+            textAlign: 'center',
+            textDecorationLine: 'none',
+            width: 553,
           }}
-          onPress={() => {}}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
-            EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
-          </Text>
-        </TouchableOpacity>
+          EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
+        </a>
 
         <TouchableOpacity
           activeOpacity={0.5}
@@ -123,7 +127,7 @@ class ElectedRepScreen extends Component {
             borderColor: '#5DA0FF',
             borderRadius: 5,
             borderWidth: 1,
-            height: 38,
+            height: 40,
             justifyContent: 'center',
             marginHorizontal: 30,
             marginTop: 30,
