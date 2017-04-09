@@ -10,6 +10,7 @@
     camelcase: 0, // api uses snake_case
     import/extensions: 0, // squelch false positive from react-native-linear-gradient
     import/named: 2, // prevent typos
+    import/no-extraneous-dependencies: 0, // squelch for Webpack 'react-native' alias
     import/no-unresolved: 0, // squelch false positive from react-native-linear-gradient
     import/order: 2, // style
     jsx-a11y/anchor-has-content: 0, // not applicable for React Native

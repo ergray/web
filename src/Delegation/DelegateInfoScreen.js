@@ -29,7 +29,7 @@ class DelegateInfoScreen extends Component {
   }
 
   render() {
-    const { delegates, dispatch, route, sessionId, user } = this.props
+    const { delegates, dispatch, route, sessionId } = this.props
 
     const activeDelegate = delegates[route.rowIndex]
 
@@ -152,15 +152,11 @@ DelegateInfoScreen.propTypes = {
     rowIndex: React.PropTypes.number.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape({
-    invite_code: React.PropTypes.string.isRequired,
-  }),
 }
 
 const mapStateToProps = state => ({
   delegates: state.delegates,
   sessionId: state.sessionId,
-  user: state.user,
 })
 
 export default connect(mapStateToProps)(DelegateInfoScreen)

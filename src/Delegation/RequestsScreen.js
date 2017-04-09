@@ -168,16 +168,12 @@ RequestsScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   isVerified: React.PropTypes.bool.isRequired,
   sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape({
-    invite_code: React.PropTypes.string.isRequired,
-  }),
 }
 
 const mapStateToProps = state => ({
   constituents: state.constituents,
   isVerified: state.isVerified,
   sessionId: state.sessionId,
-  user: state.user,
 })
 
 export default connect(mapStateToProps)(RequestsScreen)
