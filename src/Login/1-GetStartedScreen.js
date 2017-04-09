@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Dimensions,
   Image,
   Text,
   View,
@@ -9,7 +8,7 @@ import logo from '../logo.png'
 
 export default function GetStartedScreen() {
   return (
-    <View style={{ width: Dimensions.get('window').width }}>
+    <View style={{ width: 450 }}>
       <Image
         source={logo}
         style={{

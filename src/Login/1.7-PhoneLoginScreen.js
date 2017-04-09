@@ -22,7 +22,7 @@ class PhoneLoginScreen extends Component {
     const isSmallScreen = Dimensions.get('window').height < 600
 
     return (
-      <View style={{ width: Dimensions.get('window').width }}>
+      <View style={{ width: 450 }}>
         <Image
           source={logo}
           style={{

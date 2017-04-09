@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Dimensions,
   Image,
   Text,
   TouchableOpacity,
@@ -12,7 +11,7 @@ export default function IntroScreen({ navigator }) {
   return (
     <View style={{
       paddingHorizontal: 30,
-      width: Dimensions.get('window').width,
+      width: 450,
     }}
     >
       <Image

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dimensions, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import { connect } from 'react-redux'
 import GetStartedScreen from './1-GetStartedScreen'
@@ -32,7 +32,7 @@ class LoginScreen extends Component {
           showsHorizontalScrollIndicator={false}
           onScroll={(event) => {
             const x = event.nativeEvent.contentOffset.x
-            const screenWidth = Dimensions.get('window').width
+            const screenWidth = 450
             const halfWidth = screenWidth / 2
 
             let newPage = 0

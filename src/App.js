@@ -70,7 +70,7 @@ export default class App extends Component {
             flex: 1,
             justifyContent: 'flex-start',
             marginHorizontal: 'auto',
-            maxWidth: 750,
+            maxWidth: 450,
           }}
         >
           { !Screen.disableHeader &&
