@@ -9,24 +9,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { getContact } from 'react-native-contacts-wrapper'
 import { connect } from 'react-redux'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
 import HeaderWithEditButton from './HeaderWithEditButton'
 import arrow from './arrow.png'
-
-function normalizeContactInfo(contact) {
-  return {
-    email: contact.email.toLowerCase(),
-    name: contact.name,
-    phone: contact.phone
-      .replace(/\D/g, '') // Remove non-digit characters
-      .slice(-10) // Only keep the last 10 digits (no country code)
-    ,
-  }
-}
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -251,15 +239,7 @@ class DelegatesScreen extends Component {
                     { text: 'OK' },
                   ],
                 )
-                return
               }
-
-              getContact()
-              .then(result => this.props.navigator.push({
-                name: 'ConfirmDelegateScreen',
-                newDelegate: normalizeContactInfo(result),
-              }))
-              .catch(() => {}) // if they press "Cancel" instead
             }}
           >
             <Text style={{ color: '#fff', fontSize: 13 }}>
