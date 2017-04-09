@@ -9,10 +9,9 @@ import _ from 'lodash'
 import screens from './_screens'
 import reducer, { initialState } from './_reducer'
 import Header from './Header'
+import LinearGradient from './LinearGradient'
 
 const INITIAL_ROUTE = { name: 'LoginScreen' }
-
-const LinearGradient = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))
 // Store session info to device so it's not lost when closed
