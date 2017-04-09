@@ -60,6 +60,13 @@ export default class App extends Component {
     const route = _.last(this.state.stack)
     const Screen = screens[route.name]
     const navigator = {
+      pop: () => {
+        const newStack = [...this.state.stack]
+        newStack.pop()
+        this.setState({
+          stack: newStack,
+        })
+      },
       push: (newRoute) => {
         this.setState({
           stack: [...this.state.stack, newRoute],
