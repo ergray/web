@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import last from 'lodash.last'
+import { last } from 'lodash'
 import logo from './logo.png'
 import screens from './_screens'
 import NoHeader from './NoHeader'
