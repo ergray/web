@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   Alert,
   Image,
+  ListView,
   ScrollView,
   Text,
   TouchableHighlight,
@@ -12,7 +13,6 @@ import { getContact } from 'react-native-contacts-wrapper'
 import { connect } from 'react-redux'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
-import SortableListView from 'react-native-sortable-listview'
 import deepEqual from 'deep-equal'
 import HeaderWithEditButton from './HeaderWithEditButton'
 import arrow from './arrow.png'
@@ -171,7 +171,7 @@ class DelegatesScreen extends Component {
 
           :
 
-          <SortableListView
+          <ListView
             data={delegates}
             sortRowStyle={{ backgroundColor: '#fff', height: 61, opacity: 1 }}
             onRowMoved={event => ( // eslint-disable-line react/jsx-sort-props
