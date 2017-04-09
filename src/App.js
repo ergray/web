@@ -68,6 +68,7 @@ export default class App extends Component {
           style={{
             backgroundColor: 'transparent',
             flex: 1,
+            height: '100%',
             justifyContent: 'flex-start',
             marginHorizontal: 'auto',
             maxWidth: 450,
