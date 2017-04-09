@@ -1,7 +1,6 @@
 import URL from 'url'
 import React, { Component } from 'react'
 import { AppState, AsyncStorage, Linking, Navigator, View } from 'react-native'
-import LinearGradient from 'react-native-linear-gradient'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -12,6 +11,8 @@ import Header from './Header'
 import NoTransition from './NoTransition'
 
 const INITIAL_ROUTE = { name: 'LoginScreen' }
+
+const LinearGradient = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))
 // Store session info to device so it's not lost when closed

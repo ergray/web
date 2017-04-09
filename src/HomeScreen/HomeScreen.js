@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Drawer from 'react-native-drawer'
+import { View } from 'react-native'
 import deepEqual from 'deep-equal'
-import LinearGradient from 'react-native-linear-gradient'
 import Menu from './Menu'
 import HomeScreenHeader from './HomeScreenHeader'
 import NextAgendaScreen from './NextAgendaScreen'
 import HomeScreenFooter from './HomeScreenFooter'
+
+const LinearGradient = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
 class HomeScreen extends Component {
   constructor(props) {
