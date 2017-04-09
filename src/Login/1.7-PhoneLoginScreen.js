@@ -57,7 +57,6 @@ class PhoneLoginScreen extends Component {
         </Text>
         <TextInput
           autoCorrect={false}
-          keyboardType="number-pad"
           placeholder={`Enter your mobile ${isSmallScreen ? '#' : 'number'}`}
           ref={(el) => { this.props.loginField.el = el }}
           style={{

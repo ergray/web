@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Image,
-  Keyboard,
   Text,
   TextInput,
   TouchableOpacity,
@@ -23,8 +22,6 @@ class EnterSMSCodeScreen extends Component {
   }
 
   sendSessionCodeToServer(session_code) {
-    Keyboard.dismiss()
-
     if (!this.props.phoneNumber) {
       this.setState({ error: true, loading: false, status: 'Missing phone number, start over.' })
       return
