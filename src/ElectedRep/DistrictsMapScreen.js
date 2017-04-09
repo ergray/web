@@ -1,9 +1,7 @@
 import React from 'react'
 import {
-  Dimensions,
   Image,
   ScrollView,
-  Text,
 } from 'react-native'
 import districtsMap from './districts-map.png'
 
@@ -11,19 +9,15 @@ function DistrictsMapScreen() {
   return (
     <ScrollView
       contentContainerStyle={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}
-      maximumZoomScale={2}
-      style={{ backgroundColor: '#fff' }}
+      style={{ backgroundColor: '#fff', width: 612 }}
     >
       <Image
         source={districtsMap}
         style={{
-          height: Dimensions.get('window').width * (478 / 500),
-          width: Dimensions.get('window').width,
+          height: 478,
+          width: 500,
         }}
       />
-      <Text style={{ fontSize: 12, fontWeight: '600', marginTop: 50 }}>
-        PINCH TO ZOOM
-      </Text>
     </ScrollView>
   )
 }
