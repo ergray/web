@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import {
-  Keyboard,
   Text,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import SaveIcon from 'react-icons/lib/fa/floppy-o'
 
 class ConfirmVoteScreen extends Component {
   constructor() {
@@ -48,11 +46,9 @@ class ConfirmVoteScreen extends Component {
     )
 
     return (
-      <TouchableWithoutFeedback
-        onPress={() => Keyboard.dismiss()}
-      ><View style={{ flex: 1, marginTop: 10 }}>
+      <View style={{ flex: 1, marginTop: 10 }}>
 
-        <Text style={{ color: 'white', marginHorizontal: 20 }}>
+        <Text style={{ color: 'white', marginHorizontal: 20, width: 850 }}>
           {bill.id}: <Text style={{ fontWeight: '700' }}>{bill.title}</Text>
         </Text>
 
@@ -68,13 +64,14 @@ class ConfirmVoteScreen extends Component {
 
         <TextInput
           multiline
+          numberOfLines={7}
           placeholder="Because..."
           style={{
             alignSelf: 'stretch',
             backgroundColor: '#bbb',
             borderRadius: 3,
             fontSize: 16,
-            height: 165,
+            height: 665,
             marginHorizontal: 20,
             paddingHorizontal: 10,
             paddingVertical: 5,
@@ -142,12 +139,12 @@ class ConfirmVoteScreen extends Component {
           }}
         >
           <Text style={{ color: '#fff', fontSize: 14 }}>
-            <FontAwesomeIcon name="save" size={15} />
+            <SaveIcon size={15} style={{ paddingBottom: 3 }} />
             &nbsp;&nbsp;SAVE
           </Text>
         </TouchableOpacity>
 
-      </View></TouchableWithoutFeedback>
+      </View>
     )
   }
 }
