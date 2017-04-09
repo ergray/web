@@ -14,7 +14,7 @@ function BoardScreen({ navigator }) {
   ), [])
 
   return (
-    <ScrollView>
+    <ScrollView style={{ width: 612 }}>
       <TouchableOpacity
         activeOpacity={0.5}
         style={{
