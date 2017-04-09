@@ -13,7 +13,6 @@
     import/no-extraneous-dependencies: 0, // squelch for Webpack 'react-native' alias
     import/no-unresolved: 0, // squelch false positive from react-native-linear-gradient
     import/order: 2, // style
-    jsx-a11y/anchor-has-content: 0, // not applicable for React Native
     max-len: 0,
     react/jsx-sort-props: [2, {callbacksLast: true, shorthandFirst: true}], // style
     react/jsx-filename-extension: 0, // react-native can't do .jsx files
