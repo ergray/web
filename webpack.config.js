@@ -1,7 +1,7 @@
 /* eslint-disable sort-keys */
 
 module.exports = {
-  entry: './app.js',
+  entry: './index.web.js',
   output: {
     path: __dirname,
     filename: 'bundle.js',
