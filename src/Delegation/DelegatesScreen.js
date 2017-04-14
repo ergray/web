@@ -216,38 +216,6 @@ class DelegatesScreen extends Component {
           />
         }
 
-        <View style={{ marginBottom: 15 }}>
-          <TouchableOpacity
-            activeOpacity={0.5}
-            style={{
-              alignItems: 'center',
-              borderColor: '#05A5D1',
-              borderRadius: 5,
-              borderWidth: 1,
-              height: 38,
-              justifyContent: 'center',
-            }}
-            onPress={() => {
-              // Don't let them add delegates if they're not verified
-              if (!this.props.isVerified) {
-                Alert.alert(
-                  'Unverified',
-                  'Your registration must be verified before you can add delegates.',
-                  [
-                    { onPress: () => navigator.push({ name: 'YourRegistrationScreen' }),
-                      text: 'More Info' },
-                    { text: 'OK' },
-                  ],
-                )
-              }
-            }}
-          >
-            <Text style={{ color: '#fff', fontSize: 13 }}>
-              ADD DELEGATE
-            </Text>
-          </TouchableOpacity>
-        </View>
-
       </View>)
   }
 }
@@ -260,7 +228,6 @@ DelegatesScreen.propTypes = {
   })),
   delegatesEditMode: React.PropTypes.bool,
   dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
@@ -270,7 +237,6 @@ DelegatesScreen.propTypes = {
 const mapStateToProps = state => ({
   delegates: state.delegates,
   delegatesEditMode: state.delegatesEditMode,
-  isVerified: state.isVerified,
   sessionId: state.sessionId,
 })
 
