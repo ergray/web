@@ -1,6 +1,5 @@
-import URL from 'url'
 import React, { Component } from 'react'
-import { AppState, Linking, View } from 'react-native'
+import { AppState, View } from 'react-native'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
