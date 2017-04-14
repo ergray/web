@@ -1,12 +1,13 @@
 import React from 'react'
 import { Dimensions, Image, Linking, Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import TwitterIcon from 'react-icons/lib/fa/twitter'
+import FacebookIcon from 'react-icons/lib/fa/facebook'
 import logo from '../logo.png'
 import Link from './Link'
 
-function Menu({ closeDrawer, constituents, dispatch, navigator, user }) {
-  const MenuOption = props => <Link closeDrawer={closeDrawer} navigator={navigator} {...props} /> // eslint-disable-line
+function Menu({ constituents, dispatch, navigator, user }) {
+  const MenuOption = props => <Link navigator={navigator} {...props} /> // eslint-disable-line
 
   let numRequests
   if (constituents && constituents.requests) {
@@ -21,7 +22,7 @@ function Menu({ closeDrawer, constituents, dispatch, navigator, user }) {
   }
 
   return (
-    <View style={{ flex: 1, marginTop: 20 }}>
+    <View style={{ backgroundColor: '#080808', flex: 1, paddingLeft: 30, paddingRight: 30, paddingTop: 30 }}>
       <Image
         source={logo}
         style={{ alignSelf: 'center', height: 75, marginBottom: 12, marginTop: 20, width: 79 }}
@@ -71,7 +72,7 @@ function Menu({ closeDrawer, constituents, dispatch, navigator, user }) {
               .catch(() => {})
             }}
           >
-            <Icon color="white" name="twitter" size={18} />
+            <TwitterIcon color="white" size={18} />
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginLeft: 10, padding: 10 }}
@@ -80,7 +81,7 @@ function Menu({ closeDrawer, constituents, dispatch, navigator, user }) {
               .catch(() => {})
             }}
           >
-            <Icon color="white" name="facebook" size={18} />
+            <FacebookIcon color="white" size={18} />
           </TouchableOpacity>
         </View>
 
@@ -91,12 +92,11 @@ function Menu({ closeDrawer, constituents, dispatch, navigator, user }) {
 }
 
 Menu.propTypes = {
-  closeDrawer: React.PropTypes.func.isRequired,
   constituents: React.PropTypes.shape({}),
   dispatch: React.PropTypes.func.isRequired,
   navigator: React.PropTypes.shape({
     resetTo: React.PropTypes.func.isRequired,
-  }),
+  }).isRequired,
   user: React.PropTypes.shape({}),
 }
 
