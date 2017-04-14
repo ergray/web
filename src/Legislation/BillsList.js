@@ -116,7 +116,7 @@ class BillsList extends Component {
                 <Text style={{
                   borderColor: '#888',
                   borderRadius: 12,
-                  borderWidth: isDelegated ? 1 : 0,
+                  borderWidth: vote && !isDelegated ? 1 : 0,
                   color: positionColor[position],
                   fontSize: 16,
                   fontWeight: '800',
