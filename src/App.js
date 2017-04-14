@@ -31,28 +31,6 @@ export default class App extends Component {
   componentDidMount() {
     // Ping server to wake it up
     fetch('https://api.liquid.vote')
-    // And when app comes back from background
-    AppState.addEventListener('change', (nextAppState) => {
-      if (this.state.appState.match(/inactive|background/) && nextAppState === 'active') {
-        fetch('https://api.liquid.vote')
-      }
-      this.setState({ appState: nextAppState })
-    })
-
-    Linking.addEventListener('url', (event) => {
-      if (event.url) {
-        const parsedUrl = URL.parse(event.url, true)
-
-        if (parsedUrl.path.slice(1, 5) === 'bill') {
-          const bill_uid = parsedUrl.path.slice(6, 23)
-          this.navigator.immediatelyResetRouteStack([
-            { name: 'LoginScreen' },
-            { name: 'HomeScreen' },
-            { bill_uid, name: 'LoadBillScreen' },
-          ])
-        }
-      }
-    })
   }
 
   render() {
