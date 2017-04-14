@@ -66,7 +66,7 @@ function Menu({ constituents, dispatch, navigator, user }) {
 
         <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
           <TouchableOpacity
-            style={{ marginLeft: 30, padding: 10 }}
+            style={{ marginLeft: 20, padding: 10 }}
             onPress={() => {
               Linking.openURL('https://twitter.com/liquid_vote')
               .catch(() => {})
