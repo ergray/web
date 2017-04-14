@@ -83,7 +83,7 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ height: '100%' }}>
         <HomeScreenHeader navigator={this.props.navigator} />
         <LinearGradient
           colors={['#000', '#292929']}
