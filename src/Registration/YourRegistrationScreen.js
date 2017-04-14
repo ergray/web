@@ -65,7 +65,7 @@ class YourRegistrationScreen extends Component {
     }[verification_status]
 
     return (
-      <View style={{ flex: 1, marginHorizontal: 20 }}>
+      <View style={{ flex: 1, marginHorizontal: 20, width: 400 }}>
 
         { !this.state.registrationInfo.first_name
           ? <Text style={[normal, { marginTop: 10 }]}>Loading...</Text> :
