@@ -24,8 +24,8 @@ class PhoneLoginBox extends Component {
         borderColor: '#bbb',
         borderRadius: 3,
         borderWidth: 1,
+        flexBasis: 450,
         paddingVertical: 60,
-        width: 450,
       }}
       >
         <Text
