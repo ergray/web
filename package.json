@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --port 3000 --progress --colors --inline",
     "build": "webpack --progress --colors",
-    "deploy": "git checkout gh-pages && git merge master && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
+    "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
     "test": "eslint . --cache"
   },
   "dependencies": {
