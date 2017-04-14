@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   Text,
+  TouchableHighlight,
   TouchableOpacity,
   View,
 } from 'react-native'
@@ -99,15 +100,17 @@ class BillsList extends Component {
             isDelegated = !!vote.delegate_id
           }
           return (
-            <TouchableOpacity
-              key={bill.uid} style={{
-                borderColor: 'grey',
-                borderTopWidth: 1,
-                flexDirection: 'row',
-                paddingHorizontal: 4,
-                paddingVertical: 15,
-              }}
+            <TouchableHighlight
+              key={bill.uid}
+              underlayColor="#444"
               onPress={() => navigator.push({ bill, name: 'BillScreen' })}
+            ><View style={{
+              borderColor: 'grey',
+              borderTopWidth: 1,
+              flexDirection: 'row',
+              paddingHorizontal: 4,
+              paddingVertical: 15,
+            }}
             >
               <View style={{ width: 26 }}>
                 <Text style={{
@@ -147,7 +150,7 @@ class BillsList extends Component {
                 )}
 
               </View>
-            </TouchableOpacity>
+            </View></TouchableHighlight>
           )
         })}
 
