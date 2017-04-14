@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Alert,
-  Image,
   ListView,
   ScrollView,
   Text,
@@ -14,7 +13,6 @@ import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
 import HeaderWithEditButton from './HeaderWithEditButton'
-import arrow from './arrow.png'
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -83,29 +81,8 @@ class DelegatesScreen extends Component {
           }
         </View>
 
-        { delegates.length === 0 ?
+        { delegates.length > 0 &&
           (
-            <View>
-              <Text
-                style={{
-                  alignSelf: 'center',
-                  color: '#fff',
-                  marginTop: 60,
-                }}
-              >...You have no delegates, add your first one:</Text>
-              <Image
-                source={arrow}
-                style={{
-                  alignSelf: 'center',
-                  height: 165,
-                  marginLeft: 90,
-                  marginVertical: 30,
-                  width: 42,
-                }}
-              />
-
-            </View>
-          ) : (
             <TouchableOpacity
               style={{
                 backgroundColor: '#252525',
