@@ -16,7 +16,7 @@ function prettifyPhone(tenDigits) {
 
 function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
   return (
-    <View style={{ flex: 1, justifyContent: 'space-between', marginHorizontal: 30 }}>
+    <View style={{ justifyContent: 'space-between', marginHorizontal: 30, width: 500 }}>
       <View style={{ alignItems: 'center' }}>
         <Text style={{
           color: '#fff',
@@ -58,6 +58,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
             borderWidth: 3,
             height: 58,
             justifyContent: 'center',
+            marginTop: 60,
           }}
           onPress={() => {
             fetch('https://api.liquid.vote/login', {
