@@ -135,7 +135,7 @@ class ConfirmVoteScreen extends Component {
               },
               method: 'POST',
             })
-            .then(() => navigator.replacePreviousAndPop({ bill, name: 'BillScreen' }))
+            .then(() => navigator.pop({ bill, name: 'BillScreen' }))
           }}
         >
           <Text style={{ color: '#fff', fontSize: 14 }}>
