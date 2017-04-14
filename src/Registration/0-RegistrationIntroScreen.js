@@ -30,7 +30,7 @@ export default function RegistrationIntroScreen({ navigator }) {
           }}
           onPress={() => navigator.push({ name: 'FirstNameScreen', transition: null })}
         >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             OK
           </Text>
         </TouchableOpacity>

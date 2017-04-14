@@ -46,7 +46,7 @@ function AboutScreen() {
           .catch(() => {})
         }}
       >
-        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '500' }}>
+        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '500' }}>
           <BlogIcon color="white" size={18} />
           &nbsp; BLOG
         </Text>

@@ -77,7 +77,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
             navigator.replace({ name: 'EnterSMSCodeScreen' })
           }}
         >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             CONFIRM
           </Text>
         </TouchableOpacity>
@@ -98,7 +98,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
             navigator.pop()
           }}
         >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             CANCEL
           </Text>
         </TouchableOpacity>
