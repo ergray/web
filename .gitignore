@@ -2,3 +2,4 @@ node_modules/
 bundle.js
 yarn.lock
 .eslintcache
+.DS_Store

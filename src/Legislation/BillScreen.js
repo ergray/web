@@ -220,7 +220,7 @@ class BillScreen extends Component {
             <Text style={[{ color: 'white' }, yeaOutcome]}>Yea: {voteCount.yea}</Text>
             <Text style={[{ color: 'white' }, nayOutcome]}>Nay: {voteCount.nay}</Text>
           </View></TouchableWithoutFeedback>
-          <TouchableOpacity onPress={() => navigator.push({ bill, name: 'AuditVoteScreen' })}>
+          <TouchableOpacity onPress={() => navigator.push({ bill, name: 'AuditScreen' })}>
             <Text style={{ color: '#5DA0FF', fontSize: 12, marginLeft: 63, marginRight: 20, marginVertical: 15 }}>AUDIT</Text>
           </TouchableOpacity>
         </View>
