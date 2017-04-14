@@ -37,7 +37,7 @@ class PastAgendas extends Component {
           }}
           onPress={() => this.setState({ activated: true })}
         >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 13 }}>
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
             VIEW PAST AGENDAS
           </Text>
         </TouchableOpacity>
@@ -77,7 +77,7 @@ class PastAgendas extends Component {
           }}
           onPress={() => this.setState({ activated: false })}
         >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 13 }}>
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
             HIDE PAST AGENDAS
           </Text>
         </TouchableOpacity>

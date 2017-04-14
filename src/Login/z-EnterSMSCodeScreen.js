@@ -170,7 +170,7 @@ class EnterSMSCodeScreen extends Component {
             }}
             onPress={() => this.props.navigator.replace({ name: 'LoginScreen' })}
           >
-            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
               BACK
             </Text>
           </TouchableOpacity>

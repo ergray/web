@@ -34,7 +34,7 @@ function LegalIdScreen({ navigator }) {
         }}
         onPress={() => navigator.push({ name: 'CameraScreen', transition: null })}
       >
-        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           TAKE PHOTO OF ID
         </Text>
       </TouchableOpacity>
@@ -52,7 +52,7 @@ function LegalIdScreen({ navigator }) {
         }}
         onPress={() => navigator.push({ name: 'EmailScreen', transition: null })}
       >
-        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue', fontSize: 16, fontWeight: '600' }}>
+        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           SKIP FOR NOW
         </Text>
       </TouchableOpacity>
