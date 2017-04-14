@@ -2,6 +2,7 @@ export const initialState = {
   bills: {},
   billSort: 'mostVotes',
   isVerified: false,
+  knownNumbers: {},
   sessionId: '',
   user: {},
   votes: {},
@@ -9,6 +10,13 @@ export const initialState = {
 
 export default function reducer(state, action) {
   switch (action.type) {
+
+    case 'ADD_KNOWN_NUMBER':
+      return { ...state,
+        knownNumbers: { ...state.knownNumbers,
+          [action.phoneNumber]: new Date(),
+        },
+      }
 
     case 'CAPTURE_ID_PHOTO':
       return { ...state,
@@ -23,7 +31,9 @@ export default function reducer(state, action) {
       }
 
     case 'LOGOUT':
-      return { ...initialState }
+      return { ...initialState,
+        knownNumbers: state.knownNumbers, // persist between logouts
+      }
 
     case 'TOGGLE_BILL_SORT':
       return { ...state,

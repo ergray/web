@@ -6,7 +6,8 @@ import {
   TextInput,
   View,
 } from 'react-native'
-import usaFlag from './usa-flag.png'
+import usaFlag from './usa-flag.png' // eslint-disable-line import/newline-after-import
+const pick = require('lodash/fp/pick')
 
 class PhoneLoginBox extends Component {
   constructor(props) {
@@ -105,6 +106,12 @@ class PhoneLoginBox extends Component {
                 })
               }
 
+              // Check if this is a new number
+              if (!this.props.knownNumbers[phoneNumber]) {
+                this.setState({ phone: newText })
+                return this.props.navigator.push({ name: 'ConfirmNewNumberScreen', phoneNumber })
+              }
+
               fetch('https://api.liquid.vote/login', {
                 body: JSON.stringify({
                   phone: phoneNumber,
@@ -150,14 +157,18 @@ class PhoneLoginBox extends Component {
 
 PhoneLoginBox.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
+  knownNumbers: React.PropTypes.shape({}).isRequired,
   loginField: React.PropTypes.shape({
     el: React.PropTypes.shape({
       focus: React.PropTypes.func.isRequired,
     }),
   }),
   navigator: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
     replace: React.PropTypes.func.isRequired,
   }),
 }
 
-export default connect()(PhoneLoginBox)
+export default connect(pick([
+  'knownNumbers',
+]))(PhoneLoginBox)

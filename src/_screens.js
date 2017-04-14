@@ -10,6 +10,7 @@ export default {
   BoardScreen: require('./ElectedRep/BoardScreen').default,
   CameraScreen: require('./Registration/3.3-CameraScreen').default,
   ConfirmDelegateScreen: require('./Delegation/ConfirmDelegateScreen').default,
+  ConfirmNewNumberScreen: require('./Login/1.8-ConfirmNewNumberScreen').default,
   ConfirmVoteScreen: require('./Legislation/ConfirmVoteScreen').default,
   DelegateInfoScreen: require('./Delegation/DelegateInfoScreen').default,
   DelegatesScreen: require('./Delegation/DelegatesScreen').default,
