@@ -49233,7 +49233,7 @@ marginVertical:30},
 
 onPress:function onPress(){return _this2.setState({activated:true});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:13}},'VIEW PAST AGENDAS')));
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:13}},'VIEW PAST AGENDAS')));
 
 
 
@@ -49273,7 +49273,7 @@ shadowOpacity:0},
 
 onPress:function onPress(){return _this2.setState({activated:false});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:13}},'HIDE PAST AGENDAS')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:13}},'HIDE PAST AGENDAS')),
 
 
 
@@ -49433,58 +49433,36 @@ stack:[INITIAL_ROUTE]};return _this;
 
 }_createClass(App,[{key:'componentDidMount',value:function componentDidMount()
 
-{var _this2=this;
+{
 
 fetch('https://api.liquid.vote');
-
-_reactNative.AppState.addEventListener('change',function(nextAppState){
-if(_this2.state.appState.match(/inactive|background/)&&nextAppState==='active'){
-fetch('https://api.liquid.vote');
-}
-_this2.setState({appState:nextAppState});
-});
-
-_reactNative.Linking.addEventListener('url',function(event){
-if(event.url){
-var parsedUrl=_url2.default.parse(event.url,true);
-
-if(parsedUrl.path.slice(1,5)==='bill'){
-var bill_uid=parsedUrl.path.slice(6,23);
-_this2.navigator.immediatelyResetRouteStack([
-{name:'LoginScreen'},
-{name:'HomeScreen'},
-{bill_uid:bill_uid,name:'LoadBillScreen'}]);
-
-}
-}
-});
 }},{key:'render',value:function render()
 
-{var _this3=this;
+{var _this2=this;
 var route=_lodash2.default.last(this.state.stack);
 var Screen=_screens2.default[route.name];
 var navigator={
 pop:function pop(){
-var newStack=[].concat(_toConsumableArray(_this3.state.stack));
+var newStack=[].concat(_toConsumableArray(_this2.state.stack));
 newStack.pop();
-_this3.setState({
+_this2.setState({
 stack:newStack});
 
 },
 push:function push(newRoute){
-_this3.setState({
-stack:[].concat(_toConsumableArray(_this3.state.stack),[newRoute])});
+_this2.setState({
+stack:[].concat(_toConsumableArray(_this2.state.stack),[newRoute])});
 
 },
 replace:function replace(newRoute){
-var newStack=[].concat(_toConsumableArray(_this3.state.stack));
+var newStack=[].concat(_toConsumableArray(_this2.state.stack));
 newStack.pop();newStack.push(newRoute);
-_this3.setState({
+_this2.setState({
 stack:newStack});
 
 },
 resetTo:function resetTo(newRoute){
-_this3.setState({
+_this2.setState({
 stack:[newRoute]});
 
 }};
@@ -88178,7 +88156,7 @@ _reactNative.Linking.openURL('https://blog.liquid.vote').
 catch(function(){});
 }},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'500'}},
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'500'}},
 _react2.default.createElement(_rssSquare2.default,{color:'white',size:18}),'\xA0 BLOG'))));
 
 
@@ -90732,7 +90710,7 @@ Session_ID:sessionId},
 
 method:'POST'}).
 
-then(function(){return navigator.replacePreviousAndPop({bill:bill,name:'BillScreen'});});
+then(function(){return navigator.pop({bill:bill,name:'BillScreen'});});
 }},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:14}},
@@ -90934,7 +90912,7 @@ dispatch({phoneNumber:route.phoneNumber,type:'SET_PHONE_NUMBER'});
 navigator.replace({name:'EnterSMSCodeScreen'});
 }},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'CONFIRM')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'CONFIRM')),
 
 
 
@@ -90955,7 +90933,7 @@ onPress:function onPress(){
 navigator.pop();
 }},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'CANCEL')))));
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'CANCEL')))));
 
 
 
@@ -91508,7 +91486,7 @@ marginHorizontal:30},
 
 onPress:function onPress(){return _this3.props.navigator.replace({name:'LoginScreen'});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'BACK'))));
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'BACK'))));
 
 
 
@@ -91592,7 +91570,7 @@ marginBottom:20},
 
 onPress:function onPress(){return navigator.push({name:'FirstNameScreen',transition:null});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'OK')))));
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'OK')))));
 
 
 
@@ -92061,7 +92039,7 @@ marginHorizontal:30},
 
 onPress:function onPress(){return navigator.push({name:'CameraScreen',transition:null});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'TAKE PHOTO OF ID')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'TAKE PHOTO OF ID')),
 
 
 
@@ -92079,7 +92057,7 @@ marginHorizontal:30},
 
 onPress:function onPress(){return navigator.push({name:'EmailScreen',transition:null});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue',fontSize:16,fontWeight:'600'}},'SKIP FOR NOW'))));
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'SKIP FOR NOW'))));
 
 
 
