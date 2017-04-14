@@ -22,7 +22,7 @@ function Menu({ constituents, dispatch, navigator, user }) {
   }
 
   return (
-    <View style={{ backgroundColor: '#080808', flex: 1, paddingLeft: 30, paddingRight: 30, paddingTop: 30 }}>
+    <View style={{ backgroundColor: '#080808', flex: 1, paddingTop: 30, width: 254 }}>
       <Image
         source={logo}
         style={{ alignSelf: 'center', height: 75, marginBottom: 12, marginTop: 20, width: 79 }}
