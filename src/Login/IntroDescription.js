@@ -7,8 +7,11 @@ import {
 export default function IntroDescription() {
   return (
     <View style={{
+      alignItems: 'center',
+      flex: 10,
+      flexBasis: 530,
+      marginBottom: 60,
       paddingHorizontal: 30,
-      width: 650,
     }}
     >
       <Text
@@ -20,7 +23,7 @@ export default function IntroDescription() {
       >REAL POLITICAL REPRESENTATION</Text>
 
       <View style={{
-        marginLeft: 30,
+        alignSelf: 'flex-start',
         marginVertical: 50,
       }}
       >
@@ -59,7 +62,6 @@ export default function IntroDescription() {
           borderWidth: 1,
           color: '#5DA0FF',
           fontSize: 16,
-          marginLeft: 100,
           padding: '18 0',
           textAlign: 'center',
           textDecorationLine: 'none',

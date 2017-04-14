@@ -16,11 +16,12 @@ class LoginScreen extends Component {
     const loginField = { el: { focus: () => {} } } // overwritten in PhoneLoginBox
 
     return (
-      <View style={{ flex: 1, justifyContent: 'space-between' }}>
+      <View style={{ flex: 1, justifyContent: 'center' }}>
         <LoginHeader />
 
-        <View style={{ flex: 1, flexDirection: 'row' }}>
+        <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
           <IntroDescription />
+          <View style={{ flex: 1 }} />
           <PhoneLoginBox loginField={loginField} navigator={this.props.navigator} />
         </View>
 

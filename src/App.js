@@ -16,7 +16,7 @@ const INITIAL_ROUTE = { name: 'LoginScreen' }
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))
 // Store session info to device so it's not lost when closed
 persistStore(store, { storage: localForage,
-  whitelist: ['billSort', 'isVerified', 'sessionId', 'user'],
+  whitelist: ['billSort', 'isVerified', 'knownNumbers', 'sessionId', 'user'],
 })
 
 export default class App extends Component {

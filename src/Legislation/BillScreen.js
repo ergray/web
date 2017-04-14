@@ -21,15 +21,13 @@ class BillScreen extends Component {
       billVotes: this.props.route.bill.votes,
       page: 'description',
     }
-  }
 
-  componentWillMount() {
     // Refresh vote count
-    const activeBill = this.props.route.bill.uid
+    const activeBill = props.route.bill.uid
     fetch(`https://api.liquid.vote/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
-      this.props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })
+      props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })
       this.setState({ billVotes: votes })
     })
   }
@@ -108,21 +106,18 @@ class BillScreen extends Component {
         return
       }
 
-      let newPosition = tappedPosition
-
-      // Are we undo-ing an already tapped position?
-      if (position === tappedPosition) {
-        newPosition = 'abstain'
+      if (tappedPosition === position) {
+        return
       }
 
       // Go to ConfirmVoteScreen
-      navigator.push({ bill, name: 'ConfirmVoteScreen', position: newPosition })
+      navigator.push({ bill, name: 'ConfirmVoteScreen', position: tappedPosition })
     }
 
     const highlightColor = '#444'
 
-    const selected = { nay: {}, yea: {} }
-    if (['yea', 'nay'].includes(position)) {
+    const selected = { abstain: {}, nay: {}, yea: {} }
+    if (vote) {
       selected[position].backgroundColor = highlightColor
     }
 
@@ -158,19 +153,40 @@ class BillScreen extends Component {
             <Text style={[{
               color: '#2ca02c',
               fontSize: 16,
+              fontWeight: '800',
               paddingVertical: 15,
               textAlign: 'center',
             }, selected.yea]}
-            >✓ Yea</Text>
+            >✓ YEA</Text>
           </TouchableHighlight>
+          <View style={{ backgroundColor: highlightColor, width: 1 }} />
           <TouchableHighlight style={{ flex: 1 }} onPress={() => tapPosition('nay')}>
             <Text style={[{
               color: '#d62728',
               fontSize: 16,
+              fontWeight: '800',
               paddingVertical: 15,
               textAlign: 'center',
             }, selected.nay]}
-            >✗ Nay</Text>
+            >✗ NAY</Text>
+          </TouchableHighlight>
+        </View>
+        <View style={{
+          backgroundColor: '#0D0D0D',
+          borderBottomWidth: 1,
+          borderColor: highlightColor,
+        }}
+        >
+          <TouchableHighlight
+            onPress={() => tapPosition('abstain')}
+          >
+            <Text style={[{
+              color: '#fff',
+              fontSize: 13,
+              paddingVertical: 8,
+              textAlign: 'center',
+            }, selected.abstain]}
+            >ABSTAIN</Text>
           </TouchableHighlight>
         </View>
 
@@ -220,7 +236,7 @@ class BillScreen extends Component {
             <Text style={[{ color: 'white' }, yeaOutcome]}>Yea: {voteCount.yea}</Text>
             <Text style={[{ color: 'white' }, nayOutcome]}>Nay: {voteCount.nay}</Text>
           </View></TouchableWithoutFeedback>
-          <TouchableOpacity onPress={() => navigator.push({ bill, name: 'AuditVoteScreen' })}>
+          <TouchableOpacity onPress={() => navigator.push({ bill, name: 'AuditScreen' })}>
             <Text style={{ color: '#5DA0FF', fontSize: 12, marginLeft: 63, marginRight: 20, marginVertical: 15 }}>AUDIT</Text>
           </TouchableOpacity>
         </View>
