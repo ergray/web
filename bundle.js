@@ -89854,7 +89854,7 @@ first_name='UNREGISTERED';
 }
 
 return(
-_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#080808',flex:1,paddingLeft:30,paddingRight:30,paddingTop:30}},
+_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#080808',flex:1,paddingTop:30,width:254}},
 _react2.default.createElement(_reactNative.Image,{
 source:_logo2.default,
 style:{alignSelf:'center',height:75,marginBottom:12,marginTop:20,width:79}}),
