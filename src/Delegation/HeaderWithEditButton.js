@@ -1,13 +1,12 @@
 import React from 'react'
 import {
   Image,
-  Navigator,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/Ionicons'
+import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from '../logo.png'
 
 function HeaderWithEditButton(props) {
@@ -15,66 +14,63 @@ function HeaderWithEditButton(props) {
   const showEditButton = delegates && delegates.length > 0
 
   return (
-    <Navigator.NavigationBar
-      {...props}
-      routeMapper={{
-        LeftButton: () => (
-          <TouchableOpacity
-            style={{ flex: 1, height: 53, justifyContent: 'center', minWidth: 50, paddingLeft: 15 }}
-            onPress={() => { props.navigator.pop() }}
-          >
-            <Icon color="white" name="ios-arrow-back" size={30} />
-          </TouchableOpacity>
-        ),
-        RightButton: () => {
-          if (!showEditButton) {
-            return <View style={{ width: 60 }} />
-          }
+    <View style={{
+      backgroundColor: '#000',
+      borderBottomWidth: 1,
+      borderColor: '#222',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: 600,
+    }}
+    >
+      <TouchableOpacity
+        style={{ flex: 1, height: 53, justifyContent: 'center', minWidth: 50, paddingLeft: 15 }}
+        onPress={() => { props.navigator.pop() }}
+      >
+        <BackIcon color="white" size={30} />
+      </TouchableOpacity>
 
-          return (
-            <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE_DELEGATES_EDIT_MODE' })}>
-              <Text
-                style={{
-                  color: '#05A5D1',
-                  fontSize: 16,
-                  fontWeight: '200',
-                  marginTop: 10,
-                  paddingRight: 20,
-                  textAlign: 'right',
-                }}
-              >{ !delegatesEditMode ? 'Edit' : 'Done' }</Text>
-            </TouchableOpacity>
-          )
-        },
-        Title: () => (
-          <View
-            style={{ alignItems: 'center', flex: 10, flexDirection: 'row', justifyContent: 'center' }}
-          >
-            <Image
-              source={logo}
-              style={{
-                height: 24,
-                marginRight: 7,
-                width: 24,
-              }}
-            />
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 19,
-                fontWeight: '700',
-              }}
-            >DELEGATES</Text>
-            <View style={{ width: 31 }} />
-          </View>
-        ),
-      }}
-      style={{
-        backgroundColor: '#000',
-        borderBottomWidth: 1,
-        borderColor: '#222',
-      }}
-    />
+      <View
+        style={{ alignItems: 'center', flex: 10, flexDirection: 'row', justifyContent: 'center' }}
+      >
+        <Image
+          source={logo}
+          style={{
+            height: 24,
+            marginRight: 7,
+            width: 24,
+          }}
+        />
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 19,
+            fontWeight: '700',
+          }}
+        >DELEGATES</Text>
+        <View style={{ width: 31 }} />
+      </View>
+
+      <View style={{ justifyContent: 'center' }}>
+        { !showEditButton ? (
+          <View style={{ width: 60 }} />
+        ) : (
+          <TouchableOpacity onPress={() => dispatch({ type: 'TOGGLE_DELEGATES_EDIT_MODE' })}>
+            <Text style={{
+              color: '#05A5D1',
+              fontSize: 16,
+              fontWeight: '200',
+              paddingRight: 20,
+              textAlign: 'right',
+              width: 50,
+            }}
+            >
+              { !delegatesEditMode ? 'Edit' : 'Done' }
+            </Text>
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
   )
 }
 
