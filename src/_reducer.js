@@ -1,6 +1,6 @@
 export const initialState = {
   bills: {},
-  billSort: 'itemNumber',
+  billSort: 'mostVotes',
   isVerified: false,
   sessionId: '',
   user: {},
