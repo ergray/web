@@ -1,10 +1,9 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-function Link({ closeDrawer, navigator, onPress, notifications, style, text, to }) {
+function Link({ navigator, onPress, notifications, style, text, to }) {
   if (!onPress) {
     onPress = () => { // eslint-disable-line no-param-reassign
-      closeDrawer()
       navigator.push({ name: to })
     }
   }
@@ -40,7 +39,6 @@ function Link({ closeDrawer, navigator, onPress, notifications, style, text, to 
 }
 
 Link.propTypes = {
-  closeDrawer: React.PropTypes.func.isRequired,
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func,
   }),

@@ -18,7 +18,7 @@ export default {
   ElectedRepScreen: require('./ElectedRep/ElectedRepScreen').default,
   EmailScreen: require('./Registration/4-EmailScreen').default,
   EnterSMSCodeScreen: require('./Login/z-EnterSMSCodeScreen').default,
-  FeedbackScreen: require('./FeedbackScreen/FeedbackScreen').default,
+  FeedbackScreen: require('./FeedbackScreen').default,
   FirstNameScreen: require('./Registration/1-FirstNameScreen').default,
   HomeScreen: require('./HomeScreen/HomeScreen').default,
   IdReviewScreen: require('./Registration/3.6-IdReviewScreen').default,

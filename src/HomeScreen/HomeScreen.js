@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
 import LinearGradient from '../LinearGradient'
+import Menu from './Menu'
 import HomeScreenHeader from './HomeScreenHeader'
 import NextAgendaScreen from './NextAgendaScreen'
 import HomeScreenFooter from './HomeScreenFooter'
@@ -83,15 +84,18 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View>
-        <HomeScreenHeader navigator={this.props.navigator} />
-        <LinearGradient
-          colors={['#000', '#292929']}
-          style={{ flex: 1, justifyContent: 'flex-start' }}
-        >
-          <NextAgendaScreen navigator={this.props.navigator} />
-          <HomeScreenFooter navigator={this.props.navigator} />
-        </LinearGradient>
+      <View style={{ flexDirection: 'row' }}>
+        <Menu navigator={this.props.navigator} />
+        <View style={{ height: '100%' }}>
+          <HomeScreenHeader />
+          <LinearGradient
+            colors={['#000', '#292929']}
+            style={{ flex: 1, justifyContent: 'flex-start' }}
+          >
+            <NextAgendaScreen navigator={this.props.navigator} />
+            <HomeScreenFooter navigator={this.props.navigator} />
+          </LinearGradient>
+        </View>
       </View>
     )
   }

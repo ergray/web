@@ -96,7 +96,7 @@ class DelegateInfoScreen extends Component {
     const statusCodeResponse = statusCodesResponses[activeDelegate.status]
 
     return (
-      <View style={{ marginHorizontal: 30, paddingTop: 20 }}>
+      <View style={{ marginHorizontal: 30, paddingTop: 20, width: 600 }}>
 
         <Text style={{ color: 'white', fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
 

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Dimensions, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
-import { version } from '../../package.json'
-import FeedbackHeader from './FeedbackHeader'
 
 class FeedbackScreen extends Component {
   constructor(props) {
@@ -30,18 +28,17 @@ class FeedbackScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, width: 600 }}>
 
         <TextInput
           autoFocus
           multiline
+          numberOfLines={15}
           placeholder="I want you to know that..."
           style={{
-            alignSelf: 'stretch',
             backgroundColor: '#fff',
             borderRadius: 3,
             fontSize: 16,
-            height: 260,
             marginHorizontal: 30,
             marginTop: 10,
             paddingHorizontal: 10,
@@ -70,7 +67,7 @@ class FeedbackScreen extends Component {
                 sessionId,
                 text: this.state.text,
                 user,
-                version,
+                version: 'web',
               }),
               headers: {
                 Accept: 'application/json',
@@ -90,7 +87,7 @@ class FeedbackScreen extends Component {
   }
 }
 
-FeedbackScreen.header = FeedbackHeader
+FeedbackScreen.title = 'FEEDBACK'
 
 FeedbackScreen.propTypes = {
   sessionId: React.PropTypes.string.isRequired,
