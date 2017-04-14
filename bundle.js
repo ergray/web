@@ -90798,7 +90798,7 @@ return'('+areaCode+') '+middle3+'-'+final4;
 
 function ConfirmNewNumberScreen(_ref){var dispatch=_ref.dispatch,navigator=_ref.navigator,route=_ref.route;
 return(
-_react2.default.createElement(_reactNative.View,{style:{flex:1,justifyContent:'space-between',marginHorizontal:30}},
+_react2.default.createElement(_reactNative.View,{style:{justifyContent:'space-between',marginHorizontal:30,width:500}},
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center'}},
 _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
@@ -90839,7 +90839,8 @@ borderColor:'#344184',
 borderRadius:30,
 borderWidth:3,
 height:58,
-justifyContent:'center'},
+justifyContent:'center',
+marginTop:60},
 
 onPress:function onPress(){
 fetch('https://api.liquid.vote/login',{
