@@ -19,14 +19,14 @@ export default function IntroDescription() {
     >
       <Text
         style={{
-          color: '#222',
+          color: '#484848',
           fontSize: 30,
           fontWeight: '700',
         }}
       >Vote on laws.</Text>
       <Text
         style={{
-          color: '#222',
+          color: '#484848',
           fontSize: 30,
           fontWeight: '700',
         }}
