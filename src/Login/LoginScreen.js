@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import LoginHeader from './LoginHeader'
 import IntroDescription from './IntroDescription'
 import PhoneLoginBox from './PhoneLoginBox'
+import GetStartedButton from './GetStartedButton'
 
 class LoginScreen extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      pressedGetStarted: false,
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.sessionId) {
       this.props.navigator.replace({ name: 'HomeScreen' })
@@ -13,16 +20,44 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const loginField = { el: { focus: () => {} } } // overwritten in PhoneLoginBox
-
     return (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <LoginHeader />
+      <View style={{
+        alignItems: 'center',
+        backgroundColor: '#b4d4d5',
+        backgroundImage: 'url(/city-on-a-hill.jpg)',
+        backgroundPositionY: 'bottom',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        flex: 1,
+      }}
+      >
+        <View style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: 1250,
+        }}
+        >
+          <Text style={{
+            color: '#000',
+            fontSize: 22,
+            fontWeight: 'bold',
+            marginTop: 30,
+          }}
+          >LIQUID DEMOCRACY</Text>
 
-        <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <IntroDescription />
-          <View style={{ flex: 1 }} />
-          <PhoneLoginBox loginField={loginField} navigator={this.props.navigator} />
+          <View style={{ marginTop: 185 }}>
+            <IntroDescription />
+            { !this.state.pressedGetStarted ?
+              (
+                <GetStartedButton
+                  pressGetStarted={() => this.setState({ pressedGetStarted: true })}
+                />
+              ) : (
+                <PhoneLoginBox navigator={this.props.navigator} />
+              )
+            }
+          </View>
         </View>
 
       </View>

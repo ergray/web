@@ -21,12 +21,10 @@ class PhoneLoginBox extends Component {
     return (
       <View style={{
         alignSelf: 'flex-start',
-        backgroundImage: 'linear-gradient(to bottom, #222 0%, #222 95%, #444 100%)',
-        borderColor: '#bbb',
-        borderRadius: 3,
-        borderWidth: 1,
-        flexBasis: 450,
-        paddingVertical: 60,
+        backgroundImage: 'linear-gradient(to bottom, hsla(0, 0%, 13%, 0.9) 95%, hsla(0, 0%, 28%, 0.9) 100%)',
+        borderRadius: 10,
+        paddingVertical: 40,
+        width: 450,
       }}
       >
         <Text
@@ -44,7 +42,6 @@ class PhoneLoginBox extends Component {
         <TextInput
           autoCorrect={false}
           placeholder="Enter your mobile number"
-          ref={(el) => { this.props.loginField.el = el }}
           style={{
             backgroundColor: '#fff',
             borderColor: '#979797',
@@ -137,7 +134,7 @@ class PhoneLoginBox extends Component {
             height: 24,
             left: 50,
             position: 'absolute',
-            top: 220,
+            top: 200,
             width: 30,
           }}
         />
@@ -147,9 +144,29 @@ class PhoneLoginBox extends Component {
             fontWeight: '300',
             left: 87,
             position: 'absolute',
-            top: 222,
+            top: 202,
           }}
         >+1</Text>
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 14,
+            fontWeight: '100',
+            marginLeft: 40,
+            marginTop: 30,
+          }}
+        >
+         * Read about our&nbsp;
+               <a
+                 href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
+                 rel="noopener noreferrer"
+                 style={{
+                   color: '#fff',
+                   cursor: 'pointer',
+                 }}
+                 target="_blank"
+               >strong privacy</a>
+        </Text>
       </View>
     )
   }
@@ -158,11 +175,6 @@ class PhoneLoginBox extends Component {
 PhoneLoginBox.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   knownNumbers: React.PropTypes.shape({}).isRequired,
-  loginField: React.PropTypes.shape({
-    el: React.PropTypes.shape({
-      focus: React.PropTypes.func.isRequired,
-    }),
-  }),
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
     replace: React.PropTypes.func.isRequired,

@@ -71,6 +71,7 @@ export default class App extends Component {
               height: '100%',
               justifyContent: 'flex-start',
               marginHorizontal: 'auto',
+              width: '100%',
             }}
           >
             <Header navigator={navigator} route={route} />
