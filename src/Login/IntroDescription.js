@@ -33,7 +33,7 @@ export default function IntroDescription() {
       >Hold politicians accountable.</Text>
 
       <a
-        href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+        href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
         rel="noopener noreferrer"
         style={{
           color: '#0000FF',

@@ -158,7 +158,7 @@ class PhoneLoginBox extends Component {
         >
          * Read about our&nbsp;
                <a
-                 href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
+                 href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
                  rel="noopener noreferrer"
                  style={{
                    color: '#fff',
