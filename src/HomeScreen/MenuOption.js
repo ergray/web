@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-function Link({ navigator, onPress, notifications, style, text, to }) {
+function MenuOption({ navigator, onPress, notifications, style, text, to }) {
   if (!onPress) {
     onPress = () => { // eslint-disable-line no-param-reassign
       navigator.push({ name: to })
@@ -38,7 +38,7 @@ function Link({ navigator, onPress, notifications, style, text, to }) {
   )
 }
 
-Link.propTypes = {
+MenuOption.propTypes = {
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func,
   }),
@@ -49,4 +49,4 @@ Link.propTypes = {
   to: React.PropTypes.string,
 }
 
-export default Link
+export default MenuOption

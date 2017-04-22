@@ -4,10 +4,10 @@ import { connect } from 'react-redux'
 import TwitterIcon from 'react-icons/lib/fa/twitter'
 import FacebookIcon from 'react-icons/lib/fa/facebook'
 import logo from '../logo.png'
-import Link from './Link'
+import MenuOption from './MenuOption'
 
 function Menu({ constituents, dispatch, navigator, user }) {
-  const MenuOption = props => <Link navigator={navigator} {...props} /> // eslint-disable-line
+  const MenuOptionWithNav = props => <MenuOption navigator={navigator} {...props} /> // eslint-disable-line
 
   let numRequests
   if (constituents && constituents.requests) {
@@ -52,11 +52,11 @@ function Menu({ constituents, dispatch, navigator, user }) {
       </TouchableOpacity>
 
       <View>
-        <MenuOption text="YOUR DELEGATES" to="DelegatesScreen" />
-        <MenuOption notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
-        <MenuOption text="ABOUT" to="AboutScreen" />
-        <MenuOption style={{ marginTop: 30 }} text="SEND FEEDBACK" to="FeedbackScreen" />
-        <MenuOption
+        <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
+        <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
+        <MenuOptionWithNav text="ABOUT" to="AboutScreen" />
+        <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="FeedbackScreen" />
+        <MenuOptionWithNav
           style={{ marginTop: 30 }}
           text="LOG OUT" onPress={() => {
             dispatch({ type: 'LOGOUT' })
