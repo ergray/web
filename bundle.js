@@ -86879,7 +86879,7 @@ var _power=__webpack_require__(631);var _power2=_interopRequireDefault(_power);f
 
 function AuthErrorScreen(_ref){var dispatch=_ref.dispatch,navigator=_ref.navigator;
 return(
-_react2.default.createElement(_reactNative.View,{style:{marginHorizontal:30,marginTop:10,width:610}},
+_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',marginHorizontal:30,marginTop:10,width:610}},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:16,marginBottom:20}},'It looks like your login session is invalid.'),
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:16,marginBottom:20}},'This can happen if you try to sign in multiple places.'),
