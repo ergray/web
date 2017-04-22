@@ -46,7 +46,7 @@ class ConfirmVoteScreen extends Component {
     )
 
     return (
-      <View style={{ flex: 1, marginTop: 10 }}>
+      <View style={{ alignSelf: 'center', flex: 1, marginTop: 10 }}>
 
         <Text style={{ color: 'white', marginHorizontal: 20, width: 850 }}>
           {bill.id}: <Text style={{ fontWeight: '700' }}>{bill.title}</Text>

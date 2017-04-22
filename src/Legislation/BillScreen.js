@@ -122,7 +122,7 @@ class BillScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, marginTop: 25, width: 850 }}>
+      <View style={{ alignSelf: 'center', flex: 1, marginTop: 25, width: 850 }}>
 
         { /* Header */ }
         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 20, paddingRight: 40 }}>
