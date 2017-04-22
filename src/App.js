@@ -69,8 +69,6 @@ export default class App extends Component {
             style={{
               flex: 1,
               height: '100%',
-              justifyContent: 'flex-start',
-              marginHorizontal: 'auto',
               width: '100%',
             }}
           >
