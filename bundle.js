@@ -89902,7 +89902,17 @@ return _this2.setState({phone:newText+' - '});
 }
 
 
-if(_this2.state.phone.length>newText.length){
+if(_this2.state.phone.length===12&&newText.length===11){
+return _this2.setState({phone:_this2.state.phone.slice(0,8)});
+}
+
+
+if(_this2.state.phone.length===6&&newText.length===5){
+return _this2.setState({phone:_this2.state.phone.slice(0,3)});
+}
+
+
+if(_this2.state.phone.length===2&&newText.length===1){
 return _this2.setState({phone:''});
 }
 
@@ -90039,7 +90049,7 @@ editable:true,
 error:false,
 loading:false,
 session_code:'',
-status:'Look for text message.'};return _this;
+status:'Look for a new text message.'};return _this;
 
 }_createClass(EnterSMSCodeScreen,[{key:'sendSessionCodeToServer',value:function sendSessionCodeToServer(
 
@@ -90172,7 +90182,7 @@ return _this3.setState({session_code:newText});
 onFocus:function onFocus(){
 
 if(_this3.state.error){
-_this3.setState({error:false,status:'Look for text message.'});
+_this3.setState({error:false,status:'Look for a new text message.'});
 }
 }}),
 
