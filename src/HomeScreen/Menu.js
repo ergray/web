@@ -22,7 +22,7 @@ function Menu({ constituents, dispatch, navigator, user }) {
   }
 
   return (
-    <View style={{ backgroundColor: '#080808', flex: 1, paddingTop: 30, width: 254 }}>
+    <View style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }}>
       <Image
         source={logo}
         style={{ alignSelf: 'center', height: 75, marginBottom: 12, marginTop: 20, width: 79 }}
@@ -66,7 +66,7 @@ function Menu({ constituents, dispatch, navigator, user }) {
 
         <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
           <TouchableOpacity
-            style={{ marginLeft: 30, padding: 10 }}
+            style={{ marginLeft: 20, padding: 10 }}
             onPress={() => {
               Linking.openURL('https://twitter.com/liquid_vote')
               .catch(() => {})

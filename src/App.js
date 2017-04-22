@@ -1,6 +1,5 @@
-import URL from 'url'
 import React, { Component } from 'react'
-import { AppState, Linking, View } from 'react-native'
+import { AppState, View } from 'react-native'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -70,8 +69,7 @@ export default class App extends Component {
             style={{
               flex: 1,
               height: '100%',
-              justifyContent: 'flex-start',
-              marginHorizontal: 'auto',
+              width: '100%',
             }}
           >
             <Header navigator={navigator} route={route} />

@@ -12,7 +12,7 @@ function AboutScreen() {
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ alignSelf: 'center', flex: 1 }}>
 
       <View style={{ flex: 1, marginTop: 10 }}>
         <Text style={textStyle}>

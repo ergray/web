@@ -26,7 +26,7 @@ class AuditScreen extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, width: 850 }}>
+      <View style={{ alignSelf: 'center', flex: 1, width: 850 }}>
 
         <ScrollView style={{ flex: 1, padding: 20 }}>
 

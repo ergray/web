@@ -28,7 +28,7 @@ class FeedbackScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, width: 600 }}>
+      <View style={{ alignSelf: 'center', flex: 1, width: 600 }}>
 
         <TextInput
           autoFocus

@@ -7,65 +7,39 @@ import {
 export default function IntroDescription() {
   return (
     <View style={{
-      alignItems: 'center',
-      flex: 10,
-      flexBasis: 530,
+      backgroundImage: 'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.4) 100%)',
+      borderRadius: 10,
+      boxShadow: '6px 6px 25px 0 rgba(0,0,0,0.2)',
+      height: 218,
+      justifyContent: 'space-around',
       marginBottom: 60,
-      paddingHorizontal: 30,
+      paddingHorizontal: 20,
+      paddingVertical: 10,
     }}
     >
       <Text
         style={{
-          color: '#fff',
-          fontSize: 26,
-          fontWeight: 'bold',
+          color: '#484848',
+          fontSize: 30,
+          fontWeight: '700',
         }}
-      >REAL POLITICAL REPRESENTATION</Text>
-
-      <View style={{
-        alignSelf: 'flex-start',
-        marginVertical: 50,
-      }}
-      >
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 20,
-            fontWeight: '200',
-          }}
-        >Reclaim your voice in government.</Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 20,
-            fontWeight: '200',
-            marginTop: 30,
-          }}
-        >Hold politicians accountable.</Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 20,
-            fontWeight: '200',
-            marginTop: 30,
-          }}
-        >Remove corruption.</Text>
-      </View>
+      >Vote on laws.</Text>
+      <Text
+        style={{
+          color: '#484848',
+          fontSize: 30,
+          fontWeight: '700',
+        }}
+      >Hold politicians accountable.</Text>
 
       <a
         href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
         rel="noopener noreferrer"
         style={{
-          borderColor: '#5DA0FF',
-          borderRadius: 13,
-          borderStyle: 'solid',
-          borderWidth: 1,
-          color: '#5DA0FF',
+          color: '#0000FF',
+          cursor: 'pointer',
           fontSize: 16,
-          padding: '18 0',
-          textAlign: 'center',
-          textDecorationLine: 'none',
-          width: 232,
+          width: 115,
         }}
         target="_blank"
       >LEARN MORE</a>

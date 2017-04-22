@@ -84,7 +84,7 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
         <Menu navigator={this.props.navigator} />
         <View style={{ height: '100%' }}>
           <HomeScreenHeader />

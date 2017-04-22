@@ -5,7 +5,7 @@ import graphic from './voting_power_graphic.png'
 
 function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
   return (
-    <View style={{ marginHorizontal: 20 }}>
+    <View style={{ alignSelf: 'center', marginHorizontal: 20 }}>
       <Text style={{ color: 'white', fontSize: 22, marginTop: 15 }}>
         { user.first_name } { user.last_name }
       </Text>

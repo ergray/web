@@ -9,7 +9,7 @@ function DistrictsMapScreen() {
   return (
     <ScrollView
       contentContainerStyle={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}
-      style={{ backgroundColor: '#fff', width: 612 }}
+      style={{ alignSelf: 'center', backgroundColor: '#fff', width: 612 }}
     >
       <Image
         source={districtsMap}
