@@ -17,7 +17,7 @@ class EnterSMSCodeScreen extends Component {
       error: false,
       loading: false,
       session_code: '',
-      status: 'Look for text message.',
+      status: 'Look for a new text message.',
     }
   }
 
@@ -150,7 +150,7 @@ class EnterSMSCodeScreen extends Component {
           onFocus={() => {
             // Clear out error state
             if (this.state.error) {
-              this.setState({ error: false, status: 'Look for text message.' })
+              this.setState({ error: false, status: 'Look for a new text message.' })
             }
           }}
         />
