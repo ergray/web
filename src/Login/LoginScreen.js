@@ -33,9 +33,8 @@ class LoginScreen extends Component {
       >
         <View style={{
           flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          width: 1250,
+          maxWidth: 1250,
+          width: '100%',
         }}
         >
           <Text style={{
@@ -43,10 +42,11 @@ class LoginScreen extends Component {
             fontSize: 22,
             fontWeight: 'bold',
             marginTop: 30,
+            paddingLeft: 30,
           }}
           >LIQUID DEMOCRACY</Text>
 
-          <View style={{ marginTop: 185 }}>
+          <View style={{ alignSelf: 'flex-end', marginTop: 185 }}>
             <IntroDescription />
             { !this.state.pressedGetStarted ?
               (
