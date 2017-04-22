@@ -17,7 +17,7 @@ class EnterSMSCodeScreen extends Component {
       error: false,
       loading: false,
       session_code: '',
-      status: 'Look for confirmation text message.',
+      status: 'Look for text message.',
     }
   }
 
@@ -115,7 +115,7 @@ class EnterSMSCodeScreen extends Component {
           marginBottom: 5,
           width: 170,
         }}
-        >Enter code:</Text>
+        >Enter 3-digit code:</Text>
 
         <TextInput
           autoFocus
@@ -124,7 +124,6 @@ class EnterSMSCodeScreen extends Component {
           editable={this.state.editable}
           keyboardType="number-pad"
           maxLength={3}
-          placeholder="# # #"
           style={[{
             alignSelf: 'center',
             backgroundColor: '#fff',
@@ -151,7 +150,7 @@ class EnterSMSCodeScreen extends Component {
           onFocus={() => {
             // Clear out error state
             if (this.state.error) {
-              this.setState({ error: false, status: ' ' })
+              this.setState({ error: false, status: 'Look for text message.' })
             }
           }}
         />
