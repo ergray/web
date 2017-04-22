@@ -89697,7 +89697,7 @@ return(
 _react2.default.createElement(_reactNative.View,{style:{
 backgroundImage:'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
 borderRadius:10,
-boxShadow:'6px 6px 25px 0 rgba(0,0,0,0.2)',
+boxShadow:'rgba(0,0,0,0.3) 0px 60px 28px -40px',
 height:218,
 justifyContent:'space-around',
 marginBottom:60,
@@ -89851,7 +89851,7 @@ phone:''};return _this;
 return(
 _react2.default.createElement(_reactNative.View,{style:{
 alignSelf:'flex-start',
-backgroundImage:'linear-gradient(to bottom, hsla(0, 0%, 13%, 0.9) 95%, hsla(0, 0%, 28%, 0.9) 100%)',
+backgroundColor:'hsla(0, 0%, 13%, 0.9)',
 borderRadius:10,
 paddingVertical:40,
 width:450}},
