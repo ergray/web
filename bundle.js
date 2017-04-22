@@ -90039,7 +90039,7 @@ editable:true,
 error:false,
 loading:false,
 session_code:'',
-status:'Look for confirmation text message.'};return _this;
+status:'Look for text message.'};return _this;
 
 }_createClass(EnterSMSCodeScreen,[{key:'sendSessionCodeToServer',value:function sendSessionCodeToServer(
 
@@ -90135,7 +90135,7 @@ color:'#fff',
 fontSize:15,
 fontWeight:'100',
 marginBottom:5,
-width:170}},'Enter code:'),
+width:170}},'Enter 3-digit code:'),
 
 
 
@@ -90146,7 +90146,6 @@ autoCorrect:false,
 editable:this.state.editable,
 keyboardType:'number-pad',
 maxLength:3,
-placeholder:'# # #',
 style:[{
 alignSelf:'center',
 backgroundColor:'#fff',
@@ -90173,7 +90172,7 @@ return _this3.setState({session_code:newText});
 onFocus:function onFocus(){
 
 if(_this3.state.error){
-_this3.setState({error:false,status:' '});
+_this3.setState({error:false,status:'Look for text message.'});
 }
 }}),
 
