@@ -7,7 +7,7 @@ import {
 export default function IntroDescription() {
   return (
     <View style={{
-      backgroundImage: 'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.4) 100%)',
+      backgroundImage: 'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
       borderRadius: 10,
       boxShadow: '6px 6px 25px 0 rgba(0,0,0,0.2)',
       height: 218,

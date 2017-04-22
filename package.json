@@ -5,6 +5,8 @@
   "author": "github.com/liquidvote",
   "private": true,
   "scripts": {
+    "api:local": "node tools/api-url.js local",
+    "api:prod": "node tools/api-url.js prod",
     "start": "webpack-dev-server --port 3000 --progress --colors --inline",
     "build": "webpack --progress --colors",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
@@ -41,6 +43,7 @@
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0",
     "remote-redux-devtools": "^0.5.7",
+    "replace": "^0.3.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
