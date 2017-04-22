@@ -21,7 +21,7 @@ class PhoneLoginBox extends Component {
     return (
       <View style={{
         alignSelf: 'flex-start',
-        backgroundImage: 'linear-gradient(to bottom, hsla(0, 0%, 13%, 0.9) 95%, hsla(0, 0%, 28%, 0.9) 100%)',
+        backgroundColor: 'hsla(0, 0%, 13%, 0.9)',
         borderRadius: 10,
         paddingVertical: 40,
         width: 450,
