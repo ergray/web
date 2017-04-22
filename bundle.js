@@ -88202,7 +88202,7 @@ var _reactRedux=__webpack_require__(7);
 var _deepEqual=__webpack_require__(214);var _deepEqual2=_interopRequireDefault(_deepEqual);
 var _reactNative=__webpack_require__(4);
 var _LinearGradient=__webpack_require__(781);var _LinearGradient2=_interopRequireDefault(_LinearGradient);
-var _Menu=__webpack_require__(772);var _Menu2=_interopRequireDefault(_Menu);
+var _Menu=__webpack_require__(771);var _Menu2=_interopRequireDefault(_Menu);
 var _HomeScreenHeader=__webpack_require__(770);var _HomeScreenHeader2=_interopRequireDefault(_HomeScreenHeader);
 var _NextAgendaScreen=__webpack_require__(773);var _NextAgendaScreen2=_interopRequireDefault(_NextAgendaScreen);
 var _HomeScreenFooter=__webpack_require__(769);var _HomeScreenFooter2=_interopRequireDefault(_HomeScreenFooter);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
@@ -88427,73 +88427,15 @@ HomeScreenHeader;
 
 "use strict";
 Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
-var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
-
-function Link(_ref){var navigator=_ref.navigator,onPress=_ref.onPress,notifications=_ref.notifications,style=_ref.style,text=_ref.text,to=_ref.to;
-if(!onPress){
-onPress=function onPress(){
-navigator.push({name:to});
-};
-}
-
-return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{style:{flexDirection:'row'},onPress:onPress},
-_react2.default.createElement(_reactNative.Text,{style:_extends({
-color:'#fff',
-fontSize:14,
-fontWeight:'400',
-marginLeft:30,
-marginVertical:10},
-style)},
-
-text),
-!!notifications&&
-_react2.default.createElement(_reactNative.View,{style:{
-alignSelf:'center',
-borderColor:'#d62728',
-borderRadius:15,
-borderWidth:2,
-height:28,
-justifyContent:'center',
-marginLeft:5,
-width:28}},
-
-
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',textAlign:'center'}},notifications))));
-
-
-
-
-}
-
-Link.propTypes={
-navigator:_react2.default.PropTypes.shape({
-push:_react2.default.PropTypes.func}),
-
-notifications:_react2.default.PropTypes.number,
-onPress:_react2.default.PropTypes.func,
-style:_react2.default.PropTypes.shape({}),
-text:_react2.default.PropTypes.string.isRequired,
-to:_react2.default.PropTypes.string};exports.default=
-
-
-Link;
-
-/***/ }),
-/* 772 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
 var _reactNative=__webpack_require__(4);
 var _reactRedux=__webpack_require__(7);
 var _twitter=__webpack_require__(630);var _twitter2=_interopRequireDefault(_twitter);
 var _facebook=__webpack_require__(627);var _facebook2=_interopRequireDefault(_facebook);
 var _logo=__webpack_require__(57);var _logo2=_interopRequireDefault(_logo);
-var _Link=__webpack_require__(771);var _Link2=_interopRequireDefault(_Link);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _MenuOption=__webpack_require__(772);var _MenuOption2=_interopRequireDefault(_MenuOption);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 function Menu(_ref){var constituents=_ref.constituents,dispatch=_ref.dispatch,navigator=_ref.navigator,user=_ref.user;
-var MenuOption=function MenuOption(props){return _react2.default.createElement(_Link2.default,_extends({navigator:navigator},props));};
+var MenuOptionWithNav=function MenuOptionWithNav(props){return _react2.default.createElement(_MenuOption2.default,_extends({navigator:navigator},props));};
 
 var numRequests=void 0;
 if(constituents&&constituents.requests){
@@ -88538,11 +88480,11 @@ first_name)),
 
 
 _react2.default.createElement(_reactNative.View,null,
-_react2.default.createElement(MenuOption,{text:'YOUR DELEGATES',to:'DelegatesScreen'}),
-_react2.default.createElement(MenuOption,{notifications:numRequests,text:'REQUESTS',to:'RequestsScreen'}),
-_react2.default.createElement(MenuOption,{text:'ABOUT',to:'AboutScreen'}),
-_react2.default.createElement(MenuOption,{style:{marginTop:30},text:'SEND FEEDBACK',to:'FeedbackScreen'}),
-_react2.default.createElement(MenuOption,{
+_react2.default.createElement(MenuOptionWithNav,{text:'YOUR DELEGATES',to:'DelegatesScreen'}),
+_react2.default.createElement(MenuOptionWithNav,{notifications:numRequests,text:'REQUESTS',to:'RequestsScreen'}),
+_react2.default.createElement(MenuOptionWithNav,{text:'ABOUT',to:'AboutScreen'}),
+_react2.default.createElement(MenuOptionWithNav,{style:{marginTop:30},text:'SEND FEEDBACK',to:'FeedbackScreen'}),
+_react2.default.createElement(MenuOptionWithNav,{
 style:{marginTop:30},
 text:'LOG OUT',onPress:function onPress(){
 dispatch({type:'LOGOUT'});
@@ -88592,6 +88534,64 @@ user:state.user};};exports.default=
 
 
 (0,_reactRedux.connect)(mapStateToProps)(Menu);
+
+/***/ }),
+/* 772 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
+var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+
+function MenuOption(_ref){var navigator=_ref.navigator,onPress=_ref.onPress,notifications=_ref.notifications,style=_ref.style,text=_ref.text,to=_ref.to;
+if(!onPress){
+onPress=function onPress(){
+navigator.push({name:to});
+};
+}
+
+return(
+_react2.default.createElement(_reactNative.TouchableOpacity,{style:{flexDirection:'row'},onPress:onPress},
+_react2.default.createElement(_reactNative.Text,{style:_extends({
+color:'#fff',
+fontSize:14,
+fontWeight:'400',
+marginLeft:30,
+marginVertical:10},
+style)},
+
+text),
+!!notifications&&
+_react2.default.createElement(_reactNative.View,{style:{
+alignSelf:'center',
+borderColor:'#d62728',
+borderRadius:15,
+borderWidth:2,
+height:28,
+justifyContent:'center',
+marginLeft:5,
+width:28}},
+
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',textAlign:'center'}},notifications))));
+
+
+
+
+}
+
+MenuOption.propTypes={
+navigator:_react2.default.PropTypes.shape({
+push:_react2.default.PropTypes.func}),
+
+notifications:_react2.default.PropTypes.number,
+onPress:_react2.default.PropTypes.func,
+style:_react2.default.PropTypes.shape({}),
+text:_react2.default.PropTypes.string.isRequired,
+to:_react2.default.PropTypes.string};exports.default=
+
+
+MenuOption;
 
 /***/ }),
 /* 773 */
@@ -89695,7 +89695,7 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 IntroDescription;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function IntroDescription(){
 return(
 _react2.default.createElement(_reactNative.View,{style:{
-backgroundImage:'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.4) 100%)',
+backgroundImage:'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
 borderRadius:10,
 boxShadow:'6px 6px 25px 0 rgba(0,0,0,0.2)',
 height:218,
