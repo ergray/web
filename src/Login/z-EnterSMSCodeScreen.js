@@ -78,7 +78,7 @@ class EnterSMSCodeScreen extends Component {
     }
 
     return (
-      <View>
+      <View style={{ alignSelf: 'center', maxWidth: 385, width: '100%' }}>
         <Image
           source={logo}
           style={{
