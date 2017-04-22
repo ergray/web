@@ -40,6 +40,7 @@
     "react-native-vector-icons": "^4.0.1",
     "react-native-web": "^0.0.81",
     "react-redux": "^5.0.3",
+    "react-responsive": "^1.2.10",
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0",
     "remote-redux-devtools": "^0.5.7",

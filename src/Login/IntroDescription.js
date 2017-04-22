@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 
-export default function IntroDescription() {
+export default function IntroDescription({ large }) {
   return (
     <View style={{
       backgroundImage: 'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
@@ -20,14 +20,14 @@ export default function IntroDescription() {
       <Text
         style={{
           color: '#484848',
-          fontSize: 30,
+          fontSize: large ? 30 : 20,
           fontWeight: '700',
         }}
       >Vote on laws.</Text>
       <Text
         style={{
           color: '#484848',
-          fontSize: 30,
+          fontSize: large ? 30 : 20,
           fontWeight: '700',
         }}
       >Hold politicians accountable.</Text>
@@ -49,4 +49,5 @@ export default function IntroDescription() {
 }
 
 IntroDescription.propTypes = {
+  large: React.PropTypes.bool,
 }

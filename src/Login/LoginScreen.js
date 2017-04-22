@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
+import MediaQuery from 'react-responsive'
 import IntroDescription from './IntroDescription'
 import PhoneLoginBox from './PhoneLoginBox'
 import GetStartedButton from './GetStartedButton'
@@ -42,22 +43,27 @@ class LoginScreen extends Component {
             fontSize: 22,
             fontWeight: 'bold',
             marginTop: 30,
-            paddingLeft: 30,
+            paddingLeft: 43,
           }}
           >LIQUID DEMOCRACY</Text>
 
-          <View style={{ alignSelf: 'flex-end', marginTop: 185 }}>
-            <IntroDescription />
-            { !this.state.pressedGetStarted ?
-              (
-                <GetStartedButton
-                  pressGetStarted={() => this.setState({ pressedGetStarted: true })}
-                />
-              ) : (
-                <PhoneLoginBox navigator={this.props.navigator} />
-              )
-            }
-          </View>
+          <MediaQuery minWidth={750}>
+            {large => (
+              <View style={{ alignSelf: large ? 'flex-end' : 'center', marginTop: large ? 185 : 50, paddingRight: large ? 43 : 0 }}>
+                <IntroDescription large={large} />
+                { !this.state.pressedGetStarted ?
+                  (
+                    <GetStartedButton
+                      pressGetStarted={() => this.setState({ pressedGetStarted: true })}
+                    />
+                  ) : (
+                    <PhoneLoginBox large={large} navigator={this.props.navigator} />
+                  )
+                }
+              </View>
+            )}
+          </MediaQuery>
+
         </View>
 
       </View>
