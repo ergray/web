@@ -51,7 +51,7 @@ class RequestsScreen extends Component {
     const numRejected = !rejected ? '' : `(${rejected.length})`
 
     return (
-      <View style={{ flex: 1, marginHorizontal: 20, marginTop: 10 }}>
+      <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20, marginTop: 10 }}>
         <Text style={{ color: 'white', marginBottom: 20 }}>Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.</Text>
 
         <ScrollView style={{ flex: 1 }}>
