@@ -16,7 +16,7 @@ function prettifyPhone(tenDigits) {
 
 function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
   return (
-    <View style={{ justifyContent: 'space-between', marginHorizontal: 30, width: 500 }}>
+    <View style={{ alignSelf: 'center', justifyContent: 'space-between', marginHorizontal: 30, width: 500 }}>
       <View style={{ alignItems: 'center' }}>
         <Text style={{
           color: '#fff',
