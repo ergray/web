@@ -71,8 +71,18 @@ class PhoneLoginBox extends Component {
               return this.setState({ phone: `${newText} - ` })
             }
 
-            // Clear on backspace
-            if (this.state.phone.length > newText.length) {
+            // Backspace final four digits separator
+            if (this.state.phone.length === 12 && newText.length === 11) {
+              return this.setState({ phone: this.state.phone.slice(0, 8) })
+            }
+
+            // Backspace area code closing parenthese
+            if (this.state.phone.length === 6 && newText.length === 5) {
+              return this.setState({ phone: this.state.phone.slice(0, 3) })
+            }
+
+            // Backspace area code opening parenthese
+            if (this.state.phone.length === 2 && newText.length === 1) {
               return this.setState({ phone: '' })
             }
 
