@@ -15,6 +15,7 @@ function HeaderWithEditButton(props) {
 
   return (
     <View style={{
+      alignSelf: 'center',
       backgroundColor: '#000',
       borderBottomWidth: 1,
       borderColor: '#222',
