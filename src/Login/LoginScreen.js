@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
+import { Collapse } from 'react-collapse'
 import IntroDescription from './IntroDescription'
 import PhoneLoginBox from './PhoneLoginBox'
 import GetStartedButton from './GetStartedButton'
@@ -51,15 +52,14 @@ class LoginScreen extends Component {
             {large => (
               <View style={{ alignSelf: large ? 'flex-end' : 'center', marginTop: large ? 185 : 50, paddingRight: large ? 43 : 0 }}>
                 <IntroDescription large={large} />
-                { !this.state.pressedGetStarted ?
-                  (
-                    <GetStartedButton
-                      pressGetStarted={() => this.setState({ pressedGetStarted: true })}
-                    />
-                  ) : (
-                    <PhoneLoginBox large={large} navigator={this.props.navigator} />
-                  )
-                }
+                { !this.state.pressedGetStarted && (
+                  <GetStartedButton
+                    pressGetStarted={() => this.setState({ pressedGetStarted: true })}
+                  />
+                )}
+                <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
+                  <PhoneLoginBox large={large} navigator={this.props.navigator} />
+                </Collapse>
               </View>
             )}
           </MediaQuery>
