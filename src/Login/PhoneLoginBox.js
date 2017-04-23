@@ -42,6 +42,7 @@ class PhoneLoginBox extends Component {
         <TextInput
           autoCorrect={false}
           placeholder={this.props.large ? 'Enter your mobile number' : 'Enter your mobile #'}
+          ref={(input) => { this.props.loginRef.input = input }}
           style={{
             backgroundColor: '#fff',
             borderColor: '#979797',
@@ -186,6 +187,9 @@ PhoneLoginBox.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   knownNumbers: React.PropTypes.shape({}).isRequired,
   large: React.PropTypes.bool,
+  loginRef: React.PropTypes.shape({
+    input: React.PropTypes.any,
+  }).isRequired,
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
     replace: React.PropTypes.func.isRequired,

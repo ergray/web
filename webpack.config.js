@@ -15,6 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        exclude: /node_modules\/react-responsive/,
         use: {
           loader: 'babel-loader',
           options: {
