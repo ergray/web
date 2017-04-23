@@ -29,7 +29,7 @@ class LoginScreen extends Component {
         alignItems: 'center',
         backgroundColor: '#b4d4d5',
         backgroundImage: 'url(/city-on-a-hill.jpg)',
-        backgroundPositionY: 'bottom',
+        backgroundPosition: 'bottom',
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         flex: 1,
