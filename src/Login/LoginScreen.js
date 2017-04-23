@@ -22,6 +22,8 @@ class LoginScreen extends Component {
   }
 
   render() {
+    const loginRef = { input: null }
+
     return (
       <View style={{
         alignItems: 'center',
@@ -54,11 +56,14 @@ class LoginScreen extends Component {
                 <IntroDescription large={large} />
                 { !this.state.pressedGetStarted && (
                   <GetStartedButton
-                    pressGetStarted={() => this.setState({ pressedGetStarted: true })}
+                    pressGetStarted={() => {
+                      this.setState({ pressedGetStarted: true })
+                      loginRef.input.focus()
+                    }}
                   />
                 )}
                 <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                  <PhoneLoginBox large={large} navigator={this.props.navigator} />
+                  <PhoneLoginBox large={large} loginRef={loginRef} navigator={this.props.navigator} />
                 </Collapse>
               </View>
             )}
