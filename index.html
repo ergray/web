@@ -12,7 +12,7 @@
 
     <script>
       // Force https in production
-      if (location.hostname !== 'localhost' && location.protocol !== 'https:') {
+      if (location.port !== '3000' && location.protocol !== 'https:') {
         location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
       }
     </script>

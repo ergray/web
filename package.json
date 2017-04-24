@@ -7,7 +7,7 @@
   "scripts": {
     "api:local": "node tools/api-url.js local",
     "api:prod": "node tools/api-url.js prod",
-    "start": "webpack-dev-server --port 3000 --progress --colors --inline",
+    "start": "webpack-dev-server --port 3000 --progress --colors --inline --host 0.0.0.0",
     "build": "webpack --progress --colors",
     "predeploy": "npm version patch",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
