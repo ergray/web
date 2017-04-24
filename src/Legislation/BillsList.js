@@ -10,7 +10,7 @@ import SortIcon from 'react-icons/lib/md/sort-by-alpha'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from './convert-dates'
-import PastAgendas from './PastAgendas' // eslint-disable-line import/newline-after-import
+import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
 class BillsList extends Component {

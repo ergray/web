@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from '../Legislation/convert-dates'
 import PastAgendas from '../Legislation/PastAgendas'
-import BillsList from '../Legislation/BillsList' // eslint-disable-line import/newline-after-import
+import BillsList from '../Legislation/BillsList'
 const pick = require('lodash/fp/pick')
 
 function NextAgendaScreen(props) {

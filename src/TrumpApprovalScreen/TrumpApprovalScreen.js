@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import { connect } from 'react-redux'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import TrumpApprovalHeader from './TrumpApprovalHeader' // eslint-disable-line import/newline-after-import
+import TrumpApprovalHeader from './TrumpApprovalHeader'
 const pick = require('lodash/fp/pick')
 
 class TrumpApprovalScreen extends Component {

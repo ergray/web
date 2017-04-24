@@ -6,7 +6,7 @@ import {
   TextInput,
   View,
 } from 'react-native'
-import usaFlag from './usa-flag.png' // eslint-disable-line import/newline-after-import
+import usaFlag from './usa-flag.png'
 const pick = require('lodash/fp/pick')
 
 class PhoneLoginBox extends Component {
