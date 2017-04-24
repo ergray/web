@@ -7,27 +7,26 @@ import {
 export default function IntroDescription({ large }) {
   return (
     <View style={{
+      alignItems: 'center',
       backgroundImage: 'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
       borderRadius: 10,
       boxShadow: 'rgba(0,0,0,0.3) 0px 60px 28px -40px',
       height: 218,
       justifyContent: 'space-around',
       marginBottom: 60,
-      paddingHorizontal: 20,
-      paddingVertical: 10,
     }}
     >
       <Text
         style={{
-          color: '#484848',
-          fontSize: large ? 30 : 20,
+          color: 'hsl(0, 0%, 28%)',
+          fontSize: large ? 28 : 20,
           fontWeight: '700',
         }}
-      >Vote on laws.</Text>
+      >VOTE ON LAWS</Text>
       <Text
         style={{
-          color: '#484848',
-          fontSize: large ? 30 : 20,
+          color: 'hsl(0, 0%, 32%)',
+          fontSize: large ? 24 : 16,
           fontWeight: '700',
         }}
       >Hold politicians accountable.</Text>
@@ -39,7 +38,6 @@ export default function IntroDescription({ large }) {
           color: '#0000FF',
           cursor: 'pointer',
           fontSize: 16,
-          width: 115,
         }}
         target="_blank"
       >LEARN MORE</a>
