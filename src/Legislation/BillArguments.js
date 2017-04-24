@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import { connect } from 'react-redux' // eslint-disable-line import/newline-after-import
+import { connect } from 'react-redux'
 const pick = require('lodash/fp/pick')
 
 class BillArguments extends Component {

@@ -7,6 +7,7 @@ import Menu from './Menu'
 import HomeScreenHeader from './HomeScreenHeader'
 import NextAgendaScreen from './NextAgendaScreen'
 import HomeScreenFooter from './HomeScreenFooter'
+const pick = require('lodash/fp/pick')
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -84,9 +85,9 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={{ alignSelf: 'center', flexDirection: 'row' }}>
-        <Menu navigator={this.props.navigator} />
-        <View style={{ height: '100%' }}>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
+        <Menu navigator={this.props.navigator} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
+        <View style={{ flex: 1, height: '100%' }}>
           <HomeScreenHeader />
           <LinearGradient
             colors={['#000', '#292929']}
@@ -110,6 +111,9 @@ HomeScreen.propTypes = {
   }),
 }
 
-const mapStateToProps = state => ({ isVerified: state.isVerified, sessionId: state.sessionId })
+const mapStateToProps = pick([
+  'isVerified',
+  'sessionId',
+])
 
 export default connect(mapStateToProps)(HomeScreen)

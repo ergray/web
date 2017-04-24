@@ -6,7 +6,7 @@ import FacebookIcon from 'react-icons/lib/fa/facebook'
 import logo from '../logo.png'
 import MenuOption from './MenuOption'
 
-function Menu({ constituents, dispatch, navigator, user }) {
+function Menu({ constituents, dispatch, navigator, style = {}, user }) {
   const MenuOptionWithNav = props => <MenuOption navigator={navigator} {...props} /> // eslint-disable-line
 
   let numRequests
@@ -22,7 +22,7 @@ function Menu({ constituents, dispatch, navigator, user }) {
   }
 
   return (
-    <View style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }}>
+    <View style={style}>
       <Image
         source={logo}
         style={{ alignSelf: 'center', height: 75, marginBottom: 12, marginTop: 20, width: 79 }}
@@ -97,6 +97,7 @@ Menu.propTypes = {
   navigator: React.PropTypes.shape({
     resetTo: React.PropTypes.func.isRequired,
   }).isRequired,
+  style: React.PropTypes.shape({}),
   user: React.PropTypes.shape({}),
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "liquid-web",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React-native-web client to connect to api.liquid.vote",
   "author": "github.com/liquidvote",
   "private": true,
@@ -9,6 +9,7 @@
     "api:prod": "node tools/api-url.js prod",
     "start": "webpack-dev-server --port 3000 --progress --colors --inline",
     "build": "webpack --progress --colors",
+    "predeploy": "npm version patch",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
     "test": "eslint . --cache"
   },

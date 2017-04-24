@@ -10,7 +10,7 @@ import SortIcon from 'react-icons/lib/md/sort-by-alpha'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from './convert-dates'
-import PastAgendas from './PastAgendas' // eslint-disable-line import/newline-after-import
+import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
 class BillsList extends Component {
@@ -41,10 +41,9 @@ class BillsList extends Component {
       return (
         <Text style={{
           color: '#fff',
-          fontSize: 18,
+          fontSize: 28,
           fontWeight: '300',
-          marginHorizontal: 30,
-          marginTop: 20,
+          margin: 60,
         }}
         >Loading...</Text>
       )
@@ -127,7 +126,7 @@ class BillsList extends Component {
                 }}
                 >{ positionIcon[position] }</Text>
               </View>
-              <View style={{ width: 850 }}>
+              <View style={{ flex: 1 }}>
                 <Text style={{ color: '#fff', paddingRight: 20 + 10 }}>
                   {bill.itemNumber}. {bill.id} - {bill.title}
                 </Text>
