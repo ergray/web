@@ -100,6 +100,7 @@ class BillsList extends Component {
           }
           return (
             <TouchableHighlight
+              delayPressIn={60}
               key={bill.uid}
               underlayColor="#444"
               onPress={() => navigator.push({ bill, name: 'BillScreen' })}
