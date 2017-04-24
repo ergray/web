@@ -49742,11 +49742,12 @@ _react2.default.createElement(_reactNative.View,{style:{width:26}},
 _react2.default.createElement(_reactNative.Text,{style:{
 borderColor:'#888',
 borderRadius:12,
+borderStyle:'solid',
 borderWidth:vote&&!isDelegated&&position!=='abstain'?1:0,
 color:positionColor[position],
 fontSize:16,
 fontWeight:'800',
-paddingTop:2,
+paddingVertical:2,
 textAlign:'center',
 width:23}},
 
