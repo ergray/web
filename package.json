@@ -23,13 +23,16 @@
     "babel-preset-react-native-stage-0": "^1.0.1",
     "babel-preset-stage-2": "^6.24.1",
     "deep-equal": "^1.0.1",
+    "es6-promise": "^4.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "eslint-plugin-react-filenames": "dsernst/eslint-plugin-react-filenames",
+    "exports-loader": "^0.6.4",
     "file-loader": "^0.11.1",
+    "imports-loader": "^0.7.1",
     "letter-grade": "^1.0.0",
     "localforage": "^1.5.0",
     "lodash": "^4.17.4",
@@ -50,6 +53,7 @@
     "replace": "^0.3.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "whatwg-fetch": "^2.0.3"
   }
 }
