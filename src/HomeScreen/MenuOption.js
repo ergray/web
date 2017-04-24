@@ -9,7 +9,7 @@ class MenuOption extends Component {
 
   render() {
     const { navigator, notifications, style, text, to } = this.props
-    let onPress = this.props
+    let { onPress } = this.props
 
     if (!onPress) {
       onPress = () => { // eslint-disable-line no-param-reassign
@@ -57,7 +57,7 @@ MenuOption.propTypes = {
     push: React.PropTypes.func,
   }),
   notifications: React.PropTypes.number,
-  onPress: React.PropTypes.func, // eslint-disable-line
+  onPress: React.PropTypes.func,
   style: React.PropTypes.shape({}),
   text: React.PropTypes.string.isRequired,
   to: React.PropTypes.string,

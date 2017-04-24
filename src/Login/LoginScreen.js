@@ -51,22 +51,27 @@ class LoginScreen extends Component {
           >LIQUID DEMOCRACY</Text>
 
           <MediaQuery minWidth={750}>
-            {large => (
-              <View style={{ alignSelf: large ? 'flex-end' : 'center', marginTop: large ? 185 : 50, paddingRight: large ? 43 : 0 }}>
-                <IntroDescription large={large} />
-                { !this.state.pressedGetStarted && (
-                  <GetStartedButton
-                    pressGetStarted={() => {
-                      this.setState({ pressedGetStarted: true })
-                      loginRef.input.focus()
-                    }}
-                  />
-                )}
-                <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                  <PhoneLoginBox large={large} loginRef={loginRef} navigator={this.props.navigator} />
-                </Collapse>
-              </View>
-            )}
+            {matchesMinWidth => (<MediaQuery maxDeviceWidth={667}>
+              {(matchesMaxDeviceWidth) => {
+                const large = matchesMinWidth && !matchesMaxDeviceWidth
+                return (
+                  <View style={{ alignSelf: large ? 'flex-end' : 'center', marginTop: large ? 185 : 50, paddingRight: matchesMinWidth ? 43 : 0 }}>
+                    <IntroDescription large={matchesMinWidth} />
+                    { !this.state.pressedGetStarted && (
+                      <GetStartedButton
+                        pressGetStarted={() => {
+                          this.setState({ pressedGetStarted: true })
+                          loginRef.input.focus()
+                        }}
+                      />
+                    )}
+                    <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
+                      <PhoneLoginBox large={matchesMinWidth} loginRef={loginRef} navigator={this.props.navigator} />
+                    </Collapse>
+                  </View>
+                )
+              }}
+            </MediaQuery>)}
           </MediaQuery>
 
         </View>
