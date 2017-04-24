@@ -24,7 +24,7 @@ export default function GetStartedButton({ pressGetStarted }) {
           color: '#fff',
           fontFamily: 'ArialMT',
           fontSize: 25,
-          fontWeight: '400',
+          fontWeight: '700',
           letterSpacing: 2,
           textAlign: 'center',
         }}
