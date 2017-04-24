@@ -4,7 +4,9 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import CircleIcon from 'react-icons/lib/fa/circle'
+import CircleOIcon from 'react-icons/lib/fa/circle-o'
+import DotCicleOIcon from 'react-icons/lib/fa/dot-circle-o'
 
 function ProgressBar({ step, style }) {
   function color(stepIndex) {
@@ -13,23 +15,23 @@ function ProgressBar({ step, style }) {
 
   function shape(stepIndex) {
     if (step < stepIndex) {
-      return 'circle-o'
+      return <CircleOIcon color={color(stepIndex)} size={15} />
     } else if (step === stepIndex) {
-      return 'dot-circle-o'
+      return <DotCicleOIcon color={color(stepIndex)} size={15} />
     }
 
-    return 'circle'
+    return <CircleIcon color={color(stepIndex)} size={15} />
   }
 
   return (
     <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center', ...style }}>
-      <FontAwesomeIcon color={color(1)} name={shape(1)} size={15} />
+      {shape(1)}
       <Text style={{ color: color(2), fontSize: 30, paddingBottom: 5 }}>—</Text>
-      <FontAwesomeIcon color={color(2)} name={shape(2)} size={15} />
+      {shape(2)}
       <Text style={{ color: color(3), fontSize: 30, paddingBottom: 5 }}>—</Text>
-      <FontAwesomeIcon color={color(3)} name={shape(3)} size={15} />
+      {shape(3)}
       <Text style={{ color: color(4), fontSize: 30, paddingBottom: 5 }}>—</Text>
-      <FontAwesomeIcon color={color(4)} name={shape(4)} size={15} />
+      {shape(4)}
     </View>
   )
 }

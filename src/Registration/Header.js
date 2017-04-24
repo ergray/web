@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import Icon from 'react-native-vector-icons/Ionicons'
+import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from '../logo.png'
 import ProgressBar from './ProgressBar'
 
@@ -19,7 +19,7 @@ function Header({ navigator, step, title }) {
           style={{ flex: 1, height: 123, minWidth: 50, paddingTop: 30 }}
           onPress={() => navigator.pop()}
         >
-          <Icon color="grey" name="ios-arrow-back" size={30} style={{ paddingLeft: 30 }} />
+          <BackIcon color="grey" size={40} style={{ paddingLeft: 30 }} />
         </TouchableOpacity>
 
         <View>
@@ -42,7 +42,7 @@ function Header({ navigator, step, title }) {
           >{title}</Text>
         </View>
 
-        <View style={{ flex: 1 }} />
+        <View style={{ flex: 1, minWidth: 70 }} />
       </View>
 
       <ProgressBar step={step} style={{ marginVertical: 15 }} />
