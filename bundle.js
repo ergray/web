@@ -91868,8 +91868,8 @@ _this.state={};return _this;
 }_createClass(MenuOption,[{key:'render',value:function render()
 
 {var _this2=this;var _props=
-this.props,navigator=_props.navigator,notifications=_props.notifications,style=_props.style,text=_props.text,to=_props.to;
-var onPress=this.props;
+this.props,navigator=_props.navigator,notifications=_props.notifications,style=_props.style,text=_props.text,to=_props.to;var
+onPress=this.props.onPress;
 
 if(!onPress){
 onPress=function onPress(){
@@ -93127,9 +93127,12 @@ paddingLeft:43}},'LIQUID DEMOCRACY'),
 
 
 _react2.default.createElement(_reactResponsive2.default,{minWidth:750},
-function(large){return(
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:large?'flex-end':'center',marginTop:large?185:50,paddingRight:large?43:0}},
-_react2.default.createElement(_IntroDescription2.default,{large:large}),
+function(matchesMinWidth){return _react2.default.createElement(_reactResponsive2.default,{maxDeviceWidth:667},
+function(matchesMaxDeviceWidth){
+var large=matchesMinWidth&&!matchesMaxDeviceWidth;
+return(
+_react2.default.createElement(_reactNative.View,{style:{alignSelf:large?'flex-end':'center',marginTop:large?185:50,paddingRight:matchesMinWidth?43:0}},
+_react2.default.createElement(_IntroDescription2.default,{large:matchesMinWidth}),
 !_this2.state.pressedGetStarted&&
 _react2.default.createElement(_GetStartedButton2.default,{
 pressGetStarted:function pressGetStarted(){
@@ -93139,9 +93142,11 @@ loginRef.input.focus();
 
 
 _react2.default.createElement(_reactCollapse.Collapse,{isOpened:_this2.state.pressedGetStarted,springConfig:{damping:20,stiffness:300}},
-_react2.default.createElement(_PhoneLoginBox2.default,{large:large,loginRef:loginRef,navigator:_this2.props.navigator}))));}))));
+_react2.default.createElement(_PhoneLoginBox2.default,{large:matchesMinWidth,loginRef:loginRef,navigator:_this2.props.navigator}))));
 
 
+
+});}))));
 
 
 
