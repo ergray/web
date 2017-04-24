@@ -41,10 +41,9 @@ class BillsList extends Component {
       return (
         <Text style={{
           color: '#fff',
-          fontSize: 18,
+          fontSize: 28,
           fontWeight: '300',
-          marginHorizontal: 30,
-          marginTop: 20,
+          margin: 60,
         }}
         >Loading...</Text>
       )
@@ -127,7 +126,7 @@ class BillsList extends Component {
                 }}
                 >{ positionIcon[position] }</Text>
               </View>
-              <View style={{ width: 850 }}>
+              <View style={{ flex: 1 }}>
                 <Text style={{ color: '#fff', paddingRight: 20 + 10 }}>
                   {bill.itemNumber}. {bill.id} - {bill.title}
                 </Text>

@@ -16,7 +16,7 @@ function HomeScreenFooter({ navigator, user, votingPower = '..' }) {
       flexDirection: 'row',
       paddingHorizontal: 11,
       position: 'absolute',
-      width: 884,
+      width: '100%',
     }}
     >
 

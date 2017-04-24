@@ -16,7 +16,6 @@ function HomeScreenHeader() {
       flexDirection: 'row',
       height: 50,
       justifyContent: 'center',
-      width: 884,
     }}
     >
       <Image
