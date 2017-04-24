@@ -91858,10 +91858,19 @@ user:state.user};};exports.default=
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
-var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
+var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
-function MenuOption(_ref){var navigator=_ref.navigator,onPress=_ref.onPress,notifications=_ref.notifications,style=_ref.style,text=_ref.text,to=_ref.to;
+MenuOption=function(_Component){_inherits(MenuOption,_Component);
+function MenuOption(){_classCallCheck(this,MenuOption);var _this=_possibleConstructorReturn(this,(MenuOption.__proto__||Object.getPrototypeOf(MenuOption)).call(this));
+
+_this.state={};return _this;
+}_createClass(MenuOption,[{key:'render',value:function render()
+
+{var _this2=this;var _props=
+this.props,navigator=_props.navigator,notifications=_props.notifications,style=_props.style,text=_props.text,to=_props.to;
+var onPress=this.props;
+
 if(!onPress){
 onPress=function onPress(){
 navigator.push({name:to});
@@ -91869,14 +91878,18 @@ navigator.push({name:to});
 }
 
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{style:{flexDirection:'row'},onPress:onPress},
-_react2.default.createElement(_reactNative.Text,{style:_extends({
+_react2.default.createElement(_reactNative.TouchableOpacity,{
+style:_extends({backgroundColor:this.state.hover?'hsl(0,0%,10%)':null,flexDirection:'row'},style),
+onMouseEnter:function onMouseEnter(){return _this2.setState({hover:true});},
+onMouseLeave:function onMouseLeave(){return _this2.setState({hover:false});},
+onPress:onPress},
+
+_react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
 fontSize:14,
 fontWeight:'400',
 marginLeft:30,
-marginVertical:10},
-style)},
+marginVertical:10}},
 
 text),
 !!notifications&&
@@ -91896,7 +91909,8 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',textAlign:'
 
 
 
-}
+}}]);return MenuOption;}(_react.Component);
+
 
 MenuOption.propTypes={
 navigator:_react2.default.PropTypes.shape({
