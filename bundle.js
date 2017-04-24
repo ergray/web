@@ -92987,7 +92987,7 @@ style:{
 color:'#fff',
 fontFamily:'ArialMT',
 fontSize:25,
-fontWeight:'400',
+fontWeight:'700',
 letterSpacing:2,
 textAlign:'center'}},'GET STARTED')));
 
@@ -93013,27 +93013,26 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 IntroDescription;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function IntroDescription(_ref){var large=_ref.large;
 return(
 _react2.default.createElement(_reactNative.View,{style:{
+alignItems:'center',
 backgroundImage:'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
 borderRadius:10,
 boxShadow:'rgba(0,0,0,0.3) 0px 60px 28px -40px',
 height:218,
 justifyContent:'space-around',
-marginBottom:60,
-paddingHorizontal:20,
-paddingVertical:10}},
+marginBottom:60}},
 
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
-color:'#484848',
-fontSize:large?30:20,
-fontWeight:'700'}},'Vote on laws.'),
+color:'hsl(0, 0%, 28%)',
+fontSize:large?28:20,
+fontWeight:'700'}},'VOTE ON LAWS'),
 
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
-color:'#484848',
-fontSize:large?30:20,
+color:'hsl(0, 0%, 32%)',
+fontSize:large?24:16,
 fontWeight:'700'}},'Hold politicians accountable.'),
 
 
@@ -93044,8 +93043,7 @@ rel:'noopener noreferrer',
 style:{
 color:'#0000FF',
 cursor:'pointer',
-fontSize:16,
-width:115},
+fontSize:16},
 
 target:'_blank'},'LEARN MORE')));
 
