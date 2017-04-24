@@ -1,41 +1,55 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 
-function MenuOption({ navigator, onPress, notifications, style, text, to }) {
-  if (!onPress) {
-    onPress = () => { // eslint-disable-line no-param-reassign
-      navigator.push({ name: to })
-    }
+class MenuOption extends Component {
+  constructor() {
+    super()
+    this.state = {}
   }
 
-  return (
-    <TouchableOpacity style={{ flexDirection: 'row' }} onPress={onPress}>
-      <Text style={{
-        color: '#fff',
-        fontSize: 14,
-        fontWeight: '400',
-        marginLeft: 30,
-        marginVertical: 10,
-        ...style,
-      }}
-      >{text}</Text>
-      { !!notifications &&
-        <View style={{
-          alignSelf: 'center',
-          borderColor: '#d62728',
-          borderRadius: 15,
-          borderWidth: 2,
-          height: 28,
-          justifyContent: 'center',
-          marginLeft: 5,
-          width: 28,
-        }}
-        >
-          <Text style={{ color: '#fff', textAlign: 'center' }}>{notifications}</Text>
-        </View>
+  render() {
+    const { navigator, notifications, style, text, to } = this.props
+    let onPress = this.props
+
+    if (!onPress) {
+      onPress = () => { // eslint-disable-line no-param-reassign
+        navigator.push({ name: to })
       }
-    </TouchableOpacity>
-  )
+    }
+
+    return (
+      <TouchableOpacity
+        style={{ backgroundColor: this.state.hover ? 'hsl(0,0%,10%)' : null, flexDirection: 'row', ...style }}
+        onMouseEnter={() => this.setState({ hover: true })}
+        onMouseLeave={() => this.setState({ hover: false })}
+        onPress={onPress}
+      >
+        <Text style={{
+          color: '#fff',
+          fontSize: 14,
+          fontWeight: '400',
+          marginLeft: 30,
+          marginVertical: 10,
+        }}
+        >{text}</Text>
+        { !!notifications &&
+          <View style={{
+            alignSelf: 'center',
+            borderColor: '#d62728',
+            borderRadius: 15,
+            borderWidth: 2,
+            height: 28,
+            justifyContent: 'center',
+            marginLeft: 5,
+            width: 28,
+          }}
+          >
+            <Text style={{ color: '#fff', textAlign: 'center' }}>{notifications}</Text>
+          </View>
+        }
+      </TouchableOpacity>
+    )
+  }
 }
 
 MenuOption.propTypes = {
@@ -43,7 +57,7 @@ MenuOption.propTypes = {
     push: React.PropTypes.func,
   }),
   notifications: React.PropTypes.number,
-  onPress: React.PropTypes.func,
+  onPress: React.PropTypes.func, // eslint-disable-line
   style: React.PropTypes.shape({}),
   text: React.PropTypes.string.isRequired,
   to: React.PropTypes.string,
