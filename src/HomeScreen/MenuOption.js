@@ -19,6 +19,7 @@ class MenuOption extends Component {
 
     return (
       <TouchableOpacity
+        delayPressIn={60}
         style={{ backgroundColor: this.state.hover ? 'hsl(0,0%,10%)' : null, flexDirection: 'row', ...style }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
