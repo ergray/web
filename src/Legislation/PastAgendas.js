@@ -84,22 +84,23 @@ class PastAgendas extends Component {
         </TouchableOpacity>
 
         { dates.map(date => (
-          <TouchableOpacity
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             key={date}
+            outerStyle={{ marginVertical: 6 }}
             style={{
               borderColor: 'grey',
               borderRadius: 4,
               borderWidth: 1,
               flexDirection: 'row',
               justifyContent: 'space-between',
-              marginVertical: 6,
               padding: 10,
             }}
             onPress={() => this.props.navigator.push({ date, name: 'AgendaScreen' })}
           >
             <Text style={{ color: '#fff' }}>{ convertDateToLongFormat(date) }</Text>
             <Text style={{ color: 'lightgrey', fontSize: 14, fontWeight: '800' }}>></Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
         )) }
 
       </View>
