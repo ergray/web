@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import HoverableOpacity from '../HoverableOpacity'
 const pick = require('lodash/fp/pick')
 
 class BillArguments extends Component {
@@ -51,8 +51,11 @@ class BillArguments extends Component {
             {text}
           </Text>
 
-          <TouchableOpacity
+          <HoverableOpacity
             activeOpacity={0.5}
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            outerStyle={{ alignSelf: 'flex-end', marginTop: 5 }}
+            style={{ padding: 5 }}
             onPress={() => {
               fetch(`https://api.liquid.vote/argument/${id}/recommendations`, {
                 headers: { Session_ID: this.props.sessionId },
@@ -80,13 +83,11 @@ class BillArguments extends Component {
             <Text style={{
               color: '#5DA0FF',
               fontSize: 11,
-              marginTop: 10,
-              textAlign: 'right',
             }}
             >
               {recommended ? 'RECOMMENDED' : 'RECOMMEND'} ({recommendations})
             </Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
         </View>
       )
     )
