@@ -13,6 +13,7 @@ export default function GetStartedButton({ pressGetStarted }) {
         borderColor: '#5F5F5F',
         borderRadius: 6,
         borderWidth: 1,
+        boxShadow: 'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px',
         height: 64,
         justifyContent: 'center',
         paddingHorizontal: 30,
