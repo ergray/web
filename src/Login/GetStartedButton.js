@@ -1,19 +1,24 @@
 import React from 'react'
 import {
   Text,
-  TouchableOpacity,
 } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 
 export default function GetStartedButton({ pressGetStarted }) {
   return (
-    <TouchableOpacity
+    <HoverableOpacity
       activeOpacity={0.8}
-      style={{
+      hoverStyle={{
+        backgroundImage: 'linear-gradient(-180deg, #B4ED50 0%, #47a521 100%)',
+      }}
+      outerStyle={{
         backgroundImage: 'linear-gradient(-180deg, #B4ED50 0%, #429321 100%)',
+        boxShadow: 'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px',
+      }}
+      style={{
         borderColor: '#5F5F5F',
         borderRadius: 6,
         borderWidth: 1,
-        boxShadow: 'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px',
         height: 64,
         justifyContent: 'center',
         paddingHorizontal: 30,
@@ -30,7 +35,7 @@ export default function GetStartedButton({ pressGetStarted }) {
           textAlign: 'center',
         }}
       >GET STARTED</Text>
-    </TouchableOpacity>
+    </HoverableOpacity>
   )
 }
 
