@@ -108,6 +108,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
 }
 
 ConfirmNewNumberScreen.title = 'CONFIRM NEW NUMBER'
+ConfirmNewNumberScreen.disableMenu = true
 
 ConfirmNewNumberScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,

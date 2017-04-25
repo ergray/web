@@ -2,14 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
-import LinearGradient from '../LinearGradient'
 import Menu from './Menu'
-import HomeScreenHeader from './HomeScreenHeader'
-import NextAgendaScreen from './NextAgendaScreen'
-import HomeScreenFooter from './HomeScreenFooter'
+import Header from './Header'
 const pick = require('lodash/fp/pick')
 
-class HomeScreen extends Component {
+class ScreenWithMenu extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -66,49 +63,32 @@ class HomeScreen extends Component {
         .then(response => response.json())
         .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }
-
-    fetch('https://api.liquid.vote/next-agenda')
-      .then(response => response.json())
-      .then((nextAgenda) => {
-        props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
-
-        // Did nextAgenda not include bills?
-        // (Upcoming break, or agenda hasn't been published yet)
-        if (!nextAgenda.bills) {
-          return
-        }
-
-        const { bills, date } = nextAgenda
-        props.dispatch({ bills, date, type: 'SYNC_BILLS' })
-      })
   }
 
   render() {
+    const { navigator, route, Screen } = this.props
+
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Menu navigator={this.props.navigator} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
+        <Menu navigator={navigator} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
         <View style={{ flex: 1, height: '100%' }}>
-          <HomeScreenHeader />
-          <LinearGradient
-            colors={['#000', '#292929']}
-            style={{ flex: 1, justifyContent: 'flex-start' }}
-          >
-            <NextAgendaScreen navigator={this.props.navigator} />
-            <HomeScreenFooter navigator={this.props.navigator} />
-          </LinearGradient>
+          <Header navigator={navigator} route={route} />
+          <Screen navigator={navigator} route={route} />
         </View>
       </View>
     )
   }
 }
 
-HomeScreen.disableHeader = true
+ScreenWithMenu.disableHeader = true
 
-HomeScreen.propTypes = {
+ScreenWithMenu.propTypes = {
   isVerified: React.PropTypes.bool.isRequired,
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
+  route: React.PropTypes.shape({}),
+  Screen: React.PropTypes.func.isRequired, // eslint-disable-line
 }
 
 const mapStateToProps = pick([
@@ -116,4 +96,4 @@ const mapStateToProps = pick([
   'sessionId',
 ])
 
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps)(ScreenWithMenu)

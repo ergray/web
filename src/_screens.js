@@ -20,7 +20,7 @@ export default {
   EnterSMSCodeScreen: require('./Login/z-EnterSMSCodeScreen').default,
   FeedbackScreen: require('./FeedbackScreen').default,
   FirstNameScreen: require('./Registration/1-FirstNameScreen').default,
-  HomeScreen: require('./HomeScreen/HomeScreen').default,
+  HomeScreen: require('./HomeScreen/NextAgendaScreen').default,
   IdReviewScreen: require('./Registration/3.6-IdReviewScreen').default,
   LastNameScreen: require('./Registration/1.5-LastNameScreen').default,
   LegalIdScreen: require('./Registration/3-LegalIdScreen').default,
