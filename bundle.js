@@ -91798,7 +91798,7 @@ var _power=__webpack_require__(652);var _power2=_interopRequireDefault(_power);f
 
 function AuthErrorScreen(_ref){var dispatch=_ref.dispatch,navigator=_ref.navigator;
 return(
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',marginHorizontal:30,marginTop:10,width:610}},
+_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',marginHorizontal:30,marginTop:20}},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:16,marginBottom:20}},'It looks like your login session is invalid.'),
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:16,marginBottom:20}},'This can happen if you try to sign in multiple places.'),
@@ -91830,6 +91830,7 @@ _react2.default.createElement(_power2.default,{color:'darkred',size:16,style:{pa
 }
 
 AuthErrorScreen.title='AUTH ERROR';
+AuthErrorScreen.disableMenu=true;
 
 AuthErrorScreen.propTypes={
 dispatch:_react2.default.PropTypes.func.isRequired,
@@ -93513,7 +93514,6 @@ var _reactNative=__webpack_require__(4);
 
 
 
-
 var _reactRedux=__webpack_require__(7);
 var _reactNativeTabs=__webpack_require__(666);var _reactNativeTabs2=_interopRequireDefault(_reactNativeTabs);
 var _chevronLeft=__webpack_require__(309);var _chevronLeft2=_interopRequireDefault(_chevronLeft);
@@ -93588,28 +93588,13 @@ nayOutcome.borderColor='#d62728';
 function tapPosition(tappedPosition){
 
 if((0,_convertDates.hasDatePassed)(bill.date)){
-_reactNative.Alert.alert(
-'Voting Period Expired',
-'This bill has already been voted upon in the legislature.',
-[
-{
-text:'OK'}]);
-
-
-
+window.alert('This bill has already been voted upon in the legislature.');
 return;
 }
 
 
 if(!isVerified){
-_reactNative.Alert.alert(
-'Unverified',
-'Your registration must be verified before you can vote on legislation.',
-[
-{onPress:function onPress(){return navigator.push({name:'YourRegistrationScreen'});},text:'More Info'},
-{text:'OK'}]);
-
-
+window.alert('Your registration must be verified before you can vote on legislation.');
 return;
 }
 
