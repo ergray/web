@@ -50,7 +50,7 @@ class BillsListItem extends Component {
         paddingVertical: 15,
       }}
       >
-        <View style={{ width: 26 }}>
+        <View style={{ width: 35 }}>
           <Text style={{
             borderColor: '#888',
             borderRadius: 12,
