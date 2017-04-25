@@ -118,7 +118,6 @@ class DelegatesScreen extends Component {
                   flexDirection: 'row',
                   padding: 20,
                 }}
-                onLongPress={() => this.props.dispatch({ type: 'TOGGLE_DELEGATES_EDIT_MODE' })}
                 onPress={() => { this.props.navigator.push({ name: 'DelegateInfoScreen', rowIndex }) }}
               >
                 <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
