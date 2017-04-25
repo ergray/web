@@ -15,13 +15,11 @@ function HeaderWithEditButton(props) {
 
   return (
     <View style={{
-      alignSelf: 'center',
       backgroundColor: '#000',
       borderBottomWidth: 1,
       borderColor: '#222',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      width: 600,
     }}
     >
       <TouchableOpacity

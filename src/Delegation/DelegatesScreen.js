@@ -65,7 +65,7 @@ class DelegatesScreen extends Component {
     }
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20 }}>
+      <View style={{ flex: 1, marginHorizontal: 20 }}>
         <View style={{ height: 80, paddingTop: 20 }}>
           { !delegatesEditMode ? (
             <P>
