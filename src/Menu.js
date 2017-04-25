@@ -70,6 +70,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
         />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="FeedbackScreen" />
         <MenuOptionWithNav
+          hoverColor="rgba(251, 82, 82, 0.1)"
           style={{ marginTop: 30 }}
           text="LOG OUT" onPress={() => {
             dispatch({ type: 'LOGOUT' })
@@ -79,7 +80,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
 
         <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            hoverStyle={{ backgroundColor: 'rgba(0,132,180,0.5)' }}
             outerStyle={{ marginLeft: 20 }}
             style={{ padding: 10 }}
             onPress={() => {
@@ -90,7 +91,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
             <TwitterIcon color="white" size={18} />
           </HoverableOpacity>
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            hoverStyle={{ backgroundColor: 'rgba(59,89,152,0.5)' }}
             outerStyle={{ marginLeft: 10 }}
             style={{ padding: 10 }}
             onPress={() => {
