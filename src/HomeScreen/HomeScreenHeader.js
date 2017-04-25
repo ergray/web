@@ -32,7 +32,7 @@ function HomeScreenHeader() {
           fontSize: 19,
           fontWeight: '700',
         }}
-      >CITY LEGISLATURE</Text>
+      >SAN FRANCISCO LEGISLATURE</Text>
       <View style={{ width: 27 }} />
     </View>
   )
