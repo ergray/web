@@ -82,6 +82,7 @@ class LoginScreen extends Component {
 }
 
 LoginScreen.disableHeader = true
+LoginScreen.disableMenu = true
 
 LoginScreen.propTypes = {
   navigator: React.PropTypes.shape({

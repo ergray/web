@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
-import HeaderWithEditButton from './HeaderWithEditButton'
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -65,7 +64,7 @@ class DelegatesScreen extends Component {
     }
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20 }}>
+      <View style={{ flex: 1, marginHorizontal: 20 }}>
         <View style={{ height: 80, paddingTop: 20 }}>
           { !delegatesEditMode ? (
             <P>
@@ -197,7 +196,7 @@ class DelegatesScreen extends Component {
   }
 }
 
-DelegatesScreen.header = HeaderWithEditButton
+DelegatesScreen.title = 'DELEGATES'
 
 DelegatesScreen.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({

@@ -181,6 +181,7 @@ class EnterSMSCodeScreen extends Component {
 }
 
 EnterSMSCodeScreen.disableHeader = true
+EnterSMSCodeScreen.disableMenu = true
 
 EnterSMSCodeScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,

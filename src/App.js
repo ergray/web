@@ -9,6 +9,7 @@ import _ from 'lodash'
 import screens from './_screens'
 import reducer, { initialState } from './_reducer'
 import Header from './Header'
+import ScreenWithMenu from './ScreenWithMenu'
 
 const INITIAL_ROUTE = { name: 'LoginScreen' }
 
@@ -35,6 +36,7 @@ export default class App extends Component {
   render() {
     const route = _.last(this.state.stack)
     const Screen = screens[route.name]
+
     const navigator = {
       pop: () => {
         const newStack = [...this.state.stack]
@@ -64,18 +66,14 @@ export default class App extends Component {
 
     return (
       <Provider store={store}>
-        <View style={{ flex: 1 }}>
-          <View
-            style={{
-              flex: 1,
-              height: '100%',
-              width: '100%',
-            }}
-          >
+        { Screen.disableMenu ? (
+          <View style={{ flex: 1, height: '100%', width: '100%' }}>
             <Header navigator={navigator} route={route} />
             <Screen navigator={navigator} route={route} />
           </View>
-        </View>
+        ) : (
+          <ScreenWithMenu Screen={Screen} navigator={navigator} route={route} />
+        )}
       </Provider>
     )
   }

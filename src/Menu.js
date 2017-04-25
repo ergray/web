@@ -3,7 +3,7 @@ import { Dimensions, Image, Linking, Text, TouchableOpacity, View } from 'react-
 import { connect } from 'react-redux'
 import TwitterIcon from 'react-icons/lib/fa/twitter'
 import FacebookIcon from 'react-icons/lib/fa/facebook'
-import logo from '../logo.png'
+import logo from './logo.png'
 import MenuOption from './MenuOption'
 
 function Menu({ constituents, dispatch, navigator, style = {}, user }) {
@@ -52,6 +52,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user }) {
       </TouchableOpacity>
 
       <View>
+        <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
         <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
         <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
         <MenuOptionWithNav text="ABOUT" to="AboutScreen" />
