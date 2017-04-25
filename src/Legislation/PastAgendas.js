@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 import { convertDateToLongFormat, hasDatePassed } from './convert-dates'
 
 class PastAgendas extends Component {
@@ -23,8 +24,10 @@ class PastAgendas extends Component {
 
     if (!this.state.activated) {
       return (
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+          outerStyle={{ margin: 30 }}
           style={{
             alignItems: 'center',
             borderColor: 'grey',
@@ -32,15 +35,13 @@ class PastAgendas extends Component {
             borderWidth: 1,
             height: 38,
             justifyContent: 'center',
-            marginHorizontal: 30,
-            marginVertical: 30,
           }}
           onPress={() => this.setState({ activated: true })}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
             VIEW PAST AGENDAS
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
       )
     }
 

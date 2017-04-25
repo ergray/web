@@ -5,6 +5,7 @@ import TwitterIcon from 'react-icons/lib/fa/twitter'
 import FacebookIcon from 'react-icons/lib/fa/facebook'
 import logo from './logo.png'
 import MenuOption from './MenuOption'
+import HoverableOpacity from './HoverableOpacity'
 
 function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower = '..' }) {
   const MenuOptionWithNav = props => <MenuOption navigator={navigator} {...props} /> // eslint-disable-line
@@ -76,24 +77,28 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
         />
 
         <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
-          <TouchableOpacity
-            style={{ marginLeft: 20, padding: 10 }}
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            outerStyle={{ marginLeft: 20 }}
+            style={{ padding: 10 }}
             onPress={() => {
               Linking.openURL('https://twitter.com/liquid_vote')
               .catch(() => {})
             }}
           >
             <TwitterIcon color="white" size={18} />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={{ marginLeft: 10, padding: 10 }}
+          </HoverableOpacity>
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            outerStyle={{ marginLeft: 10 }}
+            style={{ padding: 10 }}
             onPress={() => {
               Linking.openURL('https://facebook.com/liquidvote')
               .catch(() => {})
             }}
           >
             <FacebookIcon color="white" size={18} />
-          </TouchableOpacity>
+          </HoverableOpacity>
         </View>
 
       </View>
