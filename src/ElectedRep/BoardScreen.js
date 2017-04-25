@@ -3,9 +3,9 @@ import {
   Image,
   ScrollView,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 import reps from './current-reps'
 
 function BoardScreen({ navigator }) {
@@ -14,25 +14,25 @@ function BoardScreen({ navigator }) {
   ), [])
 
   return (
-    <ScrollView style={{ alignSelf: 'center', width: 612 }}>
-      <TouchableOpacity
+    <ScrollView>
+      <HoverableOpacity
         activeOpacity={0.5}
+        hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
+        outerStyle={{ margin: 30 }}
         style={{
           alignItems: 'center',
-          borderColor: '#5DA0FF',
+          borderColor: 'hsl(215, 100%, 68%)',
           borderRadius: 5,
           borderWidth: 1,
-          height: 38,
+          height: 40,
           justifyContent: 'center',
-          marginHorizontal: 30,
-          marginVertical: 20,
         }}
         onPress={() => navigator.push({ name: 'DistrictsMapScreen' })}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           VIEW DISTRICTS MAP
         </Text>
-      </TouchableOpacity>
+      </HoverableOpacity>
 
       {repsArray.map(rep => (
         <View
