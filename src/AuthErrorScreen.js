@@ -5,7 +5,7 @@ import LogoutIcon from 'react-icons/lib/io/power'
 
 function AuthErrorScreen({ dispatch, navigator }) {
   return (
-    <View style={{ alignSelf: 'center', marginHorizontal: 30, marginTop: 10, width: 610 }}>
+    <View style={{ alignSelf: 'center', marginHorizontal: 30, marginTop: 20 }}>
 
       <Text style={{ color: '#fff', fontSize: 16, marginBottom: 20 }}>It looks like your login session is invalid.</Text>
       <Text style={{ color: '#fff', fontSize: 16, marginBottom: 20 }}>This can happen if you try to sign in multiple places.</Text>
@@ -37,6 +37,7 @@ function AuthErrorScreen({ dispatch, navigator }) {
 }
 
 AuthErrorScreen.title = 'AUTH ERROR'
+AuthErrorScreen.disableMenu = true
 
 AuthErrorScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,

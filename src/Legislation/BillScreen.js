@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Alert,
   Text,
   TouchableOpacity,
   TouchableHighlight,
@@ -81,28 +80,13 @@ class BillScreen extends Component {
     function tapPosition(tappedPosition) {
       // Don't let them vote if the bill is no longer active
       if (hasDatePassed(bill.date)) {
-        Alert.alert(
-          'Voting Period Expired',
-          'This bill has already been voted upon in the legislature.',
-          [
-            {
-              text: 'OK',
-            },
-          ],
-        )
+        window.alert('This bill has already been voted upon in the legislature.') // eslint-disable-line
         return
       }
 
       // Don't let them vote if they're not verified
       if (!isVerified) {
-        Alert.alert(
-          'Unverified',
-          'Your registration must be verified before you can vote on legislation.',
-          [
-            { onPress: () => navigator.push({ name: 'YourRegistrationScreen' }), text: 'More Info' },
-            { text: 'OK' },
-          ],
-        )
+        window.alert('Your registration must be verified before you can vote on legislation.') // eslint-disable-line
         return
       }
 
