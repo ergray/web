@@ -30,7 +30,6 @@ class ElectedRepScreen extends Component {
             borderWidth: 1,
             flexDirection: 'row',
             marginBottom: 20,
-            width: 190,
           }}
         >
           <Image
@@ -88,12 +87,10 @@ class ElectedRepScreen extends Component {
             color: '#fff',
             cursor: 'pointer',
             fontSize: 15,
-            marginLeft: 30,
-            marginTop: 30,
+            margin: '30px 30px 0',
             padding: '12 0',
             textAlign: 'center',
             textDecorationLine: 'none',
-            width: 553,
           }}
         >
           CALL OFFICE: &nbsp; {rep.officePhone}
@@ -109,12 +106,10 @@ class ElectedRepScreen extends Component {
             color: '#fff',
             cursor: 'pointer',
             fontSize: 15,
-            marginLeft: 30,
-            marginTop: 30,
+            margin: '30px 30px 0',
             padding: '12 0',
             textAlign: 'center',
             textDecorationLine: 'none',
-            width: 553,
           }}
         >
           EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
@@ -129,8 +124,7 @@ class ElectedRepScreen extends Component {
             borderWidth: 1,
             height: 40,
             justifyContent: 'center',
-            marginHorizontal: 30,
-            marginTop: 30,
+            margin: 30,
           }}
           onPress={() => this.props.navigator.push({ name: 'BoardScreen' })}
         >
