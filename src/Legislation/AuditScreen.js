@@ -26,37 +26,33 @@ class AuditScreen extends Component {
 
   render() {
     return (
-      <View style={{ alignSelf: 'center', flex: 1, width: 850 }}>
+      <ScrollView style={{ flex: 1, padding: 20 }}>
 
-        <ScrollView style={{ flex: 1, padding: 20 }}>
+        { this.state.mine && (
+          <View style={{
+            borderBottomWidth: 1,
+            borderColor: '#333',
+            marginBottom: 30,
+            paddingBottom: 30,
+          }}
+          >
+            <Text style={{ color: 'white', marginBottom: 15 }}>
+              You can find your vote to ensure your position was tallied correctly.
+            </Text>
+            <Text style={{ color: 'white' }}>
+              YOUR HASH:
+            </Text>
+            <Text style={{ color: 'white' }}>
+              {this.state.mine.hash} {this.state.mine.position}
+            </Text>
+          </View>
+        )}
 
-          { this.state.mine && (
-            <View style={{
-              borderBottomWidth: 1,
-              borderColor: '#333',
-              marginBottom: 30,
-              paddingBottom: 30,
-            }}
-            >
-              <Text style={{ color: 'white', marginBottom: 15 }}>
-                You can find your vote to ensure your position was tallied correctly.
-              </Text>
-              <Text style={{ color: 'white' }}>
-                YOUR HASH:
-              </Text>
-              <Text style={{ color: 'white' }}>
-                {this.state.mine.hash} {this.state.mine.position}
-              </Text>
-            </View>
-          )}
+        <Text style={{ color: 'white' }}>
+          {this.state.audit}
+        </Text>
 
-          <Text style={{ color: 'white' }}>
-            {this.state.audit}
-          </Text>
-
-        </ScrollView>
-
-      </View>
+      </ScrollView>
     )
   }
 

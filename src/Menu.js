@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dimensions, Image, Linking, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, Linking, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import TwitterIcon from 'react-icons/lib/fa/twitter'
 import FacebookIcon from 'react-icons/lib/fa/facebook'

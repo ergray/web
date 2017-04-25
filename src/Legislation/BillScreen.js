@@ -3,12 +3,12 @@ import {
   Text,
   TouchableOpacity,
   TouchableHighlight,
-  TouchableWithoutFeedback,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import Tabs from 'react-native-tabs'
 import BackIcon from 'react-icons/lib/md/chevron-left'
+import HoverableOpacity from '../HoverableOpacity'
 import BillContents from './BillContents'
 import BillArguments from './BillArguments'
 import { hasDatePassed } from './convert-dates'
@@ -106,7 +106,7 @@ class BillScreen extends Component {
     }
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginTop: 25, width: 850 }}>
+      <View style={{ flex: 1, marginTop: 25 }}>
 
         { /* Header */ }
         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 20, paddingRight: 40 }}>
@@ -116,7 +116,7 @@ class BillScreen extends Component {
               style={{ paddingHorizontal: 15 }}
             />
           </TouchableOpacity>
-          <Text style={{ color: 'white', fontSize: 16, width: 800 }}>
+          <Text style={{ color: 'white', fontSize: 16 }}>
             {bill.id}: {bill.title}
           </Text>
         </View>
@@ -210,19 +210,31 @@ class BillScreen extends Component {
           justifyContent: 'space-between',
         }}
         >
-          <TouchableWithoutFeedback onPress={() => {
-            if (user.sf_district) { dispatch({ type: 'TOGGLE_VOTE_COUNTS_MODE' }) }
-          }}
-          ><View style={{ alignItems: 'center', flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={{ color: 'white', fontSize: 12, fontWeight: '600', marginLeft: 20, width: 77 }}>
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.03)' }}
+            outerStyle={{ flex: 3, paddingLeft: 20 }}
+            style={{ alignItems: 'center', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}
+            onPress={() => {
+              if (user.sf_district) {
+                dispatch({ type: 'TOGGLE_VOTE_COUNTS_MODE' })
+              }
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 12, fontWeight: '600' }}>
               { showDistrictVotes ? `DISTRICT ${user.sf_district}` : 'ALL VOTES' }
             </Text>
             <Text style={[{ color: 'white' }, yeaOutcome]}>Yea: {voteCount.yea}</Text>
             <Text style={[{ color: 'white' }, nayOutcome]}>Nay: {voteCount.nay}</Text>
-          </View></TouchableWithoutFeedback>
-          <TouchableOpacity onPress={() => navigator.push({ bill, name: 'AuditScreen' })}>
-            <Text style={{ color: '#5DA0FF', fontSize: 12, marginLeft: 63, marginRight: 20, marginVertical: 15 }}>AUDIT</Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
+          <View style={{ flex: 1 }}>
+            <HoverableOpacity
+              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+              outerStyle={{ alignSelf: 'flex-end' }}
+              onPress={() => navigator.push({ bill, name: 'AuditScreen' })}
+            >
+              <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
+            </HoverableOpacity>
+          </View>
         </View>
       </View>
     )

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  Dimensions,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -35,9 +34,6 @@ class BillArguments extends Component {
         </View>
       )
     }
-
-    const { width } = Dimensions.get('window')
-    const halfWidth = width / 2
 
     // Stores position as closure, returns a functions to map across
     const Argument = position => (
@@ -101,8 +97,9 @@ class BillArguments extends Component {
           style={{
             borderColor: '#222',
             borderRightWidth: 1,
+            flex: 1,
+            flexBasis: '100%',
             padding: 20,
-            width: halfWidth,
           }}
         >
           { this.state.yea.length > 0
@@ -113,8 +110,9 @@ class BillArguments extends Component {
 
         <ScrollView
           style={{
+            flex: 1,
+            flexBasis: '100%',
             padding: 20,
-            width: halfWidth,
           }}
         >
           { this.state.nay.length > 0
