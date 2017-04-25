@@ -12,6 +12,7 @@ import { connect } from 'react-redux'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
+import HoverableOpacity from '../HoverableOpacity'
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -82,13 +83,13 @@ class DelegatesScreen extends Component {
 
         { delegates.length > 0 &&
           (
-            <TouchableOpacity
+            <HoverableOpacity
+              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
+              outerStyle={{ backgroundColor: '#252525', marginBottom: 30 }}
               style={{
-                backgroundColor: '#252525',
                 borderBottomWidth: 1,
                 borderColor: '#000',
                 flexDirection: 'row',
-                marginBottom: 30,
                 paddingHorizontal: 20,
                 paddingVertical: 15,
               }}
@@ -100,23 +101,23 @@ class DelegatesScreen extends Component {
               <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
                 You
               </Text>
-            </TouchableOpacity>
+            </HoverableOpacity>
           )
         }
 
         { !delegatesEditMode ?
           <ScrollView>
             { delegates.map(({ name, status }, rowIndex) => (
-              <TouchableOpacity
+              <HoverableOpacity
+                hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
                 key={name}
+                outerStyle={{ backgroundColor: '#333' }}
                 style={{
-                  backgroundColor: '#333',
                   borderBottomWidth: 1,
                   borderColor: '#000',
                   flexDirection: 'row',
                   padding: 20,
                 }}
-                onLongPress={() => this.props.dispatch({ type: 'TOGGLE_DELEGATES_EDIT_MODE' })}
                 onPress={() => { this.props.navigator.push({ name: 'DelegateInfoScreen', rowIndex }) }}
               >
                 <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
@@ -129,7 +130,7 @@ class DelegatesScreen extends Component {
                     <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
                   }
                 </Text>
-              </TouchableOpacity>
+              </HoverableOpacity>
             ))}
           </ScrollView>
 

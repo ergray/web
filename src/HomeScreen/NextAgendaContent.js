@@ -61,7 +61,7 @@ class NextAgendaContent extends Component {
 
     if (!date) {
       return (
-        <ScrollView style={{ marginBottom: 37 }}>
+        <ScrollView>
           <Text style={{
             color: '#fff',
             fontSize: 18,
@@ -79,7 +79,7 @@ class NextAgendaContent extends Component {
 
     if (!bills) {
       return (
-        <ScrollView style={{ marginBottom: 37 }}>
+        <ScrollView>
           <Text style={{ color: '#fff', marginTop: 15, textAlign: 'center' }}>
             NO AGENDA FOR {convertDateToLongFormat(date).toUpperCase()}
           </Text>
