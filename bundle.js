@@ -94927,6 +94927,7 @@ catch(function(){});
 
 _react2.default.createElement(MenuOptionWithNav,{style:{marginTop:30},text:'SEND FEEDBACK',to:'FeedbackScreen'}),
 _react2.default.createElement(MenuOptionWithNav,{
+hoverColor:'rgba(251, 82, 82, 0.1)',
 style:{marginTop:30},
 text:'LOG OUT',onPress:function onPress(){
 dispatch({type:'LOGOUT'});
@@ -94936,7 +94937,7 @@ navigator.resetTo({name:'LoginScreen'});
 
 _react2.default.createElement(_reactNative.View,{style:{flexDirection:'row',marginTop:smallScreen?0:20}},
 _react2.default.createElement(_HoverableOpacity2.default,{
-hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
+hoverStyle:{backgroundColor:'rgba(0,132,180,0.5)'},
 outerStyle:{marginLeft:20},
 style:{padding:10},
 onPress:function onPress(){
@@ -94947,7 +94948,7 @@ catch(function(){});
 _react2.default.createElement(_twitter2.default,{color:'white',size:18})),
 
 _react2.default.createElement(_HoverableOpacity2.default,{
-hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
+hoverStyle:{backgroundColor:'rgba(59,89,152,0.5)'},
 outerStyle:{marginLeft:10},
 style:{padding:10},
 onPress:function onPress(){
@@ -94999,7 +95000,7 @@ _this.state={};return _this;
 }_createClass(MenuOption,[{key:'render',value:function render()
 
 {var _this2=this;var _props=
-this.props,navigator=_props.navigator,notifications=_props.notifications,style=_props.style,text=_props.text,to=_props.to;var
+this.props,_props$hoverColor=_props.hoverColor,hoverColor=_props$hoverColor===undefined?'hsl(0,0%,10%)':_props$hoverColor,navigator=_props.navigator,notifications=_props.notifications,style=_props.style,text=_props.text,to=_props.to;var
 onPress=this.props.onPress;
 
 if(!onPress){
@@ -95011,7 +95012,7 @@ navigator.push({name:to});
 return(
 _react2.default.createElement(_reactNative.TouchableOpacity,{
 delayPressIn:60,
-style:_extends({backgroundColor:this.state.hover?'hsl(0,0%,10%)':null,flexDirection:'row'},style),
+style:_extends({backgroundColor:this.state.hover?hoverColor:null,flexDirection:'row'},style),
 onMouseEnter:function onMouseEnter(){return _this2.setState({hover:true});},
 onMouseLeave:function onMouseLeave(){return _this2.setState({hover:false});},
 onPress:onPress},
@@ -95045,6 +95046,7 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',textAlign:'
 
 
 MenuOption.propTypes={
+hoverColor:_react2.default.PropTypes.string,
 navigator:_react2.default.PropTypes.shape({
 push:_react2.default.PropTypes.func}),
 
