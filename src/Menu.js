@@ -52,6 +52,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user }) {
       </TouchableOpacity>
 
       <View>
+        <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
         <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
         <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
         <MenuOptionWithNav text="ABOUT" to="AboutScreen" />
