@@ -1144,7 +1144,7 @@ var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
 var _ColorPropType=__webpack_require__(28);var _ColorPropType2=_interopRequireDefault(_ColorPropType);
 var _EdgeInsetsPropType=__webpack_require__(185);var _EdgeInsetsPropType2=_interopRequireDefault(_EdgeInsetsPropType);
 var _PointPropType=__webpack_require__(723);var _PointPropType2=_interopRequireDefault(_PointPropType);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 (0,_modality2.default)();
 
@@ -5330,7 +5330,7 @@ var _applyNativeMethods=__webpack_require__(39);var _applyNativeMethods2=_intero
 var _createDOMElement=__webpack_require__(59);var _createDOMElement2=_interopRequireDefault(_createDOMElement);
 var _getAccessibilityRole=__webpack_require__(184);var _getAccessibilityRole2=_interopRequireDefault(_getAccessibilityRole);
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var emptyObject={};
@@ -5464,7 +5464,7 @@ var _prodInvariant=__webpack_require__(8),
 _assign=__webpack_require__(12);
 
 var CallbackQueue=__webpack_require__(291);
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 var ReactFeatureFlags=__webpack_require__(296);
 var ReactReconciler=__webpack_require__(57);
 var Transaction=__webpack_require__(104);
@@ -5719,7 +5719,7 @@ module.exports=ReactUpdates;
 
 var _assign=__webpack_require__(12);
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 
 var emptyFunction=__webpack_require__(15);
 var warning=__webpack_require__(5);
@@ -6104,6 +6104,40 @@ module.exports=ReactCurrentOwner;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
+var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
+
+HoverableOpacity=function(_Component){_inherits(HoverableOpacity,_Component);
+function HoverableOpacity(props){_classCallCheck(this,HoverableOpacity);var _this=_possibleConstructorReturn(this,(HoverableOpacity.__proto__||Object.getPrototypeOf(HoverableOpacity)).call(this,
+props));
+_this.state={};return _this;
+}_createClass(HoverableOpacity,[{key:'render',value:function render()
+
+{var _this2=this;var _props=
+this.props,outerStyle=_props.outerStyle,hoverStyle=_props.hoverStyle,remainingProps=_objectWithoutProperties(_props,['outerStyle','hoverStyle']);
+
+return(
+_react2.default.createElement(_reactNative.TouchableOpacity,{
+activeOpacity:1,
+style:[{cursor:'inherit'},outerStyle,this.state.hover?hoverStyle:{}],
+onMouseEnter:function onMouseEnter(){return _this2.setState({hover:true});},
+onMouseLeave:function onMouseLeave(){return _this2.setState({hover:false});}},
+
+_react2.default.createElement(_reactNative.TouchableOpacity,remainingProps)));
+
+
+}}]);return HoverableOpacity;}(_react.Component);exports.default=HoverableOpacity;
+
+
+HoverableOpacity.propTypes={
+hoverStyle:_react2.default.PropTypes.shape({}),
+outerStyle:_react2.default.PropTypes.shape({})};
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 
@@ -6153,7 +6187,7 @@ return this._children;
 module.exports=AnimatedWithChildren;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6190,7 +6224,7 @@ return value!=null&&(type=='object'||type=='function');
 module.exports=isObject;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6225,7 +6259,7 @@ return value!=null&&(typeof value==='undefined'?'undefined':_typeof(value))=='ob
 module.exports=isObjectLike;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6343,7 +6377,7 @@ module.exports=PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6403,7 +6437,7 @@ exports.default=IconBase;
 module.exports=exports['default'];
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6444,40 +6478,6 @@ style:(0,_StyleSheetPropType2.default)(_ViewStylePropTypes2.default)});
 
 
 module.exports=ViewPropTypes;
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
-var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
-
-HoverableOpacity=function(_Component){_inherits(HoverableOpacity,_Component);
-function HoverableOpacity(props){_classCallCheck(this,HoverableOpacity);var _this=_possibleConstructorReturn(this,(HoverableOpacity.__proto__||Object.getPrototypeOf(HoverableOpacity)).call(this,
-props));
-_this.state={};return _this;
-}_createClass(HoverableOpacity,[{key:'render',value:function render()
-
-{var _this2=this;var _props=
-this.props,outerStyle=_props.outerStyle,hoverStyle=_props.hoverStyle,remainingProps=_objectWithoutProperties(_props,['outerStyle','hoverStyle']);
-
-return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{
-activeOpacity:1,
-style:[{cursor:'inherit'},outerStyle,this.state.hover?hoverStyle:{}],
-onMouseEnter:function onMouseEnter(){return _this2.setState({hover:true});},
-onMouseLeave:function onMouseLeave(){return _this2.setState({hover:false});}},
-
-_react2.default.createElement(_reactNative.TouchableOpacity,remainingProps)));
-
-
-}}]);return HoverableOpacity;}(_react.Component);exports.default=HoverableOpacity;
-
-
-HoverableOpacity.propTypes={
-hoverStyle:_react2.default.PropTypes.shape({}),
-outerStyle:_react2.default.PropTypes.shape({})};
 
 /***/ }),
 /* 37 */
@@ -7050,7 +7050,7 @@ module.exports=applyNativeMethods;
 
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var InteractionManager=__webpack_require__(198);
 var AnimatedInterpolation=__webpack_require__(80);
 var Interpolation=__webpack_require__(63);
@@ -9427,7 +9427,7 @@ module.exports=copyObject;
 
 "use strict";
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==='function'?Symbol.iterator:'@@iterator')==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==='function'?Symbol.prototype:'@@prototype')?"symbol":typeof obj;};var baseGetTag=__webpack_require__(41),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var symbolTag='[object Symbol]';
@@ -10638,7 +10638,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZUAAAGACAYAAABl
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var Animated=__webpack_require__(19);
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var invariant=__webpack_require__(52);
 var Interpolation=__webpack_require__(63);
 var guid=__webpack_require__(118);var
@@ -11459,7 +11459,7 @@ module.exports=assocIndexOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var isObject=__webpack_require__(31);
+var isObject=__webpack_require__(32);
 
 
 var objectCreate=Object.create;
@@ -11552,7 +11552,7 @@ module.exports=copyArray;
 
 "use strict";
 var baseCreate=__webpack_require__(89),
-isObject=__webpack_require__(31);
+isObject=__webpack_require__(32);
 
 
 
@@ -13233,7 +13233,7 @@ var _ScrollViewBase=__webpack_require__(706);var _ScrollViewBase2=_interopRequir
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
 var _StyleSheetPropType=__webpack_require__(60);var _StyleSheetPropType2=_interopRequireDefault(_StyleSheetPropType);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _ViewStylePropTypes=__webpack_require__(75);var _ViewStylePropTypes2=_interopRequireDefault(_ViewStylePropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}
 
@@ -15389,7 +15389,7 @@ initCloneByTag=__webpack_require__(505),
 initCloneObject=__webpack_require__(506),
 isArray=__webpack_require__(17),
 isBuffer=__webpack_require__(151),
-isObject=__webpack_require__(31),
+isObject=__webpack_require__(32),
 keys=__webpack_require__(67);
 
 
@@ -15576,7 +15576,7 @@ module.exports=baseFlatten;
 
 "use strict";
 var baseIsEqualDeep=__webpack_require__(455),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 
@@ -16006,7 +16006,7 @@ module.exports=eq;
 
 "use strict";
 var baseIsArguments=__webpack_require__(454),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var objectProto=Object.prototype;
@@ -16132,7 +16132,7 @@ module.exports=isBuffer;
 
 "use strict";
 var baseGetTag=__webpack_require__(41),
-isObject=__webpack_require__(31);
+isObject=__webpack_require__(32);
 
 
 var asyncTag='[object AsyncFunction]',
@@ -26840,7 +26840,7 @@ module.exports=getTag;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var isObject=__webpack_require__(31);
+var isObject=__webpack_require__(32);
 
 
 
@@ -27201,7 +27201,7 @@ module.exports=hasIn;
 
 "use strict";
 var isArrayLike=__webpack_require__(150),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 
@@ -27282,7 +27282,7 @@ module.exports=isEqual;
 "use strict";
 var baseGetTag=__webpack_require__(41),
 getPrototype=__webpack_require__(142),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var objectTag='[object Object]';
@@ -45322,7 +45322,7 @@ var _prodInvariant=__webpack_require__(8);
 
 function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 
 var invariant=__webpack_require__(3);
 
@@ -47049,7 +47049,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -47244,7 +47244,7 @@ var _requestIdleCallback=__webpack_require__(721);var _requestIdleCallback2=_int
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
 var _StyleSheetPropType=__webpack_require__(60);var _StyleSheetPropType2=_interopRequireDefault(_StyleSheetPropType);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var emptyObject={};
@@ -51361,7 +51361,7 @@ var _reactNative=__webpack_require__(4);
 var _sortByAlpha=__webpack_require__(654);var _sortByAlpha2=_interopRequireDefault(_sortByAlpha);
 var _lodash=__webpack_require__(281);var _lodash2=_interopRequireDefault(_lodash);
 var _reactRedux=__webpack_require__(7);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _convertDates=__webpack_require__(78);
 var _BillsListItem=__webpack_require__(801);var _BillsListItem2=_interopRequireDefault(_BillsListItem);
 var _PastAgendas=__webpack_require__(354);var _PastAgendas2=_interopRequireDefault(_PastAgendas);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
@@ -51484,7 +51484,7 @@ var _reactNative=__webpack_require__(4);
 
 
 
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _convertDates=__webpack_require__(78);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 PastAgendas=function(_Component){_inherits(PastAgendas,_Component);
@@ -51800,7 +51800,7 @@ _reactNativeWeb2.default.render(_react2.default.createElement(_App2.default,null
 
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var Animated=__webpack_require__(19);
 var AnimatedValue=__webpack_require__(40);
 var Interpolation=__webpack_require__(63);
@@ -51885,7 +51885,7 @@ module.exports=AnimatedAddition;
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var Animated=__webpack_require__(19);
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var AnimatedInterpolation=__webpack_require__(80);
 var Interpolation=__webpack_require__(63);var
 
@@ -51957,7 +51957,7 @@ module.exports=AnimatedModulo;
 
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var Animated=__webpack_require__(19);
 var AnimatedValue=__webpack_require__(40);
 var AnimatedInterpolation=__webpack_require__(80);
@@ -52042,7 +52042,7 @@ module.exports=AnimatedMultiplication;
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var Animated=__webpack_require__(19);
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var AnimatedTransform=__webpack_require__(365);
 var FlattenStyle=__webpack_require__(197);var
 
@@ -52124,7 +52124,7 @@ module.exports=AnimatedStyle;
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var Animated=__webpack_require__(19);
-var AnimatedWithChildren=__webpack_require__(30);var
+var AnimatedWithChildren=__webpack_require__(31);var
 
 AnimatedTemplate=function(_AnimatedWithChildren){_inherits(AnimatedTemplate,_AnimatedWithChildren);
 
@@ -52256,7 +52256,7 @@ module.exports=AnimatedTracking;
 var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol.iterator:"@@iterator")==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==="function"?Symbol.prototype:"@@prototype")?"symbol":typeof obj;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var Animated=__webpack_require__(19);
-var AnimatedWithChildren=__webpack_require__(30);var
+var AnimatedWithChildren=__webpack_require__(31);var
 
 AnimatedTransform=function(_AnimatedWithChildren){_inherits(AnimatedTransform,_AnimatedWithChildren);
 
@@ -52341,7 +52341,7 @@ var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==="function"?Symbol
 
 var Animated=__webpack_require__(19);
 var AnimatedValue=__webpack_require__(40);
-var AnimatedWithChildren=__webpack_require__(30);
+var AnimatedWithChildren=__webpack_require__(31);
 var invariant=__webpack_require__(52);
 var guid=__webpack_require__(118);var
 
@@ -62364,7 +62364,7 @@ module.exports=baseIndexOf;
 
 "use strict";
 var baseGetTag=__webpack_require__(41),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var argsTag='[object Arguments]';
@@ -62564,7 +62564,7 @@ module.exports=baseIsNaN;
 "use strict";
 var isFunction=__webpack_require__(152),
 isMasked=__webpack_require__(511),
-isObject=__webpack_require__(31),
+isObject=__webpack_require__(32),
 toSource=__webpack_require__(273);
 
 
@@ -62617,7 +62617,7 @@ module.exports=baseIsNative;
 "use strict";
 var baseGetTag=__webpack_require__(41),
 isLength=__webpack_require__(153),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var argsTag='[object Arguments]',
@@ -62681,7 +62681,7 @@ module.exports=baseIsTypedArray;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var isObject=__webpack_require__(31),
+var isObject=__webpack_require__(32),
 isPrototype=__webpack_require__(145),
 nativeKeysIn=__webpack_require__(525);
 
@@ -62893,7 +62893,7 @@ module.exports=basePropertyDeep;
 var assignValue=__webpack_require__(132),
 castPath=__webpack_require__(54),
 isIndex=__webpack_require__(94),
-isObject=__webpack_require__(31),
+isObject=__webpack_require__(32),
 toKey=__webpack_require__(43);
 
 
@@ -66603,7 +66603,7 @@ module.exports=get;
 "use strict";
 var baseGetTag=__webpack_require__(41),
 isArray=__webpack_require__(17),
-isObjectLike=__webpack_require__(32);
+isObjectLike=__webpack_require__(33);
 
 
 var stringTag='[object String]';
@@ -67062,7 +67062,7 @@ module.exports=toFinite;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-var isObject=__webpack_require__(31),
+var isObject=__webpack_require__(32),
 isSymbol=__webpack_require__(66);
 
 
@@ -67209,7 +67209,7 @@ var LazyWrapper=__webpack_require__(123),
 LodashWrapper=__webpack_require__(236),
 baseLodash=__webpack_require__(137),
 isArray=__webpack_require__(17),
-isObjectLike=__webpack_require__(32),
+isObjectLike=__webpack_require__(33),
 wrapperClone=__webpack_require__(540);
 
 
@@ -69295,7 +69295,7 @@ module.exports=EnterLeaveEventPlugin;
 
 var _assign=__webpack_require__(12);
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 
 var getTextContentAccessor=__webpack_require__(305);
 
@@ -73974,7 +73974,7 @@ var _assign=__webpack_require__(12);
 
 var EventListener=__webpack_require__(225);
 var ExecutionEnvironment=__webpack_require__(11);
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 var ReactDOMComponentTree=__webpack_require__(13);
 var ReactUpdates=__webpack_require__(26);
 
@@ -74883,7 +74883,7 @@ module.exports=ReactOwner;
 var _assign=__webpack_require__(12);
 
 var CallbackQueue=__webpack_require__(291);
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 var ReactBrowserEventEmitter=__webpack_require__(101);
 var ReactInputSelection=__webpack_require__(298);
 var ReactInstrumentation=__webpack_require__(24);
@@ -75160,7 +75160,7 @@ module.exports=ReactRef;
 
 var _assign=__webpack_require__(12);
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 var Transaction=__webpack_require__(104);
 var ReactInstrumentation=__webpack_require__(24);
 var ReactServerUpdateQueue=__webpack_require__(616);
@@ -78153,7 +78153,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78191,7 +78191,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78229,7 +78229,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78267,7 +78267,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78305,7 +78305,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78343,7 +78343,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78381,7 +78381,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -78419,7 +78419,7 @@ var _react=__webpack_require__(1);
 
 var _react2=_interopRequireDefault(_react);
 
-var _reactIconBase=__webpack_require__(34);
+var _reactIconBase=__webpack_require__(35);
 
 var _reactIconBase2=_interopRequireDefault(_reactIconBase);
 
@@ -82569,7 +82569,7 @@ module.exports=Vibration;
 /* WEBPACK VAR INJECTION */(function(process) {var _typeof=typeof Symbol==="function"&&typeof(typeof Symbol==='function'?Symbol.iterator:'@@iterator')==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==(typeof Symbol==='function'?Symbol.prototype:'@@prototype')?"symbol":typeof obj;};var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _applyNativeMethods=__webpack_require__(39);var _applyNativeMethods2=_interopRequireDefault(_applyNativeMethods);
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 ActivityIndicator=function(_Component){_inherits(ActivityIndicator,_Component);function ActivityIndicator(){_classCallCheck(this,ActivityIndicator);return _possibleConstructorReturn(this,(ActivityIndicator.__proto__||Object.getPrototypeOf(ActivityIndicator)).apply(this,arguments));}_createClass(ActivityIndicator,[{key:'render',value:function render()
@@ -83243,7 +83243,7 @@ module.exports=(0,_applyNativeMethods2.default)(ListView);
 var _ColorPropType=__webpack_require__(28);var _ColorPropType2=_interopRequireDefault(_ColorPropType);
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 ProgressBar=function(_Component){_inherits(ProgressBar,_Component);function ProgressBar(){var _ref;var _temp,_this,_ret;_classCallCheck(this,ProgressBar);for(var _len=arguments.length,args=Array(_len),_key=0;_key<_len;_key++){args[_key]=arguments[_key];}return _ret=(_temp=(_this=_possibleConstructorReturn(this,(_ref=ProgressBar.__proto__||Object.getPrototypeOf(ProgressBar)).call.apply(_ref,[this].concat(args))),_this),_this.
@@ -83350,7 +83350,7 @@ module.exports=(0,_applyNativeMethods2.default)(ProgressBar);
 
 var _debounce=__webpack_require__(120);var _debounce2=_interopRequireDefault(_debounce);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==="undefined"?"undefined":_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==="undefined"?"undefined":_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var normalizeScrollEvent=function normalizeScrollEvent(e){return{
@@ -83554,7 +83554,7 @@ var _multiplyStyleLengthValue=__webpack_require__(324);var _multiplyStyleLengthV
 var _StyleSheet=__webpack_require__(14);var _StyleSheet2=_interopRequireDefault(_StyleSheet);
 var _UIManager=__webpack_require__(58);var _UIManager2=_interopRequireDefault(_UIManager);
 var _View=__webpack_require__(25);var _View2=_interopRequireDefault(_View);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var emptyObject={};
@@ -83753,7 +83753,7 @@ var _StyleSheetPropType=__webpack_require__(60);var _StyleSheetPropType2=_intero
 var _TextInputStylePropTypes=__webpack_require__(319);var _TextInputStylePropTypes2=_interopRequireDefault(_TextInputStylePropTypes);
 var _reactTextareaAutosize=__webpack_require__(733);var _reactTextareaAutosize2=_interopRequireDefault(_reactTextareaAutosize);
 var _TextInputState=__webpack_require__(180);var _TextInputState2=_interopRequireDefault(_TextInputState);
-var _ViewPropTypes=__webpack_require__(35);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
+var _ViewPropTypes=__webpack_require__(36);var _ViewPropTypes2=_interopRequireDefault(_ViewPropTypes);
 var _react=__webpack_require__(1);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&((typeof call==='undefined'?'undefined':_typeof(call))==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+(typeof superClass==='undefined'?'undefined':_typeof(superClass)));}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 
 var emptyObject={};
@@ -84068,7 +84068,7 @@ module.exports=(0,_applyLayout2.default)((0,_applyNativeMethods2.default)(TextIn
 
 
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 
 var twoArgumentPooler=PooledClass.twoArgumentPooler;
 
@@ -84114,7 +84114,7 @@ module.exports=BoundingDimensions;
 
 
 
-var PooledClass=__webpack_require__(33);
+var PooledClass=__webpack_require__(34);
 
 var twoArgumentPooler=PooledClass.twoArgumentPooler;
 
@@ -91832,7 +91832,7 @@ Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_re
 var _reactNative=__webpack_require__(4);
 var _reactRedux=__webpack_require__(7);
 var _power=__webpack_require__(653);var _power2=_interopRequireDefault(_power);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 function AuthErrorScreen(_ref){var dispatch=_ref.dispatch,navigator=_ref.navigator;
 return(
@@ -92179,7 +92179,7 @@ var _reactRedux=__webpack_require__(7);
 var _Foundation=__webpack_require__(669);var _Foundation2=_interopRequireDefault(_Foundation);
 var _Ionicons=__webpack_require__(670);var _Ionicons2=_interopRequireDefault(_Ionicons);
 var _deepEqual=__webpack_require__(224);var _deepEqual2=_interopRequireDefault(_deepEqual);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _toConsumableArray(arr){if(Array.isArray(arr)){for(var i=0,arr2=Array(arr.length);i<arr.length;i++){arr2[i]=arr[i];}return arr2;}else{return Array.from(arr);}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _toConsumableArray(arr){if(Array.isArray(arr)){for(var i=0,arr2=Array(arr.length);i<arr.length;i++){arr2[i]=arr[i];}return arr2;}else{return Array.from(arr);}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 DelegatesScreen=function(_Component){_inherits(DelegatesScreen,_Component);
 function DelegatesScreen(props){_classCallCheck(this,DelegatesScreen);var _this=_possibleConstructorReturn(this,(DelegatesScreen.__proto__||Object.getPrototypeOf(DelegatesScreen)).call(this,
@@ -92568,7 +92568,7 @@ var _reactNative=__webpack_require__(4);
 
 
 
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _currentReps=__webpack_require__(351);var _currentReps2=_interopRequireDefault(_currentReps);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _toConsumableArray(arr){if(Array.isArray(arr)){for(var i=0,arr2=Array(arr.length);i<arr.length;i++){arr2[i]=arr[i];}return arr2;}else{return Array.from(arr);}}
 
 function BoardScreen(_ref){var navigator=_ref.navigator;
@@ -92698,7 +92698,7 @@ var _reactNative=__webpack_require__(4);
 
 var _reactRedux=__webpack_require__(7);
 var _letterGrade=__webpack_require__(427);var _letterGrade2=_interopRequireDefault(_letterGrade);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _currentReps=__webpack_require__(351);var _currentReps2=_interopRequireDefault(_currentReps);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 ElectedRepScreen=function(_Component){_inherits(ElectedRepScreen,_Component);
@@ -93292,7 +93292,7 @@ var _reactNative=__webpack_require__(4);
 
 
 var _reactRedux=__webpack_require__(7);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}function _toConsumableArray(arr){if(Array.isArray(arr)){for(var i=0,arr2=Array(arr.length);i<arr.length;i++){arr2[i]=arr[i];}return arr2;}else{return Array.from(arr);}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}function _toConsumableArray(arr){if(Array.isArray(arr)){for(var i=0,arr2=Array(arr.length);i<arr.length;i++){arr2[i]=arr[i];}return arr2;}else{return Array.from(arr);}}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 var pick=__webpack_require__(44);var
 
 BillArguments=function(_Component){_inherits(BillArguments,_Component);
@@ -93472,7 +93472,7 @@ var _reactNative=__webpack_require__(4);
 var _reactRedux=__webpack_require__(7);
 var _reactNativeTabs=__webpack_require__(667);var _reactNativeTabs2=_interopRequireDefault(_reactNativeTabs);
 var _chevronLeft=__webpack_require__(310);var _chevronLeft2=_interopRequireDefault(_chevronLeft);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _BillContents=__webpack_require__(799);var _BillContents2=_interopRequireDefault(_BillContents);
 var _BillArguments=__webpack_require__(798);var _BillArguments2=_interopRequireDefault(_BillArguments);
 var _convertDates=__webpack_require__(78);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
@@ -94557,16 +94557,21 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 
 
 
-GetStartedButton;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function GetStartedButton(_ref){var pressGetStarted=_ref.pressGetStarted;
+GetStartedButton;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function GetStartedButton(_ref){var pressGetStarted=_ref.pressGetStarted;
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,{
+_react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.8,
-style:{
+hoverStyle:{
+backgroundImage:'linear-gradient(-180deg, #B4ED50 0%, #47a521 100%)'},
+
+outerStyle:{
 backgroundImage:'linear-gradient(-180deg, #B4ED50 0%, #429321 100%)',
+boxShadow:'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px'},
+
+style:{
 borderColor:'#5F5F5F',
 borderRadius:6,
 borderWidth:1,
-boxShadow:'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px',
 height:64,
 justifyContent:'center',
 paddingHorizontal:30},
@@ -94866,7 +94871,7 @@ var _twitter=__webpack_require__(652);var _twitter2=_interopRequireDefault(_twit
 var _facebook=__webpack_require__(650);var _facebook2=_interopRequireDefault(_facebook);
 var _logo=__webpack_require__(79);var _logo2=_interopRequireDefault(_logo);
 var _MenuOption=__webpack_require__(812);var _MenuOption2=_interopRequireDefault(_MenuOption);
-var _HoverableOpacity=__webpack_require__(36);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _HoverableOpacity=__webpack_require__(30);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 function Menu(_ref){var constituents=_ref.constituents,dispatch=_ref.dispatch,navigator=_ref.navigator,_ref$style=_ref.style,style=_ref$style===undefined?{}:_ref$style,user=_ref.user,_ref$votingPower=_ref.votingPower,votingPower=_ref$votingPower===undefined?'..':_ref$votingPower;
 var MenuOptionWithNav=function MenuOptionWithNav(props){return _react2.default.createElement(_MenuOption2.default,_extends({navigator:navigator},props));};
