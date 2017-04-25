@@ -94902,8 +94902,9 @@ textAlign:'center'}},'LIQUID DEMOCRACY'),
 
 
 
-_react2.default.createElement(_reactNative.TouchableOpacity,{
-style:{marginVertical:20},
+_react2.default.createElement(_HoverableOpacity2.default,{
+hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.04)'},
+outerStyle:{marginVertical:20},
 onPress:function onPress(){return navigator.push({name:'YourRegistrationScreen',transition:'SwipeFromLeft'});}},
 
 _react2.default.createElement(_reactNative.Text,{
