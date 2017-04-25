@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {
   Text,
   TouchableOpacity,
-  TouchableHighlight,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -133,7 +132,7 @@ class BillScreen extends Component {
             justifyContent: 'space-between',
           }}
         >
-          <TouchableHighlight style={{ flex: 1 }} onPress={() => tapPosition('yea')}>
+          <HoverableOpacity hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('yea')}>
             <Text style={[{
               color: '#2ca02c',
               fontSize: 16,
@@ -142,9 +141,9 @@ class BillScreen extends Component {
               textAlign: 'center',
             }, selected.yea]}
             >✓ YEA</Text>
-          </TouchableHighlight>
+          </HoverableOpacity>
           <View style={{ backgroundColor: highlightColor, width: 1 }} />
-          <TouchableHighlight style={{ flex: 1 }} onPress={() => tapPosition('nay')}>
+          <HoverableOpacity hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('nay')}>
             <Text style={[{
               color: '#d62728',
               fontSize: 16,
@@ -153,7 +152,7 @@ class BillScreen extends Component {
               textAlign: 'center',
             }, selected.nay]}
             >✗ NAY</Text>
-          </TouchableHighlight>
+          </HoverableOpacity>
         </View>
         <View style={{
           backgroundColor: '#0D0D0D',
@@ -161,7 +160,8 @@ class BillScreen extends Component {
           borderColor: highlightColor,
         }}
         >
-          <TouchableHighlight
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             onPress={() => tapPosition('abstain')}
           >
             <Text style={[{
@@ -171,7 +171,7 @@ class BillScreen extends Component {
               textAlign: 'center',
             }, selected.abstain]}
             >ABSTAIN</Text>
-          </TouchableHighlight>
+          </HoverableOpacity>
         </View>
 
         { /* Delegate info */ }
