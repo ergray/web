@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import FoundationIcon from 'react-native-vector-icons/Foundation'
 import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
-import HeaderWithEditButton from './HeaderWithEditButton'
+import DelegatesHeader from './DelegatesHeader'
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -197,7 +197,7 @@ class DelegatesScreen extends Component {
   }
 }
 
-DelegatesScreen.header = HeaderWithEditButton
+DelegatesScreen.header = DelegatesHeader
 
 DelegatesScreen.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({

@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from '../logo.png'
 
-function HeaderWithEditButton(props) {
+function DelegatesHeader(props) {
   const { delegates, delegatesEditMode, dispatch } = props
   const showEditButton = delegates && delegates.length > 0
 
@@ -73,7 +73,7 @@ function HeaderWithEditButton(props) {
   )
 }
 
-HeaderWithEditButton.propTypes = {
+DelegatesHeader.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape()),
   delegatesEditMode: React.PropTypes.bool,
   dispatch: React.PropTypes.func.isRequired,
@@ -87,4 +87,4 @@ const mapStateToProps = state => ({
   delegatesEditMode: state.delegatesEditMode,
 })
 
-export default connect(mapStateToProps)(HeaderWithEditButton)
+export default connect(mapStateToProps)(DelegatesHeader)
