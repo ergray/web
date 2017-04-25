@@ -6,7 +6,7 @@ import FacebookIcon from 'react-icons/lib/fa/facebook'
 import logo from './logo.png'
 import MenuOption from './MenuOption'
 
-function Menu({ constituents, dispatch, navigator, style = {}, user }) {
+function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower = '..' }) {
   const MenuOptionWithNav = props => <MenuOption navigator={navigator} {...props} /> // eslint-disable-line
 
   let numRequests
@@ -53,7 +53,12 @@ function Menu({ constituents, dispatch, navigator, style = {}, user }) {
 
       <View>
         <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
+        <MenuOptionWithNav text={`VOTING POWER: ${votingPower}`} to="VotingPowerScreen" />
         <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
+        { user.sf_district
+          ? <MenuOptionWithNav text="ELECTED REP: A+" to="ElectedRepScreen" />
+          : <MenuOptionWithNav text="ELECTED REPS" to="BoardScreen" />
+        }
         <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
         <MenuOptionWithNav
           text="ABOUT" onPress={() => {
@@ -105,11 +110,13 @@ Menu.propTypes = {
   }).isRequired,
   style: React.PropTypes.shape({}),
   user: React.PropTypes.shape({}),
+  votingPower: React.PropTypes.number,
 }
 
 const mapStateToProps = state => ({
   constituents: state.constituents,
   user: state.user,
+  votingPower: state.votingPower,
 })
 
 export default connect(mapStateToProps)(Menu)

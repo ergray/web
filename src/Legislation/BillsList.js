@@ -58,7 +58,7 @@ class BillsList extends Component {
     }
 
     return (
-      <ScrollView style={{ marginBottom: homescreen ? 37 : 0 }}>
+      <ScrollView>
         <View style={{
           alignItems: 'center',
           backgroundColor: '#111',
