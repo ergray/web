@@ -59,23 +59,6 @@ class RequestsScreen extends Component {
           {requests.length === 0
             ? <View>
               <Text style={{ color: 'white', fontStyle: 'italic' }}>No requests— try inviting people.</Text>
-              <TouchableOpacity
-                activeOpacity={0.5}
-                style={{
-                  alignItems: 'center',
-                  borderColor: '#5DA0FF',
-                  borderRadius: 5,
-                  borderWidth: 1,
-                  height: 38,
-                  justifyContent: 'center',
-                  marginVertical: 20,
-                }}
-                onPress={() => {}}
-              >
-                <Text style={{ color: '#fff', fontSize: 13 }}>
-                  INVITE
-                </Text>
-              </TouchableOpacity>
             </View>
             : requests.map(user => (
               <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row' }}>
@@ -111,7 +94,7 @@ class RequestsScreen extends Component {
             ))
           }
 
-          <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 15 }}>APPROVED {numApproved}</Text>
+          <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 30 }}>APPROVED {numApproved}</Text>
           {approved && approved.map(user => (
             <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row', marginVertical: 7 }}>
               <TouchableOpacity
