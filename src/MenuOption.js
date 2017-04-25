@@ -8,7 +8,7 @@ class MenuOption extends Component {
   }
 
   render() {
-    const { navigator, notifications, style, text, to } = this.props
+    const { hoverColor = 'hsl(0,0%,10%)', navigator, notifications, style, text, to } = this.props
     let { onPress } = this.props
 
     if (!onPress) {
@@ -20,7 +20,7 @@ class MenuOption extends Component {
     return (
       <TouchableOpacity
         delayPressIn={60}
-        style={{ backgroundColor: this.state.hover ? 'hsl(0,0%,10%)' : null, flexDirection: 'row', ...style }}
+        style={{ backgroundColor: this.state.hover ? hoverColor : null, flexDirection: 'row', ...style }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
         onPress={onPress}
@@ -54,6 +54,7 @@ class MenuOption extends Component {
 }
 
 MenuOption.propTypes = {
+  hoverColor: React.PropTypes.string,
   navigator: React.PropTypes.shape({
     push: React.PropTypes.func,
   }),
