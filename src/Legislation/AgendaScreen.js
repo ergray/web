@@ -1,14 +1,11 @@
 import React from 'react'
 import {
-  View,
 } from 'react-native'
 import BillsList from './BillsList'
 
 function AgendaScreen(props) {
   return (
-    <View style={{ alignSelf: 'center' }}>
-      <BillsList {...props} />
-    </View>
+    <BillsList {...props} />
   )
 }
 
