@@ -37,8 +37,9 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
         }}
       >LIQUID DEMOCRACY</Text>
 
-      <TouchableOpacity
-        style={{ marginVertical: 20 }}
+      <HoverableOpacity
+        hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
+        outerStyle={{ marginVertical: 20 }}
         onPress={() => navigator.push({ name: 'YourRegistrationScreen', transition: 'SwipeFromLeft' })}
       >
         <Text
@@ -50,7 +51,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
             textAlign: 'center',
           }}
         >Hello, {first_name}</Text>
-      </TouchableOpacity>
+      </HoverableOpacity>
 
       <View>
         <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
