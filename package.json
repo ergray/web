@@ -11,6 +11,7 @@
     "build": "webpack --progress --colors",
     "predeploy": "npm version patch",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
+    "postdeploy": "git push --follow-tags",
     "test": "eslint . --cache"
   },
   "dependencies": {
