@@ -93216,16 +93216,13 @@ var mapStateToProps=pick([]);exports.default=
 
 "use strict";
 Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
-var _reactNative=__webpack_require__(4);
-
+__webpack_require__(4);
 
 var _BillsList=__webpack_require__(352);var _BillsList2=_interopRequireDefault(_BillsList);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 function AgendaScreen(props){
 return(
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center'}},
-_react2.default.createElement(_BillsList2.default,props)));
-
+_react2.default.createElement(_BillsList2.default,props));
 
 }
 
@@ -93827,7 +93824,7 @@ paddingHorizontal:4,
 paddingVertical:15}},
 
 
-_react2.default.createElement(_reactNative.View,{style:{width:26}},
+_react2.default.createElement(_reactNative.View,{style:{width:35}},
 _react2.default.createElement(_reactNative.Text,{style:{
 borderColor:'#888',
 borderRadius:12,
