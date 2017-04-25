@@ -92509,7 +92509,7 @@ var numApproved=!approved?'':'('+approved.length+')';
 var numRejected=!rejected?'':'('+rejected.length+')';
 
 return(
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',flex:1,marginHorizontal:20,marginTop:10}},
+_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',flex:1,marginHorizontal:20,marginTop:20}},
 _react2.default.createElement(_reactNative.Text,{style:{color:'white',marginBottom:20}},'Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.'),
 
 _react2.default.createElement(_reactNative.ScrollView,{style:{flex:1}},
