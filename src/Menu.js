@@ -55,7 +55,12 @@ function Menu({ constituents, dispatch, navigator, style = {}, user }) {
         <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
         <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
         <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
-        <MenuOptionWithNav text="ABOUT" to="AboutScreen" />
+        <MenuOptionWithNav
+          text="ABOUT" onPress={() => {
+            Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
+            .catch(() => {})
+          }}
+        />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="FeedbackScreen" />
         <MenuOptionWithNav
           style={{ marginTop: 30 }}
