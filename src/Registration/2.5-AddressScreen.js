@@ -21,7 +21,7 @@ class AddressScreen extends Component {
 
     return (
       <View>
-        <Header navigator={this.props.navigator} step={2} title="YOUR JURISDICTION" />
+        <Header navigator={this.props.navigator} step={3} title="YOUR JURISDICTION" />
 
         <Text style={{
           alignSelf: 'center',
@@ -65,7 +65,7 @@ class AddressScreen extends Component {
             })
             .then((response) => {
               if (response.status === 200) {
-                this.props.navigator.push({ name: 'LegalIdScreen', transition: null })
+                this.props.navigator.push({ name: 'EmailScreen', transition: null })
               }
             })
           }}
