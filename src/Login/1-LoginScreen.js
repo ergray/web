@@ -55,8 +55,14 @@ class LoginScreen extends Component {
               {(matchesMaxDeviceWidth) => {
                 const large = matchesMinWidth && !matchesMaxDeviceWidth
                 return (
-                  <View style={{ alignSelf: large ? 'flex-end' : 'center', marginTop: large ? 185 : 50, paddingRight: matchesMinWidth ? 43 : 0 }}>
-                    <IntroDescription large={matchesMinWidth} />
+                  <View style={{
+                    alignSelf: large ? 'flex-end' : 'stretch',
+                    marginHorizontal: large ? 0 : 30,
+                    marginTop: large ? 185 : 50,
+                    paddingRight: large ? 43 : 0,
+                  }}
+                  >
+                    <IntroDescription large={large} />
                     { !this.state.pressedGetStarted && (
                       <GetStartedButton
                         pressGetStarted={() => {
@@ -66,7 +72,7 @@ class LoginScreen extends Component {
                       />
                     )}
                     <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                      <PhoneLoginBox large={matchesMinWidth} loginRef={loginRef} navigator={this.props.navigator} />
+                      <PhoneLoginBox large={large} loginRef={loginRef} navigator={this.props.navigator} />
                     </Collapse>
                   </View>
                 )

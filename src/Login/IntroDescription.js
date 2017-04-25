@@ -19,14 +19,14 @@ export default function IntroDescription({ large }) {
       <Text
         style={{
           color: 'hsl(0, 0%, 28%)',
-          fontSize: large ? 28 : 20,
+          fontSize: 28,
           fontWeight: '700',
         }}
       >VOTE ON LAWS</Text>
       <Text
         style={{
           color: 'hsl(0, 0%, 32%)',
-          fontSize: large ? 24 : 16,
+          fontSize: large ? 24 : 22,
           fontWeight: '700',
         }}
       >Hold politicians accountable.</Text>
