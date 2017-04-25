@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import SortIcon from 'react-icons/lib/md/sort-by-alpha'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import HoverableOpacity from '../HoverableOpacity'
 import { convertDateToLongFormat } from './convert-dates'
 import BillsListItem from './BillsListItem'
 import PastAgendas from './PastAgendas'
@@ -41,7 +41,7 @@ class BillsList extends Component {
       return (
         <Text style={{
           color: '#fff',
-          fontSize: 28,
+          fontSize: 24,
           fontWeight: '300',
           margin: 60,
         }}
@@ -58,7 +58,7 @@ class BillsList extends Component {
     }
 
     return (
-      <ScrollView style={{ marginBottom: homescreen ? 37 : 0 }}>
+      <ScrollView>
         <View style={{
           alignItems: 'center',
           backgroundColor: '#111',
@@ -72,12 +72,13 @@ class BillsList extends Component {
           <Text style={{ color: '#ddd', fontWeight: 'bold' }}>
             {convertDateToLongFormat(date).toUpperCase()}
           </Text>
-          <TouchableOpacity
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             style={{ padding: 15 }}
             onPress={() => this.props.dispatch({ type: 'TOGGLE_BILL_SORT' })}
           >
             <SortIcon color="#ddd" size={30} />
-          </TouchableOpacity>
+          </HoverableOpacity>
         </View>
 
         { agenda.map(bill => (

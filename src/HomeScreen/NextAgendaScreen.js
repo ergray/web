@@ -5,7 +5,6 @@ import {
 import { connect } from 'react-redux'
 import LinearGradient from '../LinearGradient'
 import HomeScreenHeader from './HomeScreenHeader'
-import HomeScreenFooter from './HomeScreenFooter'
 import NextAgendaContent from './NextAgendaContent'
 const pick = require('lodash/fp/pick')
 
@@ -18,7 +17,6 @@ function NextAgendaScreen({ navigator }) {
         style={{ flex: 1, justifyContent: 'flex-start' }}
       >
         <NextAgendaContent navigator={navigator} />
-        <HomeScreenFooter navigator={navigator} />
       </LinearGradient>
     </View>
   )
