@@ -1,7 +1,6 @@
 /* eslint global-require: 0 */
 
 export default {
-  AboutScreen: require('./AboutScreen').default,
   AddressScreen: require('./Registration/2.5-AddressScreen').default,
   AgendaScreen: require('./Legislation/AgendaScreen').default,
   AuditScreen: require('./Legislation/AuditScreen').default,
