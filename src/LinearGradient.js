@@ -11,7 +11,7 @@ const LinearGradient = ({ style, children, colors }) => (
 )
 
 LinearGradient.propTypes = {
-  children: React.PropTypes.arrayOf(React.PropTypes.node),
+  children: React.PropTypes.node,
   colors: React.PropTypes.arrayOf(React.PropTypes.string).isRequired,
   style: React.PropTypes.shape({}),
 }
