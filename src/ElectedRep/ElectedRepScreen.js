@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {
   Image,
+  Linking,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import letterGrade from 'letter-grade'
+import HoverableOpacity from '../HoverableOpacity'
 import reps from './current-reps'
 
 class ElectedRepScreen extends Component {
@@ -30,7 +31,6 @@ class ElectedRepScreen extends Component {
             borderWidth: 1,
             flexDirection: 'row',
             marginBottom: 20,
-            width: 190,
           }}
         >
           <Image
@@ -78,66 +78,68 @@ class ElectedRepScreen extends Component {
         <Text style={{ fontWeight: '700' }}> {rep.score}% </Text>
         of the time.</Text>
 
-        <a
-          href={`tel:${rep.officePhone.replace(/\D/g, '')}`}
-          style={{
-            borderColor: '#05A5D1',
-            borderRadius: 5,
-            borderStyle: 'solid',
-            borderWidth: 1,
-            color: '#fff',
-            cursor: 'pointer',
-            fontSize: 15,
-            marginLeft: 30,
-            marginTop: 30,
-            padding: '12 0',
-            textAlign: 'center',
-            textDecorationLine: 'none',
-            width: 553,
-          }}
-        >
-          CALL OFFICE: &nbsp; {rep.officePhone}
-        </a>
-
-        <a
-          href={`mailto:${rep.name.split(' ').join('.')}@sfgov.org`}
-          style={{
-            borderColor: '#05A5D1',
-            borderRadius: 5,
-            borderStyle: 'solid',
-            borderWidth: 1,
-            color: '#fff',
-            cursor: 'pointer',
-            fontSize: 15,
-            marginLeft: 30,
-            marginTop: 30,
-            padding: '12 0',
-            textAlign: 'center',
-            textDecorationLine: 'none',
-            width: 553,
-          }}
-        >
-          EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
-        </a>
-
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(193, 95%, 42%, 0.1)' }}
+          outerStyle={{ marginHorizontal: 30, marginTop: 30 }}
           style={{
             alignItems: 'center',
-            borderColor: '#5DA0FF',
+            borderColor: 'hsl(193, 95%, 42%)',
             borderRadius: 5,
             borderWidth: 1,
             height: 40,
             justifyContent: 'center',
-            marginHorizontal: 30,
-            marginTop: 30,
+          }}
+          onPress={() => {
+            Linking.openURL(`tel:${rep.officePhone.replace(/\D/g, '')}`)
+            .catch(() => {})
+          }}
+        >
+          <Text style={{ color: '#fff', fontSize: 13 }}>
+            CALL OFFICE: &nbsp; {rep.officePhone}
+          </Text>
+        </HoverableOpacity>
+
+        <HoverableOpacity
+          activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(193, 95%, 42%, 0.1)' }}
+          outerStyle={{ marginHorizontal: 30, marginTop: 30 }}
+          style={{
+            alignItems: 'center',
+            borderColor: 'hsl(193, 95%, 42%)',
+            borderRadius: 5,
+            borderWidth: 1,
+            height: 40,
+            justifyContent: 'center',
+          }}
+          onPress={() => {
+            Linking.openURL(`mailto:${rep.name.split(' ').join('.')}@sfgov.org`)
+            .catch(() => {})
+          }}
+        >
+          <Text style={{ color: '#fff', fontSize: 13 }}>
+            EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
+          </Text>
+        </HoverableOpacity>
+
+        <HoverableOpacity
+          activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
+          outerStyle={{ margin: 30 }}
+          style={{
+            alignItems: 'center',
+            borderColor: 'hsl(215, 100%, 68%)',
+            borderRadius: 5,
+            borderWidth: 1,
+            height: 40,
+            justifyContent: 'center',
           }}
           onPress={() => this.props.navigator.push({ name: 'BoardScreen' })}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             VIEW ALL ELECTED REPS
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
       </View>
     )
   }
