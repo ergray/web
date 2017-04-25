@@ -94172,8 +94172,14 @@ function(matchesMinWidth){return _react2.default.createElement(_reactResponsive2
 function(matchesMaxDeviceWidth){
 var large=matchesMinWidth&&!matchesMaxDeviceWidth;
 return(
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:large?'flex-end':'center',marginTop:large?185:50,paddingRight:matchesMinWidth?43:0}},
-_react2.default.createElement(_IntroDescription2.default,{large:matchesMinWidth}),
+_react2.default.createElement(_reactNative.View,{style:{
+alignSelf:large?'flex-end':'stretch',
+marginHorizontal:large?0:30,
+marginTop:large?185:50,
+paddingRight:large?43:0}},
+
+
+_react2.default.createElement(_IntroDescription2.default,{large:large}),
 !_this2.state.pressedGetStarted&&
 _react2.default.createElement(_GetStartedButton2.default,{
 pressGetStarted:function pressGetStarted(){
@@ -94183,7 +94189,7 @@ loginRef.input.focus();
 
 
 _react2.default.createElement(_reactCollapse.Collapse,{isOpened:_this2.state.pressedGetStarted,springConfig:{damping:20,stiffness:300}},
-_react2.default.createElement(_PhoneLoginBox2.default,{large:matchesMinWidth,loginRef:loginRef,navigator:_this2.props.navigator}))));
+_react2.default.createElement(_PhoneLoginBox2.default,{large:large,loginRef:loginRef,navigator:_this2.props.navigator}))));
 
 
 
@@ -94621,14 +94627,14 @@ marginBottom:60}},
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'hsl(0, 0%, 28%)',
-fontSize:large?28:20,
+fontSize:28,
 fontWeight:'700'}},'VOTE ON LAWS'),
 
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'hsl(0, 0%, 32%)',
-fontSize:large?24:16,
+fontSize:large?24:22,
 fontWeight:'700'}},'Hold politicians accountable.'),
 
 
