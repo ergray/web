@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Dimensions,
-  Keyboard,
   Text,
   TextInput,
   View,
@@ -62,8 +61,6 @@ class ZipScreen extends Component {
             this.setState({ zip: newText })
 
             if (newText.length === 5) {
-              Keyboard.dismiss()
-
               this.props.dispatch({ type: 'SET_REGISTRATION_ZIP', zip: newText })
 
               fetch('https://api.liquid.vote/my-registration-info', {
