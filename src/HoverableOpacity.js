@@ -8,7 +8,7 @@ export default class HoverableOpacity extends Component {
   }
 
   render() {
-    const { outerStyle, hoverStyle } = this.props
+    const { outerStyle, hoverStyle, ...remainingProps } = this.props
 
     return (
       <TouchableOpacity
@@ -17,7 +17,7 @@ export default class HoverableOpacity extends Component {
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
       >
-        <TouchableOpacity {...this.props} />
+        <TouchableOpacity {...remainingProps} />
       </TouchableOpacity>
     )
   }
