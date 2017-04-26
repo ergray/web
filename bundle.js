@@ -51395,9 +51395,10 @@ if(!agenda){
 return(
 _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
-fontSize:24,
+fontSize:18,
 fontWeight:'300',
-margin:60}},'Loading...'));
+marginHorizontal:30,
+marginTop:20}},'Loading...'));
 
 
 
@@ -94572,12 +94573,12 @@ backgroundImage:'linear-gradient(-180deg, #B4ED50 0%, #47a521 100%)'},
 
 outerStyle:{
 backgroundImage:'linear-gradient(-180deg, #B4ED50 0%, #429321 100%)',
-boxShadow:'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px'},
-
-style:{
 borderColor:'#5F5F5F',
 borderRadius:6,
 borderWidth:1,
+boxShadow:'rgba(0, 30, 0, 0.5) 0px 40px 28px -25px'},
+
+style:{
 height:64,
 justifyContent:'center',
 paddingHorizontal:30},
