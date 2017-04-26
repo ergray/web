@@ -10,7 +10,6 @@ import BackIcon from 'react-icons/lib/md/chevron-left'
 import HoverableOpacity from '../HoverableOpacity'
 import BillContents from './BillContents'
 import BillArguments from './BillArguments'
-import { hasDatePassed } from './convert-dates'
 
 class BillScreen extends Component {
   constructor(props) {
@@ -77,12 +76,6 @@ class BillScreen extends Component {
     }
 
     function tapPosition(tappedPosition) {
-      // Don't let them vote if the bill is no longer active
-      if (hasDatePassed(bill.date)) {
-        window.alert('This bill has already been voted upon in the legislature.') // eslint-disable-line
-        return
-      }
-
       // Don't let them vote if they're not verified
       if (!isVerified) {
         window.alert('Your registration must be verified before you can vote on legislation.') // eslint-disable-line
