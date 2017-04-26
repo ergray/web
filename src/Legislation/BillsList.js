@@ -41,9 +41,10 @@ class BillsList extends Component {
       return (
         <Text style={{
           color: '#fff',
-          fontSize: 24,
+          fontSize: 18,
           fontWeight: '300',
-          margin: 60,
+          marginHorizontal: 30,
+          marginTop: 20,
         }}
         >Loading...</Text>
       )
