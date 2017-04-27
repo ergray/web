@@ -6,14 +6,15 @@ import graphic from './voting_power_graphic.png'
 function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
   return (
     <View style={{ alignSelf: 'center', marginHorizontal: 20 }}>
-      <Text style={{ color: 'white', fontSize: 22, marginTop: 15 }}>
+      <Text style={{ color: 'white', fontSize: 50, marginTop: 30 }}>
         { user.first_name } { user.last_name }
       </Text>
-      <Text style={{ color: 'white', fontSize: 30, fontWeight: '700', marginTop: 10 }}>
+      <Text style={{ color: 'white', fontSize: 40, fontWeight: '700', marginTop: 30 }}>
+        <Text style={{ fontSize: 18, fontWeight: '400', marginRight: 10 }}>Your max voting power:</Text>
         { votingPower }
       </Text>
-      <Text style={{ color: 'white', marginTop: 10 }}>
-        This represents all of the people delegating to you, and all the people delegating to them, and so on.
+      <Text style={{ color: 'white', marginTop: 30 }}>
+        This is all the people delegating to you, all the people delegating to them, and to them, and so on.
       </Text>
 
       <Image
@@ -21,12 +22,12 @@ function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
         style={{
           alignSelf: 'center',
           height: 170,
-          marginVertical: 30,
+          marginVertical: 50,
           width: 252,
         }}
       />
 
-      <Text style={{ color: 'white' }}>
+      <Text style={{ color: 'white', fontStyle: 'italic', textAlign: 'center' }}>
         Invite more people to increase your voting power.
       </Text>
 

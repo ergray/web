@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import HoverableOpacity from '../HoverableOpacity'
@@ -51,54 +50,53 @@ class PastAgendas extends Component {
           color: '#fff',
           fontSize: 18,
           fontWeight: '300',
-          marginHorizontal: 30,
-          marginTop: 20,
+          margin: 30,
         }}
         >Loading...</Text>
       )
     }
 
     return (
-      <View style={{ marginHorizontal: 30, marginTop: 30 }}>
+      <View style={{ margin: 30 }}>
 
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+          outerStyle={{ marginBottom: 15 }}
           style={{
             alignItems: 'center',
-            backgroundColor: '#333',
-            borderColor: 'grey',
+            borderColor: 'hsl(0,0%,30%)',
             borderRadius: 5,
             borderWidth: 1,
             height: 38,
             justifyContent: 'center',
-            marginBottom: 15,
-            paddingVertical: 8,
-            position: 'relative',
-            shadowOpacity: 0,
           }}
           onPress={() => this.setState({ activated: false })}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
             HIDE PAST AGENDAS
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
 
         { dates.map(date => (
           <HoverableOpacity
             hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             key={date}
-            outerStyle={{ marginVertical: 6 }}
-            style={{
-              borderColor: 'grey',
+            outerStyle={{
+              borderColor: 'hsla(0,0%,100%,0.25)',
               borderRadius: 4,
               borderWidth: 1,
+              marginVertical: 8,
+            }}
+            style={{
+              backgroundImage: 'linear-gradient(-180deg, hsla(0,0%,20%,0.5) 0%, hsla(0,0%,10%,0.5) 100%)',
               flexDirection: 'row',
               justifyContent: 'space-between',
-              padding: 10,
+              padding: 15,
             }}
             onPress={() => this.props.navigator.push({ backable: true, date, name: 'AgendaScreen' })}
           >
-            <Text style={{ color: '#fff' }}>{ convertDateToLongFormat(date) }</Text>
+            <Text style={{ color: '#eee' }}>{ convertDateToLongFormat(date) }</Text>
             <Text style={{ color: 'lightgrey', fontSize: 14, fontWeight: '800' }}>></Text>
           </HoverableOpacity>
         )) }
