@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
+  Switch,
   Text,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -42,7 +43,7 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { navigator, nextAgenda } = this.props
+    const { dispatch, navigator, nextAgenda, user } = this.props
 
     if (!nextAgenda) {
       return (
@@ -70,6 +71,46 @@ class NextAgendaContent extends Component {
             marginTop: 20,
           }}
           >{message}</Text>
+
+          <Text style={{
+            alignItems: 'center',
+            color: '#fff',
+            fontSize: 18,
+            fontWeight: '300',
+            marginBottom: 30,
+            marginHorizontal: 30,
+            marginTop: 40,
+            textAlign: 'center',
+          }}
+          >
+          Would you like a notification when it's released?
+            <Switch
+              activeThumbColor="#5CB85C"
+              activeTrackColor="#ADDAAD"
+              style={{
+                display: 'inline-block',
+                marginHorizontal: 10,
+                position: 'relative',
+                top: 2,
+                width: 60,
+              }}
+              thumbColor="#EBA9A7"
+              trackColor="#D9534F"
+              value={user.legislation_notification}
+              onValueChange={() => {
+                dispatch({ type: 'TOGGLE_LEGISLATION_NOTIFICATIONS' })
+                fetch('http://localhost:1776/legislation-notifications', {
+                  headers: { Session_ID: this.props.sessionId },
+                  method: 'PUT',
+                })
+              }}
+            />
+            <Text style={{ display: 'inline-block', width: 35 }}>
+              {user.legislation_notification ? 'ON' : 'OFF' }
+            </Text>
+          </Text>
+
+
           <PastAgendas navigator={navigator} />
         </ScrollView>
       )
@@ -110,11 +151,14 @@ NextAgendaContent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   nextAgenda: React.PropTypes.shape(),
+  sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape().isRequired,
 }
 
 const mapStateToProps = pick([
   'nextAgenda',
   'sessionId',
+  'user',
 ])
 
 export default connect(mapStateToProps)(NextAgendaContent)
