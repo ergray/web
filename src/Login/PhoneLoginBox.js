@@ -32,6 +32,7 @@ class PhoneLoginBox extends Component {
             color: '#fff',
             fontSize: 48,
             fontWeight: '100',
+            lineHeight: 55,
             marginLeft: 40,
           }}
         >Reclaim</Text>
@@ -40,6 +41,7 @@ class PhoneLoginBox extends Component {
             color: '#fff',
             fontSize: 48,
             fontWeight: '100',
+            lineHeight: 55,
             marginLeft: 40,
           }}
         >your voice:</Text>
