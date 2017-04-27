@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import HoverableOpacity from '../HoverableOpacity'
 
 class RequestsScreen extends Component {
   constructor(props) {
@@ -63,33 +63,39 @@ class RequestsScreen extends Component {
             : requests.map(user => (
               <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row' }}>
                 <Text style={{ color: 'white', flex: 1, marginBottom: 5 }}>{user.first_name} {user.last_name}</Text>
-                <TouchableOpacity
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: null,
+                <HoverableOpacity
+                  hoverStyle={{ backgroundColor: 'hsla(120, 57%, 40%, 0.1)' }}
+                  outerStyle={{
                     borderColor: '#2ca02c',
                     borderRadius: 19,
                     borderWidth: 1,
-                    marginRight: 15,
+                    marginRight: 10,
+                  }}
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: null,
                     paddingVertical: 6,
                     shadowOpacity: 0,
                     width: 50,
                   }}
                   onPress={() => { this.updatePermissions('requests', 'approved', user) }}
-                ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    alignItems: 'center',
-                    backgroundColor: null,
+                ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></HoverableOpacity>
+                <HoverableOpacity
+                  hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
+                  outerStyle={{
                     borderColor: '#d62728',
                     borderRadius: 19,
                     borderWidth: 1,
+                  }}
+                  style={{
+                    alignItems: 'center',
+                    backgroundColor: null,
                     paddingVertical: 6,
                     shadowOpacity: 0,
                     width: 50,
                   }}
                   onPress={() => { this.updatePermissions('requests', 'rejected', user) }}
-                ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></TouchableOpacity>
+                ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></HoverableOpacity>
               </View>
             ))
           }
@@ -97,19 +103,22 @@ class RequestsScreen extends Component {
           <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 30 }}>APPROVED {numApproved}</Text>
           {approved && approved.map(user => (
             <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row', marginVertical: 7 }}>
-              <TouchableOpacity
+              <HoverableOpacity
+                hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
+                outerStyle={{
+                  borderColor: '#d62728',
+                  borderRadius: 19,
+                  borderWidth: 1,
+                  marginRight: 10,
+                }}
                 style={{
                   alignItems: 'center',
-                  borderColor: '#d62728',
-                  borderRadius: 25,
-                  borderWidth: 1,
                   height: 30,
                   justifyContent: 'center',
-                  marginRight: 10,
                   width: 30,
                 }}
                 onPress={() => { this.updatePermissions('approved', 'rejected', user) }}
-              ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></TouchableOpacity>
+              ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></HoverableOpacity>
               <Text style={{ color: 'white', flex: 1 }}>{user.first_name} {user.last_name}</Text>
             </View>
           ))}
@@ -117,19 +126,22 @@ class RequestsScreen extends Component {
           <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 15 }}>REJECTED {numRejected}</Text>
           {rejected && rejected.map(user => (
             <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row', marginVertical: 7 }}>
-              <TouchableOpacity
-                style={{
-                  alignItems: 'center',
+              <HoverableOpacity
+                hoverStyle={{ backgroundColor: 'hsla(120, 57%, 40%, 0.1)' }}
+                outerStyle={{
                   borderColor: '#2ca02c',
                   borderRadius: 19,
                   borderWidth: 1,
+                  marginRight: 10,
+                }}
+                style={{
+                  alignItems: 'center',
                   height: 30,
                   justifyContent: 'center',
-                  marginRight: 10,
                   width: 30,
                 }}
                 onPress={() => { this.updatePermissions('rejected', 'approved', user) }}
-              ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></TouchableOpacity>
+              ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></HoverableOpacity>
               <Text style={{ color: 'white', flex: 1 }}>{user.first_name} {user.last_name}</Text>
             </View>
           ))}
