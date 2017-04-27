@@ -33,7 +33,7 @@ function Header(props) {
     }}
     >
       <View style={{ width: 65 }}>
-        { props.path.backable && (
+        { props.location.state && props.location.state.backable && (
           <HoverableOpacity
             hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             style={{ height: 49, paddingHorizontal: 15, paddingTop: 10 }}
@@ -72,6 +72,11 @@ function Header(props) {
 Header.propTypes = {
   history: React.PropTypes.shape({ // eslint-disable-line
     goBack: React.PropTypes.func.isRequired,
+  }),
+  location: React.PropTypes.shape({
+    state: React.PropTypes.shape({
+      backable: React.PropTypes.bool,
+    }),
   }),
   path: React.PropTypes.string.isRequired,
 }

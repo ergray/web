@@ -50,7 +50,7 @@ export default () => (
               if (Screen.disableMenu) {
                 return (
                   <View style={{ flex: 1, height: '100%', width: '100%' }}>
-                    <Header path={path} />
+                    <Header location={location} path={path} />
                     <Screen history={history} location={location} match={match} />
                   </View>
                 )

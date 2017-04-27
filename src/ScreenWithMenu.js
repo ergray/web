@@ -72,7 +72,7 @@ class ScreenWithMenu extends Component {
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Menu history={history} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
         <View style={{ flex: 1, height: '100%' }}>
-          <Header history={history} path={path} />
+          <Header history={history} location={location} path={path} />
           <Screen history={history} location={location} match={match} />
         </View>
       </View>
