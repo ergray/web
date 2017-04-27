@@ -51,7 +51,7 @@ function Header(props) {
           style={{
             height: 24,
             marginRight: 7,
-            width: 24,
+            width: 25,
           }}
         />
         <Text
