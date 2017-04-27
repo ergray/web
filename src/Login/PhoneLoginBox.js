@@ -24,7 +24,7 @@ class PhoneLoginBox extends Component {
         backgroundColor: 'hsla(0, 0%, 13%, 0.9)',
         borderRadius: 10,
         paddingVertical: 40,
-        width: this.props.large ? 450 : 316,
+        width: this.props.large ? 450 : undefined,
       }}
       >
         <Text
@@ -34,14 +34,18 @@ class PhoneLoginBox extends Component {
             fontWeight: '100',
             marginLeft: 40,
           }}
-        >
-          { // eslint-disable-next-line no-multi-spaces
-          }<Text style={{ width: 600 }}>Reclaim               </Text>
-          <Text>your voice:</Text>
-        </Text>
+        >Reclaim</Text>
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 48,
+            fontWeight: '100',
+            marginLeft: 40,
+          }}
+        >your voice:</Text>
         <TextInput
           autoCorrect={false}
-          placeholder={this.props.large ? 'Enter your mobile number' : 'Enter your mobile #'}
+          placeholder="Enter your mobile number"
           ref={(input) => { this.props.loginRef.input = input }}
           style={{
             backgroundColor: '#fff',
