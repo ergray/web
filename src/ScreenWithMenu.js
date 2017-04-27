@@ -66,14 +66,14 @@ class ScreenWithMenu extends Component {
   }
 
   render() {
-    const { history, path, Screen } = this.props
+    const { history, location, match, path, Screen } = this.props
 
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
         <Menu history={history} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
         <View style={{ flex: 1, height: '100%' }}>
           <Header history={history} path={path} />
-          <Screen history={history} />
+          <Screen history={history} location={location} match={match} />
         </View>
       </View>
     )
@@ -87,6 +87,8 @@ ScreenWithMenu.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   isVerified: React.PropTypes.bool.isRequired,
+  location: React.PropTypes.shape({}).isRequired,
+  match: React.PropTypes.shape({}).isRequired,
   path: React.PropTypes.string.isRequired,
   Screen: React.PropTypes.func.isRequired, // eslint-disable-line
 }

@@ -56,7 +56,13 @@ export default () => (
                 )
               }
 
-              return <ScreenWithMenu Screen={Screen} history={history} match={match} path={path} />
+              return (<ScreenWithMenu
+                Screen={Screen}
+                history={history}
+                location={location}
+                match={match}
+                path={path}
+              />)
             }}
           />
         )

@@ -93,7 +93,7 @@ class DelegatesScreen extends Component {
                 paddingHorizontal: 20,
                 paddingVertical: 15,
               }}
-              onPress={() => history.push({ name: 'VotingPowerScreen' })}
+              onPress={() => history.push('/voting-power')}
             >
               <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
                 0.
@@ -118,7 +118,7 @@ class DelegatesScreen extends Component {
                   flexDirection: 'row',
                   padding: 20,
                 }}
-                onPress={() => { this.props.history.push({ name: 'DelegateInfoScreen', rowIndex }) }}
+                onPress={() => { this.props.history.push(`/delegates/${delegates[rowIndex].phone}`, { rowIndex }) }}
               >
                 <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
                   {Number(rowIndex) + 1}.

@@ -18,20 +18,32 @@ class DelegateInfoScreen extends Component {
   constructor(props) {
     super(props)
 
-    const activeDelegate = props.delegates[props.route.rowIndex]
+    const rowIndex = props.delegates.findIndex(d => d.phone === props.match.params.phoneNumber)
 
-    // Get delegate info from the server
-    fetch(`https://api.liquid.vote/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
-    .then(response => response.json())
-    .then(({ name, status, user_id }) => {
-      props.dispatch({ name, rowIndex: props.route.rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
-    })
+    const activeDelegate = props.delegates[rowIndex]
+
+    if (activeDelegate) {
+      // Get delegate info from the server
+      fetch(`https://api.liquid.vote/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
+      .then(response => response.json())
+      .then(({ name, status, user_id }) => {
+        props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
+      })
+    }
   }
 
   render() {
-    const { delegates, dispatch, route, sessionId } = this.props
+    const { delegates, dispatch, match, route, sessionId } = this.props
 
-    const activeDelegate = delegates[route.rowIndex]
+    const rowIndex = delegates.findIndex(d => d.phone === match.params.phoneNumber)
+
+    const activeDelegate = delegates[rowIndex]
+
+    if (!activeDelegate) {
+      return (
+        <Text style={{ color: '#fff', margin: 30 }}>Not a delegate</Text>
+      )
+    }
 
     const statusCodesResponses = {
 
@@ -148,6 +160,11 @@ DelegateInfoScreen.propTypes = {
     name: React.PropTypes.string,
   })),
   dispatch: React.PropTypes.func.isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({
+      phoneNumber: React.PropTypes.string,
+    }).isRequired,
+  }).isRequired,
   route: React.PropTypes.shape({
     rowIndex: React.PropTypes.number.isRequired,
   }),

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { AppState } from 'react-native'
 import { compose, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
@@ -18,9 +17,7 @@ persistStore(store, { storage: localForage,
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      appState: AppState.currentState,
-    }
+    this.state = {}
   }
 
   componentDidMount() {
