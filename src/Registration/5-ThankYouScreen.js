@@ -8,7 +8,7 @@ import {
 import logo from '../logo.png'
 import ProgressBar from './ProgressBar'
 
-function ThankYouScreen({ navigator }) {
+function ThankYouScreen({ history }) {
   return (
     <View>
       <Image
@@ -61,7 +61,7 @@ function ThankYouScreen({ navigator }) {
           marginHorizontal: 30,
           marginTop: 50,
         }}
-        onPress={() => navigator.resetTo({ name: 'HomeScreen' })}
+        onPress={() => history.replace('/sf')}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           GO TO LEGISLATION &nbsp;→
@@ -75,9 +75,7 @@ function ThankYouScreen({ navigator }) {
 ThankYouScreen.disableHeader = true
 
 ThankYouScreen.propTypes = {
-  navigator: React.PropTypes.shape({
-    resetTo: React.PropTypes.func.isRequired,
-  }),
+  history: React.PropTypes.shape({}).isRequired,
 }
 
 export default ThankYouScreen

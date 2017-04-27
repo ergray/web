@@ -8,7 +8,7 @@ import {
 import HoverableOpacity from '../HoverableOpacity'
 import reps from './current-reps'
 
-function BoardScreen({ navigator }) {
+function BoardScreen({ history }) {
   const repsArray = Object.keys(reps).reduce((memo, district) => (
     [...memo, { ...reps[district], district }]
   ), [])
@@ -27,7 +27,7 @@ function BoardScreen({ navigator }) {
           height: 40,
           justifyContent: 'center',
         }}
-        onPress={() => navigator.push({ backable: true, name: 'DistrictsMapScreen' })}
+        onPress={() => history.push('/sf/districts-map', { backable: true })}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           VIEW DISTRICTS MAP
@@ -79,7 +79,7 @@ function BoardScreen({ navigator }) {
 BoardScreen.title = 'BOARD OF SUPERVISORS'
 
 BoardScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
 }

@@ -11,7 +11,7 @@ import photoGuides from './photo-guides.png'
 
 const Camera = props => <View {...props} /> // eslint-disable-line react-filenames/filename-matches-component
 
-function CameraScreen({ dispatch, navigator }) {
+function CameraScreen({ dispatch, history }) {
   const { height, width } = Dimensions.get('window')
   const guidesWidth = Math.min(375, width)
   const guidesHeight = Math.floor(guidesWidth * 1.445)
@@ -52,7 +52,7 @@ function CameraScreen({ dispatch, navigator }) {
           }}
           onPress={() => this.camera.capture()
             .then(data => dispatch({ path: data.path, type: 'CAPTURE_ID_PHOTO' }))
-            .then(() => { navigator.push({ name: 'IdReviewScreen', transition: null }) })
+            .then(() => { history.push({ name: 'IdReviewScreen', transition: null }) })
             .catch(err => console.error('err:', err)) // eslint-disable-line no-console
           }
         >
@@ -67,7 +67,7 @@ CameraScreen.disableHeader = true
 
 CameraScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
 }

@@ -24,7 +24,7 @@ function DelegatesHeader(props) {
     >
       <TouchableOpacity
         style={{ flex: 1, height: 53, justifyContent: 'center', minWidth: 50, paddingLeft: 15 }}
-        onPress={() => { props.navigator.pop() }}
+        onPress={() => { props.history.goBack() }}
       >
         <BackIcon color="white" size={30} />
       </TouchableOpacity>
@@ -77,8 +77,8 @@ DelegatesHeader.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape()),
   delegatesEditMode: React.PropTypes.bool,
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({ // eslint-disable-line
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({ // eslint-disable-line
+    goBack: React.PropTypes.func.isRequired,
   }),
 }
 

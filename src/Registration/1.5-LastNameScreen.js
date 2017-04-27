@@ -21,7 +21,7 @@ class LastNameScreen extends Component {
 
     return (
       <View>
-        <Header navigator={this.props.navigator} step={1} title="THE BASICS" />
+        <Header history={this.props.history} step={1} title="THE BASICS" />
 
         <Text style={{
           alignSelf: 'center',
@@ -69,7 +69,7 @@ class LastNameScreen extends Component {
             })
             .then((response) => {
               if (response.status === 200) {
-                this.props.navigator.push({ name: 'ZipScreen', transition: null })
+                this.props.history.push({ name: 'ZipScreen', transition: null })
               }
             })
           }}
@@ -83,7 +83,7 @@ class LastNameScreen extends Component {
 LastNameScreen.disableHeader = true
 
 LastNameScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,

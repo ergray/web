@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import LogoutIcon from 'react-icons/lib/io/power'
 import HoverableOpacity from './HoverableOpacity'
 
-function AuthErrorScreen({ dispatch, navigator }) {
+function AuthErrorScreen({ dispatch, history }) {
   return (
     <View style={{ alignSelf: 'center', marginHorizontal: 30, marginTop: 20 }}>
 
@@ -25,7 +25,7 @@ function AuthErrorScreen({ dispatch, navigator }) {
         }}
         onPress={() => {
           dispatch({ type: 'LOGOUT' })
-          navigator.resetTo({ name: 'LoginScreen' })
+          history.replace('/')
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
@@ -43,8 +43,8 @@ AuthErrorScreen.disableMenu = true
 
 AuthErrorScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
-    popToTop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    goBackToTop: React.PropTypes.func.isRequired,
   }),
 }
 

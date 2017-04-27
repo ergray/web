@@ -14,7 +14,9 @@ function prettifyPhone(tenDigits) {
   return `(${areaCode}) ${middle3}-${final4}`
 }
 
-function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
+function ConfirmNewNumberScreen({ dispatch, history, match }) {
+  const phoneNumber = match.params.phoneNumber
+
   return (
     <View style={{ alignSelf: 'center', justifyContent: 'space-between', marginHorizontal: 30, width: 500 }}>
       <View style={{ alignItems: 'center' }}>
@@ -25,7 +27,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
           marginTop: 40,
         }}
         >
-          {prettifyPhone(route.phoneNumber)}
+          {prettifyPhone(phoneNumber)}
         </Text>
         <Text style={{
           color: '#ccc',
@@ -63,7 +65,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
           onPress={() => {
             fetch('https://api.liquid.vote/login', {
               body: JSON.stringify({
-                phone: route.phoneNumber,
+                phone: phoneNumber,
               }),
               headers: {
                 Accept: 'application/json',
@@ -72,9 +74,9 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
               method: 'POST',
             })
 
-            dispatch({ phoneNumber: route.phoneNumber, type: 'ADD_KNOWN_NUMBER' })
-            dispatch({ phoneNumber: route.phoneNumber, type: 'SET_PHONE_NUMBER' })
-            navigator.replace({ name: 'EnterSMSCodeScreen' })
+            dispatch({ phoneNumber, type: 'ADD_KNOWN_NUMBER' })
+            dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
+            history.replace('/enter-sms')
           }}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
@@ -95,7 +97,7 @@ function ConfirmNewNumberScreen({ dispatch, navigator, route }) {
             marginTop: 30,
           }}
           onPress={() => {
-            navigator.pop()
+            history.goBack()
           }}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
@@ -112,11 +114,11 @@ ConfirmNewNumberScreen.disableMenu = true
 
 ConfirmNewNumberScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    goBack: React.PropTypes.func.isRequired,
     replace: React.PropTypes.func.isRequired,
   }),
-  route: React.PropTypes.shape({}).isRequired,
+  match: React.PropTypes.shape({}).isRequired,
 }
 
 export default connect()(ConfirmNewNumberScreen)

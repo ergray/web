@@ -1,6 +1,6 @@
 {
   "name": "liquid-web",
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "React-native-web client to connect to api.liquid.vote",
   "author": "github.com/liquidvote",
   "private": true,
@@ -48,6 +48,7 @@
     "react-native-web": "^0.0.81",
     "react-redux": "^5.0.3",
     "react-responsive": "^1.2.10",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0",
     "remote-redux-devtools": "^0.5.7",

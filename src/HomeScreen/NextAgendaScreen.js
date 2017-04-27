@@ -8,7 +8,7 @@ import HomeScreenHeader from './HomeScreenHeader'
 import NextAgendaContent from './NextAgendaContent'
 const pick = require('lodash/fp/pick')
 
-function NextAgendaScreen({ navigator }) {
+function NextAgendaScreen({ history }) {
   return (
     <View style={{ flex: 1, height: '100%' }}>
       <HomeScreenHeader />
@@ -16,7 +16,7 @@ function NextAgendaScreen({ navigator }) {
         colors={['#000', '#292929']}
         style={{ flex: 1, justifyContent: 'flex-start' }}
       >
-        <NextAgendaContent navigator={navigator} />
+        <NextAgendaContent history={history} />
       </LinearGradient>
     </View>
   )
@@ -25,7 +25,7 @@ function NextAgendaScreen({ navigator }) {
 NextAgendaScreen.disableHeader = true
 
 NextAgendaScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
 }

@@ -14,11 +14,11 @@ class BillScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      billVotes: this.props.route.bill.votes,
+      billVotes: props.bill.votes,
     }
 
     // Refresh vote count
-    const activeBill = props.route.bill.uid
+    const activeBill = props.bill.uid
     fetch(`https://api.liquid.vote/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
@@ -28,8 +28,7 @@ class BillScreen extends Component {
   }
 
   render() {
-    const { delegates, dispatch, isVerified, route, navigator, user, votes, showDistrictVotes } = this.props
-    const bill = route.bill
+    const { bill, delegates, dispatch, history, isVerified, location, user, votes, showDistrictVotes } = this.props
 
     let vote
     let position
@@ -85,7 +84,7 @@ class BillScreen extends Component {
       }
 
       // Go to ConfirmVoteScreen
-      navigator.push({ backable: true, bill, name: 'ConfirmVoteScreen', position: tappedPosition })
+      history.push(`/sf/${bill.date}/${bill.id}/vote/${tappedPosition}`, { backable: true, bill })
     }
 
     const highlightColor = '#444'
@@ -103,7 +102,7 @@ class BillScreen extends Component {
           <HoverableOpacity
             hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             style={{ paddingHorizontal: 15, paddingVertical: 10 }}
-            onPress={() => navigator.pop()}
+            onPress={() => history.goBack()}
           >
             <BackIcon color="white" size={30} />
           </HoverableOpacity>
@@ -214,7 +213,7 @@ class BillScreen extends Component {
             <HoverableOpacity
               hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
               outerStyle={{ alignSelf: 'flex-end' }}
-              onPress={() => navigator.push({ backable: true, bill, name: 'AuditScreen' })}
+              onPress={() => history.push(`${location.pathname}/audit`, { backable: true })}
             >
               <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
             </HoverableOpacity>
@@ -228,18 +227,19 @@ class BillScreen extends Component {
 BillScreen.disableHeader = true
 
 BillScreen.propTypes = {
+  bill: React.PropTypes.shape({
+    uid: React.PropTypes.string.isRequired,
+    votes: React.PropTypes.shape({}),
+  }),
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({})),
   dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
-  route: React.PropTypes.shape({
-    bill: React.PropTypes.shape({
-      uid: React.PropTypes.string.isRequired,
-      votes: React.PropTypes.shape({}),
-    }),
-  }),
+  isVerified: React.PropTypes.bool.isRequired,
+  location: React.PropTypes.shape({
+    pathname: React.PropTypes.string.isRequired,
+  }).isRequired,
   showDistrictVotes: React.PropTypes.bool,
   user: React.PropTypes.shape({
     sf_district: React.PropTypes.number,

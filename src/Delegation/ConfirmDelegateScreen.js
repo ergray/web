@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux'
 const pick = require('lodash/fp/pick')
 
-function ConfirmDelegateScreen({ delegates, dispatch, navigator, route }) {
+function ConfirmDelegateScreen({ delegates, dispatch, history, route }) {
   return (
     <View style={{ marginHorizontal: 30, marginTop: 10 }}>
       <Text style={{
@@ -56,7 +56,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, navigator, route }) {
         }}
         onPress={() => {
           dispatch({ delegates: [...delegates, route.newDelegate], type: 'SYNC_DELEGATES' })
-          navigator.replace({ name: 'DelegateInfoScreen', rowIndex: delegates.length })
+          history.replace({ name: 'DelegateInfoScreen', rowIndex: delegates.length })
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
@@ -74,7 +74,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, navigator, route }) {
           justifyContent: 'center',
           marginBottom: 15,
         }}
-        onPress={() => navigator.pop()}
+        onPress={() => history.goBack()}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           NO, NEVERMIND
@@ -91,7 +91,7 @@ ConfirmDelegateScreen.propTypes = {
     name: React.PropTypes.string,
   })).isRequired,
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({}).isRequired,
+  history: React.PropTypes.shape({}).isRequired,
   route: React.PropTypes.shape({
     newDelegate: React.PropTypes.shape({
       name: React.PropTypes.string.isRequired,

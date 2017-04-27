@@ -43,7 +43,7 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { dispatch, navigator, nextAgenda, user } = this.props
+    const { dispatch, history, nextAgenda, user } = this.props
 
     if (!nextAgenda) {
       return (
@@ -109,7 +109,7 @@ class NextAgendaContent extends Component {
           </Text>
 
 
-          <PastAgendas navigator={navigator} />
+          <PastAgendas history={history} />
         </ScrollView>
       )
     }
@@ -129,7 +129,7 @@ class NextAgendaContent extends Component {
             margin: 30,
           }}
           >{message}</Text>
-          <PastAgendas navigator={navigator} />
+          <PastAgendas history={history} />
         </ScrollView>
       )
     }
@@ -144,7 +144,7 @@ NextAgendaContent.disableHeader = true
 
 NextAgendaContent.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   nextAgenda: React.PropTypes.shape(),

@@ -9,19 +9,35 @@ class AuditScreen extends Component {
       audit: 'Loading...',
     }
 
-    fetch(`https://api.liquid.vote/bill/${props.route.bill.uid}/audit`)
+    const { date, bill_id } = props.match.params
+
+    fetch(`https://api.liquid.vote/bill/${date}-${bill_id}/audit`)
       .then(response => response.text())
       .then(audit => this.setState({ audit }))
 
-    fetch(`https://api.liquid.vote/bill/${props.route.bill.uid}/audit/mine`, {
-      headers: { Session_ID: props.sessionId },
+    if (props.sessionId) {
+      this.getMyHash(props.sessionId)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.sessionId && nextProps.sessionId) {
+      this.getMyHash(nextProps.sessionId)
+    }
+  }
+
+  getMyHash(sessionId) {
+    const { date, bill_id } = this.props.match.params
+
+    fetch(`https://api.liquid.vote/bill/${date}-${bill_id}/audit/mine`, {
+      headers: { Session_ID: sessionId },
     })
-      .then((response) => {
-        if (response.status === 200) {
-          response.json()
-          .then(mine => this.setState({ mine }))
-        }
-      })
+    .then((response) => {
+      if (response.status === 200) {
+        response.json()
+        .then(mine => this.setState({ mine }))
+      }
+    })
   }
 
   render() {
@@ -61,9 +77,10 @@ class AuditScreen extends Component {
 AuditScreen.title = 'AUDIT VOTE'
 
 AuditScreen.propTypes = {
-  route: React.PropTypes.shape({
-    bill: React.PropTypes.shape({
-      uid: React.PropTypes.string.isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({
+      bill_id: React.PropTypes.string.isRequired,
+      date: React.PropTypes.string.isRequired,
     }),
   }),
   sessionId: React.PropTypes.string,

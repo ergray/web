@@ -34,7 +34,7 @@ class ScreenWithMenu extends Component {
     } else {
       fetch('https://api.liquid.vote/my-voting-power', { headers: { Session_ID: props.sessionId } })
       .then((response) => {
-        if (response.status === 401) { return props.navigator.push({ name: 'AuthErrorScreen' }) }
+        if (response.status === 401) { return props.history.push({ name: 'AuthErrorScreen' }) }
 
         return response.json()
         .then(({ voting_power }) => props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: voting_power }))
@@ -66,14 +66,14 @@ class ScreenWithMenu extends Component {
   }
 
   render() {
-    const { navigator, route, Screen } = this.props
+    const { history, location, match, path, Screen } = this.props
 
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Menu navigator={navigator} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
+        <Menu history={history} style={{ backgroundColor: '#080808', paddingTop: 30, width: 254 }} />
         <View style={{ flex: 1, height: '100%' }}>
-          <Header navigator={navigator} route={route} />
-          <Screen navigator={navigator} route={route} />
+          <Header history={history} location={location} path={path} />
+          <Screen history={history} location={location} match={match} />
         </View>
       </View>
     )
@@ -83,11 +83,13 @@ class ScreenWithMenu extends Component {
 ScreenWithMenu.disableHeader = true
 
 ScreenWithMenu.propTypes = {
-  isVerified: React.PropTypes.bool.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
-  }),
-  route: React.PropTypes.shape({}),
+  }).isRequired,
+  isVerified: React.PropTypes.bool.isRequired,
+  location: React.PropTypes.shape({}).isRequired,
+  match: React.PropTypes.shape({}).isRequired,
+  path: React.PropTypes.string.isRequired,
   Screen: React.PropTypes.func.isRequired, // eslint-disable-line
 }
 

@@ -1,10 +1,10 @@
-import { Navigator } from 'react-native'
+import { history } from 'react-native'
 // import buildStyleInterpolator from 'buildStyleInterpolator' // eslint-disable-line import/no-extraneous-dependencies
 
 const buildStyleInterpolator = () => {}
 
 // Based on https://github.com/facebook/react-native/issues/1953#issuecomment-209872368
-// To use: { transition: null } during navigator.push()
+// To use: { transition: null } during history.push()
 
 const NoTransition = {
   opacity: {
@@ -13,7 +13,7 @@ const NoTransition = {
   },
 }
 
-export default Object.assign({}, Navigator.SceneConfigs.FadeAndroid, {
+export default Object.assign({}, history.SceneConfigs.FadeAndroid, {
   animationInterpolators: {
     into: buildStyleInterpolator(NoTransition),
     out: buildStyleInterpolator(NoTransition),

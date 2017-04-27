@@ -12,7 +12,7 @@ class BillsListItem extends Component {
   }
 
   render() {
-    const { bill, navigator, agendaVotes } = this.props
+    const { bill, history, agendaVotes } = this.props
     const vote = agendaVotes[bill.uid]
 
     let position
@@ -40,7 +40,7 @@ class BillsListItem extends Component {
         underlayColor="#444"
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
-        onPress={() => navigator.push({ bill, name: 'BillScreen' })}
+        onPress={() => history.push(`/sf/${bill.date}/${bill.id}`)}
       ><View style={{
         backgroundColor: this.state.hover ? 'hsla(0,0%,100%,0.1)' : null,
         borderColor: 'grey',
@@ -97,7 +97,7 @@ class BillsListItem extends Component {
 BillsListItem.propTypes = {
   agendaVotes: React.PropTypes.shape(),
   bill: React.PropTypes.shape().isRequired,
-  navigator: React.PropTypes.shape({}).isRequired,
+  history: React.PropTypes.shape({}).isRequired,
 }
 
 export default BillsListItem

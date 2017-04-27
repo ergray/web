@@ -20,7 +20,7 @@ class YourRegistrationScreen extends Component {
 
         // Have they not completed registration yet?
         if (registrationInfo.verification_status === undefined) {
-          props.navigator.replace({ name: 'RegistrationIntroScreen' })
+          props.history.replace({ name: 'RegistrationIntroScreen' })
           return
         }
 
@@ -115,10 +115,10 @@ YourRegistrationScreen.title = 'REGISTRATION'
 
 YourRegistrationScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     replace: React.PropTypes.func.isRequired,
   }),
+  isVerified: React.PropTypes.bool.isRequired,
   sessionId: React.PropTypes.string.isRequired,
 }
 

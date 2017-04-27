@@ -7,12 +7,11 @@ import {
 import BackIcon from 'react-icons/lib/md/chevron-left'
 import HoverableOpacity from './HoverableOpacity'
 import logo from './logo.png'
-import screens from './_screens'
+import { screens } from './_screens'
 import NoHeader from './NoHeader'
 
 function Header(props) {
-  const route = props.route
-  const screen = screens[route.name]
+  const screen = screens[props.path]
 
   if (screen.disableHeader) {
     return <NoHeader {...props} />
@@ -20,7 +19,7 @@ function Header(props) {
 
   const CustomHeader = screen.header
   if (CustomHeader) {
-    return <CustomHeader route={route} {...props} {...screen.headerProps} />
+    return <CustomHeader {...props} {...screen.headerProps} />
   }
 
   return (
@@ -34,11 +33,11 @@ function Header(props) {
     }}
     >
       <View style={{ width: 65 }}>
-        { route.backable && (
+        { props.location.state && props.location.state.backable && (
           <HoverableOpacity
             hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
             style={{ height: 49, paddingHorizontal: 15, paddingTop: 10 }}
-            onPress={() => { props.navigator.pop() }}
+            onPress={() => { props.history.goBack() }}
           >
             <BackIcon color="white" size={30} />
           </HoverableOpacity>
@@ -52,7 +51,7 @@ function Header(props) {
           style={{
             height: 24,
             marginRight: 7,
-            width: 24,
+            width: 25,
           }}
         />
         <Text
@@ -71,10 +70,15 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  navigator: React.PropTypes.shape({ // eslint-disable-line
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({ // eslint-disable-line
+    goBack: React.PropTypes.func.isRequired,
   }),
-  route: React.PropTypes.shape({}),
+  location: React.PropTypes.shape({
+    state: React.PropTypes.shape({
+      backable: React.PropTypes.bool,
+    }),
+  }),
+  path: React.PropTypes.string.isRequired,
 }
 
 export default Header
