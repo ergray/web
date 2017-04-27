@@ -93017,6 +93017,7 @@ var _reactNative=__webpack_require__(4);
 
 
 
+
 var _reactRedux=__webpack_require__(7);
 var _convertDates=__webpack_require__(116);
 var _PastAgendas=__webpack_require__(354);var _PastAgendas2=_interopRequireDefault(_PastAgendas);
@@ -93055,8 +93056,8 @@ getNextAgenda();return _this;
 clearInterval(this.refreshId);
 }},{key:'render',value:function render()
 
-{var _props=
-this.props,navigator=_props.navigator,nextAgenda=_props.nextAgenda;
+{var _this2=this;var _props=
+this.props,dispatch=_props.dispatch,navigator=_props.navigator,nextAgenda=_props.nextAgenda,user=_props.user;
 
 if(!nextAgenda){
 return(
@@ -93084,6 +93085,46 @@ marginHorizontal:30,
 marginTop:20}},
 
 message),
+
+_react2.default.createElement(_reactNative.Text,{style:{
+alignItems:'center',
+color:'#fff',
+fontSize:18,
+fontWeight:'300',
+marginBottom:30,
+marginHorizontal:30,
+marginTop:40,
+textAlign:'center'}},'Would you like a notification when it\'s released?',
+
+
+
+_react2.default.createElement(_reactNative.Switch,{
+activeThumbColor:'#5CB85C',
+activeTrackColor:'#ADDAAD',
+style:{
+display:'inline-block',
+marginHorizontal:10,
+position:'relative',
+top:2,
+width:60},
+
+thumbColor:'#EBA9A7',
+trackColor:'#D9534F',
+value:user.legislation_notification,
+onValueChange:function onValueChange(){
+dispatch({type:'TOGGLE_LEGISLATION_NOTIFICATIONS'});
+fetch('http://localhost:1776/legislation-notifications',{
+headers:{Session_ID:_this2.props.sessionId},
+method:'PUT'});
+
+}}),
+
+_react2.default.createElement(_reactNative.Text,{style:{display:'inline-block',width:35}},
+user.legislation_notification?'ON':'OFF')),
+
+
+
+
 _react2.default.createElement(_PastAgendas2.default,{navigator:navigator})));
 
 
@@ -93123,12 +93164,15 @@ dispatch:_react2.default.PropTypes.func.isRequired,
 navigator:_react2.default.PropTypes.shape({
 push:_react2.default.PropTypes.func.isRequired}),
 
-nextAgenda:_react2.default.PropTypes.shape()};
+nextAgenda:_react2.default.PropTypes.shape(),
+sessionId:_react2.default.PropTypes.string.isRequired,
+user:_react2.default.PropTypes.shape().isRequired};
 
 
 var mapStateToProps=pick([
 'nextAgenda',
-'sessionId']);exports.default=
+'sessionId',
+'user']);exports.default=
 
 
 (0,_reactRedux.connect)(mapStateToProps)(NextAgendaContent);
@@ -96514,6 +96558,13 @@ votingPower:action.votingPower});
 case'TOGGLE_DELEGATES_EDIT_MODE':
 return _extends({},state,{
 delegatesEditMode:!state.delegatesEditMode});
+
+
+case'TOGGLE_LEGISLATION_NOTIFICATIONS':
+return _extends({},state,{
+user:_extends({},state.user,{
+legislation_notification:!state.user.legislation_notification})});
+
 
 
 case'TOGGLE_VOTE_COUNTS_MODE':
