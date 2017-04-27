@@ -31,7 +31,7 @@ function LoadBillScreen({ bills, history, location, dispatch, match }) {
   )
 }
 
-LoadBillScreen.title = 'LOADING BILL'
+LoadBillScreen.disableHeader = true
 
 LoadBillScreen.propTypes = {
   bills: React.PropTypes.shape(),
