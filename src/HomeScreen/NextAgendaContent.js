@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
+  Switch,
   Text,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -70,6 +71,40 @@ class NextAgendaContent extends Component {
             marginTop: 20,
           }}
           >{message}</Text>
+
+          <Text style={{
+            alignItems: 'center',
+            color: '#fff',
+            fontSize: 18,
+            fontWeight: '300',
+            marginBottom: 30,
+            marginHorizontal: 30,
+            marginTop: 40,
+            textAlign: 'center',
+          }}
+          >
+          Would you like a notification when it's released?
+            <Switch
+              activeThumbColor="#5CB85C"
+              activeTrackColor="#ADDAAD"
+              style={{
+                display: 'inline-block',
+                marginHorizontal: 10,
+                position: 'relative',
+                top: 2,
+                width: 60,
+              }}
+              thumbColor="#EBA9A7"
+              trackColor="#D9534F"
+              value={this.state.enableNotifications}
+              onValueChange={value => this.setState({ enableNotifications: value })}
+            />
+            <Text style={{ display: 'inline-block', width: 35 }}>
+              {this.state.enableNotifications ? 'ON' : 'OFF' }
+            </Text>
+          </Text>
+
+
           <PastAgendas navigator={navigator} />
         </ScrollView>
       )
