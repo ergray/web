@@ -51,8 +51,7 @@ class NextAgendaContent extends Component {
           color: '#fff',
           fontSize: 18,
           fontWeight: '300',
-          marginHorizontal: 30,
-          marginTop: 20,
+          margin: 30,
         }}
         >Loading...</Text>
       )
@@ -67,8 +66,7 @@ class NextAgendaContent extends Component {
             color: '#fff',
             fontSize: 18,
             fontWeight: '300',
-            marginHorizontal: 30,
-            marginTop: 20,
+            margin: 30,
           }}
           >{message}</Text>
 
@@ -128,8 +126,7 @@ class NextAgendaContent extends Component {
             color: '#fff',
             fontSize: 16,
             fontWeight: '300',
-            marginHorizontal: 30,
-            marginTop: 30,
+            margin: 30,
           }}
           >{message}</Text>
           <PastAgendas navigator={navigator} />
