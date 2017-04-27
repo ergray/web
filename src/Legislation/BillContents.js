@@ -1,10 +1,10 @@
 import React from 'react'
-import { ScrollView, Text } from 'react-native'
+import { Text, View } from 'react-native'
 import { convertDateToLongFormat } from './convert-dates'
 
 function BillContents({ bill }) {
   return (
-    <ScrollView style={{ flex: 1, padding: 20 }}>
+    <View style={{ padding: 20 }}>
 
       <Text style={{ color: 'white', fontStyle: 'italic', marginBottom: 10 }}>{convertDateToLongFormat(bill.date)}</Text>
 
@@ -16,7 +16,7 @@ function BillContents({ bill }) {
 
       <Text style={{ color: 'white', fontWeight: '700', marginBottom: 20 }}>{bill.question}</Text>
 
-    </ScrollView>
+    </View>
   )
 }
 

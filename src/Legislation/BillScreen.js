@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import {
+  ScrollView,
   Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import Tabs from 'react-native-tabs'
 import BackIcon from 'react-icons/lib/md/chevron-left'
 import HoverableOpacity from '../HoverableOpacity'
 import BillContents from './BillContents'
@@ -15,7 +15,6 @@ class BillScreen extends Component {
     super(props)
     this.state = {
       billVotes: this.props.route.bill.votes,
-      page: 'description',
     }
 
     // Refresh vote count
@@ -176,22 +175,14 @@ class BillScreen extends Component {
           </View>
         )}
 
-        { /* Main content area */ }
-        {
-          this.state.page === 'description'
-          ? <BillContents bill={bill} />
-          : <BillArguments activeBill={bill.uid} />
-        }
 
-        <Tabs
-          selected={this.state.page}
-          selectedIconStyle={{ backgroundColor: '#222', borderColor: '#444', borderTopWidth: 1 }}
-          selectedStyle={{ color: '#fff', fontWeight: 'bold' }} style={{ position: 'relative' }}
-          onSelect={el => this.setState({ page: el.props.name })}
-        >
-          <Text name="description" style={{ color: '#ccc' }}>Description</Text>
-          <Text name="arguments" style={{ color: '#ccc' }}>Arguments</Text>
-        </Tabs>
+        { /* Main content area */ }
+        <ScrollView contentContainerStyle={{ flex: 1 }} style={{ flex: 1 }}>
+          <BillContents bill={bill} />
+
+          <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>ARGUMENTS</Text>
+          <BillArguments activeBill={bill.uid} />
+        </ScrollView>
 
         { /* Vote Counts */ }
         <View style={{
