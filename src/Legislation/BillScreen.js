@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -87,7 +86,7 @@ class BillScreen extends Component {
       }
 
       // Go to ConfirmVoteScreen
-      navigator.push({ bill, name: 'ConfirmVoteScreen', position: tappedPosition })
+      navigator.push({ backable: true, bill, name: 'ConfirmVoteScreen', position: tappedPosition })
     }
 
     const highlightColor = '#444'
@@ -98,17 +97,18 @@ class BillScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, marginTop: 25 }}>
+      <View style={{ flex: 1 }}>
 
         { /* Header */ }
-        <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 20, paddingRight: 40 }}>
-          <TouchableOpacity onPress={() => navigator.pop()}>
-            <BackIcon
-              color="white" size={30}
-              style={{ paddingHorizontal: 15 }}
-            />
-          </TouchableOpacity>
-          <Text style={{ color: 'white', fontSize: 16 }}>
+        <View style={{ alignItems: 'center', backgroundColor: '#000', flexDirection: 'row', paddingRight: 40 }}>
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            style={{ paddingHorizontal: 15, paddingVertical: 10 }}
+            onPress={() => navigator.pop()}
+          >
+            <BackIcon color="white" size={30} />
+          </HoverableOpacity>
+          <Text style={{ color: 'white', fontSize: 16, marginLeft: 5, marginVertical: 10 }}>
             {bill.id}: {bill.title}
           </Text>
         </View>
@@ -223,7 +223,7 @@ class BillScreen extends Component {
             <HoverableOpacity
               hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
               outerStyle={{ alignSelf: 'flex-end' }}
-              onPress={() => navigator.push({ bill, name: 'AuditScreen' })}
+              onPress={() => navigator.push({ backable: true, bill, name: 'AuditScreen' })}
             >
               <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
             </HoverableOpacity>

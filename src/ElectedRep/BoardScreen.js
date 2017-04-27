@@ -27,7 +27,7 @@ function BoardScreen({ navigator }) {
           height: 40,
           justifyContent: 'center',
         }}
-        onPress={() => navigator.push({ name: 'DistrictsMapScreen' })}
+        onPress={() => navigator.push({ backable: true, name: 'DistrictsMapScreen' })}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           VIEW DISTRICTS MAP

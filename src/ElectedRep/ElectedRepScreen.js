@@ -134,7 +134,7 @@ class ElectedRepScreen extends Component {
             height: 40,
             justifyContent: 'center',
           }}
-          onPress={() => this.props.navigator.push({ name: 'BoardScreen' })}
+          onPress={() => this.props.navigator.push({ backable: true, name: 'BoardScreen' })}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             VIEW ALL ELECTED REPS
