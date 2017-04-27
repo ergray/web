@@ -17,7 +17,7 @@ class BillsList extends Component {
   constructor(props) {
     super(props)
 
-    const { date } = props.route
+    const { date } = props.match.params
     if (!props.bills[date]) {
       fetch(`https://api.liquid.vote/bills/${date}`)
       .then(response => response.json())
@@ -33,8 +33,8 @@ class BillsList extends Component {
   }
 
   render() {
-    const { bills, billSort, homescreen, history, route, votes } = this.props
-    const { date } = route
+    const { bills, billSort, homescreen, history, match, votes } = this.props
+    const { date } = match.params
     let agenda = bills[date]
 
     if (!agenda) {
@@ -104,8 +104,10 @@ BillsList.propTypes = {
   history: React.PropTypes.shape({}).isRequired,
   homescreen: React.PropTypes.bool,
   isVerified: React.PropTypes.bool.isRequired,
-  route: React.PropTypes.shape({
-    date: React.PropTypes.string.isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({
+      date: React.PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   sessionId: React.PropTypes.string.isRequired,
   votes: React.PropTypes.shape(),

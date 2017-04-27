@@ -230,10 +230,10 @@ BillScreen.disableHeader = true
 BillScreen.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({})),
   dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
   history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
+  isVerified: React.PropTypes.bool.isRequired,
   route: React.PropTypes.shape({
     bill: React.PropTypes.shape({
       uid: React.PropTypes.string.isRequired,

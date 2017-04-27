@@ -40,7 +40,7 @@ class BillsListItem extends Component {
         underlayColor="#444"
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
-        onPress={() => history.push({ bill, name: 'BillScreen' })}
+        onPress={() => history.push(`/sf/${bill.date}/${bill.id}`)}
       ><View style={{
         backgroundColor: this.state.hover ? 'hsla(0,0%,100%,0.1)' : null,
         borderColor: 'grey',
