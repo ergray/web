@@ -134,7 +134,7 @@ class ElectedRepScreen extends Component {
             height: 40,
             justifyContent: 'center',
           }}
-          onPress={() => this.props.history.push({ backable: true, name: 'BoardScreen' })}
+          onPress={() => this.props.history.push('/sf/board', { backable: true })}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             VIEW ALL ELECTED REPS

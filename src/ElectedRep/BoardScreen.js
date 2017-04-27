@@ -27,7 +27,7 @@ function BoardScreen({ history }) {
           height: 40,
           justifyContent: 'center',
         }}
-        onPress={() => history.push({ backable: true, name: 'DistrictsMapScreen' })}
+        onPress={() => history.push('/sf/districts-map', { backable: true })}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           VIEW DISTRICTS MAP
