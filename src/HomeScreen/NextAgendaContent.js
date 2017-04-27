@@ -99,7 +99,7 @@ class NextAgendaContent extends Component {
               value={user.legislation_notification}
               onValueChange={() => {
                 dispatch({ type: 'TOGGLE_LEGISLATION_NOTIFICATIONS' })
-                fetch('http://localhost:1776/legislation-notifications', {
+                fetch('https://api.liquid.vote/legislation-notifications', {
                   headers: { Session_ID: this.props.sessionId },
                   method: 'PUT',
                 })
