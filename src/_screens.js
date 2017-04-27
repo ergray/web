@@ -33,7 +33,7 @@ export const screens = {
   '/sf/:date': require('./Legislation/AgendaScreen').default,  // eslint-disable-line sort-keys
   '/sf/:date/:bill_id': require('./Legislation/LoadBillScreen').default,
   '/sf/:date/:bill_id/audit': require('./Legislation/AuditScreen').default,
-  '/sf/:date/:bill_id/vote': require('./Legislation/ConfirmVoteScreen').default,
+  '/sf/:date/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
   '/voting-power': require('./VotingPowerScreen/VotingPowerScreen').default,
   '/your-registration': require('./Registration/YourRegistrationScreen').default,
 }

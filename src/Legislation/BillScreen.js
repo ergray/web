@@ -84,7 +84,7 @@ class BillScreen extends Component {
       }
 
       // Go to ConfirmVoteScreen
-      history.push({ backable: true, bill, name: 'ConfirmVoteScreen', position: tappedPosition })
+      history.push(`/sf/${bill.date}/${bill.id}/vote/${tappedPosition}`, { backable: true, bill })
     }
 
     const highlightColor = '#444'

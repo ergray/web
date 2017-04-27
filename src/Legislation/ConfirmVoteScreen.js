@@ -9,27 +9,43 @@ import { connect } from 'react-redux'
 import SaveIcon from 'react-icons/lib/fa/floppy-o'
 
 class ConfirmVoteScreen extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       argument: '',
     }
+
+    if (!props.location.state || !props.location.state.bill) {
+      return props.history.replace(props.location.pathname.slice(0, 21))
+    }
+
+    if (props.sessionId) {
+      this.getVotingPower(props.sessionId)
+    }
   }
 
-  componentWillMount() {
-    fetch(`https://api.liquid.vote/bill/${this.props.route.bill.uid}/voting-power`, { headers: { Session_ID: this.props.sessionId } })
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.sessionId && nextProps.sessionId) {
+      this.getVotingPower(nextProps.sessionId)
+    }
+  }
+
+  getVotingPower(sessionId) {
+    fetch(`https://api.liquid.vote/bill/${this.props.location.state.bill.uid}/voting-power`, { headers: { Session_ID: sessionId } })
       .then(response => response.json())
       .then(({ voting_power }) => this.setState({ voting_power }))
   }
 
   render() {
     const {
-      route,
       dispatch,
       history,
+      location,
+      match,
       sessionId,
     } = this.props
-    const { bill, position } = route
+    const { position } = match.params
+    const { bill } = location.state
 
     const Position = (
       <Text style={{
@@ -155,12 +171,18 @@ ConfirmVoteScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({
     goBack: React.PropTypes.func.isRequired,
+    replace: React.PropTypes.func.isRequired,
   }).isRequired,
-  route: React.PropTypes.shape({
-    bill: React.PropTypes.shape({
-      uid: React.PropTypes.string.isRequired,
+  location: React.PropTypes.shape({
+    pathname: React.PropTypes.string.isRequired,
+    state: React.PropTypes.shape(),
+  }).isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({
+      bill_id: React.PropTypes.string.isRequired,
+      date: React.PropTypes.string.isRequired,
+      position: React.PropTypes.string.isRequired,
     }),
-    position: React.PropTypes.string.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
   votingPower: React.PropTypes.number,
