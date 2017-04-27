@@ -37,7 +37,7 @@ function Header(props) {
         { route.backable && (
           <HoverableOpacity
             hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-            style={{ height: 49, paddingLeft: 15, paddingRight: 20, paddingTop: 12 }}
+            style={{ height: 49, paddingHorizontal: 15, paddingTop: 10 }}
             onPress={() => { props.navigator.pop() }}
           >
             <BackIcon color="white" size={30} />
