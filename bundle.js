@@ -51502,7 +51502,6 @@ var _reactNative=__webpack_require__(4);
 
 
 
-
 var _HoverableOpacity=__webpack_require__(21);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _convertDates=__webpack_require__(116);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
@@ -51550,30 +51549,26 @@ _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
 fontSize:18,
 fontWeight:'300',
-marginHorizontal:30,
-marginTop:20}},'Loading...'));
+margin:30}},'Loading...'));
 
 
 
 }
 
 return(
-_react2.default.createElement(_reactNative.View,{style:{marginHorizontal:30,marginTop:30}},
+_react2.default.createElement(_reactNative.View,{style:{margin:30}},
 
-_react2.default.createElement(_reactNative.TouchableOpacity,{
+_react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.5,
+hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
+outerStyle:{marginBottom:15},
 style:{
 alignItems:'center',
-backgroundColor:'#333',
-borderColor:'grey',
+borderColor:'hsl(0,0%,30%)',
 borderRadius:5,
 borderWidth:1,
 height:38,
-justifyContent:'center',
-marginBottom:15,
-paddingVertical:8,
-position:'relative',
-shadowOpacity:0},
+justifyContent:'center'},
 
 onPress:function onPress(){return _this2.setState({activated:false});}},
 
@@ -51586,18 +51581,21 @@ dates.map(function(date){return(
 _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
 key:date,
-outerStyle:{marginVertical:6},
-style:{
-borderColor:'grey',
+outerStyle:{
+borderColor:'hsla(0,0%,100%,0.25)',
 borderRadius:4,
 borderWidth:1,
+marginVertical:8},
+
+style:{
+backgroundImage:'linear-gradient(-180deg, hsla(0,0%,20%,0.5) 0%, hsla(0,0%,10%,0.5) 100%)',
 flexDirection:'row',
 justifyContent:'space-between',
-padding:10},
+padding:15},
 
 onPress:function onPress(){return _this2.props.navigator.push({backable:true,date:date,name:'AgendaScreen'});}},
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff'}},(0,_convertDates.convertDateToLongFormat)(date)),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#eee'}},(0,_convertDates.convertDateToLongFormat)(date)),
 _react2.default.createElement(_reactNative.Text,{style:{color:'lightgrey',fontSize:14,fontWeight:'800'}},'>')));})));
 
 
@@ -93018,8 +93016,7 @@ _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
 fontSize:18,
 fontWeight:'300',
-marginHorizontal:30,
-marginTop:20}},'Loading...'));
+margin:30}},'Loading...'));
 
 
 
@@ -93034,8 +93031,7 @@ _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
 fontSize:18,
 fontWeight:'300',
-marginHorizontal:30,
-marginTop:20}},
+margin:30}},
 
 message),
 
@@ -93095,8 +93091,7 @@ _react2.default.createElement(_reactNative.Text,{style:{
 color:'#fff',
 fontSize:16,
 fontWeight:'300',
-marginHorizontal:30,
-marginTop:30}},
+margin:30}},
 
 message),
 _react2.default.createElement(_PastAgendas2.default,{navigator:navigator})));
@@ -96337,13 +96332,14 @@ var _voting_power_graphic=__webpack_require__(847);var _voting_power_graphic2=_i
 function VotingPowerScreen(_ref){var user=_ref.user,_ref$votingPower=_ref.votingPower,votingPower=_ref$votingPower===undefined?'Loading...':_ref$votingPower;
 return(
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',marginHorizontal:20}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:22,marginTop:15}},
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:50,marginTop:30}},
 user.first_name,' ',user.last_name),
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:16,fontWeight:'700',marginTop:10}},'Voting power: \xA0',
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:40,fontWeight:'700',marginTop:30}},
+_react2.default.createElement(_reactNative.Text,{style:{fontSize:18,fontWeight:'400',marginRight:10}},'Your max voting power:'),
 votingPower),
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',marginTop:10}},'This represents all of the people delegating to you, and all the people delegating to them, and so on.'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',marginTop:30}},'This is all the people delegating to you, all the people delegating to them, and to them, and so on.'),
 
 
 
@@ -96352,12 +96348,12 @@ source:_voting_power_graphic2.default,
 style:{
 alignSelf:'center',
 height:170,
-marginVertical:30,
+marginVertical:50,
 width:252}}),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white'}},'Invite more people to increase your voting power.')));
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontStyle:'italic',textAlign:'center'}},'Invite more people to increase your voting power.')));
 
 
 
