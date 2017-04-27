@@ -57,7 +57,7 @@ class IdReviewScreen extends Component {
         }
 
         this.setState({ status: 'Upload complete.' })
-        setTimeout(() => this.props.navigator.push({ name: 'EmailScreen', transition: null }), 800)
+        setTimeout(() => this.props.history.push({ name: 'EmailScreen', transition: null }), 800)
       })
     ))
 
@@ -83,7 +83,7 @@ class IdReviewScreen extends Component {
             <View style={{ flexDirection: 'row', marginBottom: 10, marginHorizontal: 30 }}>
               <TouchableOpacity
                 style={{ borderRadius: 15, flex: 5, overflow: 'hidden' }}
-                onPress={() => this.props.navigator.pop()}
+                onPress={() => this.props.history.goBack()}
               >
                 <Text style={{
                   backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -156,8 +156,8 @@ class IdReviewScreen extends Component {
 IdReviewScreen.disableHeader = true
 
 IdReviewScreen.propTypes = {
-  navigator: React.PropTypes.shape({
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    goBack: React.PropTypes.func.isRequired,
     push: React.PropTypes.func.isRequired,
   }),
   registrationPhotoPath: React.PropTypes.string.isRequired,

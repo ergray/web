@@ -134,7 +134,7 @@ class ElectedRepScreen extends Component {
             height: 40,
             justifyContent: 'center',
           }}
-          onPress={() => this.props.navigator.push({ backable: true, name: 'BoardScreen' })}
+          onPress={() => this.props.history.push({ backable: true, name: 'BoardScreen' })}
         >
           <Text style={{ color: '#fff', fontSize: 13 }}>
             VIEW ALL ELECTED REPS
@@ -148,7 +148,7 @@ class ElectedRepScreen extends Component {
 ElectedRepScreen.title = 'ELECTED REP'
 
 ElectedRepScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   user: React.PropTypes.shape({

@@ -53,7 +53,7 @@ class DelegatesScreen extends Component {
   }
 
   render() {
-    const { navigator, delegatesEditMode } = this.props
+    const { history, delegatesEditMode } = this.props
     let { delegates } = this.props
 
     if (delegates === undefined) {
@@ -93,7 +93,7 @@ class DelegatesScreen extends Component {
                 paddingHorizontal: 20,
                 paddingVertical: 15,
               }}
-              onPress={() => navigator.push({ name: 'VotingPowerScreen' })}
+              onPress={() => history.push({ name: 'VotingPowerScreen' })}
             >
               <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
                 0.
@@ -118,7 +118,7 @@ class DelegatesScreen extends Component {
                   flexDirection: 'row',
                   padding: 20,
                 }}
-                onPress={() => { this.props.navigator.push({ name: 'DelegateInfoScreen', rowIndex }) }}
+                onPress={() => { this.props.history.push({ name: 'DelegateInfoScreen', rowIndex }) }}
               >
                 <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
                   {Number(rowIndex) + 1}.
@@ -205,7 +205,7 @@ DelegatesScreen.propTypes = {
   })),
   delegatesEditMode: React.PropTypes.bool,
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,

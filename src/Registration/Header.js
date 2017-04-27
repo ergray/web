@@ -10,14 +10,14 @@ import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from '../logo.png'
 import ProgressBar from './ProgressBar'
 
-function Header({ navigator, step, title }) {
+function Header({ history, step, title }) {
   return (
     <View>
       <View style={{ flexDirection: 'row' }}>
 
         <TouchableOpacity
           style={{ flex: 1, height: 123, minWidth: 50, paddingTop: 30 }}
-          onPress={() => navigator.pop()}
+          onPress={() => history.goBack()}
         >
           <BackIcon color="grey" size={40} style={{ paddingLeft: 30 }} />
         </TouchableOpacity>
@@ -52,8 +52,8 @@ function Header({ navigator, step, title }) {
 }
 
 Header.propTypes = {
-  navigator: React.PropTypes.shape({
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    goBack: React.PropTypes.func.isRequired,
   }).isRequired,
   step: React.PropTypes.number.isRequired,
   title: React.PropTypes.string.isRequired,

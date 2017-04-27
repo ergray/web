@@ -26,7 +26,7 @@ class ConfirmVoteScreen extends Component {
     const {
       route,
       dispatch,
-      navigator,
+      history,
       sessionId,
     } = this.props
     const { bill, position } = route
@@ -97,7 +97,7 @@ class ConfirmVoteScreen extends Component {
               This is less than your max voting power because some of your constituents have directly voted.
             </Text>
           }
-          <TouchableOpacity onPress={() => navigator.push({ name: 'VotingPowerScreen' })}>
+          <TouchableOpacity onPress={() => history.push({ name: 'VotingPowerScreen' })}>
             <Text style={{ color: '#5DA0FF', marginTop: 10, textDecorationLine: 'underline' }}>
               Invite more people to increase your voting power.
             </Text>
@@ -135,7 +135,7 @@ class ConfirmVoteScreen extends Component {
               },
               method: 'POST',
             })
-            .then(() => navigator.pop({ bill, name: 'BillScreen' }))
+            .then(() => history.goBack())
           }}
         >
           <Text style={{ color: '#fff', fontSize: 14 }}>
@@ -153,8 +153,8 @@ ConfirmVoteScreen.title = 'CONFIRM VOTE'
 
 ConfirmVoteScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
-    pop: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    goBack: React.PropTypes.func.isRequired,
   }).isRequired,
   route: React.PropTypes.shape({
     bill: React.PropTypes.shape({

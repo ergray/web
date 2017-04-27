@@ -21,7 +21,7 @@ class ZipScreen extends Component {
 
     return (
       <View>
-        <Header navigator={this.props.navigator} step={2} title="YOUR JURISDICTION" />
+        <Header history={this.props.history} step={2} title="YOUR JURISDICTION" />
 
         <Text style={{
           alignSelf: 'center',
@@ -76,7 +76,7 @@ class ZipScreen extends Component {
               })
               .then((response) => {
                 if (response.status === 200) {
-                  this.props.navigator.push({ name: 'AddressScreen', transition: null })
+                  this.props.history.push({ name: 'AddressScreen', transition: null })
                 }
               })
             }
@@ -92,7 +92,7 @@ ZipScreen.disableHeader = true
 
 ZipScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,

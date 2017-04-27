@@ -1,34 +1,66 @@
 /* eslint global-require: 0 */
 
-export default {
-  AddressScreen: require('./Registration/2.5-AddressScreen').default,
-  AgendaScreen: require('./Legislation/AgendaScreen').default,
-  AuditScreen: require('./Legislation/AuditScreen').default,
-  AuthErrorScreen: require('./AuthErrorScreen').default,
-  BillScreen: require('./Legislation/BillScreen').default,
-  BoardScreen: require('./ElectedRep/BoardScreen').default,
-  CameraScreen: require('./Registration/3.3-CameraScreen').default,
-  ConfirmDelegateScreen: require('./Delegation/ConfirmDelegateScreen').default,
-  ConfirmNewNumberScreen: require('./Login/1.5-ConfirmNewNumberScreen').default,
-  ConfirmVoteScreen: require('./Legislation/ConfirmVoteScreen').default,
-  DelegateInfoScreen: require('./Delegation/DelegateInfoScreen').default,
-  DelegatesScreen: require('./Delegation/DelegatesScreen').default,
-  DistrictsMapScreen: require('./ElectedRep/DistrictsMapScreen').default,
-  ElectedRepScreen: require('./ElectedRep/ElectedRepScreen').default,
-  EmailScreen: require('./Registration/4-EmailScreen').default,
-  EnterSMSCodeScreen: require('./Login/2-EnterSMSCodeScreen').default,
-  FeedbackScreen: require('./FeedbackScreen').default,
-  FirstNameScreen: require('./Registration/1-FirstNameScreen').default,
-  HomeScreen: require('./HomeScreen/NextAgendaScreen').default,
-  IdReviewScreen: require('./Registration/3.6-IdReviewScreen').default,
-  LastNameScreen: require('./Registration/1.5-LastNameScreen').default,
-  LegalIdScreen: require('./Registration/3-LegalIdScreen').default,
-  LoadBillScreen: require('./Legislation/LoadBillScreen').default,
-  LoginScreen: require('./Login/1-LoginScreen').default,
-  RegistrationIntroScreen: require('./Registration/0-RegistrationIntroScreen').default,
-  RequestsScreen: require('./Delegation/RequestsScreen').default,
-  ThankYouScreen: require('./Registration/5-ThankYouScreen').default,
-  VotingPowerScreen: require('./VotingPowerScreen/VotingPowerScreen').default,
-  YourRegistrationScreen: require('./Registration/YourRegistrationScreen').default,
-  ZipScreen: require('./Registration/2-ZipScreen').default,
+import React from 'react'
+import { View } from 'react-native'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Header from './Header'
+import ScreenWithMenu from './ScreenWithMenu'
+
+export const screens = {
+  '/': require('./Login/1-LoginScreen').default,
+  '/auth-error': require('./AuthErrorScreen').default,
+  '/confirm-new-number/:phoneNumber': require('./Login/1.5-ConfirmNewNumberScreen').default,
+  '/delegates': require('./Delegation/DelegatesScreen').default,
+  '/delegates/confirm': require('./Delegation/ConfirmDelegateScreen').default,
+  '/delegates/requests': require('./Delegation/RequestsScreen').default,
+  '/delegates/:phoneNumber': require('./Delegation/DelegateInfoScreen').default, // eslint-disable-line sort-keys
+  '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
+  '/feedback': require('./FeedbackScreen').default,
+  '/registration': require('./Registration/0-RegistrationIntroScreen').default,
+  '/registration/address': require('./Registration/2.5-AddressScreen').default,
+  '/registration/camera': require('./Registration/3.3-CameraScreen').default,
+  '/registration/email': require('./Registration/4-EmailScreen').default,
+  '/registration/first-name': require('./Registration/1-FirstNameScreen').default,
+  '/registration/last-name': require('./Registration/1.5-LastNameScreen').default,
+  '/registration/legal-id': require('./Registration/3-LegalIdScreen').default,
+  '/registration/review-id': require('./Registration/3.6-IdReviewScreen').default,
+  '/registration/thank-you': require('./Registration/5-ThankYouScreen').default,
+  '/registration/zip': require('./Registration/2-ZipScreen').default,
+  '/sf': require('./HomeScreen/NextAgendaScreen').default,
+  '/sf/board': require('./ElectedRep/BoardScreen').default,
+  '/sf/districts-map': require('./ElectedRep/DistrictsMapScreen').default,
+  '/sf/elected-rep': require('./ElectedRep/ElectedRepScreen').default,
+  '/sf/:date': require('./Legislation/AgendaScreen').default,  // eslint-disable-line sort-keys
+  '/sf/:date/:bill_id': require('./Legislation/BillScreen').default,
+  '/sf/:date/:bill_id/audit': require('./Legislation/AuditScreen').default,
+  '/sf/:date/:bill_id/vote': require('./Legislation/ConfirmVoteScreen').default,
+  '/voting-power': require('./VotingPowerScreen/VotingPowerScreen').default,
+  '/your-registration': require('./Registration/YourRegistrationScreen').default,
 }
+
+export default () => (
+  <Router>
+    <Switch>
+      { Object.keys(screens).map((path) => {
+        const Screen = screens[path]
+
+        return (
+          <Route
+            exact key={path} path={path} render={({ history, location, match }) => {
+              if (Screen.disableMenu) {
+                return (
+                  <View style={{ flex: 1, height: '100%', width: '100%' }}>
+                    <Header path={path} />
+                    <Screen history={history} location={location} match={match} />
+                  </View>
+                )
+              }
+
+              return <ScreenWithMenu Screen={Screen} history={history} match={match} path={path} />
+            }}
+          />
+        )
+      }) }
+    </Switch>
+  </Router>
+)

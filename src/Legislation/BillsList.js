@@ -33,7 +33,7 @@ class BillsList extends Component {
   }
 
   render() {
-    const { bills, billSort, homescreen, navigator, route, votes } = this.props
+    const { bills, billSort, homescreen, history, route, votes } = this.props
     const { date } = route
     let agenda = bills[date]
 
@@ -83,14 +83,14 @@ class BillsList extends Component {
         </View>
 
         { agenda.map(bill => (
-          <BillsListItem agendaVotes={agendaVotes} bill={bill} key={bill.uid} navigator={navigator} />
+          <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
         ))}
 
         { /* Bottom border for final item */ }
         <View style={{ backgroundColor: 'grey', height: 1 }} />
 
         { !!homescreen &&
-          <PastAgendas navigator={navigator} />
+          <PastAgendas history={history} />
         }
       </ScrollView>
     )
@@ -101,9 +101,9 @@ BillsList.propTypes = {
   bills: React.PropTypes.shape(),
   billSort: React.PropTypes.string.isRequired,
   dispatch: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({}).isRequired,
   homescreen: React.PropTypes.bool,
   isVerified: React.PropTypes.bool.isRequired,
-  navigator: React.PropTypes.shape({}).isRequired,
   route: React.PropTypes.shape({
     date: React.PropTypes.string.isRequired,
   }).isRequired,

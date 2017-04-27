@@ -21,7 +21,7 @@ class EmailScreen extends Component {
 
     return (
       <View>
-        <Header navigator={this.props.navigator} step={4} title="CONTACT INFO" />
+        <Header history={this.props.history} step={4} title="CONTACT INFO" />
 
         <Text style={{
           alignSelf: 'center',
@@ -72,7 +72,7 @@ class EmailScreen extends Component {
             })
             .then((response) => {
               if (response.status === 200) {
-                this.props.navigator.push({ name: 'ThankYouScreen', transition: null })
+                this.props.history.push({ name: 'ThankYouScreen', transition: null })
               }
             })
           }}
@@ -86,7 +86,7 @@ class EmailScreen extends Component {
 EmailScreen.disableHeader = true
 
 EmailScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,

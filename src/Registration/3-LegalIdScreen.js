@@ -6,10 +6,10 @@ import {
 } from 'react-native'
 import Header from './Header'
 
-function LegalIdScreen({ navigator }) {
+function LegalIdScreen({ history }) {
   return (
     <View>
-      <Header navigator={navigator} step={3} title="LEGAL ID" />
+      <Header history={history} step={3} title="LEGAL ID" />
 
       <Text style={{
         color: '#fff',
@@ -32,7 +32,7 @@ function LegalIdScreen({ navigator }) {
           marginBottom: 20,
           marginHorizontal: 30,
         }}
-        onPress={() => navigator.push({ name: 'CameraScreen', transition: null })}
+        onPress={() => history.push({ name: 'CameraScreen', transition: null })}
       >
         <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           TAKE PHOTO OF ID
@@ -50,7 +50,7 @@ function LegalIdScreen({ navigator }) {
           justifyContent: 'center',
           marginHorizontal: 30,
         }}
-        onPress={() => navigator.push({ name: 'EmailScreen', transition: null })}
+        onPress={() => history.push({ name: 'EmailScreen', transition: null })}
       >
         <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           SKIP FOR NOW
@@ -64,7 +64,7 @@ function LegalIdScreen({ navigator }) {
 LegalIdScreen.disableHeader = true
 
 LegalIdScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
 }

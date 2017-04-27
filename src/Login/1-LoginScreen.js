@@ -17,7 +17,7 @@ class LoginScreen extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.sessionId) {
-      this.props.navigator.replace({ name: 'HomeScreen' })
+      this.props.history.replace('sf')
     }
   }
 
@@ -72,7 +72,7 @@ class LoginScreen extends Component {
                       />
                     )}
                     <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                      <PhoneLoginBox large={large} loginRef={loginRef} navigator={this.props.navigator} />
+                      <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} />
                     </Collapse>
                   </View>
                 )
@@ -91,9 +91,9 @@ LoginScreen.disableHeader = true
 LoginScreen.disableMenu = true
 
 LoginScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     replace: React.PropTypes.func.isRequired,
-  }),
+  }).isRequired,
   sessionId: React.PropTypes.string, // eslint-disable-line
 }
 

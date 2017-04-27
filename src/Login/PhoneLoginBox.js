@@ -103,7 +103,7 @@ class PhoneLoginBox extends Component {
               // Special code to demo registration
               if (phoneNumber === '5555551776') {
                 this.props.dispatch({ type: 'START_REGISTRATION_DEMO' })
-                return this.props.navigator.replace({ name: 'RegistrationIntroScreen' })
+                return this.props.history.replace('registration')
               }
 
               // Special code to demo login
@@ -116,14 +116,14 @@ class PhoneLoginBox extends Component {
                 .then(response => response.json())
                 .then(({ sessionId, user }) => {
                   this.props.dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
-                  return this.props.navigator.replace({ name: 'HomeScreen' })
+                  return this.props.history.replace('sf')
                 })
               }
 
               // Check if this is a new number
               if (!this.props.knownNumbers[phoneNumber]) {
                 this.setState({ phone: newText })
-                return this.props.navigator.push({ name: 'ConfirmNewNumberScreen', phoneNumber })
+                return this.props.history.push(`confirm-new-number/${phoneNumber}`)
               }
 
               fetch('https://api.liquid.vote/login', {
@@ -138,7 +138,7 @@ class PhoneLoginBox extends Component {
               })
 
               this.props.dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
-              this.props.navigator.replace({ name: 'EnterSMSCodeScreen' })
+              this.props.history.replace('enter-sms')
             }
 
             // Otherwise, update backing state normally
@@ -191,15 +191,15 @@ class PhoneLoginBox extends Component {
 
 PhoneLoginBox.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({
+    push: React.PropTypes.func.isRequired,
+    replace: React.PropTypes.func.isRequired,
+  }).isRequired,
   knownNumbers: React.PropTypes.shape({}).isRequired,
   large: React.PropTypes.bool,
   loginRef: React.PropTypes.shape({
     input: React.PropTypes.any,
   }).isRequired,
-  navigator: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
-  }),
 }
 
 export default connect(pick([

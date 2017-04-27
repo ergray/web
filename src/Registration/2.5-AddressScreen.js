@@ -21,7 +21,7 @@ class AddressScreen extends Component {
 
     return (
       <View>
-        <Header navigator={this.props.navigator} step={3} title="YOUR JURISDICTION" />
+        <Header history={this.props.history} step={3} title="YOUR JURISDICTION" />
 
         <Text style={{
           alignSelf: 'center',
@@ -65,7 +65,7 @@ class AddressScreen extends Component {
             })
             .then((response) => {
               if (response.status === 200) {
-                this.props.navigator.push({ name: 'EmailScreen', transition: null })
+                this.props.history.push({ name: 'EmailScreen', transition: null })
               }
             })
           }}
@@ -79,7 +79,7 @@ class AddressScreen extends Component {
 AddressScreen.disableHeader = true
 
 AddressScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,

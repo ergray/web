@@ -94,7 +94,7 @@ class PastAgendas extends Component {
               justifyContent: 'space-between',
               padding: 15,
             }}
-            onPress={() => this.props.navigator.push({ backable: true, date, name: 'AgendaScreen' })}
+            onPress={() => this.props.history.push(`/sf/${date}`, { backable: true })}
           >
             <Text style={{ color: '#eee' }}>{ convertDateToLongFormat(date) }</Text>
             <Text style={{ color: 'lightgrey', fontSize: 14, fontWeight: '800' }}>></Text>
@@ -107,7 +107,7 @@ class PastAgendas extends Component {
 }
 
 PastAgendas.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
 }

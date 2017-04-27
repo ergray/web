@@ -51,7 +51,7 @@ class EnterSMSCodeScreen extends Component {
             type: 'LOGIN_USER',
             user: json.user,
           })
-          this.props.navigator.replace({ name: 'HomeScreen' })
+          this.props.history.replace('/sf')
         })
       }
 
@@ -167,7 +167,7 @@ class EnterSMSCodeScreen extends Component {
               justifyContent: 'center',
               marginHorizontal: 30,
             }}
-            onPress={() => this.props.navigator.replace({ name: 'LoginScreen' })}
+            onPress={() => this.props.history.replace('/')}
           >
             <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
               BACK
@@ -185,7 +185,7 @@ EnterSMSCodeScreen.disableMenu = true
 
 EnterSMSCodeScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     replace: React.PropTypes.func.isRequired,
   }),
   phoneNumber: React.PropTypes.string.isRequired,

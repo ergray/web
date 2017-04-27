@@ -8,12 +8,12 @@ class MenuOption extends Component {
   }
 
   render() {
-    const { hoverColor = 'hsl(0,0%,10%)', navigator, notifications, style, text, to } = this.props
+    const { hoverColor = 'hsl(0,0%,10%)', history, notifications, style, text, to } = this.props
     let { onPress } = this.props
 
     if (!onPress) {
       onPress = () => { // eslint-disable-line no-param-reassign
-        navigator.push({ name: to })
+        history.push(to)
       }
     }
 
@@ -54,10 +54,10 @@ class MenuOption extends Component {
 }
 
 MenuOption.propTypes = {
-  hoverColor: React.PropTypes.string,
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func,
-  }),
+  }).isRequired,
+  hoverColor: React.PropTypes.string,
   notifications: React.PropTypes.number,
   onPress: React.PropTypes.func,
   style: React.PropTypes.shape({}),

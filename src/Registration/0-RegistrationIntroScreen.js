@@ -2,10 +2,10 @@ import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import Header from './Header'
 
-export default function RegistrationIntroScreen({ navigator }) {
+export default function RegistrationIntroScreen({ history }) {
   return (
     <View style={{ flex: 1 }}>
-      <Header navigator={navigator} step={0} title="VOTER REGISTRATION" />
+      <Header history={history} step={0} title="VOTER REGISTRATION" />
 
       <View style={{ flex: 1, justifyContent: 'space-between', marginHorizontal: 30, marginTop: 50 }}>
         <View>
@@ -28,7 +28,7 @@ export default function RegistrationIntroScreen({ navigator }) {
             justifyContent: 'center',
             marginBottom: 20,
           }}
-          onPress={() => navigator.push({ name: 'FirstNameScreen', transition: null })}
+          onPress={() => history.push({ name: 'FirstNameScreen', transition: null })}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             OK
@@ -42,7 +42,7 @@ export default function RegistrationIntroScreen({ navigator }) {
 RegistrationIntroScreen.disableHeader = true
 
 RegistrationIntroScreen.propTypes = {
-  navigator: React.PropTypes.shape({
+  history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
 }

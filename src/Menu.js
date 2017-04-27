@@ -7,8 +7,8 @@ import logo from './logo.png'
 import MenuOption from './MenuOption'
 import HoverableOpacity from './HoverableOpacity'
 
-function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower = '..' }) {
-  const MenuOptionWithNav = props => <MenuOption navigator={navigator} {...props} /> // eslint-disable-line
+function Menu({ constituents, dispatch, history, style = {}, user, votingPower = '..' }) {
+  const MenuOptionWithNav = props => <MenuOption history={history} {...props} /> // eslint-disable-line
 
   let numRequests
   if (constituents && constituents.requests) {
@@ -40,7 +40,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{ marginVertical: 20 }}
-        onPress={() => navigator.push({ name: 'YourRegistrationScreen', transition: 'SwipeFromLeft' })}
+        onPress={() => history.push('your-registration')}
       >
         <Text
           style={{
@@ -54,27 +54,27 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
       </HoverableOpacity>
 
       <View>
-        <MenuOptionWithNav text="LEGISLATURE" to="HomeScreen" />
-        <MenuOptionWithNav text={`VOTING POWER: ${votingPower}`} to="VotingPowerScreen" />
-        <MenuOptionWithNav text="YOUR DELEGATES" to="DelegatesScreen" />
+        <MenuOptionWithNav text="LEGISLATURE" to="/sf" />
+        <MenuOptionWithNav text={`VOTING POWER: ${votingPower}`} to="/voting-power" />
+        <MenuOptionWithNav text="YOUR DELEGATES" to="/delegates" />
         { user.sf_district
-          ? <MenuOptionWithNav text="ELECTED REP: A+" to="ElectedRepScreen" />
-          : <MenuOptionWithNav text="ELECTED REPS" to="BoardScreen" />
+          ? <MenuOptionWithNav text="ELECTED REP: A+" to="/sf/elected-rep" />
+          : <MenuOptionWithNav text="ELECTED REPS" to="/sf/board" />
         }
-        <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="RequestsScreen" />
+        <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="/delegates/requests" />
         <MenuOptionWithNav
           text="ABOUT" onPress={() => {
             Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
             .catch(() => {})
           }}
         />
-        <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="FeedbackScreen" />
+        <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
         <MenuOptionWithNav
           hoverColor="rgba(251, 82, 82, 0.1)"
           style={{ marginTop: 30 }}
           text="LOG OUT" onPress={() => {
             dispatch({ type: 'LOGOUT' })
-            navigator.resetTo({ name: 'LoginScreen' })
+            history.replace('/')
           }}
         />
 
@@ -112,9 +112,7 @@ function Menu({ constituents, dispatch, navigator, style = {}, user, votingPower
 Menu.propTypes = {
   constituents: React.PropTypes.shape({}),
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({
-    resetTo: React.PropTypes.func.isRequired,
-  }).isRequired,
+  history: React.PropTypes.shape({}).isRequired,
   style: React.PropTypes.shape({}),
   user: React.PropTypes.shape({}),
   votingPower: React.PropTypes.number,

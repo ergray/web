@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 
-function LoadBillScreen({ bills, dispatch, navigator, route }) {
+function LoadBillScreen({ bills, dispatch, history, route }) {
   const { bill_uid } = route
   const date = bill_uid.slice(0, 10)
   let message = `Loading bill ${bill_uid}...`
@@ -15,7 +15,7 @@ function LoadBillScreen({ bills, dispatch, navigator, route }) {
       message = `Bill ${bill_uid} not found`
     } else {
       setTimeout(() => {
-        navigator.replace({ bill, name: 'BillScreen' })
+        history.replace({ bill, name: 'BillScreen' })
       }, 0)
     }
   } else {
@@ -36,7 +36,7 @@ LoadBillScreen.title = 'LOADING BILL'
 LoadBillScreen.propTypes = {
   bills: React.PropTypes.shape(),
   dispatch: React.PropTypes.func.isRequired,
-  navigator: React.PropTypes.shape({}).isRequired,
+  history: React.PropTypes.shape({}).isRequired,
   route: React.PropTypes.shape({
     bill_uid: React.PropTypes.string,
   }),
