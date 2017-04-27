@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Dimensions, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Text, TextInput, View } from 'react-native'
 import { connect } from 'react-redux'
+import HoverableOpacity from './HoverableOpacity'
 
 class FeedbackScreen extends Component {
   constructor(props) {
@@ -34,22 +35,21 @@ class FeedbackScreen extends Component {
           autoFocus
           multiline
           numberOfLines={15}
-          placeholder="I want you to know that..."
+          placeholder="Hi, I just wanted to let you know that..."
           style={{
             backgroundColor: '#fff',
             borderRadius: 3,
             fontSize: 16,
-            marginHorizontal: 30,
-            marginTop: 10,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
+            marginVertical: 30,
+            padding: 10,
           }}
           value={this.state.text}
           onChangeText={text => this.setState({ text })}
         />
 
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(0, 0%, 100%, 0.1)' }}
           style={{
             alignItems: 'center',
             borderColor: '#5DA0FF',
@@ -57,8 +57,6 @@ class FeedbackScreen extends Component {
             borderWidth: 1,
             height: 38,
             justifyContent: 'center',
-            marginHorizontal: 30,
-            marginTop: 20,
           }}
           onPress={() => {
             fetch('https://api.liquid.vote/feedback', {
@@ -81,7 +79,7 @@ class FeedbackScreen extends Component {
           <Text style={{ color: '#fff', fontSize: 14 }}>
             SEND
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
       </View>
     )
   }
