@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  ScrollView,
   Text,
   View,
 } from 'react-native'
@@ -94,33 +93,36 @@ class BillArguments extends Component {
 
     return (
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <ScrollView
+
+        <View
           style={{
-            borderColor: '#222',
-            borderRightWidth: 1,
             flex: 1,
             flexBasis: '100%',
             padding: 20,
           }}
         >
+          <Text style={{ color: '#fff', fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>FOR</Text>
           { this.state.yea.length > 0
             ? this.state.yea.map(Argument('yea'))
             : <Text style={{ color: '#bbb' }}>None given yet.</Text>
           }
-        </ScrollView>
+        </View>
 
-        <ScrollView
+        <View style={{ backgroundColor: '#444', width: 1 }} />
+
+        <View
           style={{
             flex: 1,
             flexBasis: '100%',
             padding: 20,
           }}
         >
+          <Text style={{ color: '#fff', fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>AGAINST</Text>
           { this.state.nay.length > 0
             ? this.state.nay.map(Argument('nay'))
             : <Text style={{ color: '#bbb' }}>None given yet.</Text>
           }
-        </ScrollView>
+        </View>
 
       </View>
     )
