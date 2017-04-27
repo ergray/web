@@ -4,19 +4,19 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import BillScreen from './BillScreen'
 
-function LoadBillScreen({ bills, dispatch, history, route }) {
-  const { bill_uid } = route
-  const date = bill_uid.slice(0, 10)
+function LoadBillScreen({ bills, history, dispatch, match }) {
+  const { date, bill_id } = match.params
+  const bill_uid = `${date}-${bill_id}`
+
   let message = `Loading bill ${bill_uid}...`
   if (bills[date]) {
     const bill = bills[date].filter(b => b.uid === bill_uid)[0]
     if (!bill) {
       message = `Bill ${bill_uid} not found`
     } else {
-      setTimeout(() => {
-        history.replace({ bill, name: 'BillScreen' })
-      }, 0)
+      return <BillScreen bill={bill} history={history} />
     }
   } else {
     fetch(`https://api.liquid.vote/bills/${date}`)
@@ -36,10 +36,10 @@ LoadBillScreen.title = 'LOADING BILL'
 LoadBillScreen.propTypes = {
   bills: React.PropTypes.shape(),
   dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}).isRequired,
-  route: React.PropTypes.shape({
-    bill_uid: React.PropTypes.string,
-  }),
+  history: React.PropTypes.shape().isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({}).isRequired,
+  }).isRequired,
 }
 
 const mapStateToProps = state => ({

@@ -14,11 +14,11 @@ class BillScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      billVotes: this.props.route.bill.votes,
+      billVotes: props.bill.votes,
     }
 
     // Refresh vote count
-    const activeBill = props.route.bill.uid
+    const activeBill = props.bill.uid
     fetch(`https://api.liquid.vote/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
@@ -28,8 +28,7 @@ class BillScreen extends Component {
   }
 
   render() {
-    const { delegates, dispatch, isVerified, route, history, user, votes, showDistrictVotes } = this.props
-    const bill = route.bill
+    const { bill, delegates, dispatch, isVerified, history, user, votes, showDistrictVotes } = this.props
 
     let vote
     let position
@@ -228,18 +227,16 @@ class BillScreen extends Component {
 BillScreen.disableHeader = true
 
 BillScreen.propTypes = {
+  bill: React.PropTypes.shape({
+    uid: React.PropTypes.string.isRequired,
+    votes: React.PropTypes.shape({}),
+  }),
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({})),
   dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   isVerified: React.PropTypes.bool.isRequired,
-  route: React.PropTypes.shape({
-    bill: React.PropTypes.shape({
-      uid: React.PropTypes.string.isRequired,
-      votes: React.PropTypes.shape({}),
-    }),
-  }),
   showDistrictVotes: React.PropTypes.bool,
   user: React.PropTypes.shape({
     sf_district: React.PropTypes.number,

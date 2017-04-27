@@ -115,10 +115,10 @@ YourRegistrationScreen.title = 'REGISTRATION'
 
 YourRegistrationScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
   history: React.PropTypes.shape({
     replace: React.PropTypes.func.isRequired,
   }),
+  isVerified: React.PropTypes.bool.isRequired,
   sessionId: React.PropTypes.string.isRequired,
 }
 
