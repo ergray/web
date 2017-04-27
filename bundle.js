@@ -94726,7 +94726,7 @@ alignSelf:'flex-start',
 backgroundColor:'hsla(0, 0%, 13%, 0.9)',
 borderRadius:10,
 paddingVertical:40,
-width:this.props.large?450:316}},
+width:this.props.large?450:undefined}},
 
 
 _react2.default.createElement(_reactNative.Text,{
@@ -94734,16 +94734,20 @@ style:{
 color:'#fff',
 fontSize:48,
 fontWeight:'100',
-marginLeft:40}},
+marginLeft:40}},'Reclaim'),
 
 
+_react2.default.createElement(_reactNative.Text,{
+style:{
+color:'#fff',
+fontSize:48,
+fontWeight:'100',
+marginLeft:40}},'your voice:'),
 
-_react2.default.createElement(_reactNative.Text,{style:{width:600}},'Reclaim               '),
-_react2.default.createElement(_reactNative.Text,null,'your voice:')),
 
 _react2.default.createElement(_reactNative.TextInput,{
 autoCorrect:false,
-placeholder:this.props.large?'Enter your mobile number':'Enter your mobile #',
+placeholder:'Enter your mobile number',
 ref:function ref(input){_this2.props.loginRef.input=input;},
 style:{
 backgroundColor:'#fff',
