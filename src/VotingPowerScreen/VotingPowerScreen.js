@@ -9,8 +9,8 @@ function VotingPowerScreen({ user, votingPower = 'Loading...' }) {
       <Text style={{ color: 'white', fontSize: 22, marginTop: 15 }}>
         { user.first_name } { user.last_name }
       </Text>
-      <Text style={{ color: 'white', fontSize: 16, fontWeight: '700', marginTop: 10 }}>
-        Voting power: &nbsp;{ votingPower }
+      <Text style={{ color: 'white', fontSize: 30, fontWeight: '700', marginTop: 10 }}>
+        { votingPower }
       </Text>
       <Text style={{ color: 'white', marginTop: 10 }}>
         This represents all of the people delegating to you, and all the people delegating to them, and so on.
