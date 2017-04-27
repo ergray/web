@@ -43,7 +43,7 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { navigator, nextAgenda } = this.props
+    const { dispatch, navigator, nextAgenda, user } = this.props
 
     if (!nextAgenda) {
       return (
@@ -96,11 +96,17 @@ class NextAgendaContent extends Component {
               }}
               thumbColor="#EBA9A7"
               trackColor="#D9534F"
-              value={this.state.enableNotifications}
-              onValueChange={value => this.setState({ enableNotifications: value })}
+              value={user.legislation_notification}
+              onValueChange={() => {
+                dispatch({ type: 'TOGGLE_LEGISLATION_NOTIFICATIONS' })
+                fetch('http://localhost:1776/legislation-notifications', {
+                  headers: { Session_ID: this.props.sessionId },
+                  method: 'PUT',
+                })
+              }}
             />
             <Text style={{ display: 'inline-block', width: 35 }}>
-              {this.state.enableNotifications ? 'ON' : 'OFF' }
+              {user.legislation_notification ? 'ON' : 'OFF' }
             </Text>
           </Text>
 
@@ -145,11 +151,14 @@ NextAgendaContent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   nextAgenda: React.PropTypes.shape(),
+  sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape().isRequired,
 }
 
 const mapStateToProps = pick([
   'nextAgenda',
   'sessionId',
+  'user',
 ])
 
 export default connect(mapStateToProps)(NextAgendaContent)

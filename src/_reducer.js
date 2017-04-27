@@ -126,6 +126,13 @@ export default function reducer(state, action) {
         delegatesEditMode: !state.delegatesEditMode,
       }
 
+    case 'TOGGLE_LEGISLATION_NOTIFICATIONS':
+      return { ...state,
+        user: { ...state.user,
+          legislation_notification: !state.user.legislation_notification,
+        },
+      }
+
     case 'TOGGLE_VOTE_COUNTS_MODE':
       return { ...state,
         showDistrictVotes: !state.showDistrictVotes,
