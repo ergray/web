@@ -28,7 +28,7 @@ class BillScreen extends Component {
   }
 
   render() {
-    const { bill, delegates, dispatch, isVerified, history, user, votes, showDistrictVotes } = this.props
+    const { bill, delegates, dispatch, history, isVerified, location, user, votes, showDistrictVotes } = this.props
 
     let vote
     let position
@@ -213,7 +213,7 @@ class BillScreen extends Component {
             <HoverableOpacity
               hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
               outerStyle={{ alignSelf: 'flex-end' }}
-              onPress={() => history.push({ backable: true, bill, name: 'AuditScreen' })}
+              onPress={() => history.push(`${location.pathname}/audit`, { backable: true })}
             >
               <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
             </HoverableOpacity>
@@ -237,6 +237,9 @@ BillScreen.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   isVerified: React.PropTypes.bool.isRequired,
+  location: React.PropTypes.shape({
+    pathname: React.PropTypes.string.isRequired,
+  }).isRequired,
   showDistrictVotes: React.PropTypes.bool,
   user: React.PropTypes.shape({
     sf_district: React.PropTypes.number,

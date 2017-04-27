@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux'
 import BillScreen from './BillScreen'
 
-function LoadBillScreen({ bills, history, dispatch, match }) {
+function LoadBillScreen({ bills, history, location, dispatch, match }) {
   const { date, bill_id } = match.params
   const bill_uid = `${date}-${bill_id}`
 
@@ -16,7 +16,7 @@ function LoadBillScreen({ bills, history, dispatch, match }) {
     if (!bill) {
       message = `Bill ${bill_uid} not found`
     } else {
-      return <BillScreen bill={bill} history={history} />
+      return <BillScreen bill={bill} history={history} location={location} />
     }
   } else {
     fetch(`https://api.liquid.vote/bills/${date}`)
@@ -37,6 +37,7 @@ LoadBillScreen.propTypes = {
   bills: React.PropTypes.shape(),
   dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape().isRequired,
+  location: React.PropTypes.shape().isRequired,
   match: React.PropTypes.shape({
     params: React.PropTypes.shape({}).isRequired,
   }).isRequired,
