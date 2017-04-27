@@ -96,7 +96,7 @@ class PastAgendas extends Component {
               justifyContent: 'space-between',
               padding: 10,
             }}
-            onPress={() => this.props.navigator.push({ date, name: 'AgendaScreen' })}
+            onPress={() => this.props.navigator.push({ backable: true, date, name: 'AgendaScreen' })}
           >
             <Text style={{ color: '#fff' }}>{ convertDateToLongFormat(date) }</Text>
             <Text style={{ color: 'lightgrey', fontSize: 14, fontWeight: '800' }}>></Text>

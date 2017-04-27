@@ -87,7 +87,7 @@ class BillScreen extends Component {
       }
 
       // Go to ConfirmVoteScreen
-      navigator.push({ bill, name: 'ConfirmVoteScreen', position: tappedPosition })
+      navigator.push({ backable: true, bill, name: 'ConfirmVoteScreen', position: tappedPosition })
     }
 
     const highlightColor = '#444'
@@ -223,7 +223,7 @@ class BillScreen extends Component {
             <HoverableOpacity
               hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
               outerStyle={{ alignSelf: 'flex-end' }}
-              onPress={() => navigator.push({ bill, name: 'AuditScreen' })}
+              onPress={() => navigator.push({ backable: true, bill, name: 'AuditScreen' })}
             >
               <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
             </HoverableOpacity>
