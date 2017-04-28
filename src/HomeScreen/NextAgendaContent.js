@@ -135,7 +135,7 @@ class NextAgendaContent extends Component {
     }
 
     return (
-      <BillsList {...this.props} homescreen route={{ date }} />
+      <BillsList {...this.props} homescreen match={{ params: { date } }} />
     )
   }
 }
