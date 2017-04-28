@@ -96064,7 +96064,7 @@ _react2.default.createElement(_PastAgendas2.default,{history:history})));
 }
 
 return(
-_react2.default.createElement(_BillsList2.default,_extends({},this.props,{homescreen:true,route:{date:date}})));
+_react2.default.createElement(_BillsList2.default,_extends({},this.props,{homescreen:true,match:{params:{date:date}}})));
 
 }}]);return NextAgendaContent;}(_react.Component);
 
