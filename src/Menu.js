@@ -62,12 +62,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
           : <MenuOptionWithNav text="ELECTED REPS" to="/sf/board" />
         }
         <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="/delegates/requests" />
-        <MenuOptionWithNav
-          text="ABOUT" onPress={() => {
-            Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
-            .catch(() => {})
-          }}
-        />
+        <MenuOptionWithNav text="ABOUT" to="/about" />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
         <MenuOptionWithNav
           hoverColor="rgba(251, 82, 82, 0.1)"
