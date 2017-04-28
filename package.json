@@ -40,6 +40,7 @@
     "react": "15.4",
     "react-collapse": "^4.0.1",
     "react-icons": "^2.2.3",
+    "react-iframe": "^1.0.5",
     "react-motion": "^0.4.8",
     "react-native-aws3": "^0.0.8",
     "react-native-drawer": "^2.3.0",
