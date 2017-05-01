@@ -56,7 +56,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, route }) {
         }}
         onPress={() => {
           dispatch({ delegates: [...delegates, route.newDelegate], type: 'SYNC_DELEGATES' })
-          history.replace({ name: 'DelegateInfoScreen', rowIndex: delegates.length })
+          history.replace(`/delegates/${route.newDelegate.phone}`)
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>

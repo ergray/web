@@ -13,6 +13,18 @@ class YourRegistrationScreen extends Component {
       registrationInfo: {},
     }
 
+    if (props.sessionId) {
+      this.getInfo(props)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.sessionId && nextProps.sessionId) {
+      this.getInfo(nextProps)
+    }
+  }
+
+  getInfo(props) {
     fetch('https://api.liquid.vote/my-registration-info', { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((registrationInfo) => {
@@ -20,7 +32,7 @@ class YourRegistrationScreen extends Component {
 
         // Have they not completed registration yet?
         if (registrationInfo.verification_status === undefined) {
-          props.history.replace({ name: 'RegistrationIntroScreen' })
+          props.history.replace('/registration')
           return
         }
 
@@ -114,11 +126,11 @@ class YourRegistrationScreen extends Component {
 YourRegistrationScreen.title = 'REGISTRATION'
 
 YourRegistrationScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
+  dispatch: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  history: React.PropTypes.shape({ // eslint-disable-line react/no-unused-prop-types
     replace: React.PropTypes.func.isRequired,
   }),
-  isVerified: React.PropTypes.bool.isRequired,
+  isVerified: React.PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
   sessionId: React.PropTypes.string.isRequired,
 }
 

@@ -32,7 +32,7 @@ function LegalIdScreen({ history }) {
           marginBottom: 20,
           marginHorizontal: 30,
         }}
-        onPress={() => history.push({ name: 'CameraScreen', transition: null })}
+        onPress={() => history.push('/registration/camera')}
       >
         <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           TAKE PHOTO OF ID
@@ -50,7 +50,7 @@ function LegalIdScreen({ history }) {
           justifyContent: 'center',
           marginHorizontal: 30,
         }}
-        onPress={() => history.push({ name: 'EmailScreen', transition: null })}
+        onPress={() => history.push('/registration/email')}
       >
         <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           SKIP FOR NOW
