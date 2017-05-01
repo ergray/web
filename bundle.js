@@ -94934,7 +94934,7 @@ marginBottom:25},
 
 onPress:function onPress(){
 dispatch({delegates:[].concat(_toConsumableArray(delegates),[route.newDelegate]),type:'SYNC_DELEGATES'});
-history.replace({name:'DelegateInfoScreen',rowIndex:delegates.length});
+history.replace('/delegates/'+route.newDelegate.phone);
 }},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:13}},'YES, CONTINUE')),
@@ -98222,7 +98222,7 @@ height:58,
 justifyContent:'center',
 marginBottom:20},
 
-onPress:function onPress(){return history.push({name:'FirstNameScreen',transition:null});}},
+onPress:function onPress(){return history.push('/registration/first-name');}},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'OK')))));
 
@@ -98319,7 +98319,7 @@ method:'PUT'}).
 
 then(function(response){
 if(response.status===200){
-_this2.props.history.push({name:'LastNameScreen',transition:null});
+_this2.props.history.push('/registration/last-name');
 }
 });
 }})));
@@ -98421,7 +98421,7 @@ method:'PUT'}).
 
 then(function(response){
 if(response.status===200){
-_this2.props.history.push({name:'ZipScreen',transition:null});
+_this2.props.history.push('/registration/zip');
 }
 });
 }})));
@@ -98529,7 +98529,7 @@ method:'PUT'}).
 
 then(function(response){
 if(response.status===200){
-_this2.props.history.push({name:'AddressScreen',transition:null});
+_this2.props.history.push('/registration/address');
 }
 });
 }
@@ -98628,7 +98628,7 @@ method:'PUT'}).
 
 then(function(response){
 if(response.status===200){
-_this2.props.history.push({name:'EmailScreen',transition:null});
+_this2.props.history.push('/registration/email');
 }
 });
 }})));
@@ -98692,7 +98692,7 @@ justifyContent:'center',
 marginBottom:20,
 marginHorizontal:30},
 
-onPress:function onPress(){return history.push({name:'CameraScreen',transition:null});}},
+onPress:function onPress(){return history.push('/registration/camera');}},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'TAKE PHOTO OF ID')),
 
@@ -98710,7 +98710,7 @@ height:58,
 justifyContent:'center',
 marginHorizontal:30},
 
-onPress:function onPress(){return history.push({name:'EmailScreen',transition:null});}},
+onPress:function onPress(){return history.push('/registration/email');}},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:16,fontWeight:'600'}},'SKIP FOR NOW'))));
 
@@ -98790,7 +98790,7 @@ width:60},
 
 onPress:function onPress(){return _this.camera.capture().
 then(function(data){return dispatch({path:data.path,type:'CAPTURE_ID_PHOTO'});}).
-then(function(){history.push({name:'IdReviewScreen',transition:null});}).
+then(function(){history.push('/registration/review-id');}).
 catch(function(err){return console.error('err:',err);});}},
 
 
@@ -98876,7 +98876,7 @@ throw new Error('Failed to upload image');
 }
 
 _this2.setState({status:'Upload complete.'});
-setTimeout(function(){return _this2.props.history.push({name:'EmailScreen',transition:null});},800);
+setTimeout(function(){return _this2.props.history.push('/registration/email');},800);
 }));}).
 
 
@@ -99070,7 +99070,7 @@ method:'PUT'}).
 
 then(function(response){
 if(response.status===200){
-_this2.props.history.push({name:'ThankYouScreen',transition:null});
+_this2.props.history.push('/registration/thank-you');
 }
 });
 }})));
@@ -99202,6 +99202,18 @@ _this.state={
 registrationInfo:{}};
 
 
+if(props.sessionId){
+_this.getInfo(props);
+}return _this;
+}_createClass(YourRegistrationScreen,[{key:'componentWillReceiveProps',value:function componentWillReceiveProps(
+
+nextProps){
+if(!this.props.sessionId&&nextProps.sessionId){
+this.getInfo(nextProps);
+}
+}},{key:'getInfo',value:function getInfo(
+
+props){var _this2=this;
 fetch('https://api.liquid.vote/my-registration-info',{headers:{Session_ID:props.sessionId}}).
 then(function(response){return response.json();}).
 then(function(registrationInfo){
@@ -99209,18 +99221,18 @@ props.dispatch({sf_district:registrationInfo.sf_district,type:'UPDATE_SF_DISTRIC
 
 
 if(registrationInfo.verification_status===undefined){
-props.history.replace({name:'RegistrationIntroScreen'});
+props.history.replace('/registration');
 return;
 }
 
-_this.setState({registrationInfo:registrationInfo});
+_this2.setState({registrationInfo:registrationInfo});
 
 
 if(!props.isVerified&&registrationInfo.verification_status==='verified'){
 props.dispatch({type:'SET_IS_VERIFIED'});
 }
-});return _this;
-}_createClass(YourRegistrationScreen,[{key:'render',value:function render()
+});
+}},{key:'render',value:function render()
 
 {var _state$registrationIn=
 
