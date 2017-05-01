@@ -99353,7 +99353,7 @@ props.dispatch({type:'SYNC_VOTING_POWER',votingPower:0});
 }else{
 fetch('https://api.liquid.vote/my-voting-power',{headers:{Session_ID:props.sessionId}}).
 then(function(response){
-if(response.status===401){return props.history.push({name:'AuthErrorScreen'});}
+if(response.status===401){return props.history.push('/auth-error');}
 
 return response.json().
 then(function(_ref){var voting_power=_ref.voting_power;return props.dispatch({type:'SYNC_VOTING_POWER',votingPower:voting_power});});
