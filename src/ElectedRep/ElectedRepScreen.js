@@ -17,6 +17,34 @@ class ElectedRepScreen extends Component {
   }
 
   render() {
+    if (!this.props.user || !this.props.user.sf_district) {
+      return (
+        <View style={{ alignItems: 'center', margin: 30 }}>
+          <Text style={{ color: '#fff', fontSize: 18 }}>Unknown voting district.</Text>
+
+          <HoverableOpacity
+            activeOpacity={0.5}
+            hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
+            outerStyle={{ margin: 30 }}
+            style={{
+              alignItems: 'center',
+              borderColor: 'hsl(215, 100%, 68%)',
+              borderRadius: 5,
+              borderWidth: 1,
+              height: 40,
+              justifyContent: 'center',
+              width: 250,
+            }}
+            onPress={() => this.props.history.push('/sf/board', { backable: true })}
+          >
+            <Text style={{ color: '#fff', fontSize: 13 }}>
+              VIEW ALL ELECTED REPS
+            </Text>
+          </HoverableOpacity>
+        </View>
+      )
+    }
+
     const district = this.props.user.sf_district
     const rep = reps[district]
 
@@ -152,7 +180,7 @@ ElectedRepScreen.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   user: React.PropTypes.shape({
-    sf_district: React.PropTypes.number.isRequired,
+    sf_district: React.PropTypes.number,
   }),
 }
 
