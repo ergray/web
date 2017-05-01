@@ -28,7 +28,7 @@ export default function RegistrationIntroScreen({ history }) {
             justifyContent: 'center',
             marginBottom: 20,
           }}
-          onPress={() => history.push({ name: 'FirstNameScreen', transition: null })}
+          onPress={() => history.push('/registration/first-name')}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             OK

@@ -57,7 +57,7 @@ class IdReviewScreen extends Component {
         }
 
         this.setState({ status: 'Upload complete.' })
-        setTimeout(() => this.props.history.push({ name: 'EmailScreen', transition: null }), 800)
+        setTimeout(() => this.props.history.push('/registration/email'), 800)
       })
     ))
 

@@ -20,7 +20,7 @@ class YourRegistrationScreen extends Component {
 
         // Have they not completed registration yet?
         if (registrationInfo.verification_status === undefined) {
-          props.history.replace({ name: 'RegistrationIntroScreen' })
+          props.history.replace('/registration')
           return
         }
 

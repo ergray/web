@@ -52,7 +52,7 @@ function CameraScreen({ dispatch, history }) {
           }}
           onPress={() => this.camera.capture()
             .then(data => dispatch({ path: data.path, type: 'CAPTURE_ID_PHOTO' }))
-            .then(() => { history.push({ name: 'IdReviewScreen', transition: null }) })
+            .then(() => { history.push('/registration/review-id') })
             .catch(err => console.error('err:', err)) // eslint-disable-line no-console
           }
         >

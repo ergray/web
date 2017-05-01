@@ -73,7 +73,7 @@ class FirstNameScreen extends Component {
             })
             .then((response) => {
               if (response.status === 200) {
-                this.props.history.push({ name: 'LastNameScreen', transition: null })
+                this.props.history.push('/registration/last-name')
               }
             })
           }}
