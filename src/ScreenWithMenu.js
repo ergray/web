@@ -34,7 +34,7 @@ class ScreenWithMenu extends Component {
     } else {
       fetch('https://api.liquid.vote/my-voting-power', { headers: { Session_ID: props.sessionId } })
       .then((response) => {
-        if (response.status === 401) { return props.history.push({ name: 'AuthErrorScreen' }) }
+        if (response.status === 401) { return props.history.push('/auth-error') }
 
         return response.json()
         .then(({ voting_power }) => props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: voting_power }))
