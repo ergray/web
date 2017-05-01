@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import {
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import SaveIcon from 'react-icons/lib/fa/floppy-o'
+import HoverableOpacity from '../HoverableOpacity'
 
 class ConfirmVoteScreen extends Component {
   constructor(props) {
@@ -113,26 +113,33 @@ class ConfirmVoteScreen extends Component {
               This is less than your max voting power because some of your constituents have directly voted.
             </Text>
           }
-          <TouchableOpacity onPress={() => history.push({ name: 'VotingPowerScreen' })}>
-            <Text style={{ color: '#5DA0FF', marginTop: 10, textDecorationLine: 'underline' }}>
+          <HoverableOpacity
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            outerStyle={{ alignSelf: 'flex-start', marginTop: 10 }}
+            onPress={() => history.push('/voting-power')}
+          >
+            <Text style={{ color: '#5DA0FF', textDecorationLine: 'underline' }}>
               Invite more people to increase your voting power.
             </Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
         </View>
 
         <View style={{ flex: 1 }} />
 
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
-          style={{
-            alignItems: 'center',
+          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+          outerStyle={{
             borderColor: '#5DA0FF',
             borderRadius: 5,
             borderWidth: 1,
-            height: 38,
-            justifyContent: 'center',
             marginBottom: 20,
             marginHorizontal: 20,
+          }}
+          style={{
+            alignItems: 'center',
+            height: 38,
+            justifyContent: 'center',
           }}
           onPress={() => {
             // Save the position to redux store
@@ -158,7 +165,7 @@ class ConfirmVoteScreen extends Component {
             <SaveIcon size={15} style={{ paddingBottom: 3 }} />
             &nbsp;&nbsp;SAVE
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
 
       </View>
     )
