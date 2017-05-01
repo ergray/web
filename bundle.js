@@ -95728,6 +95728,34 @@ _this.state={};return _this;
 }_createClass(ElectedRepScreen,[{key:'render',value:function render()
 
 {var _this2=this;
+if(!this.props.user||!this.props.user.sf_district){
+return(
+_react2.default.createElement(_reactNative.View,{style:{alignItems:'center',margin:30}},
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:18}},'Unknown voting district.'),
+
+_react2.default.createElement(_HoverableOpacity2.default,{
+activeOpacity:0.5,
+hoverStyle:{backgroundColor:'hsla(215, 100%, 68%, 0.1)'},
+outerStyle:{margin:30},
+style:{
+alignItems:'center',
+borderColor:'hsl(215, 100%, 68%)',
+borderRadius:5,
+borderWidth:1,
+height:40,
+justifyContent:'center',
+width:250},
+
+onPress:function onPress(){return _this2.props.history.push('/sf/board',{backable:true});}},
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:13}},'VIEW ALL ELECTED REPS'))));
+
+
+
+
+
+}
+
 var district=this.props.user.sf_district;
 var rep=_currentReps2.default[district];
 
@@ -95863,7 +95891,7 @@ history:_react2.default.PropTypes.shape({
 push:_react2.default.PropTypes.func.isRequired}).
 isRequired,
 user:_react2.default.PropTypes.shape({
-sf_district:_react2.default.PropTypes.number.isRequired})};
+sf_district:_react2.default.PropTypes.number})};
 
 
 
