@@ -1,13 +1,20 @@
 import React from 'react'
 import {
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import HoverableOpacity from '../HoverableOpacity'
 const pick = require('lodash/fp/pick')
 
-function ConfirmDelegateScreen({ delegates, dispatch, history, route }) {
+function ConfirmDelegateScreen({ delegates, dispatch, history, match }) {
+  const { phoneNumber } = match.params
+
+  const newDelegate = {
+    name: 'UNKNOWN NAME',
+    phone: phoneNumber,
+  }
+
   return (
     <View style={{ marginHorizontal: 30, marginTop: 10 }}>
       <Text style={{
@@ -41,45 +48,51 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, route }) {
         marginBottom: 20,
         marginTop: 60,
       }}
-      >Are you sure you want to delegate to {route.newDelegate.name}?</Text>
+      >Are you sure you want to delegate to {newDelegate.name}?</Text>
 
-      <TouchableOpacity
+      <HoverableOpacity
         activeOpacity={0.5}
-        style={{
-          alignItems: 'center',
-          borderColor: '#05A5D1',
+        hoverStyle={{ backgroundColor: 'rgba(5, 165, 290, 0.1)' }}
+        outerStyle={{
+          borderColor: 'rgb(5, 165, 290)',
           borderRadius: 5,
           borderWidth: 1,
-          height: 38,
-          justifyContent: 'center',
           marginBottom: 25,
         }}
+        style={{
+          alignItems: 'center',
+          height: 38,
+          justifyContent: 'center',
+        }}
         onPress={() => {
-          dispatch({ delegates: [...delegates, route.newDelegate], type: 'SYNC_DELEGATES' })
-          history.replace(`/delegates/${route.newDelegate.phone}`)
+          dispatch({ delegates: [...delegates, newDelegate], type: 'SYNC_DELEGATES' })
+          history.replace(`/delegates/${phoneNumber}`)
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           YES, CONTINUE
         </Text>
-      </TouchableOpacity>
-      <TouchableOpacity
+      </HoverableOpacity>
+      <HoverableOpacity
         activeOpacity={0.5}
-        style={{
-          alignItems: 'center',
+        hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
+        outerStyle={{
           borderColor: 'darkred',
           borderRadius: 5,
           borderWidth: 1,
+          marginBottom: 15,
+        }}
+        style={{
+          alignItems: 'center',
           height: 38,
           justifyContent: 'center',
-          marginBottom: 15,
         }}
         onPress={() => history.goBack()}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
           NO, NEVERMIND
         </Text>
-      </TouchableOpacity>
+      </HoverableOpacity>
     </View>
   )
 }
@@ -92,9 +105,9 @@ ConfirmDelegateScreen.propTypes = {
   })).isRequired,
   dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({}).isRequired,
-  route: React.PropTypes.shape({
-    newDelegate: React.PropTypes.shape({
-      name: React.PropTypes.string.isRequired,
+  match: React.PropTypes.shape({
+    params: React.PropTypes.shape({
+      phoneNumber: React.PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 }
