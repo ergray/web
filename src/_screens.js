@@ -12,7 +12,7 @@ export const screens = {
   '/auth-error': require('./AuthErrorScreen').default,
   '/confirm-new-number/:phoneNumber': require('./Login/1.5-ConfirmNewNumberScreen').default,
   '/delegates': require('./Delegation/DelegatesScreen').default,
-  '/delegates/confirm': require('./Delegation/ConfirmDelegateScreen').default,
+  '/delegates/add/:phoneNumber': require('./Delegation/ConfirmDelegateScreen').default,
   '/delegates/requests': require('./Delegation/RequestsScreen').default,
   '/delegates/:phoneNumber': require('./Delegation/DelegateInfoScreen').default, // eslint-disable-line sort-keys
   '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
