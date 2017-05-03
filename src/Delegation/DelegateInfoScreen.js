@@ -5,6 +5,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import HoverableOpacity from '../HoverableOpacity'
 
 function prettifyPhone(tenDigits) {
   const areaCode = tenDigits.slice(0, 3)
@@ -18,8 +19,19 @@ class DelegateInfoScreen extends Component {
   constructor(props) {
     super(props)
 
-    const rowIndex = props.delegates.findIndex(d => d.phone === props.match.params.phoneNumber)
+    if (props.sessionId && props.delegates) {
+      this.getInfo(props)
+    }
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.sessionId && nextProps.delegates) {
+      this.getInfo(nextProps)
+    }
+  }
+
+  getInfo(props) {
+    const rowIndex = props.delegates.findIndex(d => d.phone === props.match.params.phoneNumber)
     const activeDelegate = props.delegates[rowIndex]
 
     if (activeDelegate) {
@@ -27,13 +39,13 @@ class DelegateInfoScreen extends Component {
       fetch(`https://api.liquid.vote/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(({ name, status, user_id }) => {
-        props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
+        this.props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
       })
     }
   }
 
   render() {
-    const { delegates, dispatch, match, route, sessionId } = this.props
+    const { delegates, dispatch, history, match, route, sessionId } = this.props
 
     const rowIndex = delegates.findIndex(d => d.phone === match.params.phoneNumber)
 
@@ -108,7 +120,7 @@ class DelegateInfoScreen extends Component {
     const statusCodeResponse = statusCodesResponses[activeDelegate.status]
 
     return (
-      <View style={{ marginHorizontal: 30, paddingTop: 20, width: 600 }}>
+      <View style={{ margin: 30 }}>
 
         <Text style={{ color: 'white', fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
 
@@ -148,6 +160,47 @@ class DelegateInfoScreen extends Component {
             </Text>
           </TouchableOpacity>
         )}
+
+        <HoverableOpacity
+          activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
+          outerStyle={{
+            borderColor: 'darkred',
+            borderRadius: 5,
+            borderWidth: 1,
+            marginVertical: 30,
+          }}
+          style={{
+            alignItems: 'center',
+            height: 38,
+            justifyContent: 'center',
+          }}
+          onPress={() => {
+            const updatedDelegates = [...this.props.delegates] // clone delegate list
+            updatedDelegates.splice(rowIndex, 1) // remove one at the right index
+
+            fetch('https://api.liquid.vote/my-delegates', {
+              body: JSON.stringify({
+                delegates: updatedDelegates,
+              }),
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Session_ID: sessionId,
+              },
+              method: 'PUT',
+            })
+            .then(() => {
+              this.props.dispatch({ delegates: updatedDelegates, type: 'SYNC_DELEGATES' })
+              history.replace('/delegates')
+            })
+          }}
+        >
+          <Text style={{ color: '#fff', fontSize: 13 }}>
+            REMOVE
+          </Text>
+        </HoverableOpacity>
+
       </View>
     )
   }
@@ -160,6 +213,7 @@ DelegateInfoScreen.propTypes = {
     name: React.PropTypes.string,
   })),
   dispatch: React.PropTypes.func.isRequired,
+  history: React.PropTypes.shape({}),
   match: React.PropTypes.shape({
     params: React.PropTypes.shape({
       phoneNumber: React.PropTypes.string,
