@@ -7,16 +7,16 @@ import { connect } from 'react-redux'
 import HoverableOpacity from '../HoverableOpacity'
 const pick = require('lodash/fp/pick')
 
-function ConfirmDelegateScreen({ delegates, dispatch, history, match }) {
+function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId }) {
   const { phoneNumber } = match.params
 
   const newDelegate = {
-    name: 'UNKNOWN NAME',
+    name: 'Unknown Name',
     phone: phoneNumber,
   }
 
   return (
-    <View style={{ marginHorizontal: 30, marginTop: 10 }}>
+    <View style={{ margin: 30 }}>
       <Text style={{
         color: '#fff',
         fontSize: 16,
@@ -48,7 +48,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match }) {
         marginBottom: 20,
         marginTop: 60,
       }}
-      >Are you sure you want to delegate to {newDelegate.name}?</Text>
+      >Are you sure you want to delegate to {newDelegate.name.toUpperCase()}?</Text>
 
       <HoverableOpacity
         activeOpacity={0.5}
@@ -66,7 +66,20 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match }) {
         }}
         onPress={() => {
           dispatch({ delegates: [...delegates, newDelegate], type: 'SYNC_DELEGATES' })
-          history.replace(`/delegates/${phoneNumber}`)
+          fetch('https://api.liquid.vote/my-delegates', {
+            body: JSON.stringify({
+              delegates: [...delegates, newDelegate],
+            }),
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Session_ID: sessionId,
+            },
+            method: 'PUT',
+          })
+          .then(() => {
+            history.replace(`/delegates/${phoneNumber}`)
+          })
         }}
       >
         <Text style={{ color: '#fff', fontSize: 13 }}>
@@ -110,9 +123,11 @@ ConfirmDelegateScreen.propTypes = {
       phoneNumber: React.PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  sessionId: React.PropTypes.string,
 }
 
 
 export default connect(pick([
   'delegates',
+  'sessionId',
 ]))(ConfirmDelegateScreen)
