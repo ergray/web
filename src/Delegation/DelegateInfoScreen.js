@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -142,23 +141,26 @@ class DelegateInfoScreen extends Component {
           <Text style={{ color: 'white' }}>{statusCodeResponse.description}</Text>
         )}
         { statusCodeResponse.button && (
-          <TouchableOpacity
+          <HoverableOpacity
             activeOpacity={0.5}
-            style={{
-              alignItems: 'center',
-              borderColor: '#05A5D1',
+            hoverStyle={{ backgroundColor: 'rgba(5, 165, 290, 0.1)' }}
+            outerStyle={{
+              borderColor: 'rgb(5, 165, 290)',
               borderRadius: 5,
               borderWidth: 1,
+              marginTop: 30,
+            }}
+            style={{
+              alignItems: 'center',
               height: 38,
               justifyContent: 'center',
-              marginVertical: 30,
             }}
             onPress={statusCodeResponse.button.onPress}
           >
             <Text style={{ color: '#fff', fontSize: 13 }}>
               {statusCodeResponse.button.text}
             </Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
         )}
 
         <HoverableOpacity
