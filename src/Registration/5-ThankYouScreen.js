@@ -35,9 +35,25 @@ function ThankYouScreen({ history }) {
         color: '#fff',
         fontSize: 18,
         fontWeight: '200',
-        marginVertical: 70,
+        marginTop: 70,
       }}
-      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is still in beta but you're welcome to try it out.</Text>
+      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is in beta but you're welcome to try it out.</Text>
+
+      <Text style={{
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '200',
+        marginTop: 40,
+      }}
+      >Please use the <Text style={{ fontWeight: '700' }}>SEND FEEDBACK</Text> button in the left menu</Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '200',
+        marginBottom: 70,
+        marginTop: 5,
+      }}
+      >to reach out with any questions or comments.</Text>
 
       <HoverableOpacity
         activeOpacity={0.5}
