@@ -12,7 +12,15 @@ class AddressScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      address: '',
+      address: props.user.address,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update default value if page was hit directly,
+    // before redux-persist had rehydrated
+    if (this.props.user.address !== nextProps.user.address) {
+      this.setState({ address: nextProps.user.address })
     }
   }
 
@@ -52,6 +60,15 @@ class AddressScreen extends Component {
           value={this.state.address}
           onChangeText={address => this.setState({ address })}
           onSubmitEditing={() => {
+            // Save the new value locally
+            this.props.dispatch({
+              type: 'SET_USER',
+              user: { ...this.props.user,
+                address: this.state.address,
+              },
+            })
+
+            // Send the new value to the server
             fetch('https://api.liquid.vote/my-registration-info', {
               body: JSON.stringify({
                 address: this.state.address,
@@ -79,12 +96,25 @@ class AddressScreen extends Component {
 AddressScreen.disableHeader = true
 
 AddressScreen.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape({
+    address: React.PropTypes.string,
+  }),
 }
 
-const mapStateToProps = state => ({ sessionId: state.sessionId })
+AddressScreen.defaultProps = {
+  user: {
+    address: '',
+  },
+}
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+})
 
 export default connect(mapStateToProps)(AddressScreen)

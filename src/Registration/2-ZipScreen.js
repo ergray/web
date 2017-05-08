@@ -12,7 +12,15 @@ class ZipScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      zip: '',
+      zip: props.user.zip,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update default value if page was hit directly,
+    // before redux-persist had rehydrated
+    if (this.props.user.zip !== nextProps.user.zip) {
+      this.setState({ zip: nextProps.user.zip })
     }
   }
 
@@ -37,7 +45,6 @@ class ZipScreen extends Component {
 
         <TextInput
           autoFocus
-          clearTextOnFocus
           autoCorrect={false}
           keyboardType="number-pad"
           maxLength={5}
@@ -60,9 +67,17 @@ class ZipScreen extends Component {
           onChangeText={(newText) => {
             this.setState({ zip: newText })
 
+            // Automatically stop when they hit 5 characters
             if (newText.length === 5) {
-              this.props.dispatch({ type: 'SET_REGISTRATION_ZIP', zip: newText })
+              // Save the new value locally
+              this.props.dispatch({
+                type: 'SET_USER',
+                user: { ...this.props.user,
+                  zip: newText,
+                },
+              })
 
+              // Send the new value to the server
               fetch('https://api.liquid.vote/my-registration-info', {
                 body: JSON.stringify({
                   zip: newText,
@@ -96,8 +111,20 @@ ZipScreen.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape({
+    zip: React.PropTypes.string,
+  }),
 }
 
-const mapStateToProps = state => ({ sessionId: state.sessionId })
+ZipScreen.defaultProps = {
+  user: {
+    zip: '',
+  },
+}
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+})
 
 export default connect(mapStateToProps)(ZipScreen)

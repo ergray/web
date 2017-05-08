@@ -40,7 +40,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{ marginVertical: 20 }}
-        onPress={() => history.push('your-registration')}
+        onPress={() => history.push('/your-registration')}
       >
         <Text
           style={{

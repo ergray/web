@@ -12,7 +12,15 @@ class FirstNameScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: '',
+      firstName: props.user.first_name,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update default value if page was hit directly,
+    // before redux-persist had rehydrated
+    if (this.props.user.first_name !== nextProps.user.first_name) {
+      this.setState({ firstName: nextProps.user.first_name })
     }
   }
 
@@ -36,7 +44,6 @@ class FirstNameScreen extends Component {
 
         <TextInput
           autoFocus
-          clearTextOnFocus
           autoCorrect={false}
           placeholder="first name"
           returnKeyType="next"
@@ -54,12 +61,17 @@ class FirstNameScreen extends Component {
             width,
           }}
           value={this.state.firstName}
-          onChangeText={(newText) => { this.setState({ firstName: newText }) }}
+          onChangeText={firstName => this.setState({ firstName })}
           onSubmitEditing={() => {
-            if (this.state.firstName !== '') {
-              this.props.dispatch({ firstName: this.state.firstName, type: 'SET_FIRST_NAME' })
-            }
+            // Save the new value locally
+            this.props.dispatch({
+              type: 'SET_USER',
+              user: { ...this.props.user,
+                first_name: this.state.firstName,
+              },
+            })
 
+            // Send the new value to the server
             fetch('https://api.liquid.vote/my-registration-info', {
               body: JSON.stringify({
                 first_name: this.state.firstName,
@@ -92,8 +104,20 @@ FirstNameScreen.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape({
+    first_name: React.PropTypes.string,
+  }),
 }
 
-const mapStateToProps = state => ({ sessionId: state.sessionId })
+FirstNameScreen.defaultProps = {
+  user: {
+    first_name: '',
+  },
+}
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+})
 
 export default connect(mapStateToProps)(FirstNameScreen)

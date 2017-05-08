@@ -2,15 +2,15 @@ import React from 'react'
 import {
   Image,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import logo from '../logo.png'
+import HoverableOpacity from '../HoverableOpacity'
 import ProgressBar from './ProgressBar'
 
 function ThankYouScreen({ history }) {
   return (
-    <View>
+    <View style={{ alignItems: 'center' }}>
       <Image
         source={logo}
         style={{
@@ -27,7 +27,7 @@ function ThankYouScreen({ history }) {
         fontSize: 19,
         fontWeight: '700',
       }}
-      >COMPLETE</Text>
+      >THANK YOU</Text>
 
       <ProgressBar step={5} style={{ marginVertical: 15 }} />
 
@@ -35,38 +35,30 @@ function ThankYouScreen({ history }) {
         color: '#fff',
         fontSize: 18,
         fontWeight: '200',
-        marginHorizontal: 30,
-        marginTop: 70,
+        marginVertical: 70,
       }}
-      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is in private beta.</Text>
+      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is still in beta but you're welcome to try it out.</Text>
 
-      <Text style={{
-        color: '#fff',
-        fontSize: 18,
-        fontWeight: '200',
-        marginHorizontal: 30,
-        marginTop: 10,
-      }}
-      >We'll notify you when we're ready for more voters.</Text>
-
-      <TouchableOpacity
+      <HoverableOpacity
         activeOpacity={0.5}
+        hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.2)' }}
+        outerStyle={{
+          borderColor: 'rgb(52, 65, 132)',
+          borderRadius: 30,
+          borderWidth: 3,
+        }}
         style={{
           alignItems: 'center',
-          borderColor: '#5DA0FF',
-          borderRadius: 5,
-          borderWidth: 1,
-          height: 38,
+          height: 58,
           justifyContent: 'center',
-          marginHorizontal: 30,
-          marginTop: 50,
+          width: 500,
         }}
-        onPress={() => history.replace('/sf')}
+        onPress={() => history.push('/sf')}
       >
-        <Text style={{ color: '#fff', fontSize: 13 }}>
+        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
           GO TO LEGISLATION &nbsp;→
         </Text>
-      </TouchableOpacity>
+      </HoverableOpacity>
 
     </View>
   )

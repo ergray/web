@@ -2,25 +2,16 @@ import React from 'react'
 import {
   Image,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import BackIcon from 'react-icons/lib/md/chevron-left'
 import logo from '../logo.png'
 import ProgressBar from './ProgressBar'
 
-function Header({ history, step, title }) {
+function Header({ step, title }) {
   return (
     <View>
-      <View style={{ flexDirection: 'row' }}>
-
-        <TouchableOpacity
-          style={{ flex: 1, height: 123, minWidth: 50, paddingTop: 30 }}
-          onPress={() => history.goBack()}
-        >
-          <BackIcon color="grey" size={40} style={{ paddingLeft: 30 }} />
-        </TouchableOpacity>
+      <View style={{ alignItems: 'center' }}>
 
         <View>
           <Image
@@ -41,8 +32,6 @@ function Header({ history, step, title }) {
           }}
           >{title}</Text>
         </View>
-
-        <View style={{ flex: 1, minWidth: 70 }} />
       </View>
 
       <ProgressBar step={step} style={{ marginVertical: 15 }} />
@@ -52,9 +41,6 @@ function Header({ history, step, title }) {
 }
 
 Header.propTypes = {
-  history: React.PropTypes.shape({
-    goBack: React.PropTypes.func.isRequired,
-  }).isRequired,
   step: React.PropTypes.number.isRequired,
   title: React.PropTypes.string.isRequired,
 }
