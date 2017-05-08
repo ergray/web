@@ -1,8 +1,10 @@
 import React from 'react'
 import {
+  Linking,
   Text,
   View,
 } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 
 export default function IntroDescription({ large }) {
   return (
@@ -31,16 +33,23 @@ export default function IntroDescription({ large }) {
         }}
       >Hold politicians accountable.</Text>
 
-      <a
-        href="https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/"
-        rel="noopener noreferrer"
-        style={{
-          color: '#0000FF',
-          cursor: 'pointer',
-          fontSize: 16,
+      <HoverableOpacity
+        hoverStyle={{ backgroundColor: 'rgba(59,89,152,0.5)' }}
+        style={{ padding: 3 }}
+        onPress={() => {
+          Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
+          .catch(() => {})
         }}
-        target="_blank"
-      >LEARN MORE</a>
+      >
+        <Text
+          style={{
+            color: '#0000FF',
+            cursor: 'pointer',
+            fontSize: 16,
+            textDecorationLine: 'underline',
+          }}
+        >LEARN MORE</Text>
+      </HoverableOpacity>
 
     </View>
   )
