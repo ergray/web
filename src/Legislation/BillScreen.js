@@ -194,9 +194,12 @@ class BillScreen extends Component {
         }}
         >
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.03)' }}
+            hoverStyle={{
+              backgroundColor: user.sf_district ? 'hsla(0,0%,100%,0.03)' : null,
+              cursor: user.sf_district ? 'pointer' : 'default',
+            }}
             outerStyle={{ flex: 3, paddingLeft: 20 }}
-            style={{ alignItems: 'center', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}
+            style={{ alignItems: 'center', cursor: 'default', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}
             onPress={() => {
               if (user.sf_district) {
                 dispatch({ type: 'TOGGLE_VOTE_COUNTS_MODE' })
