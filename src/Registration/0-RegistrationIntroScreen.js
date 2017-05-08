@@ -1,5 +1,6 @@
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, View } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 import Header from './Header'
 
 export default function RegistrationIntroScreen({ history }) {
@@ -17,23 +18,26 @@ export default function RegistrationIntroScreen({ history }) {
           <Text style={{ color: 'white', fontSize: 17, marginVertical: 10 }}>All information is strictly confidential.</Text>
         </View>
 
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
-          style={{
-            alignItems: 'center',
-            borderColor: '#344184',
+          hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.2)' }}
+          outerStyle={{
+            borderColor: 'rgb(52, 65, 132)',
             borderRadius: 30,
             borderWidth: 3,
+            marginBottom: 20,
+          }}
+          style={{
+            alignItems: 'center',
             height: 58,
             justifyContent: 'center',
-            marginBottom: 20,
           }}
           onPress={() => history.push('/registration/first-name')}
         >
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             OK
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
       </View>
     </View>
   )
