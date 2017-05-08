@@ -35,7 +35,7 @@ class FeedbackScreen extends Component {
           autoFocus
           multiline
           numberOfLines={15}
-          placeholder="Hi, I just wanted to let you know that..."
+          placeholder="Hi, I wanted to let you know that..."
           style={{
             backgroundColor: '#fff',
             borderRadius: 3,

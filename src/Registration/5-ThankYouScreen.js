@@ -4,11 +4,13 @@ import {
   Text,
   View,
 } from 'react-native'
+import { connect } from 'react-redux'
 import logo from '../logo.png'
 import HoverableOpacity from '../HoverableOpacity'
 import ProgressBar from './ProgressBar'
+const pick = require('lodash/fp/pick')
 
-function ThankYouScreen({ history }) {
+function ThankYouScreen({ history, user }) {
   return (
     <View style={{ alignItems: 'center' }}>
       <Image
@@ -35,9 +37,31 @@ function ThankYouScreen({ history }) {
         color: '#fff',
         fontSize: 18,
         fontWeight: '200',
-        marginVertical: 70,
+        marginTop: 70,
       }}
-      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is still in beta but you're welcome to try it out.</Text>
+      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is
+      { user && user.zip && user.zip.slice(0, 2) === '94'
+        ? ' in beta '
+        : ' only available for San Francisco right now '
+      }
+      but you're welcome to try it out.
+      </Text>
+
+      <Text style={{
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '200',
+        marginTop: 40,
+      }}
+      >Please use the <Text style={{ fontWeight: '700' }}>SEND FEEDBACK</Text> button in the left menu</Text>
+      <Text style={{
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '200',
+        marginBottom: 70,
+        marginTop: 5,
+      }}
+      >to reach out with any questions or comments.</Text>
 
       <HoverableOpacity
         activeOpacity={0.5}
@@ -68,6 +92,11 @@ ThankYouScreen.disableHeader = true
 
 ThankYouScreen.propTypes = {
   history: React.PropTypes.shape({}).isRequired,
+  user: React.PropTypes.shape({
+    zip: React.PropTypes.string,
+  }),
 }
 
-export default ThankYouScreen
+export default connect(pick([
+  'user',
+]))(ThankYouScreen)
