@@ -5,14 +5,14 @@ import Header from './Header'
 
 export default function RegistrationIntroScreen({ history }) {
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <Header history={history} step={0} title="VOTER REGISTRATION" />
 
-      <View style={{ alignItems: 'center', flex: 1, justifyContent: 'space-between', marginVertical: 50 }}>
-        <View>
+      <View style={{ alignItems: 'center' }}>
+        <View style={{ marginVertical: 50 }}>
           <Text style={{ color: 'white', fontSize: 20, marginBottom: 10 }}>The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is built on strong guarantees of one-person-one-vote.</Text>
           <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>
-            To join, you must already be legally registered to vote.</Text>
+            To join, you must be legally registered to vote.</Text>
           <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>
             You will be asked a few questions to confirm your legal voter registration.</Text>
           <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>All information is strictly confidential.</Text>
