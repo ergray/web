@@ -98307,13 +98307,13 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 
 RegistrationIntroScreen;var _react=__webpack_require__(0);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);var _HoverableOpacity=__webpack_require__(14);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);var _Header=__webpack_require__(52);var _Header2=_interopRequireDefault(_Header);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function RegistrationIntroScreen(_ref){var history=_ref.history;
 return(
-_react2.default.createElement(_reactNative.View,{style:{flex:1}},
+_react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(_Header2.default,{history:history,step:0,title:'VOTER REGISTRATION'}),
 
-_react2.default.createElement(_reactNative.View,{style:{alignItems:'center',flex:1,justifyContent:'space-between',marginVertical:50}},
-_react2.default.createElement(_reactNative.View,null,
+_react2.default.createElement(_reactNative.View,{style:{alignItems:'center'}},
+_react2.default.createElement(_reactNative.View,{style:{marginVertical:50}},
 _react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:20,marginBottom:10}},'The ',_react2.default.createElement(_reactNative.Text,{style:{fontWeight:'700'}},'Liquid Network'),' is built on strong guarantees of one-person-one-vote.'),
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:20,marginVertical:10}},'To join, you must already be legally registered to vote.'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:20,marginVertical:10}},'To join, you must be legally registered to vote.'),
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:20,marginVertical:10}},'You will be asked a few questions to confirm your legal voter registration.'),
 
