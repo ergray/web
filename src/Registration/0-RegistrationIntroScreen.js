@@ -8,14 +8,14 @@ export default function RegistrationIntroScreen({ history }) {
     <View style={{ flex: 1 }}>
       <Header history={history} step={0} title="VOTER REGISTRATION" />
 
-      <View style={{ flex: 1, justifyContent: 'space-between', marginHorizontal: 30, marginTop: 50 }}>
+      <View style={{ alignItems: 'center', flex: 1, justifyContent: 'space-between', marginVertical: 50 }}>
         <View>
-          <Text style={{ color: 'white', fontSize: 17, marginBottom: 10 }}>The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is built on strong guarantees of one-person-one-vote.</Text>
-          <Text style={{ color: 'white', fontSize: 17, marginVertical: 10 }}>
+          <Text style={{ color: 'white', fontSize: 20, marginBottom: 10 }}>The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is built on strong guarantees of one-person-one-vote.</Text>
+          <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>
             To join, you must already be legally registered to vote.</Text>
-          <Text style={{ color: 'white', fontSize: 17, marginVertical: 10 }}>
+          <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>
             You will be asked a few questions to confirm your legal voter registration.</Text>
-          <Text style={{ color: 'white', fontSize: 17, marginVertical: 10 }}>All information is strictly confidential.</Text>
+          <Text style={{ color: 'white', fontSize: 20, marginVertical: 10 }}>All information is strictly confidential.</Text>
         </View>
 
         <HoverableOpacity
@@ -25,12 +25,12 @@ export default function RegistrationIntroScreen({ history }) {
             borderColor: 'rgb(52, 65, 132)',
             borderRadius: 30,
             borderWidth: 3,
-            marginBottom: 20,
           }}
           style={{
             alignItems: 'center',
             height: 58,
             justifyContent: 'center',
+            width: 500,
           }}
           onPress={() => history.push('/registration/first-name')}
         >
