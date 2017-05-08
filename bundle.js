@@ -97598,7 +97598,11 @@ sessionId:json.session_id,
 type:'LOGIN_USER',
 user:json.user});
 
+if(json.user.complete){
 _this2.props.history.replace('/sf');
+}else{
+_this2.props.history.replace('/registration');
+}
 });
 }
 
