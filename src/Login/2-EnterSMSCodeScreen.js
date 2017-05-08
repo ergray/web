@@ -3,11 +3,11 @@ import {
   Image,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import logo from '../logo.png'
+import HoverableOpacity from '../HoverableOpacity'
 
 class EnterSMSCodeScreen extends Component {
   constructor(props) {
@@ -160,23 +160,29 @@ class EnterSMSCodeScreen extends Component {
         />
 
         { !this.state.loading &&
-          <TouchableOpacity
+          <HoverableOpacity
             activeOpacity={0.5}
+            hoverStyle={{ backgroundColor: 'rgba(90, 6, 7, 0.15)' }}
+            outerStyle={{
+              borderColor: 'rgb(90, 6, 7)',
+              borderRadius: 30,
+              borderWidth: 3,
+              marginBottom: 30,
+              marginTop: 30,
+            }}
             style={{
               alignItems: 'center',
-              borderColor: '#344184',
-              borderRadius: 30,
-              borderWidth: 4,
-              height: 58,
               justifyContent: 'center',
-              marginHorizontal: 30,
+              paddingVertical: 16,
             }}
-            onPress={() => this.props.history.replace('/')}
+            onPress={() => {
+              this.props.history.replace('/')
+            }}
           >
             <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
               BACK
             </Text>
-          </TouchableOpacity>
+          </HoverableOpacity>
         }
 
       </View>

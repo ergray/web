@@ -2,9 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native'
+import HoverableOpacity from '../HoverableOpacity'
 
 function prettifyPhone(tenDigits) {
   const areaCode = tenDigits.slice(0, 3)
@@ -51,16 +51,19 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
       </View>
 
       <View style={{}}>
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
-          style={{
-            alignItems: 'center',
-            borderColor: '#344184',
+          hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.15)' }}
+          outerStyle={{
+            borderColor: 'rgb(52, 65, 132)',
             borderRadius: 30,
             borderWidth: 3,
-            height: 58,
-            justifyContent: 'center',
             marginTop: 60,
+          }}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingVertical: 16,
           }}
           onPress={() => {
             fetch('https://api.liquid.vote/login', {
@@ -82,19 +85,22 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             CONFIRM
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
 
-        <TouchableOpacity
+        <HoverableOpacity
           activeOpacity={0.5}
-          style={{
-            alignItems: 'center',
-            borderColor: '#5a0607',
+          hoverStyle={{ backgroundColor: 'rgba(90, 6, 7, 0.15)' }}
+          outerStyle={{
+            borderColor: 'rgb(90, 6, 7)',
             borderRadius: 30,
             borderWidth: 3,
-            height: 58,
-            justifyContent: 'center',
             marginBottom: 30,
             marginTop: 30,
+          }}
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingVertical: 16,
           }}
           onPress={() => {
             history.goBack()
@@ -103,7 +109,7 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
           <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
             CANCEL
           </Text>
-        </TouchableOpacity>
+        </HoverableOpacity>
       </View>
     </View>
   )
