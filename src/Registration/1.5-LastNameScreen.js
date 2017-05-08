@@ -12,7 +12,15 @@ class LastNameScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lastName: '',
+      lastName: props.user.last_name,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update default value if page was hit directly,
+    // before redux-persist had rehydrated
+    if (this.props.user.last_name !== nextProps.user.last_name) {
+      this.setState({ lastName: nextProps.user.last_name })
     }
   }
 
@@ -36,7 +44,6 @@ class LastNameScreen extends Component {
 
         <TextInput
           autoFocus
-          clearTextOnFocus
           autoCorrect={false}
           placeholder="last name"
           returnKeyType="next"
@@ -54,8 +61,17 @@ class LastNameScreen extends Component {
             width,
           }}
           value={this.state.lastName}
-          onChangeText={(newText) => { this.setState({ lastName: newText }) }}
+          onChangeText={lastName => this.setState({ lastName })}
           onSubmitEditing={() => {
+            // Save the new value locally
+            this.props.dispatch({
+              type: 'SET_USER',
+              user: { ...this.props.user,
+                last_name: this.state.lastName,
+              },
+            })
+
+            // Send the new value to the server
             fetch('https://api.liquid.vote/my-registration-info', {
               body: JSON.stringify({
                 last_name: this.state.lastName,
@@ -83,12 +99,25 @@ class LastNameScreen extends Component {
 LastNameScreen.disableHeader = true
 
 LastNameScreen.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape({
+    last_name: React.PropTypes.string,
+  }),
 }
 
-const mapStateToProps = state => ({ sessionId: state.sessionId })
+LastNameScreen.defaultProps = {
+  user: {
+    last_name: '',
+  },
+}
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+})
 
 export default connect(mapStateToProps)(LastNameScreen)

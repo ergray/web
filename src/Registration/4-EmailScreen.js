@@ -12,7 +12,15 @@ class EmailScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
+      email: props.user.email,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // Update default value if page was hit directly,
+    // before redux-persist had rehydrated
+    if (this.props.user.email !== nextProps.user.email) {
+      this.setState({ email: nextProps.user.email })
     }
   }
 
@@ -36,7 +44,6 @@ class EmailScreen extends Component {
 
         <TextInput
           autoFocus
-          clearTextOnFocus
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="email-address"
@@ -56,8 +63,17 @@ class EmailScreen extends Component {
             width,
           }}
           value={this.state.email}
-          onChangeText={(newText) => { this.setState({ email: newText }) }}
+          onChangeText={email => this.setState({ email })}
           onSubmitEditing={() => {
+            // Save the new value locally
+            this.props.dispatch({
+              type: 'SET_USER',
+              user: { ...this.props.user,
+                email: this.state.email,
+              },
+            })
+
+            // Send the new value to the server
             fetch('https://api.liquid.vote/my-registration-info', {
               body: JSON.stringify({
                 complete: true,
@@ -86,12 +102,25 @@ class EmailScreen extends Component {
 EmailScreen.disableHeader = true
 
 EmailScreen.propTypes = {
+  dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({
     push: React.PropTypes.func.isRequired,
   }),
   sessionId: React.PropTypes.string.isRequired,
+  user: React.PropTypes.shape({
+    email: React.PropTypes.string,
+  }),
 }
 
-const mapStateToProps = state => ({ sessionId: state.sessionId })
+EmailScreen.defaultProps = {
+  user: {
+    email: '',
+  },
+}
+
+const mapStateToProps = state => ({
+  sessionId: state.sessionId,
+  user: state.user,
+})
 
 export default connect(mapStateToProps)(EmailScreen)

@@ -40,13 +40,6 @@ export default function reducer(state, action) {
         billSort: state.billSort === 'itemNumber' ? 'mostVotes' : 'itemNumber',
       }
 
-    case 'SET_FIRST_NAME':
-      return { ...state,
-        user: { ...state.user,
-          first_name: action.firstName,
-        },
-      }
-
     case 'SET_IS_VERIFIED':
       return { ...state,
         isVerified: true,
@@ -60,11 +53,6 @@ export default function reducer(state, action) {
     case 'SET_POTUS_APPROVAL':
       return { ...state,
         potusApproval: action.approve,
-      }
-
-    case 'SET_REGISTRATION_ZIP':
-      return { ...state,
-        registrationZip: action.zip,
       }
 
     case 'SET_USER':
