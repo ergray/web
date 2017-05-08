@@ -51,7 +51,11 @@ class EnterSMSCodeScreen extends Component {
             type: 'LOGIN_USER',
             user: json.user,
           })
-          this.props.history.replace('/sf')
+          if (json.user.complete) {
+            this.props.history.replace('/sf')
+          } else {
+            this.props.history.replace('/registration')
+          }
         })
       }
 
