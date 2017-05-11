@@ -47,7 +47,7 @@ class PhoneLoginBox extends Component {
         >your voice:</Text>
         <TextInput
           autoCorrect={false}
-          placeholder="Enter your mobile number"
+          placeholder={`Enter your mobile ${this.props.large ? 'number' : '#'}`}
           ref={(input) => { this.props.loginRef.input = input }}
           style={{
             backgroundColor: '#fff',
