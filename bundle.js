@@ -97309,7 +97309,9 @@ LinearGradient;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(0);var _react2=_interopRequireDefault(_react);
+Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _react=__webpack_require__(0);var _react2=_interopRequireDefault(_react);
 var _reactNative=__webpack_require__(4);
 var _reactRedux=__webpack_require__(7);
 var _reactResponsive=__webpack_require__(869);var _reactResponsive2=_interopRequireDefault(_reactResponsive);
@@ -97322,14 +97324,23 @@ LoginScreen=function(_Component){_inherits(LoginScreen,_Component);
 function LoginScreen(props){_classCallCheck(this,LoginScreen);var _this=_possibleConstructorReturn(this,(LoginScreen.__proto__||Object.getPrototypeOf(LoginScreen)).call(this,
 props));
 _this.state={
-pressedGetStarted:false};return _this;
+pressedGetStarted:false};
 
+
+
+_this.viewport=document.querySelector('meta[name=viewport]');
+_this.viewport.setAttribute('content','width=device-width, initial-scale=1.0');return _this;
 }_createClass(LoginScreen,[{key:'componentWillReceiveProps',value:function componentWillReceiveProps(
 
 nextProps){
 if(nextProps.sessionId){
 this.props.history.replace('sf');
 }
+}},{key:'componentWillUnmount',value:function componentWillUnmount()
+
+{
+
+this.viewport.setAttribute('content','min-width=0, max-width=none, initial-scale=0.0');
 }},{key:'render',value:function render()
 
 {var _this2=this;
@@ -97848,7 +97859,7 @@ fontWeight:'700'}},'VOTE ON LAWS'),
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'hsl(0, 0%, 32%)',
-fontSize:large?24:22,
+fontSize:large?24:18,
 fontWeight:'700'}},'Hold politicians accountable.'),
 
 
@@ -97932,7 +97943,7 @@ marginLeft:40}},'your voice:'),
 
 _react2.default.createElement(_reactNative.TextInput,{
 autoCorrect:false,
-placeholder:'Enter your mobile number',
+placeholder:'Enter your mobile '+(this.props.large?'number':'#'),
 ref:function ref(input){_this2.props.loginRef.input=input;},
 style:{
 backgroundColor:'#fff',
