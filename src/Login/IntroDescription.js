@@ -28,7 +28,7 @@ export default function IntroDescription({ large }) {
       <Text
         style={{
           color: 'hsl(0, 0%, 32%)',
-          fontSize: large ? 24 : 22,
+          fontSize: large ? 24 : 18,
           fontWeight: '700',
         }}
       >Hold politicians accountable.</Text>
