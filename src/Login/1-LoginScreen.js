@@ -1,3 +1,5 @@
+/* global document */
+
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
@@ -13,12 +15,21 @@ class LoginScreen extends Component {
     this.state = {
       pressedGetStarted: false,
     }
+
+    // Set viewport tag for responsive device width
+    this.viewport = document.querySelector('meta[name=viewport]')
+    this.viewport.setAttribute('content', 'width=device-width, initial-scale=1.0')
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.sessionId) {
       this.props.history.replace('sf')
     }
+  }
+
+  componentWillUnmount() {
+    // Unset viewport tag for all other pages
+    this.viewport.setAttribute('content', 'min-width=0, max-width=none, initial-scale=0.0')
   }
 
   render() {
