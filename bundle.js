@@ -95312,7 +95312,27 @@ return _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',font
 
 return(
 _react2.default.createElement(_reactNative.View,{style:{flex:1,marginHorizontal:20}},
-_react2.default.createElement(_reactNative.View,{style:{height:80,paddingTop:20}},
+
+_react2.default.createElement(_HoverableOpacity2.default,{
+activeOpacity:0.5,
+hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
+outerStyle:{margin:30},
+style:{
+alignItems:'center',
+borderColor:'grey',
+borderRadius:5,
+borderWidth:1,
+height:38,
+justifyContent:'center'},
+
+onPress:function onPress(){return history.push('/delegates/requests');}},
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:13}},'VIEW DELEGATE REQUESTS')),
+
+
+
+
+_react2.default.createElement(_reactNative.View,{style:{height:80}},
 !delegatesEditMode?
 _react2.default.createElement(P,null,'Like elected reps, delegates are personal representatives who can vote for you.'):
 
@@ -98371,7 +98391,7 @@ textAlign:'center'}},'LIQUID DEMOCRACY'),
 _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.04)'},
 outerStyle:{marginVertical:20},
-onPress:function onPress(){return history.push('/your-registration');}},
+onPress:function onPress(){return history.push('/voting-power');}},
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
@@ -98381,18 +98401,16 @@ fontWeight:'200',
 marginVertical:20,
 textAlign:'center'}},'Hello, ',
 
-first_name)),
+first_name,' (',votingPower,')')),
 
 
 _react2.default.createElement(_reactNative.View,null,
 _react2.default.createElement(MenuOptionWithNav,{text:'LEGISLATURE',to:'/sf'}),
-_react2.default.createElement(MenuOptionWithNav,{text:'VOTING POWER: '+votingPower,to:'/voting-power'}),
-_react2.default.createElement(MenuOptionWithNav,{text:'YOUR DELEGATES',to:'/delegates'}),
+_react2.default.createElement(MenuOptionWithNav,{notifications:numRequests,text:'YOUR DELEGATES',to:'/delegates'}),
 user.sf_district?
 _react2.default.createElement(MenuOptionWithNav,{text:'ELECTED REP: A+',to:'/sf/elected-rep'}):
 _react2.default.createElement(MenuOptionWithNav,{text:'ELECTED REPS',to:'/sf/board'}),
 
-_react2.default.createElement(MenuOptionWithNav,{notifications:numRequests,text:'REQUESTS',to:'/delegates/requests'}),
 _react2.default.createElement(MenuOptionWithNav,{text:'ABOUT',to:'/about'}),
 _react2.default.createElement(MenuOptionWithNav,{style:{marginTop:30},text:'SEND FEEDBACK',to:'/feedback'}),
 _react2.default.createElement(MenuOptionWithNav,{
@@ -99970,15 +99988,37 @@ var mapStateToProps=pick([
 Object.defineProperty(exports,"__esModule",{value:true});var _react=__webpack_require__(0);var _react2=_interopRequireDefault(_react);
 var _reactNative=__webpack_require__(4);
 var _reactRedux=__webpack_require__(6);
+var _HoverableOpacity=__webpack_require__(13);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);
 var _voting_power_graphic=__webpack_require__(887);var _voting_power_graphic2=_interopRequireDefault(_voting_power_graphic);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
-function VotingPowerScreen(_ref){var user=_ref.user,_ref$votingPower=_ref.votingPower,votingPower=_ref$votingPower===undefined?'Loading...':_ref$votingPower;
+function VotingPowerScreen(_ref){var history=_ref.history,user=_ref.user,_ref$votingPower=_ref.votingPower,votingPower=_ref$votingPower===undefined?'Loading...':_ref$votingPower;
 return(
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',marginHorizontal:20}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:50,marginTop:30}},
+
+_react2.default.createElement(_HoverableOpacity2.default,{
+activeOpacity:0.5,
+hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
+outerStyle:{margin:30},
+style:{
+alignItems:'center',
+borderColor:'grey',
+borderRadius:5,
+borderWidth:1,
+height:38,
+justifyContent:'center'},
+
+onPress:function onPress(){return history.push('/your-registration');}},
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontFamily:'HelveticaNeue, Helvetica',fontSize:13}},'VIEW REGISTRATION')),
+
+
+
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:50}},
 user.first_name,' ',user.last_name),
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:40,fontWeight:'700',marginTop:30}},
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontSize:40,fontWeight:'700',marginTop:20}},
 _react2.default.createElement(_reactNative.Text,{style:{fontSize:18,fontWeight:'400',marginRight:10}},'Your max voting power:'),
 votingPower),
 
@@ -100007,6 +100047,7 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'white',fontStyle:
 VotingPowerScreen.title='VOTING POWER';
 
 VotingPowerScreen.propTypes={
+history:_react2.default.PropTypes.shape({}).isRequired,
 user:_react2.default.PropTypes.shape({}),
 votingPower:_react2.default.PropTypes.number};
 
