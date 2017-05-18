@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Switch,
   Text,
 } from 'react-native'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from '../Legislation/convert-dates'
 import PastAgendas from '../Legislation/PastAgendas'
 import BillsList from '../Legislation/BillsList'
+import BetweenWeeks from './BetweenWeeks'
 const pick = require('lodash/fp/pick')
 
 class NextAgendaContent extends Component {
@@ -43,7 +43,7 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { dispatch, history, nextAgenda, user } = this.props
+    const { history, nextAgenda } = this.props
 
     if (!nextAgenda) {
       return (
@@ -60,58 +60,10 @@ class NextAgendaContent extends Component {
     const { date, message } = nextAgenda
 
     if (!date) {
-      return (
-        <ScrollView>
-          <Text style={{
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: '300',
-            margin: 30,
-          }}
-          >{message}</Text>
-
-          <Text style={{
-            alignItems: 'center',
-            color: '#fff',
-            fontSize: 18,
-            fontWeight: '300',
-            marginBottom: 30,
-            marginHorizontal: 30,
-            marginTop: 40,
-            textAlign: 'center',
-          }}
-          >
-          Would you like a notification when it's released?
-            <Switch
-              activeThumbColor="#5CB85C"
-              activeTrackColor="#ADDAAD"
-              style={{
-                display: 'inline-block',
-                marginHorizontal: 10,
-                position: 'relative',
-                top: 2,
-                width: 60,
-              }}
-              thumbColor="#EBA9A7"
-              trackColor="#D9534F"
-              value={user.legislation_notification}
-              onValueChange={() => {
-                dispatch({ type: 'TOGGLE_LEGISLATION_NOTIFICATIONS' })
-                fetch('https://api.liquid.vote/legislation-notifications', {
-                  headers: { Session_ID: this.props.sessionId },
-                  method: 'PUT',
-                })
-              }}
-            />
-            <Text style={{ display: 'inline-block', width: 35 }}>
-              {user.legislation_notification ? 'ON' : 'OFF' }
-            </Text>
-          </Text>
-
-
-          <PastAgendas history={history} />
-        </ScrollView>
-      )
+      return (<BetweenWeeks
+        history={history}
+        message={message}
+      />)
     }
 
     const { bills } = nextAgenda
@@ -148,14 +100,10 @@ NextAgendaContent.propTypes = {
     push: React.PropTypes.func.isRequired,
   }),
   nextAgenda: React.PropTypes.shape(),
-  sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape().isRequired,
 }
 
 const mapStateToProps = pick([
   'nextAgenda',
-  'sessionId',
-  'user',
 ])
 
 export default connect(mapStateToProps)(NextAgendaContent)
