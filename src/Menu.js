@@ -40,7 +40,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{ marginVertical: 20 }}
-        onPress={() => history.push('/your-registration')}
+        onPress={() => history.push('/voting-power')}
       >
         <Text
           style={{
@@ -50,18 +50,16 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
             marginVertical: 20,
             textAlign: 'center',
           }}
-        >Hello, {first_name}</Text>
+        >Hello, {first_name} ({votingPower})</Text>
       </HoverableOpacity>
 
       <View>
         <MenuOptionWithNav text="LEGISLATURE" to="/sf" />
-        <MenuOptionWithNav text={`VOTING POWER: ${votingPower}`} to="/voting-power" />
-        <MenuOptionWithNav text="YOUR DELEGATES" to="/delegates" />
+        <MenuOptionWithNav notifications={numRequests} text="YOUR DELEGATES" to="/delegates" />
         { user.sf_district
           ? <MenuOptionWithNav text="ELECTED REP: A+" to="/sf/elected-rep" />
           : <MenuOptionWithNav text="ELECTED REPS" to="/sf/board" />
         }
-        <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="/delegates/requests" />
         <MenuOptionWithNav text="ABOUT" to="/about" />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
         <MenuOptionWithNav
