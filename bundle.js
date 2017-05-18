@@ -96791,7 +96791,7 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'#bbb'}},'None giv
 
 
 
-_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#444',width:1}}),
+_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#303030',width:1}}),
 
 _react2.default.createElement(_reactNative.View,{
 style:{
@@ -97042,7 +97042,7 @@ delegate.name)),
 _react2.default.createElement(_reactNative.ScrollView,{contentContainerStyle:{flex:1},style:{flex:1}},
 _react2.default.createElement(_BillContents2.default,{bill:bill}),
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:15,fontWeight:'700',marginBottom:20,textAlign:'center'}},'ARGUMENTS'),
+_react2.default.createElement(_reactNative.Text,{style:{border:'1px solid #303030',color:'#fff',fontSize:15,fontWeight:'700',paddingVertical:8,textAlign:'center'}},'ARGUMENTS'),
 _react2.default.createElement(_BillArguments2.default,{activeBill:bill.uid})),
 
 
