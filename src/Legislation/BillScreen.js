@@ -179,7 +179,7 @@ class BillScreen extends Component {
         <ScrollView contentContainerStyle={{ flex: 1 }} style={{ flex: 1 }}>
           <BillContents bill={bill} />
 
-          <Text style={{ color: '#fff', fontSize: 15, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>ARGUMENTS</Text>
+          <Text style={{ border: '1px solid #303030', color: '#fff', fontSize: 15, fontWeight: '700', paddingVertical: 8, textAlign: 'center' }}>ARGUMENTS</Text>
           <BillArguments activeBill={bill.uid} />
         </ScrollView>
 

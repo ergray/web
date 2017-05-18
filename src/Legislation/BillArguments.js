@@ -108,7 +108,7 @@ class BillArguments extends Component {
           }
         </View>
 
-        <View style={{ backgroundColor: '#444', width: 1 }} />
+        <View style={{ backgroundColor: '#303030', width: 1 }} />
 
         <View
           style={{
