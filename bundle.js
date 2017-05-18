@@ -95316,7 +95316,7 @@ _react2.default.createElement(_reactNative.View,{style:{flex:1,marginHorizontal:
 _react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.5,
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
-outerStyle:{margin:30},
+outerStyle:{marginVertical:30},
 style:{
 alignItems:'center',
 borderColor:'grey',
@@ -99998,7 +99998,7 @@ _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',margi
 _react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.5,
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
-outerStyle:{margin:30},
+outerStyle:{marginVertical:30},
 style:{
 alignItems:'center',
 borderColor:'grey',
