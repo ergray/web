@@ -35,11 +35,6 @@ export default function reducer(state, action) {
         knownNumbers: state.knownNumbers, // persist between logouts
       }
 
-    case 'TOGGLE_BILL_SORT':
-      return { ...state,
-        billSort: state.billSort === 'itemNumber' ? 'mostVotes' : 'itemNumber',
-      }
-
     case 'SET_IS_VERIFIED':
       return { ...state,
         isVerified: true,
@@ -107,6 +102,11 @@ export default function reducer(state, action) {
     case 'SYNC_VOTING_POWER':
       return { ...state,
         votingPower: action.votingPower,
+      }
+
+    case 'TOGGLE_BILL_SORT':
+      return { ...state,
+        billSort: state.billSort === 'itemNumber' ? 'mostVotes' : 'itemNumber',
       }
 
     case 'TOGGLE_DELEGATES_EDIT_MODE':

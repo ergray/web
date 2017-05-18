@@ -61,10 +61,7 @@ class BetweenWeeks extends Component {
           margin: 30,
         }}
         >{message} Expected in&nbsp;
-        {<CountdownTimer
-          initialTimeRemaining={millisecondsUntilFridayAtNoon()}
-          style={{ display: 'inline-block' }}
-        />}.</Text>
+        {<CountdownTimer initialTimeRemaining={millisecondsUntilFridayAtNoon()} />}.</Text>
 
         <Text style={{
           color: '#fff',
