@@ -11,7 +11,7 @@ function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
       <HoverableOpacity
         activeOpacity={0.5}
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-        outerStyle={{ margin: 30 }}
+        outerStyle={{ marginVertical: 30 }}
         style={{
           alignItems: 'center',
           borderColor: 'grey',
