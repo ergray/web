@@ -66,7 +66,27 @@ class DelegatesScreen extends Component {
 
     return (
       <View style={{ flex: 1, marginHorizontal: 20 }}>
-        <View style={{ height: 80, paddingTop: 20 }}>
+
+        <HoverableOpacity
+          activeOpacity={0.5}
+          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+          outerStyle={{ margin: 30 }}
+          style={{
+            alignItems: 'center',
+            borderColor: 'grey',
+            borderRadius: 5,
+            borderWidth: 1,
+            height: 38,
+            justifyContent: 'center',
+          }}
+          onPress={() => history.push('/delegates/requests')}
+        >
+          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
+            VIEW DELEGATE REQUESTS
+          </Text>
+        </HoverableOpacity>
+
+        <View style={{ height: 80 }}>
           { !delegatesEditMode ? (
             <P>
               Like elected reps, delegates are personal representatives who can vote for you.

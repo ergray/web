@@ -55,12 +55,11 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
 
       <View>
         <MenuOptionWithNav text="LEGISLATURE" to="/sf" />
-        <MenuOptionWithNav text="YOUR DELEGATES" to="/delegates" />
+        <MenuOptionWithNav notifications={numRequests} text="YOUR DELEGATES" to="/delegates" />
         { user.sf_district
           ? <MenuOptionWithNav text="ELECTED REP: A+" to="/sf/elected-rep" />
           : <MenuOptionWithNav text="ELECTED REPS" to="/sf/board" />
         }
-        <MenuOptionWithNav notifications={numRequests} text="REQUESTS" to="/delegates/requests" />
         <MenuOptionWithNav text="ABOUT" to="/about" />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
         <MenuOptionWithNav
