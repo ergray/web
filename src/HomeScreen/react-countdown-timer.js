@@ -125,7 +125,7 @@ const CountdownTimer = React.createClass({
     const timeRemaining = this.state.timeRemaining
 
     return (
-      <span className="timer" style={{ display: 'inline-block' }}>
+      <span>
         {this.getFormattedTime(timeRemaining)}
       </span>
     )
