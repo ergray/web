@@ -16,6 +16,7 @@ export default function IntroDescription({ large }) {
       height: 218,
       justifyContent: 'space-around',
       marginBottom: 60,
+      paddingVertical: 15,
     }}
     >
       <Text
