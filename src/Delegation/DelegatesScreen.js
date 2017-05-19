@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import {
-  Alert,
-  ListView,
   ScrollView,
   Text,
-  TouchableHighlight,
-  TouchableOpacity,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import FoundationIcon from 'react-native-vector-icons/Foundation'
-import IoniconsIcon from 'react-native-vector-icons/Ionicons'
 import deepEqual from 'deep-equal'
 import HoverableOpacity from '../HoverableOpacity'
 
@@ -67,6 +61,7 @@ class DelegatesScreen extends Component {
     return (
       <View style={{ flex: 1, marginHorizontal: 20 }}>
 
+        { /* VIEW REQUESTS button */ }
         <HoverableOpacity
           activeOpacity={0.5}
           hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
@@ -86,6 +81,7 @@ class DelegatesScreen extends Component {
           </Text>
         </HoverableOpacity>
 
+        { /* Instructions at top */ }
         <View style={{ height: 80 }}>
           { !delegatesEditMode ? (
             <P>
@@ -101,6 +97,7 @@ class DelegatesScreen extends Component {
           }
         </View>
 
+        { /* YOU row */ }
         { delegates.length > 0 &&
           (
             <HoverableOpacity
@@ -125,93 +122,34 @@ class DelegatesScreen extends Component {
           )
         }
 
-        { !delegatesEditMode ?
-          <ScrollView>
-            { delegates.map(({ name, status }, rowIndex) => (
-              <HoverableOpacity
-                hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
-                key={name}
-                outerStyle={{ backgroundColor: '#333' }}
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: '#000',
-                  flexDirection: 'row',
-                  padding: 20,
-                }}
-                onPress={() => { this.props.history.push(`/delegates/${delegates[rowIndex].phone}`, { rowIndex }) }}
-              >
-                <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
-                  {Number(rowIndex) + 1}.
-                </Text>
-                <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
-                  {name}
+        { /* Static list of delegates */ }
+        <ScrollView>
+          { delegates.map(({ name, status }, rowIndex) => (
+            <HoverableOpacity
+              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
+              key={name}
+              outerStyle={{ backgroundColor: '#333' }}
+              style={{
+                borderBottomWidth: 1,
+                borderColor: '#000',
+                flexDirection: 'row',
+                padding: 20,
+              }}
+              onPress={() => { this.props.history.push(`/delegates/${delegates[rowIndex].phone}`, { rowIndex }) }}
+            >
+              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
+                {Number(rowIndex) + 1}.
+              </Text>
+              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
+                {name}
 
-                  { (status && status !== 'APPROVED') &&
-                    <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
-                  }
-                </Text>
-              </HoverableOpacity>
-            ))}
-          </ScrollView>
-
-          :
-
-          <ListView
-            data={delegates}
-            sortRowStyle={{ backgroundColor: '#fff', height: 61, opacity: 1 }}
-            onRowMoved={event => ( // eslint-disable-line react/jsx-sort-props
-              this.reorderDelegate(event.from, event.to))}
-            renderRow={({ name, status }, ignore, index) =>
-              <TouchableHighlight
-                delayLongPress={100}
-                style={{
-                  backgroundColor: 'hsla(0, 0%, 23%, 0.85)',
-                  borderBottomWidth: 1,
-                  borderColor: '#000',
-                  marginBottom: 8,
-                  paddingLeft: 20,
-                }}
-                underlayColor="#333"
-              >
-                <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <FoundationIcon
-                      color="white" name="list" size={15}
-                      style={{ paddingTop: 4, width: 25 }}
-                    />
-                    <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
-                      {name}
-
-                      { (status && status !== 'APPROVED') &&
-                        <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
-                      }
-                    </Text>
-                  </View>
-                  <TouchableOpacity
-                    style={{ alignItems: 'center', paddingVertical: 13, width: 50 }}
-                    onPress={() => Alert.alert(
-                      `Remove ${name.split(' ')[0]}`,
-                      'Are you sure?',
-                      [
-                        { onPress: () => {}, text: 'Cancel' },
-                        {
-                          onPress: () => {
-                            if (delegates.length === 1) {
-                              this.props.dispatch({ type: 'TOGGLE_DELEGATES_EDIT_MODE' })
-                            }
-                            this.removeDelegate(index)
-                          },
-                          text: 'OK' },
-                      ],
-                    )}
-                  >
-                    <IoniconsIcon color="darkred" name="md-remove-circle" size={32} />
-                  </TouchableOpacity>
-                </View>
-              </TouchableHighlight>
-            }
-          />
-        }
+                { (status && status !== 'APPROVED') &&
+                  <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
+                }
+              </Text>
+            </HoverableOpacity>
+          ))}
+        </ScrollView>
 
       </View>)
   }
