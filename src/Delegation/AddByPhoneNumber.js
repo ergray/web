@@ -33,6 +33,7 @@ class AddByPhoneNumber extends Component {
           }}
         >Add by phone number</Text>
         <TextInput
+          autoFocus
           autoCorrect={false}
           placeholder="Enter their mobile number"
           style={{
