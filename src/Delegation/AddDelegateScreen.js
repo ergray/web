@@ -30,7 +30,15 @@ function AddDelegateScreen({ history }) {
         fontSize: 16,
         marginBottom: 20,
       }}
-      >Your choice of delegates is kept private.</Text>
+      >Your choice of delegates is <a
+        href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+        rel="noopener noreferrer"
+        style={{
+          color: '#fff',
+          cursor: 'pointer',
+        }}
+        target="_blank"
+      >kept private</a>.</Text>
 
       <Text style={{
         color: '#fff',
