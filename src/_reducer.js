@@ -154,6 +154,10 @@ export default function reducer(state, action) {
               updatedDelegate.name = action.name
             }
 
+            if (updatedDelegate.nickname === updatedDelegate.phone) {
+              delete updatedDelegate.nickname
+            }
+
             updatedDelegate.status = action.status
             updatedDelegate.user_id = action.user_id
           }
