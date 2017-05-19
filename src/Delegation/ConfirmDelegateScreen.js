@@ -11,7 +11,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
   const { phoneNumber } = match.params
 
   const newDelegate = {
-    name: 'Unknown Name',
+    name: phoneNumber,
     phone: phoneNumber,
   }
 
