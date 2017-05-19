@@ -98084,7 +98084,8 @@ borderRadius:10,
 boxShadow:'rgba(0,0,0,0.3) 0px 60px 28px -40px',
 height:218,
 justifyContent:'space-around',
-marginBottom:60}},
+marginBottom:60,
+paddingVertical:15}},
 
 
 _react2.default.createElement(_reactNative.Text,{
