@@ -36,6 +36,7 @@ export const screens = {
   '/sf/:date/:bill_id': require('./Legislation/LoadBillScreen').default,
   '/sf/:date/:bill_id/audit': require('./Legislation/AuditScreen').default,
   '/sf/:date/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
+  '/sms-login/:phoneNumber/:session_code': require('./Login/SMSLoginScreen').default,
   '/voting-power': require('./VotingPowerScreen/VotingPowerScreen').default,
   '/your-registration': require('./Registration/YourRegistrationScreen').default,
 }
