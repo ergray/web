@@ -28,9 +28,16 @@ function AddDelegateScreen({ history }) {
       <Text style={{
         color: '#fff',
         fontSize: 16,
-        marginBottom: 50,
+        marginBottom: 20,
       }}
       >Your choice of delegates is kept private.</Text>
+
+      <Text style={{
+        color: '#fff',
+        fontSize: 16,
+        marginBottom: 50,
+      }}
+      >You can override or remove a delegate at any time.</Text>
 
       <AddByPhoneNumber history={history} />
     </View>
