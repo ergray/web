@@ -118,11 +118,17 @@ class DelegateInfoScreen extends Component {
 
     const statusCodeResponse = statusCodesResponses[activeDelegate.status]
 
+    const nameMatchesPhone = activeDelegate.name === activeDelegate.phone
+
     return (
       <View style={{ margin: 30 }}>
 
-        <Text style={{ color: 'white', fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
+        { /* Name */ }
+        { !nameMatchesPhone &&
+          <Text style={{ color: 'white', fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
+        }
 
+        { /* Show nickname if there is one */ }
         { (activeDelegate.nickname
           && activeDelegate.nickname !== activeDelegate.name) && (
 
@@ -131,15 +137,24 @@ class DelegateInfoScreen extends Component {
             </Text>
         )}
 
-        <Text style={{ color: 'white' }}>{prettifyPhone(activeDelegate.phone)}</Text>
+        { /* Phone number */ }
+        <Text style={{
+          color: 'white',
+          fontSize: nameMatchesPhone ? 24 : undefined,
+        }}
+        >{prettifyPhone(activeDelegate.phone)}</Text>
 
         <View style={{ height: 40 }} />
 
+        { /* Delegation status */ }
         <Text style={{ color: 'white', marginVertical: 15 }}>Status: <Text style={{ fontWeight: '700' }}>{statusCodeResponse.text}</Text></Text>
 
+        { /* Delegation status description */ }
         { statusCodeResponse.description && (
           <Text style={{ color: 'white' }}>{statusCodeResponse.description}</Text>
         )}
+
+        { /* Delegation status action button, if there is one */ }
         { statusCodeResponse.button && (
           <HoverableOpacity
             activeOpacity={0.5}
@@ -163,6 +178,7 @@ class DelegateInfoScreen extends Component {
           </HoverableOpacity>
         )}
 
+        { /* REMOVE DELEGATE button */ }
         <HoverableOpacity
           activeOpacity={0.5}
           hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
