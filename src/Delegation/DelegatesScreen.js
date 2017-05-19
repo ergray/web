@@ -61,25 +61,48 @@ class DelegatesScreen extends Component {
     return (
       <View style={{ flex: 1, marginHorizontal: 20 }}>
 
-        { /* VIEW REQUESTS button */ }
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-          outerStyle={{ marginVertical: 30 }}
-          style={{
-            alignItems: 'center',
-            borderColor: 'grey',
-            borderRadius: 5,
-            borderWidth: 1,
-            height: 38,
-            justifyContent: 'center',
-          }}
-          onPress={() => history.push('/delegates/requests')}
-        >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
-            VIEW DELEGATE REQUESTS
-          </Text>
-        </HoverableOpacity>
+        <View style={{ flexDirection: 'row', marginVertical: 30 }}>
+          { /* ADD NEW DELEGATE button */ }
+          <HoverableOpacity
+            activeOpacity={0.5}
+            hoverStyle={{ backgroundColor: 'rgba(5, 165, 209,0.1)' }}
+            outerStyle={{ flex: 1, marginRight: 30 }}
+            style={{
+              alignItems: 'center',
+              borderColor: 'rgb(5, 165, 209)',
+              borderRadius: 5,
+              borderWidth: 1,
+              height: 38,
+              justifyContent: 'center',
+            }}
+            onPress={() => history.push('/delegates/add')}
+          >
+            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
+              ADD NEW DELEGATE
+            </Text>
+          </HoverableOpacity>
+
+          { /* VIEW REQUESTS button */ }
+          <HoverableOpacity
+            activeOpacity={0.5}
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            outerStyle={{ flex: 1 }}
+            style={{
+              alignItems: 'center',
+              borderColor: 'grey',
+              borderRadius: 5,
+              borderWidth: 1,
+              height: 38,
+              justifyContent: 'center',
+            }}
+            onPress={() => history.push('/delegates/requests')}
+          >
+            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
+              VIEW DELEGATE REQUESTS
+            </Text>
+          </HoverableOpacity>
+
+        </View>
 
         { /* Instructions at top */ }
         <View style={{ height: 80 }}>
