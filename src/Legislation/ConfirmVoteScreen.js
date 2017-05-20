@@ -13,6 +13,7 @@ class ConfirmVoteScreen extends Component {
     super(props)
     this.state = {
       argument: '',
+      disabled: false,
     }
 
     if (!props.location.state || !props.location.state.bill) {
@@ -130,7 +131,7 @@ class ConfirmVoteScreen extends Component {
           activeOpacity={0.5}
           hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
           outerStyle={{
-            borderColor: '#5DA0FF',
+            borderColor: this.state.disabled ? '#aaa' : '#5DA0FF',
             borderRadius: 5,
             borderWidth: 1,
             marginBottom: 20,
@@ -142,6 +143,12 @@ class ConfirmVoteScreen extends Component {
             justifyContent: 'center',
           }}
           onPress={() => {
+            // Don't let them press this button multiple times
+            if (this.state.disabled) {
+              return
+            }
+            this.setState({ disabled: true })
+
             // Save the position to redux store
             dispatch({ bill, position, type: 'VOTE_ON_BILL' })
 
@@ -163,7 +170,7 @@ class ConfirmVoteScreen extends Component {
         >
           <Text style={{ color: '#fff', fontSize: 14 }}>
             <SaveIcon size={15} style={{ paddingBottom: 3 }} />
-            &nbsp;&nbsp;SAVE
+            &nbsp;&nbsp;SAV{ this.state.disabled ? 'ING' : 'E'}
           </Text>
         </HoverableOpacity>
 
