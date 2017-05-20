@@ -35548,7 +35548,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.60",
+	"version": "0.0.61",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97483,7 +97483,8 @@ ConfirmVoteScreen=function(_Component){_inherits(ConfirmVoteScreen,_Component);
 function ConfirmVoteScreen(props){_classCallCheck(this,ConfirmVoteScreen);var _this=_possibleConstructorReturn(this,(ConfirmVoteScreen.__proto__||Object.getPrototypeOf(ConfirmVoteScreen)).call(this,
 props));
 _this.state={
-argument:''};
+argument:'',
+disabled:false};
 
 
 if(!props.location.state||!props.location.state.bill){var _ret;
@@ -97601,7 +97602,7 @@ _react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.5,
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.1)'},
 outerStyle:{
-borderColor:'#5DA0FF',
+borderColor:this.state.disabled?'#aaa':'#5DA0FF',
 borderRadius:5,
 borderWidth:1,
 marginBottom:20,
@@ -97613,6 +97614,12 @@ height:38,
 justifyContent:'center'},
 
 onPress:function onPress(){
+
+if(_this3.state.disabled){
+return;
+}
+_this3.setState({disabled:true});
+
 
 dispatch({bill:bill,position:position,type:'VOTE_ON_BILL'});
 
@@ -97633,8 +97640,8 @@ then(function(){return history.goBack();});
 }},
 
 _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:14}},
-_react2.default.createElement(_floppyO2.default,{size:15,style:{paddingBottom:3}}),'\xA0\xA0SAVE'))));
-
+_react2.default.createElement(_floppyO2.default,{size:15,style:{paddingBottom:3}}),'\xA0\xA0SAV',
+this.state.disabled?'ING':'E'))));
 
 
 
