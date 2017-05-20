@@ -17,8 +17,8 @@ function ThankYouScreen({ history, user }) {
         source={logo}
         style={{
           alignSelf: 'center',
-          height: 56,
-          marginBottom: 12,
+          height: 63,
+          marginBottom: 5,
           marginTop: 32,
           width: 59,
         }}

@@ -49,8 +49,9 @@ function Header(props) {
         <Image
           source={logo}
           style={{
-            height: 24,
+            height: 27,
             marginRight: 7,
+            marginTop: 3,
             width: 25,
           }}
         />

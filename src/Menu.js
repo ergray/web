@@ -1,9 +1,9 @@
 import React from 'react'
-import { Dimensions, Image, Linking, Text, View } from 'react-native'
+import { Dimensions, Linking, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 import TwitterIcon from 'react-icons/lib/fa/twitter'
 import FacebookIcon from 'react-icons/lib/fa/facebook'
-import logo from './logo.png'
+import MenuLogo from './MenuLogo'
 import MenuOption from './MenuOption'
 import HoverableOpacity from './HoverableOpacity'
 
@@ -24,10 +24,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
 
   return (
     <View style={style}>
-      <Image
-        source={logo}
-        style={{ alignSelf: 'center', height: 75, marginBottom: 12, marginTop: 20, width: 79 }}
-      />
+      <MenuLogo />
       <Text
         style={{
           color: '#fff',
