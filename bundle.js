@@ -35548,7 +35548,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.59",
+	"version": "0.0.60",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -94931,6 +94931,7 @@ marginLeft:40}},'Add by phone number'),
 
 
 _react2.default.createElement(_reactNative.TextInput,{
+autoFocus:true,
 autoCorrect:false,
 placeholder:'Enter their mobile number',
 style:{
@@ -97272,7 +97273,7 @@ delegate.name)),
 _react2.default.createElement(_reactNative.ScrollView,{contentContainerStyle:{flex:1},style:{flex:1}},
 _react2.default.createElement(_BillContents2.default,{bill:bill}),
 
-_react2.default.createElement(_reactNative.Text,{style:{border:'1px solid #303030',color:'#fff',fontSize:15,fontWeight:'700',paddingVertical:8,textAlign:'center'}},'ARGUMENTS'),
+_react2.default.createElement(_reactNative.Text,{style:{backgroundColor:'hsla(0, 0%, 50%, .1)',border:'1px solid #303030',color:'#fff',fontSize:15,fontWeight:'700',paddingVertical:8,textAlign:'center'}},'ARGUMENTS'),
 _react2.default.createElement(_BillArguments2.default,{activeBill:bill.uid})),
 
 
