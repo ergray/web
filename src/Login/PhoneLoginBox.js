@@ -53,7 +53,12 @@ class PhoneLoginBox extends Component {
         <TextInput
           autoCorrect={false}
           placeholder={placeholderText}
-          ref={(input) => { this.props.loginRef.input = input }}
+          ref={(input) => {
+            // Enable autofocus on all but the smallest screens
+            if (!this.props.verySmall) {
+              this.props.loginRef.input = input
+            }
+          }}
           style={{
             backgroundColor: '#fff',
             borderColor: '#979797',
