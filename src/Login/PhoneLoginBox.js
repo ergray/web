@@ -148,20 +148,20 @@ class PhoneLoginBox extends Component {
         <Image
           source={usaFlag}
           style={{
+            bottom: 94,
             height: 24,
             left: 50,
             position: 'absolute',
-            top: 200,
             width: 30,
           }}
         />
         <Text
           style={{
+            bottom: 96,
             fontSize: 18,
             fontWeight: '300',
             left: 87,
             position: 'absolute',
-            top: 202,
           }}
         >+1</Text>
         <Text
