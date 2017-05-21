@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.72",
+	"version": "0.0.73",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -100555,7 +100555,9 @@ _this.getUserInfoFromServer(props);return _this;
 }_createClass(ScreenWithMenu,[{key:'componentWillReceiveProps',value:function componentWillReceiveProps(
 
 nextProps){
-if(this.props.isVerified!==nextProps.isVerified){
+if(this.props.isVerified!==nextProps.isVerified||
+this.props.sessionId!==nextProps.sessionId)
+{
 this.getUserInfoFromServer(nextProps);
 }
 }},{key:'componentWillUnmount',value:function componentWillUnmount()
@@ -100579,9 +100581,7 @@ then(function(_ref){var voting_power=_ref.voting_power;return props.dispatch({ty
 }
 
 
-if(!props.isVerified){
-props.dispatch({delegates:[],type:'SYNC_DELEGATES'});
-}else{
+if(props.sessionId){
 fetch('https://api.liquid.vote/my-delegates',{headers:{Session_ID:props.sessionId}}).
 then(function(response){return response.json();}).
 then(function(serverDelegates){
@@ -100592,9 +100592,7 @@ props.dispatch({delegates:serverDelegates,type:'SYNC_DELEGATES'});
 }
 
 
-if(!props.isVerified){
-props.dispatch({constituents:{approved:[],rejected:[],requests:[]},type:'SYNC_CONSTITUENTS'});
-}else{
+if(props.sessionId){
 
 fetch('https://api.liquid.vote/my-delegation-permissions',{headers:{Session_ID:props.sessionId}}).
 then(function(response){return response.json();}).
@@ -100627,6 +100625,7 @@ isVerified:_react2.default.PropTypes.bool.isRequired,
 location:_react2.default.PropTypes.shape({}).isRequired,
 match:_react2.default.PropTypes.shape({}).isRequired,
 path:_react2.default.PropTypes.string.isRequired,
+sessionId:_react2.default.PropTypes.string,
 Screen:_react2.default.PropTypes.func.isRequired};
 
 
@@ -100732,7 +100731,8 @@ Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.ass
 
 
 
-reducer;function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}var initialState=exports.initialState={bills:{},billSort:'mostVotes',isVerified:false,knownNumbers:{},sessionId:'',user:{},votes:{}};function reducer(state,action){
+
+reducer;function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}var initialState=exports.initialState={bills:{},billSort:'mostVotes',constituents:{approved:[],rejected:[],requests:[]},isVerified:false,knownNumbers:{},sessionId:'',user:{},votes:{}};function reducer(state,action){
 switch(action.type){
 
 case'ADD_KNOWN_NUMBER':
