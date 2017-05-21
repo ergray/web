@@ -35549,7 +35549,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.70",
+	"version": "0.0.71",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98437,9 +98437,11 @@ phone:''};return _this;
 
 }_createClass(PhoneLoginBox,[{key:'render',value:function render()
 
-{var _this2=this;
-var placeholderText='Enter your mobile '+(this.props.large?'number':'#');
-if(this.props.verySmall){
+{var _this2=this;var _props=
+this.props,dispatch=_props.dispatch,history=_props.history,large=_props.large,verySmall=_props.verySmall;
+
+var placeholderText='Enter your mobile '+(large?'number':'#');
+if(verySmall){
 placeholderText='Mobile #';
 }
 
@@ -98449,7 +98451,7 @@ alignSelf:'flex-start',
 backgroundColor:'hsla(0, 0%, 13%, 0.9)',
 borderRadius:10,
 paddingVertical:40,
-width:this.props.large?450:undefined}},
+width:large?450:undefined}},
 
 
 _react2.default.createElement(_reactNative.Text,{
@@ -98475,7 +98477,7 @@ autoCorrect:false,
 placeholder:placeholderText,
 ref:function ref(input){
 
-if(!_this2.props.verySmall){
+if(!verySmall){
 _this2.props.loginRef.input=input;
 }
 },
@@ -98532,8 +98534,8 @@ join('');
 
 
 if(phoneNumber==='5555551776'){
-_this2.props.dispatch({type:'START_REGISTRATION_DEMO'});
-return _this2.props.history.replace('registration');
+dispatch({type:'START_REGISTRATION_DEMO'});
+return history.replace('registration');
 }
 
 
@@ -98545,15 +98547,15 @@ method:'POST'}).
 
 then(function(response){return response.json();}).
 then(function(_ref){var sessionId=_ref.sessionId,user=_ref.user;
-_this2.props.dispatch({sessionId:sessionId,type:'START_LOGIN_DEMO',user:user});
-return _this2.props.history.replace('sf');
+dispatch({sessionId:sessionId,type:'START_LOGIN_DEMO',user:user});
+return history.replace('sf');
 });
 }
 
 
 if(!_this2.props.knownNumbers[phoneNumber]){
 _this2.setState({phone:newText});
-return _this2.props.history.push('confirm-new-number/'+phoneNumber);
+return history.push('confirm-new-number/'+phoneNumber);
 }
 
 fetch('https://api.liquid.vote/login',{
@@ -98567,8 +98569,8 @@ Accept:'application/json',
 method:'POST'});
 
 
-_this2.props.dispatch({phoneNumber:phoneNumber,type:'SET_PHONE_NUMBER'});
-_this2.props.history.replace('enter-sms');
+dispatch({phoneNumber:phoneNumber,type:'SET_PHONE_NUMBER'});
+history.replace('enter-sms');
 }
 
 
@@ -98578,7 +98580,7 @@ return _this2.setState({phone:newText});
 _react2.default.createElement(_reactNative.Image,{
 source:_usaFlag2.default,
 style:{
-bottom:94,
+bottom:large?94:96,
 height:24,
 left:50,
 position:'absolute',
@@ -98587,7 +98589,7 @@ width:30}}),
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
-bottom:96,
+bottom:large?96:98,
 fontSize:18,
 fontWeight:'300',
 left:87,
