@@ -2,10 +2,6 @@
 
 This is a strange mutation of the [liquid-ios repo](https://github.com/liquidvote/liquid-ios), built for the web thanks to [`react-native-web`](https://github.com/necolas/react-native-web).
 
-Weirdly enough it works. In all the standard web-browsers.
-
-Consider it alpha quality. Still, it is amazing to have the 30+ screens of content already built for ios!
-
 ## Install
 
 Download the repo (fork if you may send PRs).
