@@ -9,7 +9,9 @@ import { convertDateToLongFormat, hasDatePassed } from './convert-dates'
 class PastAgendas extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      activated: true,
+    }
 
     fetch('https://api.liquid.vote/dates')
     .then(response => response.json())
