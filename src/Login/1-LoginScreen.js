@@ -1,4 +1,4 @@
-/* global document */
+/* global document, window */
 
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
@@ -84,6 +84,7 @@ class LoginScreen extends Component {
                           pressGetStarted={() => {
                             this.setState({ pressedGetStarted: true })
                             loginRef.input.focus()
+                            setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100)
                           }}
                         />
                       )}
