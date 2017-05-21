@@ -35549,7 +35549,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.67",
+	"version": "0.0.68",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97864,7 +97864,11 @@ setTimeout(function(){return window.scrollTo(0,document.body.scrollHeight);},100
 
 
 _react2.default.createElement(_reactCollapse.Collapse,{isOpened:_this2.state.pressedGetStarted,springConfig:{damping:20,stiffness:300}},
-_react2.default.createElement(_PhoneLoginBox2.default,{history:_this2.props.history,large:large,loginRef:loginRef}))));
+_react2.default.createElement(_reactResponsive2.default,{maxWidth:370},
+function(verySmall){return(
+_react2.default.createElement(_PhoneLoginBox2.default,{history:_this2.props.history,large:large,loginRef:loginRef,verySmall:verySmall}));}))));
+
+
 
 
 
@@ -98422,7 +98426,6 @@ var _reactNative=__webpack_require__(4);
 
 
 
-
 var _usaFlag=__webpack_require__(367);var _usaFlag2=_interopRequireDefault(_usaFlag);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 var pick=__webpack_require__(30);var
 
@@ -98434,13 +98437,11 @@ phone:''};return _this;
 
 }_createClass(PhoneLoginBox,[{key:'render',value:function render()
 
-{var _this2=this;var _Dimensions$get=
-_reactNative.Dimensions.get('window'),width=_Dimensions$get.width;
+{var _this2=this;
 var placeholderText='Enter your mobile '+(this.props.large?'number':'#');
-if(width<370){
+if(this.props.verySmall){
 placeholderText='Mobile #';
 }
-
 
 return(
 _react2.default.createElement(_reactNative.View,{style:{
@@ -98623,7 +98624,8 @@ knownNumbers:_react2.default.PropTypes.shape({}).isRequired,
 large:_react2.default.PropTypes.bool,
 loginRef:_react2.default.PropTypes.shape({
 input:_react2.default.PropTypes.any}).
-isRequired};exports.default=
+isRequired,
+verySmall:_react2.default.PropTypes.bool};exports.default=
 
 
 (0,_reactRedux.connect)(pick([
