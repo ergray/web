@@ -1,6 +1,7 @@
 export const initialState = {
   bills: {},
   billSort: 'mostVotes',
+  constituents: { approved: [], rejected: [], requests: [] },
   isVerified: false,
   knownNumbers: {},
   sessionId: '',

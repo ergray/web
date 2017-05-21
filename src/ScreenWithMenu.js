@@ -18,7 +18,9 @@ class ScreenWithMenu extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.isVerified !== nextProps.isVerified) {
+    if (this.props.isVerified !== nextProps.isVerified
+      || this.props.sessionId !== nextProps.sessionId
+    ) {
       this.getUserInfoFromServer(nextProps)
     }
   }
@@ -42,9 +44,7 @@ class ScreenWithMenu extends Component {
     }
 
     // Get delegates from the server
-    if (!props.isVerified) {
-      props.dispatch({ delegates: [], type: 'SYNC_DELEGATES' })
-    } else {
+    if (props.sessionId) {
       fetch('https://api.liquid.vote/my-delegates', { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((serverDelegates) => {
@@ -55,9 +55,7 @@ class ScreenWithMenu extends Component {
     }
 
     // Get constituents from the server
-    if (!props.isVerified) {
-      props.dispatch({ constituents: { approved: [], rejected: [], requests: [] }, type: 'SYNC_CONSTITUENTS' })
-    } else {
+    if (props.sessionId) {
       // Get delegation approvals, rejections, and requests from the server
       fetch('https://api.liquid.vote/my-delegation-permissions', { headers: { Session_ID: props.sessionId } })
         .then(response => response.json())
@@ -90,6 +88,7 @@ ScreenWithMenu.propTypes = {
   location: React.PropTypes.shape({}).isRequired,
   match: React.PropTypes.shape({}).isRequired,
   path: React.PropTypes.string.isRequired,
+  sessionId: React.PropTypes.string,
   Screen: React.PropTypes.func.isRequired, // eslint-disable-line
 }
 
