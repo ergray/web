@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
+  Dimensions,
   Image,
   Text,
   TextInput,
@@ -18,6 +19,13 @@ class PhoneLoginBox extends Component {
   }
 
   render() {
+    const { width } = Dimensions.get('window')
+    let placeholderText = `Enter your mobile ${this.props.large ? 'number' : '#'}`
+    if (width < 370) {
+      placeholderText = 'Mobile #'
+    }
+
+
     return (
       <View style={{
         alignSelf: 'flex-start',
@@ -47,7 +55,7 @@ class PhoneLoginBox extends Component {
         >your voice:</Text>
         <TextInput
           autoCorrect={false}
-          placeholder={`Enter your mobile ${this.props.large ? 'number' : '#'}`}
+          placeholder={placeholderText}
           ref={(input) => { this.props.loginRef.input = input }}
           style={{
             backgroundColor: '#fff',
