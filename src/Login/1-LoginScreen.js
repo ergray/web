@@ -34,7 +34,7 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const loginRef = { input: null }
+    const loginRef = { input: { focus: () => {} } }
 
     return (
       <View style={{
@@ -84,7 +84,7 @@ class LoginScreen extends Component {
                           pressGetStarted={() => {
                             this.setState({ pressedGetStarted: true })
                             loginRef.input.focus()
-                            setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 100)
+                            setTimeout(() => window.scrollTo(0, 9999), 100)
                           }}
                         />
                       )}
