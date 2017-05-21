@@ -35549,7 +35549,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.66",
+	"version": "0.0.67",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97858,6 +97858,7 @@ _react2.default.createElement(_GetStartedButton2.default,{
 pressGetStarted:function pressGetStarted(){
 _this2.setState({pressedGetStarted:true});
 loginRef.input.focus();
+setTimeout(function(){return window.scrollTo(0,document.body.scrollHeight);},100);
 }})),
 
 
