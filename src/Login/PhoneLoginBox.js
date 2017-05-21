@@ -18,8 +18,10 @@ class PhoneLoginBox extends Component {
   }
 
   render() {
-    let placeholderText = `Enter your mobile ${this.props.large ? 'number' : '#'}`
-    if (this.props.verySmall) {
+    const { dispatch, history, large, verySmall } = this.props
+
+    let placeholderText = `Enter your mobile ${large ? 'number' : '#'}`
+    if (verySmall) {
       placeholderText = 'Mobile #'
     }
 
@@ -29,7 +31,7 @@ class PhoneLoginBox extends Component {
         backgroundColor: 'hsla(0, 0%, 13%, 0.9)',
         borderRadius: 10,
         paddingVertical: 40,
-        width: this.props.large ? 450 : undefined,
+        width: large ? 450 : undefined,
       }}
       >
         <Text
@@ -55,7 +57,7 @@ class PhoneLoginBox extends Component {
           placeholder={placeholderText}
           ref={(input) => {
             // Enable autofocus on all but the smallest screens
-            if (!this.props.verySmall) {
+            if (!verySmall) {
               this.props.loginRef.input = input
             }
           }}
@@ -112,8 +114,8 @@ class PhoneLoginBox extends Component {
 
               // Special code to demo registration
               if (phoneNumber === '5555551776') {
-                this.props.dispatch({ type: 'START_REGISTRATION_DEMO' })
-                return this.props.history.replace('registration')
+                dispatch({ type: 'START_REGISTRATION_DEMO' })
+                return history.replace('registration')
               }
 
               // Special code to demo login
@@ -125,15 +127,15 @@ class PhoneLoginBox extends Component {
                 })
                 .then(response => response.json())
                 .then(({ sessionId, user }) => {
-                  this.props.dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
-                  return this.props.history.replace('sf')
+                  dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
+                  return history.replace('sf')
                 })
               }
 
               // Check if this is a new number
               if (!this.props.knownNumbers[phoneNumber]) {
                 this.setState({ phone: newText })
-                return this.props.history.push(`confirm-new-number/${phoneNumber}`)
+                return history.push(`confirm-new-number/${phoneNumber}`)
               }
 
               fetch('https://api.liquid.vote/login', {
@@ -147,8 +149,8 @@ class PhoneLoginBox extends Component {
                 method: 'POST',
               })
 
-              this.props.dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
-              this.props.history.replace('enter-sms')
+              dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
+              history.replace('enter-sms')
             }
 
             // Otherwise, update backing state normally
