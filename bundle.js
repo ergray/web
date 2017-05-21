@@ -35549,7 +35549,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.65",
+	"version": "0.0.66",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98421,6 +98421,7 @@ var _reactNative=__webpack_require__(4);
 
 
 
+
 var _usaFlag=__webpack_require__(367);var _usaFlag2=_interopRequireDefault(_usaFlag);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
 var pick=__webpack_require__(30);var
 
@@ -98432,7 +98433,14 @@ phone:''};return _this;
 
 }_createClass(PhoneLoginBox,[{key:'render',value:function render()
 
-{var _this2=this;
+{var _this2=this;var _Dimensions$get=
+_reactNative.Dimensions.get('window'),width=_Dimensions$get.width;
+var placeholderText='Enter your mobile '+(this.props.large?'number':'#');
+if(width<370){
+placeholderText='Mobile #';
+}
+
+
 return(
 _react2.default.createElement(_reactNative.View,{style:{
 alignSelf:'flex-start',
@@ -98462,7 +98470,7 @@ marginLeft:40}},'your voice:'),
 
 _react2.default.createElement(_reactNative.TextInput,{
 autoCorrect:false,
-placeholder:'Enter your mobile '+(this.props.large?'number':'#'),
+placeholder:placeholderText,
 ref:function ref(input){_this2.props.loginRef.input=input;},
 style:{
 backgroundColor:'#fff',
@@ -98563,20 +98571,20 @@ return _this2.setState({phone:newText});
 _react2.default.createElement(_reactNative.Image,{
 source:_usaFlag2.default,
 style:{
+bottom:94,
 height:24,
 left:50,
 position:'absolute',
-top:200,
 width:30}}),
 
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
+bottom:96,
 fontSize:18,
 fontWeight:'300',
 left:87,
-position:'absolute',
-top:202}},'+1'),
+position:'absolute'}},'+1'),
 
 
 _react2.default.createElement(_reactNative.Text,{
