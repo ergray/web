@@ -20122,7 +20122,9 @@ var _convertDates=__webpack_require__(118);function _interopRequireDefault(obj){
 PastAgendas=function(_Component){_inherits(PastAgendas,_Component);
 function PastAgendas(props){_classCallCheck(this,PastAgendas);var _this=_possibleConstructorReturn(this,(PastAgendas.__proto__||Object.getPrototypeOf(PastAgendas)).call(this,
 props));
-_this.state={};
+_this.state={
+activated:true};
+
 
 fetch('https://api.liquid.vote/dates').
 then(function(response){return response.json();}).
@@ -35549,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.71",
+	"version": "0.0.72",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
