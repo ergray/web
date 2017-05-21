@@ -1,6 +1,6 @@
 {
   "name": "liquid-web",
-  "version": "0.0.63",
+  "version": "0.0.64",
   "description": "React-native-web client to connect to api.liquid.vote",
   "author": "github.com/liquidvote",
   "private": true,
@@ -58,5 +58,8 @@
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2",
     "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-filenames": "github:dsernst/eslint-plugin-react-filenames"
   }
 }

@@ -5,6 +5,7 @@ import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
 import { Collapse } from 'react-collapse'
+import FadeIn from './FadeIn'
 import IntroDescription from './IntroDescription'
 import PhoneLoginBox from './PhoneLoginBox'
 import GetStartedButton from './GetStartedButton'
@@ -49,17 +50,19 @@ class LoginScreen extends Component {
         <View style={{
           flex: 1,
           maxWidth: 1250,
+          paddingTop: 30,
           width: '100%',
         }}
         >
-          <Text style={{
-            color: '#000',
-            fontSize: 22,
-            fontWeight: 'bold',
-            marginTop: 30,
-            paddingLeft: 43,
-          }}
-          >LIQUID DEMOCRACY</Text>
+          <FadeIn>
+            <Text style={{
+              color: '#000',
+              fontSize: 22,
+              fontWeight: 'bold',
+              paddingLeft: 43,
+            }}
+            >LIQUID DEMOCRACY</Text>
+          </FadeIn>
 
           <MediaQuery minWidth={750}>
             {matchesMinWidth => (<MediaQuery maxDeviceWidth={667}>
@@ -73,15 +76,18 @@ class LoginScreen extends Component {
                     paddingRight: large ? 43 : 0,
                   }}
                   >
-                    <IntroDescription large={large} />
-                    { !this.state.pressedGetStarted && (
-                      <GetStartedButton
-                        pressGetStarted={() => {
-                          this.setState({ pressedGetStarted: true })
-                          loginRef.input.focus()
-                        }}
-                      />
-                    )}
+                    <FadeIn>
+                      <View />
+                      <IntroDescription large={large} />
+                      { !this.state.pressedGetStarted && (
+                        <GetStartedButton
+                          pressGetStarted={() => {
+                            this.setState({ pressedGetStarted: true })
+                            loginRef.input.focus()
+                          }}
+                        />
+                      )}
+                    </FadeIn>
                     <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
                       <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} />
                     </Collapse>
