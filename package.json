@@ -58,5 +58,8 @@
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2",
     "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-filenames": "github:dsernst/eslint-plugin-react-filenames"
   }
 }
