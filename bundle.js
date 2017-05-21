@@ -35549,7 +35549,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.68",
+	"version": "0.0.69",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97808,7 +97808,7 @@ this.viewport.setAttribute('content','min-width=0, max-width=none, initial-scale
 }},{key:'render',value:function render()
 
 {var _this2=this;
-var loginRef={input:null};
+var loginRef={input:{focus:function focus(){}}};
 
 return(
 _react2.default.createElement(_reactNative.View,{style:{
@@ -97858,7 +97858,7 @@ _react2.default.createElement(_GetStartedButton2.default,{
 pressGetStarted:function pressGetStarted(){
 _this2.setState({pressedGetStarted:true});
 loginRef.input.focus();
-setTimeout(function(){return window.scrollTo(0,document.body.scrollHeight);},100);
+setTimeout(function(){return window.scrollTo(0,9999);},100);
 }})),
 
 
@@ -98473,7 +98473,12 @@ marginLeft:40}},'your voice:'),
 _react2.default.createElement(_reactNative.TextInput,{
 autoCorrect:false,
 placeholder:placeholderText,
-ref:function ref(input){_this2.props.loginRef.input=input;},
+ref:function ref(input){
+
+if(!_this2.props.verySmall){
+_this2.props.loginRef.input=input;
+}
+},
 style:{
 backgroundColor:'#fff',
 borderColor:'#979797',
