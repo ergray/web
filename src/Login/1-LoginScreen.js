@@ -90,7 +90,11 @@ class LoginScreen extends Component {
                       )}
                     </FadeIn>
                     <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                      <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} />
+                      <MediaQuery maxWidth={370}>
+                        {verySmall => (
+                          <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} verySmall={verySmall} />
+                        )}
+                      </MediaQuery>
                     </Collapse>
                   </View>
                 )
