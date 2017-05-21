@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
-  Dimensions,
   Image,
   Text,
   TextInput,
@@ -19,12 +18,10 @@ class PhoneLoginBox extends Component {
   }
 
   render() {
-    const { width } = Dimensions.get('window')
     let placeholderText = `Enter your mobile ${this.props.large ? 'number' : '#'}`
-    if (width < 370) {
+    if (this.props.verySmall) {
       placeholderText = 'Mobile #'
     }
-
 
     return (
       <View style={{
@@ -208,6 +205,7 @@ PhoneLoginBox.propTypes = {
   loginRef: React.PropTypes.shape({
     input: React.PropTypes.any,
   }).isRequired,
+  verySmall: React.PropTypes.bool,
 }
 
 export default connect(pick([
