@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.76",
+	"version": "0.0.77",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98939,9 +98939,11 @@ textAlign:'center'}},'LIQUID DEMOCRACY'),
 _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.04)'},
 outerStyle:{
-alignSelf:isLoggedOut?'center':'',
-border:isLoggedOut?'1px solid rgb(5, 165, 209)':'',
+alignSelf:isLoggedOut?'center':'stretch',
+borderColor:'rgb(5, 165, 209)',
 borderRadius:3,
+borderStyle:'solid',
+borderWidth:isLoggedOut?1:0,
 marginVertical:20},
 
 onPress:function onPress(){return history.push(isLoggedOut?'/':'/voting-power');}},
@@ -99050,7 +99052,10 @@ _react2.default.createElement(_reactNative.Image,{
 source:_logo2.default,
 style:{
 alignSelf:'center',
-animation:this.state.hover?'App-logo-spin infinite 3s linear':undefined,
+animationDuration:'3s',
+animationIterationCount:'infinite',
+animationName:this.state.hover?'App-logo-spin':'',
+animationTimingFunction:'linear',
 height:84,
 marginBottom:10,
 marginTop:12,
