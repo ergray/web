@@ -50,7 +50,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
           borderRadius: 3,
           borderStyle: 'solid',
           borderWidth: isLoggedOut ? 1 : 0,
-          marginVertical: 20,
+          marginVertical: isLoggedOut ? 34 : 20,
         }}
         onPress={() => history.push(isLoggedOut ? '/' : '/voting-power')}
       >
