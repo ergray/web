@@ -22,6 +22,14 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
     first_name = 'UNREGISTERED'
   }
 
+  let message = `Hello, ${first_name} (${votingPower})`
+
+  const isLoggedOut = Object.keys(user).length === 0
+
+  if (isLoggedOut) {
+    message = 'JOIN'
+  }
+
   return (
     <View style={style}>
       <MenuLogo />
@@ -36,18 +44,24 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
 
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
-        outerStyle={{ marginVertical: 20 }}
-        onPress={() => history.push('/voting-power')}
+        outerStyle={{
+          alignSelf: isLoggedOut ? 'center' : '',
+          border: '1px solid rgb(5, 165, 209)',
+          borderRadius: 3,
+          marginVertical: 20,
+        }}
+        onPress={() => history.push(isLoggedOut ? '/' : '/voting-power')}
       >
         <Text
           style={{
             color: '#fff',
-            fontSize: 21,
+            fontSize: isLoggedOut ? 16 : 21,
             fontWeight: '200',
-            marginVertical: 20,
+            paddingHorizontal: isLoggedOut ? 30 : 0,
+            paddingVertical: isLoggedOut ? 8 : 20,
             textAlign: 'center',
           }}
-        >Hello, {first_name} ({votingPower})</Text>
+        >{message}</Text>
       </HoverableOpacity>
 
       <View>
@@ -59,14 +73,17 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
         }
         <MenuOptionWithNav text="ABOUT" to="/about" />
         <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
-        <MenuOptionWithNav
-          hoverColor="rgba(251, 82, 82, 0.1)"
-          style={{ marginTop: 30 }}
-          text="LOG OUT" onPress={() => {
-            dispatch({ type: 'LOGOUT' })
-            history.replace('/')
-          }}
-        />
+
+        { !isLoggedOut &&
+          <MenuOptionWithNav
+            hoverColor="rgba(251, 82, 82, 0.1)"
+            style={{ marginTop: 30 }}
+            text="LOG OUT" onPress={() => {
+              dispatch({ type: 'LOGOUT' })
+              history.replace('/')
+            }}
+          />
+        }
 
         <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
           <HoverableOpacity
