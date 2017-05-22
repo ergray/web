@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.77",
+	"version": "0.0.78",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98944,7 +98944,7 @@ borderColor:'rgb(5, 165, 209)',
 borderRadius:3,
 borderStyle:'solid',
 borderWidth:isLoggedOut?1:0,
-marginVertical:20},
+marginVertical:isLoggedOut?34:20},
 
 onPress:function onPress(){return history.push(isLoggedOut?'/':'/voting-power');}},
 
