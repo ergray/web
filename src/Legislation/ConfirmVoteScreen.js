@@ -143,7 +143,13 @@ class ConfirmVoteScreen extends Component {
             justifyContent: 'center',
           }}
           onPress={() => {
-            // Don't let them press this button multiple times
+            // Don't let them vote if they're not logged in
+            if (!sessionId) {
+              window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
+              return
+            }
+
+            // Dont let them press this button multiple times
             if (this.state.disabled) {
               return
             }
