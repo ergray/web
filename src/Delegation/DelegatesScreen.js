@@ -58,6 +58,16 @@ class DelegatesScreen extends Component {
       return <Text style={{ color: '#fff', fontSize: 15 }}> {props.children}</Text>
     }
 
+    if (!this.props.sessionId) {
+      return (
+        <View style={{ margin: 30 }}>
+          <P>You are not logged in. Press JOIN on the left.</P>
+          <View style={{ height: 30 }} />
+          <P>Then you can add personal delegates.</P>
+        </View>
+      )
+    }
+
     return (
       <View style={{ flex: 1, marginHorizontal: 20 }}>
 
