@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.75",
+	"version": "0.0.76",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97532,7 +97532,12 @@ then(function(_ref){var voting_power=_ref.voting_power;return _this2.setState({v
 
 
 this.props,dispatch=_props.dispatch,history=_props.history,location=_props.location,match=_props.match,sessionId=_props.sessionId;var
-position=match.params.position;var
+position=match.params.position;
+
+
+if(!location||!location.state){
+return null;
+}var
 bill=location.state.bill;
 
 var Position=
@@ -97630,6 +97635,12 @@ height:38,
 justifyContent:'center'},
 
 onPress:function onPress(){
+
+if(!sessionId){
+window.alert('You are not logged in. Press JOIN in the left menu to sign in.');
+return;
+}
+
 
 if(_this3.state.disabled){
 return;
@@ -98929,7 +98940,7 @@ _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.04)'},
 outerStyle:{
 alignSelf:isLoggedOut?'center':'',
-border:'1px solid rgb(5, 165, 209)',
+border:isLoggedOut?'1px solid rgb(5, 165, 209)':'',
 borderRadius:3,
 marginVertical:20},
 
