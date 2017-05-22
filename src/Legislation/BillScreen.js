@@ -73,12 +73,6 @@ class BillScreen extends Component {
     }
 
     function tapPosition(tappedPosition) {
-      // Don't let them vote if they're not verified
-      if (!isVerified) {
-        window.alert('Your registration must be verified before you can vote on legislation.') // eslint-disable-line
-        return
-      }
-
       if (tappedPosition === position) {
         return
       }
