@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.74",
+	"version": "0.0.75",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -95563,6 +95563,16 @@ function P(props){
 return _react2.default.createElement(_reactNative.Text,{style:{color:'#fff',fontSize:15}},' ',props.children);
 }
 
+if(!this.props.sessionId){
+return(
+_react2.default.createElement(_reactNative.View,{style:{margin:30}},
+_react2.default.createElement(P,null,'You are not logged in. Press JOIN on the left.'),
+_react2.default.createElement(_reactNative.View,{style:{height:30}}),
+_react2.default.createElement(P,null,'Then you can add personal delegates.')));
+
+
+}
+
 return(
 _react2.default.createElement(_reactNative.View,{style:{flex:1,marginHorizontal:20}},
 
@@ -97173,6 +97183,12 @@ nayOutcome.borderColor='#d62728';
 }
 
 function tapPosition(tappedPosition){
+
+if(Object.keys(user).length===0){
+window.alert('You are not logged in. Press JOIN in the left menu to sign in.');
+return;
+}
+
 if(tappedPosition===position){
 return;
 }
@@ -98889,6 +98905,14 @@ if(!first_name){
 first_name='UNREGISTERED';
 }
 
+var message='Hello, '+first_name+' ('+votingPower+')';
+
+var isLoggedOut=Object.keys(user).length===0;
+
+if(isLoggedOut){
+message='JOIN';
+}
+
 return(
 _react2.default.createElement(_reactNative.View,{style:style},
 _react2.default.createElement(_MenuLogo2.default,null),
@@ -98903,18 +98927,24 @@ textAlign:'center'}},'LIQUID DEMOCRACY'),
 
 _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0,0%,100%,0.04)'},
-outerStyle:{marginVertical:20},
-onPress:function onPress(){return history.push('/voting-power');}},
+outerStyle:{
+alignSelf:isLoggedOut?'center':'',
+border:'1px solid rgb(5, 165, 209)',
+borderRadius:3,
+marginVertical:20},
+
+onPress:function onPress(){return history.push(isLoggedOut?'/':'/voting-power');}},
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'#fff',
-fontSize:21,
+fontSize:isLoggedOut?16:21,
 fontWeight:'200',
-marginVertical:20,
-textAlign:'center'}},'Hello, ',
+paddingHorizontal:isLoggedOut?30:0,
+paddingVertical:isLoggedOut?8:20,
+textAlign:'center'}},
 
-first_name,' (',votingPower,')')),
+message)),
 
 
 _react2.default.createElement(_reactNative.View,null,
@@ -98926,6 +98956,8 @@ _react2.default.createElement(MenuOptionWithNav,{text:'ELECTED REPS',to:'/sf/boa
 
 _react2.default.createElement(MenuOptionWithNav,{text:'ABOUT',to:'/about'}),
 _react2.default.createElement(MenuOptionWithNav,{style:{marginTop:30},text:'SEND FEEDBACK',to:'/feedback'}),
+
+!isLoggedOut&&
 _react2.default.createElement(MenuOptionWithNav,{
 hoverColor:'rgba(251, 82, 82, 0.1)',
 style:{marginTop:30},
@@ -98933,6 +98965,7 @@ text:'LOG OUT',onPress:function onPress(){
 dispatch({type:'LOGOUT'});
 history.replace('/');
 }}),
+
 
 
 _react2.default.createElement(_reactNative.View,{style:{flexDirection:'row',marginTop:smallScreen?0:20}},
