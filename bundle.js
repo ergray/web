@@ -35551,7 +35551,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.73",
+	"version": "0.0.74",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -97173,12 +97173,6 @@ nayOutcome.borderColor='#d62728';
 }
 
 function tapPosition(tappedPosition){
-
-if(!isVerified){
-window.alert('Your registration must be verified before you can vote on legislation.');
-return;
-}
-
 if(tappedPosition===position){
 return;
 }
