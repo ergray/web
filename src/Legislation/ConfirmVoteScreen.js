@@ -46,6 +46,11 @@ class ConfirmVoteScreen extends Component {
       sessionId,
     } = this.props
     const { position } = match.params
+
+    // Guard against missing location field
+    if (!location || !location.state) {
+      return null
+    }
     const { bill } = location.state
 
     const Position = (
