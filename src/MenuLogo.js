@@ -16,7 +16,10 @@ class MenuLogo extends Component {
         source={logo}
         style={{
           alignSelf: 'center',
-          animation: this.state.hover ? 'App-logo-spin infinite 3s linear' : undefined,
+          animationDuration: '3s',
+          animationIterationCount: 'infinite',
+          animationName: this.state.hover ? 'App-logo-spin' : '',
+          animationTimingFunction: 'linear',
           height: 84,
           marginBottom: 10,
           marginTop: 12,

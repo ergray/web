@@ -45,9 +45,11 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{
-          alignSelf: isLoggedOut ? 'center' : '',
-          border: isLoggedOut ? '1px solid rgb(5, 165, 209)' : '',
+          alignSelf: isLoggedOut ? 'center' : 'stretch',
+          borderColor: 'rgb(5, 165, 209)',
           borderRadius: 3,
+          borderStyle: 'solid',
+          borderWidth: isLoggedOut ? 1 : 0,
           marginVertical: 20,
         }}
         onPress={() => history.push(isLoggedOut ? '/' : '/voting-power')}
