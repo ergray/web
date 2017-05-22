@@ -46,7 +46,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{
           alignSelf: isLoggedOut ? 'center' : '',
-          border: '1px solid rgb(5, 165, 209)',
+          border: isLoggedOut ? '1px solid rgb(5, 165, 209)' : '',
           borderRadius: 3,
           marginVertical: 20,
         }}
