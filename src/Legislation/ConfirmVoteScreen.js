@@ -46,6 +46,11 @@ class ConfirmVoteScreen extends Component {
       sessionId,
     } = this.props
     const { position } = match.params
+
+    // Guard against missing location field
+    if (!location || !location.state) {
+      return null
+    }
     const { bill } = location.state
 
     const Position = (
@@ -143,7 +148,13 @@ class ConfirmVoteScreen extends Component {
             justifyContent: 'center',
           }}
           onPress={() => {
-            // Don't let them press this button multiple times
+            // Don't let them vote if they're not logged in
+            if (!sessionId) {
+              window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
+              return
+            }
+
+            // Dont let them press this button multiple times
             if (this.state.disabled) {
               return
             }
