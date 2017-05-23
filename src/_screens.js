@@ -39,6 +39,7 @@ export const screens = {
   '/sms-login/:phoneNumber/:session_code': require('./Login/SMSLoginScreen').default,
   '/voting-power': require('./VotingPowerScreen/VotingPowerScreen').default,
   '/your-registration': require('./Registration/YourRegistrationScreen').default,
+  '*': require('./404Screen').default, // eslint-disable-line sort-keys
 }
 
 export default () => (
