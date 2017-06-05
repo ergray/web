@@ -20,13 +20,8 @@ class PhoneLoginBox extends Component {
   }
 
  handleAndroid(){
-    console.log('handling android in component')
-    console.log(isAndroid)
-    console.log('ref')
-    console.log(this.props.loginRef.input.props)
     let textInputRef = this.props.loginRef.input
     let inputLength = textInputRef.props ? textInputRef.props.value.length : 0
-    console.log(inputLength)
     let offSet
     
     //for area code parens ex. (415)
@@ -47,7 +42,6 @@ class PhoneLoginBox extends Component {
     //only move cursor on android mobile
     //and don't bother moving it when the default is correct
     if(isAndroid && inputLength<9){
-      console.log("manurally setting selection")
       let selection={start :textInputRef.props ? offSet : 0, end: textInputRef.props ? offSet : 0}
       return selection
     }
