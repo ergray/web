@@ -39,6 +39,7 @@
     "lodash": "^4.17.4",
     "react": "15.4",
     "react-collapse": "^4.0.1",
+    "react-dom": "^15.5.4",
     "react-icons": "^2.2.3",
     "react-iframe": "^1.0.5",
     "react-motion": "^0.4.8",
@@ -46,7 +47,7 @@
     "react-native-drawer": "^2.3.0",
     "react-native-tabs": "^1.0.9",
     "react-native-vector-icons": "^4.0.1",
-    "react-native-web": "^0.0.81",
+    "react-native-web": "0.0.97",
     "react-redux": "^5.0.3",
     "react-responsive": "^1.2.10",
     "react-router-dom": "^4.1.1",
@@ -60,6 +61,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.5",
     "eslint-plugin-react-filenames": "github:dsernst/eslint-plugin-react-filenames"
   }
 }
