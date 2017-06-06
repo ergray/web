@@ -8,7 +8,6 @@ import {
 } from 'react-native'
 import usaFlag from './usa-flag.png'
 const pick = require('lodash/fp/pick')
- 
 const isAndroid = /Android/i.test(navigator && navigator.userAgent)
 
 class PhoneLoginBox extends Component {
@@ -19,35 +18,38 @@ class PhoneLoginBox extends Component {
     }
   }
 
- handleAndroid(){
-    let textInputRef = this.props.loginRef.input
-    let inputLength = textInputRef.props ? textInputRef.props.value.length : 0
+  handleAndroid() {
+    const textInputRef = this.props.loginRef.input
+    const inputLength = textInputRef.props ? textInputRef.props.value.length : 0
     let offSet
-    
-    //for area code parens ex. (415)
-    if(inputLength<3){
-      offSet = inputLength+3
-    }
-    
-    //for digits after area code ex (415) 123
-    if(inputLength>=3 && inputLength<8){
-      offSet = inputLength+4
+
+    // for area code parens ex. (415)
+    if (inputLength < 3) {
+      offSet = inputLength + 3
     }
 
-    //for final 4 digits ex (415) 123 4567
-    if(inputLength>=8){
-      offSet = inputLength+5
+    // for digits after area code ex (415) 123
+    if (inputLength >= 3 && inputLength < 8) {
+      offSet = inputLength + 4
     }
 
-    //only move cursor on android mobile
-    //and don't bother moving it when the default is correct
-    if(isAndroid && inputLength<9){
-      let selection={start :textInputRef.props ? offSet : 0, end: textInputRef.props ? offSet : 0}
+    // for final 4 digits ex (415) 123 4567
+    if (inputLength >= 8) {
+      offSet = inputLength + 5
+    }
+
+    // only move cursor on android mobile
+    // and don't bother moving it when the default is correct
+    if (isAndroid && inputLength < 9) {
+      const selection = {
+        end: textInputRef.props ? offSet : 0,
+        start: textInputRef.props ? offSet : 0,
+      }
       return selection
     }
     return null
   }
- 
+
 
   render() {
     const { dispatch, history, large, verySmall } = this.props
@@ -86,7 +88,6 @@ class PhoneLoginBox extends Component {
         >your voice:</Text>
         <TextInput
           autoCorrect={false}
-          selection={this.handleAndroid()}
           placeholder={placeholderText}
           ref={(input) => {
             // Enable autofocus on all but the smallest screens
@@ -94,6 +95,7 @@ class PhoneLoginBox extends Component {
               this.props.loginRef.input = input
             }
           }}
+          selection={this.handleAndroid()}
           style={{
             backgroundColor: '#fff',
             borderColor: '#979797',
