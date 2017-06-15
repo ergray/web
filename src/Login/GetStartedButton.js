@@ -28,7 +28,6 @@ export default function GetStartedButton({ pressGetStarted }) {
       <Text
         style={{
           color: '#fff',
-          fontFamily: 'ArialMT',
           fontSize: 25,
           fontWeight: '700',
           letterSpacing: 2,
