@@ -30,12 +30,12 @@ export default function IntroDescription({ large }) {
         style={{
           bottom: 13,
           color: 'hsl(0, 100%, 47%)',
-          fontSize: 45,
+          fontSize: large ? 45 : 34,
           fontWeight: '700',
           position: 'relative',
         }}
       >VOTE&nbsp;
-        <Text style={{ bottom: 2, color: 'black', fontSize: 31, position: 'relative' }}>ON</Text>
+        <Text style={{ bottom: 2, color: 'black', fontSize: large ? 31 : 26, position: 'relative' }}>ON</Text>
         <Text style={{ color: 'hsla(240, 80%, 60%, 1)' }}>&nbsp;LAWS</Text>
       </Text>
 
