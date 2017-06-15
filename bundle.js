@@ -36394,7 +36394,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.82",
+	"version": "0.0.83",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -99013,7 +99013,6 @@ onPress:pressGetStarted},
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'#fff',
-fontFamily:'ArialMT',
 fontSize:25,
 fontWeight:'700',
 letterSpacing:2,
