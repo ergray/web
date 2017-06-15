@@ -36394,7 +36394,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.80",
+	"version": "0.0.81",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98511,7 +98511,7 @@ width:'100%'}},
 _react2.default.createElement(_FadeIn2.default,null,
 _react2.default.createElement(_reactNative.Text,{style:{
 color:'#000',
-fontSize:22,
+fontSize:20,
 fontWeight:'bold',
 paddingLeft:43}},'LIQUID DEMOCRACY')),
 
@@ -99017,7 +99017,7 @@ fontFamily:'ArialMT',
 fontSize:25,
 fontWeight:'700',
 letterSpacing:2,
-textAlign:'center'}},'GET STARTED')));
+textAlign:'center'}},'COUNT ME IN')));
 
 
 
@@ -99047,17 +99047,10 @@ alignItems:'center',
 backgroundImage:'linear-gradient(-180deg, #fff 0%, hsla(0,0%,100%,0.7) 100%)',
 borderRadius:10,
 boxShadow:'rgba(0,0,0,0.3) 0px 60px 28px -40px',
-height:218,
+height:205,
 justifyContent:'space-around',
 marginBottom:60,
 paddingVertical:15}},
-
-
-_react2.default.createElement(_reactNative.Text,{
-style:{
-color:'hsl(0, 0%, 28%)',
-fontSize:28,
-fontWeight:'700'}},'VOTE ON LAWS'),
 
 
 _react2.default.createElement(_reactNative.Text,{
@@ -99066,6 +99059,18 @@ color:'hsl(0, 0%, 32%)',
 fontSize:large?24:18,
 fontWeight:'700'}},'Hold politicians accountable.'),
 
+
+_react2.default.createElement(_reactNative.Text,{
+style:{
+bottom:13,
+color:'hsl(0, 100%, 47%)',
+fontSize:45,
+fontWeight:'700',
+position:'relative'}},'VOTE\xA0',
+
+
+_react2.default.createElement(_reactNative.Text,{style:{bottom:2,color:'black',fontSize:31,position:'relative'}},'ON'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'hsla(240, 80%, 60%, 1)'}},'\xA0LAWS')),
 
 
 _react2.default.createElement(_HoverableOpacity2.default,{
@@ -99098,7 +99103,9 @@ large:_react2.default.PropTypes.bool};
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(fetch) {Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
+/* WEBPACK VAR INJECTION */(function(fetch) {Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+
+var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);
 var _reactRedux=__webpack_require__(7);
 var _reactNative=__webpack_require__(4);
 
@@ -99171,21 +99178,11 @@ width:large?450:undefined}},
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'#fff',
-fontSize:48,
+fontSize:32,
 fontWeight:'100',
-lineHeight:55,
-marginLeft:40}},'Reclaim'),
+marginLeft:40}},'Login ',
 
-
-_react2.default.createElement(_reactNative.Text,{
-style:{
-color:'#fff',
-fontSize:48,
-fontWeight:'100',
-lineHeight:55,
-marginLeft:40}},'your voice:'),
-
-
+_react2.default.createElement(_reactNative.Text,{style:{opacity:0.7}},'/'),' Join'),
 _react2.default.createElement(_reactNative.TextInput,{
 autoCorrect:false,
 placeholder:placeholderText,
@@ -99205,7 +99202,7 @@ fontSize:18,
 fontWeight:'300',
 height:42,
 marginHorizontal:38,
-marginTop:41,
+marginTop:27,
 paddingLeft:75},
 
 value:this.state.phone,
