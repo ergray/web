@@ -57,7 +57,7 @@ class LoginScreen extends Component {
           <FadeIn>
             <Text style={{
               color: '#000',
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: 'bold',
               paddingLeft: 43,
             }}
