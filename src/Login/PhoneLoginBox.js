@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
@@ -71,21 +73,11 @@ class PhoneLoginBox extends Component {
         <Text
           style={{
             color: '#fff',
-            fontSize: 48,
+            fontSize: 32,
             fontWeight: '100',
-            lineHeight: 55,
             marginLeft: 40,
           }}
-        >Reclaim</Text>
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 48,
-            fontWeight: '100',
-            lineHeight: 55,
-            marginLeft: 40,
-          }}
-        >your voice:</Text>
+        >Login <Text style={{ opacity: 0.7 }}>/</Text> Join</Text>
         <TextInput
           autoCorrect={false}
           placeholder={placeholderText}
@@ -105,7 +97,7 @@ class PhoneLoginBox extends Component {
             fontWeight: '300',
             height: 42,
             marginHorizontal: 38,
-            marginTop: 41,
+            marginTop: 27,
             paddingLeft: 75,
           }}
           value={this.state.phone}

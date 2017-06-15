@@ -34,7 +34,7 @@ export default function GetStartedButton({ pressGetStarted }) {
           letterSpacing: 2,
           textAlign: 'center',
         }}
-      >GET STARTED</Text>
+      >COUNT ME IN</Text>
     </HoverableOpacity>
   )
 }
