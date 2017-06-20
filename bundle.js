@@ -36394,7 +36394,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.83",
+	"version": "0.0.84",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -99056,20 +99056,20 @@ _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'hsl(0, 0%, 32%)',
 fontSize:large?24:18,
-fontWeight:'700'}},'Hold politicians accountable.'),
+fontWeight:'700'}},'Hold politicians accountable'),
 
 
 _react2.default.createElement(_reactNative.Text,{
 style:{
 bottom:13,
-color:'hsl(0, 100%, 47%)',
+color:'hsl(0, 0%, 22%)',
 fontSize:large?45:34,
 fontWeight:'700',
 position:'relative'}},'VOTE\xA0',
 
 
-_react2.default.createElement(_reactNative.Text,{style:{bottom:2,color:'black',fontSize:large?31:26,position:'relative'}},'ON'),
-_react2.default.createElement(_reactNative.Text,{style:{color:'hsla(240, 80%, 60%, 1)'}},'\xA0LAWS')),
+_react2.default.createElement(_reactNative.Text,{style:{bottom:2,fontSize:large?31:26,position:'relative'}},'ON'),'\xA0LAWS'),
+
 
 
 _react2.default.createElement(_HoverableOpacity2.default,{
