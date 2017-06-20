@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "WZW4T5P3XR.org.liquidvote.reactnative.ios",
+                "paths": [ "*" ]
+            }
+        ]
+    }
+}
