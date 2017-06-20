@@ -29,14 +29,14 @@ export default function IntroDescription({ large }) {
       <Text
         style={{
           bottom: 13,
-          color: 'hsl(0, 100%, 47%)',
+          color: 'hsl(0, 0%, 22%)',
           fontSize: large ? 45 : 34,
           fontWeight: '700',
           position: 'relative',
         }}
       >VOTE&nbsp;
-        <Text style={{ bottom: 2, color: 'black', fontSize: large ? 31 : 26, position: 'relative' }}>ON</Text>
-        <Text style={{ color: 'hsla(240, 80%, 60%, 1)' }}>&nbsp;LAWS</Text>
+        <Text style={{ bottom: 2, fontSize: large ? 31 : 26, position: 'relative' }}>ON</Text>
+        &nbsp;LAWS
       </Text>
 
       <HoverableOpacity
