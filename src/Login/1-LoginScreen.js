@@ -81,6 +81,7 @@ class LoginScreen extends Component {
                       <IntroDescription large={large} />
                       { !this.state.pressedGetStarted && (
                         <GetStartedButton
+                          large={large}
                           pressGetStarted={() => {
                             this.setState({ pressedGetStarted: true })
                             loginRef.input.focus()
