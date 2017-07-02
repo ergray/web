@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import HoverableOpacity from '../HoverableOpacity'
 
-export default function GetStartedButton({ pressGetStarted }) {
+export default function GetStartedButton({ large, pressGetStarted }) {
   return (
     <HoverableOpacity
       activeOpacity={0.8}
@@ -28,16 +28,17 @@ export default function GetStartedButton({ pressGetStarted }) {
       <Text
         style={{
           color: '#fff',
-          fontSize: 25,
+          fontSize: 24,
           fontWeight: '700',
-          letterSpacing: 2,
+          letterSpacing: large ? 2 : 0,
           textAlign: 'center',
         }}
-      >COUNT ME IN</Text>
+      >RECLAIM YOUR VOICE</Text>
     </HoverableOpacity>
   )
 }
 
 GetStartedButton.propTypes = {
+  large: React.PropTypes.bool,
   pressGetStarted: React.PropTypes.func.isRequired,
 }
