@@ -36394,7 +36394,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.84",
+	"version": "0.0.85",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -98535,6 +98535,7 @@ _react2.default.createElement(_reactNative.View,null),
 _react2.default.createElement(_IntroDescription2.default,{large:large}),
 !_this2.state.pressedGetStarted&&
 _react2.default.createElement(_GetStartedButton2.default,{
+large:large,
 pressGetStarted:function pressGetStarted(){
 _this2.setState({pressedGetStarted:true});
 loginRef.input.focus();
@@ -98989,7 +98990,7 @@ Object.defineProperty(exports,"__esModule",{value:true});exports.default=
 
 
 
-GetStartedButton;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);var _HoverableOpacity=__webpack_require__(12);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function GetStartedButton(_ref){var pressGetStarted=_ref.pressGetStarted;
+GetStartedButton;var _react=__webpack_require__(1);var _react2=_interopRequireDefault(_react);var _reactNative=__webpack_require__(4);var _HoverableOpacity=__webpack_require__(12);var _HoverableOpacity2=_interopRequireDefault(_HoverableOpacity);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function GetStartedButton(_ref){var large=_ref.large,pressGetStarted=_ref.pressGetStarted;
 return(
 _react2.default.createElement(_HoverableOpacity2.default,{
 activeOpacity:0.8,
@@ -99013,10 +99014,10 @@ onPress:pressGetStarted},
 _react2.default.createElement(_reactNative.Text,{
 style:{
 color:'#fff',
-fontSize:25,
+fontSize:24,
 fontWeight:'700',
-letterSpacing:2,
-textAlign:'center'}},'COUNT ME IN')));
+letterSpacing:large?2:0,
+textAlign:'center'}},'RECLAIM YOUR VOICE')));
 
 
 
@@ -99024,6 +99025,7 @@ textAlign:'center'}},'COUNT ME IN')));
 }
 
 GetStartedButton.propTypes={
+large:_react2.default.PropTypes.bool,
 pressGetStarted:_react2.default.PropTypes.func.isRequired};
 
 /***/ }),
