@@ -40,7 +40,7 @@ export default function IntroDescription({ large }) {
       </Text>
 
       <HoverableOpacity
-        hoverStyle={{ backgroundColor: 'rgba(59,89,152,0.5)' }}
+        hoverStyle={{ border: '1px solid black', borderRadius: 3 }}
         style={{ padding: 3 }}
         onPress={() => {
           Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
