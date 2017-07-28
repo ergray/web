@@ -1,10 +1,11 @@
+/* global window */
+
 import React from 'react'
 import {
-  Linking,
   Text,
   View,
 } from 'react-native'
-import HoverableOpacity from '../HoverableOpacity'
+import HoverableOpacity from '../../HoverableOpacity'
 
 export default function IntroDescription({ large }) {
   return (
@@ -40,12 +41,9 @@ export default function IntroDescription({ large }) {
       </Text>
 
       <HoverableOpacity
-        hoverStyle={{ backgroundColor: 'rgba(59,89,152,0.5)' }}
-        style={{ padding: 3 }}
-        onPress={() => {
-          Linking.openURL('https://blog.liquid.vote/2016/09/21/what-is-liquid-democracy/')
-          .catch(() => {})
-        }}
+        hoverStyle={{ backgroundColor: 'hsla(0, 0%, 0%, 0.1)', borderColor: 'black' }}
+        outerStyle={{ borderColor: 'white', borderRadius: 3, borderStyle: 'solid', borderWidth: 1, cursor: 'pointer', padding: 3 }}
+        onPress={() => { window.scrollTo(0, 750) }}
       >
         <Text
           style={{

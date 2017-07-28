@@ -5,7 +5,7 @@ import {
   TextInput,
   View,
 } from 'react-native'
-import usaFlag from '../Login/usa-flag.png'
+import usaFlag from '../Login/LandingPage/usa-flag.png'
 
 class AddByPhoneNumber extends Component {
   constructor(props) {

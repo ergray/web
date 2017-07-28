@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Text,
 } from 'react-native'
-import HoverableOpacity from '../HoverableOpacity'
+import HoverableOpacity from '../../HoverableOpacity'
 
 export default function GetStartedButton({ large, pressGetStarted }) {
   return (
