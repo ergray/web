@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Image, View, Text } from 'react-native'
 import MediaQuery from 'react-responsive'
 import SubscribeCTA from './SubscribeCTA'
+import constituencyGraphic from './constituency-graphic.png'
 
 function ExtendedLandingPage() {
   return (
@@ -70,6 +71,15 @@ function ExtendedLandingPage() {
           <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: 15 }}>
             Build your constituency to gain VOTING POWER.
           </Text>
+
+          <Image
+            source={constituencyGraphic}
+            style={{
+              alignSelf: 'center',
+              height: 200,
+              width: 310,
+            }}
+          />
         </View>
       </View>
 
