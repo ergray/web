@@ -87,7 +87,9 @@ class LoginScreen extends Component {
                             pressGetStarted={() => {
                               this.setState({ pressedGetStarted: true })
                               loginRef.input.focus()
-                              setTimeout(() => window.scrollTo(0, 9999), 200)
+                              if (!large) {
+                                setTimeout(() => window.scrollTo(0, 300), 200)
+                              }
                             }}
                           />
                         )}
