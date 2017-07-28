@@ -9,6 +9,7 @@ import FadeIn from './FadeIn'
 import IntroDescription from './IntroDescription'
 import PhoneLoginBox from './PhoneLoginBox'
 import GetStartedButton from './GetStartedButton'
+import ExtendedLandingPage from './ExtendedLandingPage'
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -37,73 +38,78 @@ class LoginScreen extends Component {
     const loginRef = { input: { focus: () => {} } }
 
     return (
-      <View style={{
-        alignItems: 'center',
-        backgroundColor: '#b4d4d5',
-        backgroundImage: 'url(/city-on-a-hill.jpg)',
-        backgroundPosition: 'bottom',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        flex: 1,
-      }}
-      >
+      <View style={{ }}>
         <View style={{
-          flex: 1,
-          maxWidth: 1250,
-          paddingTop: 30,
-          width: '100%',
+          alignItems: 'center',
+          backgroundColor: '#b4d4d5',
+          backgroundImage: 'url(/city-on-a-hill.jpg)',
+          backgroundPosition: 'bottom',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          height: 860,
         }}
         >
-          <FadeIn>
-            <Text style={{
-              color: '#000',
-              fontSize: 20,
-              fontWeight: 'bold',
-              paddingLeft: 43,
-            }}
-            >LIQUID DEMOCRACY</Text>
-          </FadeIn>
-
-          <MediaQuery minWidth={750}>
-            {matchesMinWidth => (<MediaQuery maxDeviceWidth={667}>
-              {(matchesMaxDeviceWidth) => {
-                const large = matchesMinWidth && !matchesMaxDeviceWidth
-                return (
-                  <View style={{
-                    alignSelf: large ? 'flex-end' : 'stretch',
-                    marginHorizontal: large ? 0 : 30,
-                    marginTop: large ? 185 : 50,
-                    paddingRight: large ? 43 : 0,
-                  }}
-                  >
-                    <FadeIn>
-                      <View />
-                      <IntroDescription large={large} />
-                      { !this.state.pressedGetStarted && (
-                        <GetStartedButton
-                          large={large}
-                          pressGetStarted={() => {
-                            this.setState({ pressedGetStarted: true })
-                            loginRef.input.focus()
-                            setTimeout(() => window.scrollTo(0, 9999), 200)
-                          }}
-                        />
-                      )}
-                    </FadeIn>
-                    <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
-                      <MediaQuery maxWidth={370}>
-                        {verySmall => (
-                          <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} verySmall={verySmall} />
-                        )}
-                      </MediaQuery>
-                    </Collapse>
-                  </View>
-                )
+          <View style={{
+            flex: 1,
+            maxWidth: 1250,
+            paddingTop: 30,
+            width: '100%',
+          }}
+          >
+            <FadeIn>
+              <Text style={{
+                color: '#000',
+                fontSize: 20,
+                fontWeight: 'bold',
+                paddingLeft: 43,
               }}
-            </MediaQuery>)}
-          </MediaQuery>
+              >LIQUID DEMOCRACY</Text>
+            </FadeIn>
+
+            <MediaQuery minWidth={750}>
+              {matchesMinWidth => (<MediaQuery maxDeviceWidth={667}>
+                {(matchesMaxDeviceWidth) => {
+                  const large = matchesMinWidth && !matchesMaxDeviceWidth
+                  return (
+                    <View style={{
+                      alignSelf: large ? 'flex-end' : 'stretch',
+                      marginHorizontal: large ? 0 : 30,
+                      marginTop: large ? 185 : 50,
+                      paddingRight: large ? 43 : 0,
+                    }}
+                    >
+                      <FadeIn>
+                        <View />
+                        <IntroDescription large={large} />
+                        { !this.state.pressedGetStarted && (
+                          <GetStartedButton
+                            large={large}
+                            pressGetStarted={() => {
+                              this.setState({ pressedGetStarted: true })
+                              loginRef.input.focus()
+                              setTimeout(() => window.scrollTo(0, 9999), 200)
+                            }}
+                          />
+                        )}
+                      </FadeIn>
+                      <Collapse isOpened={this.state.pressedGetStarted} springConfig={{ damping: 20, stiffness: 300 }}>
+                        <MediaQuery maxWidth={370}>
+                          {verySmall => (
+                            <PhoneLoginBox history={this.props.history} large={large} loginRef={loginRef} verySmall={verySmall} />
+                          )}
+                        </MediaQuery>
+                      </Collapse>
+                    </View>
+                  )
+                }}
+              </MediaQuery>)}
+            </MediaQuery>
+
+          </View>
 
         </View>
+
+        <ExtendedLandingPage />
 
       </View>
     )
