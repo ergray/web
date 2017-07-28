@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
+import MediaQuery from 'react-responsive'
 import SubscribeCTA from './SubscribeCTA'
 
 function ExtendedLandingPage() {
@@ -7,51 +8,60 @@ function ExtendedLandingPage() {
     <View>
 
       { /* Video section */ }
-      <View style={{ alignItems: 'center', backgroundColor: '#191723', paddingVertical: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Thin', fontSize: 43, letterSpacing: 1, marginBottom: 60 }} >
+      <View style={{ alignItems: 'center', backgroundColor: '#191723', paddingHorizontal: 20, paddingVertical: 60 }}>
+        <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Thin', fontSize: 43, letterSpacing: 1, marginBottom: 60, textAlign: 'center' }} >
           People, Not Parties
         </Text>
-        <iframe allowFullScreen frameBorder="0" height="315" src="https://www.youtube.com/embed/nJmGrNdJ5Gw" width="560" />
+        <MediaQuery maxWidth={740}>
+          {smallScreen => (
+            <iframe allowFullScreen frameBorder="0" height={smallScreen ? 200 : 315} src="https://www.youtube.com/embed/nJmGrNdJ5Gw" width={smallScreen ? 360 : 560} />
+          )}
+        </MediaQuery>
       </View>
 
       { /* Introducing LD */ }
-      <View style={{ alignItems: 'center', backgroundColor: 'white', paddingVertical: 60 }}>
-        <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Medium', fontSize: 46, letterSpacing: 4.63, marginBottom: 30 }} >
-          INTRODUCING LIQUID DEMOCRACY
-        </Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: 920 }}>
-          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }} >
-            Vote directly on legislation.
-          </Text>
-          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }} >
-            Or delegate your vote to anyone you know.
-          </Text>
-        </View>
-        <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: 60 }} >
-          We'll grade elected politicians
-        </Text>
-        <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }} >
-          on how well they truly represent their voters.
-        </Text>
-      </View>
+      <MediaQuery maxWidth={960}>
+        {smallScreen => (
+          <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
+            <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Medium', fontSize: smallScreen ? 30 : 46, letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
+              INTRODUCING LIQUID DEMOCRACY
+            </Text>
+            <View style={{ flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: !smallScreen ? 920 : undefined }}>
+              <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }} >
+                Vote directly on legislation.
+              </Text>
+              <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
+                Or delegate your vote to anyone you know.
+              </Text>
+            </View>
+            <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
+              We'll grade elected politicians on how well they truly represent their voters.
+            </Text>
+          </View>
+        )}
+      </MediaQuery>
 
       { /* three slogans */ }
-      <View style={{ alignSelf: 'center', maxWidth: 920, paddingVertical: 60, width: '100%' }}>
-        <Text style={{ color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17, marginBottom: 60 }}>
-          REMOVE CORRUPTION
-        </Text>
+      <MediaQuery maxWidth={575}>
+        {verySmallScreen => (
+          <View style={{ alignSelf: 'center', maxWidth: 920, paddingHorizontal: 20, paddingVertical: 60, width: '100%' }}>
+            <Text style={{ color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17, marginBottom: 60 }}>
+              REMOVE CORRUPTION
+            </Text>
 
-        <Text style={{ alignSelf: 'center', color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17, marginBottom: 60 }}>
-          MOVE PAST A TWO PARTY SYSTEM
-        </Text>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'center', color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17, marginBottom: 60 }}>
+              MOVE PAST A TWO PARTY SYSTEM
+            </Text>
 
-        <Text style={{ alignSelf: 'flex-end', color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17 }}>
-          GET REAL REPRESENTATION
-        </Text>
-      </View>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 2.17 }}>
+              GET REAL REPRESENTATION
+            </Text>
+          </View>
+        )}
+      </MediaQuery>
 
       { /* voting power */ }
-      <View style={{ backgroundColor: 'white', paddingVertical: 60 }}>
+      <View style={{ backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
           <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
             POWERED by Liquid Democracy.
@@ -64,7 +74,7 @@ function ExtendedLandingPage() {
       </View>
 
       { /* RoM&C */ }
-      <View style={{ paddingVertical: 60 }}>
+      <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
           <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Bold', fontSize: 27, letterSpacing: 2 }}>
             Law is the expression of the general will.
@@ -84,7 +94,7 @@ function ExtendedLandingPage() {
       </View>
 
       { /* Learn More */ }
-      <View style={{ alignItems: 'center', backgroundColor: 'white', paddingVertical: 60 }}>
+      <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
           <Text style={{ fontFamily: 'HelveticaNeue-Thin', fontSize: 45, letterSpacing: 0.12 }}>
             LEARN MORE
@@ -118,50 +128,54 @@ function ExtendedLandingPage() {
       </View>
 
       { /* Attributes */ }
-      <View style={{ paddingVertical: 60 }}>
-        <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Medium', fontSize: 35, letterSpacing: 0.5, marginBottom: 60 }}>
-            LIQUID DEMOCRACY
-          </Text>
+      <MediaQuery maxWidth={500}>
+        {verySmallScreen => (
+          <View style={{ paddingBottom: 30, paddingHorizontal: 20, paddingTop: 60 }}>
+            <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
+              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Medium', fontSize: 35, letterSpacing: 0.5, marginBottom: 60 }}>
+                LIQUID DEMOCRACY
+              </Text>
 
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+              <View style={{ flexDirection: verySmallScreen ? 'column' : 'row', justifyContent: 'space-between' }}>
 
-            <View>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
-                Digital
-              </Text>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
-                Authentic
-              </Text>
-            </View>
+                <View>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Digital
+                  </Text>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Authentic
+                  </Text>
+                </View>
 
-            <View>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
-                Transparent
-              </Text>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
-                Accountable
-              </Text>
-            </View>
+                <View>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Transparent
+                  </Text>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Accountable
+                  </Text>
+                </View>
 
-            <View style={{ alignItems: 'flex-end' }}>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
-                Easy
-              </Text>
-              <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
-                Participatory
-              </Text>
+                <View style={{ alignItems: verySmallScreen ? 'flex-start' : 'flex-end' }}>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Easy
+                  </Text>
+                  <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginBottom: 30 }}>
+                    Participatory
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
-        </View>
-      </View>
+        )}
+      </MediaQuery>
 
       { /* Subscribe */ }
       <SubscribeCTA />
 
       { /* Footer */ }
-      <View style={{ alignItems: 'center', padding: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Thin', fontSize: 30, letterSpacing: 0.12 }}>
+      <View style={{ padding: 60 }}>
+        <Text style={{ color: 'white', fontFamily: 'HelveticaNeue-Thin', fontSize: 30, letterSpacing: 0.12, textAlign: 'center' }}>
           Liquid Democracy is Now Possible
         </Text>
       </View>
