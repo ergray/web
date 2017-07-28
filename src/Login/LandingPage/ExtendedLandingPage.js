@@ -67,7 +67,7 @@ function ExtendedLandingPage() {
             POWERED by Liquid Democracy.
           </Text>
 
-          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
+          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: 15 }}>
             Build your constituency to gain VOTING POWER.
           </Text>
         </View>
