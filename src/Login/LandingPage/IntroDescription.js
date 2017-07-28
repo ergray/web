@@ -4,7 +4,7 @@ import {
   Text,
   View,
 } from 'react-native'
-import HoverableOpacity from '../HoverableOpacity'
+import HoverableOpacity from '../../HoverableOpacity'
 
 export default function IntroDescription({ large }) {
   return (
