@@ -104,7 +104,7 @@ function ExtendedLandingPage() {
           <Text style={{ marginBottom: 5 }}>What is Liquid Democracy? <a href="http://intro.liquid.vote">http://intro.liquid.vote</a></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>ARTICLES</Text>
-          <Text style={{ marginBottom: 5 }}>LD Candidates: How to upgrade our legislature, one seat at a time <a href="http://candidate.liquid.vote">http://candidate.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}>Liquid Democracy Candidates: How to upgrade our legislature, one seat at a time <a href="http://candidate.liquid.vote">http://candidate.liquid.vote</a></Text>
           <Text style={{ marginBottom: 5 }}>Liquid Democracy and A Free Political Economy <a href="http://free.liquid.vote">http://free.liquid.vote</a></Text>
           <Text style={{ marginBottom: 5 }}>Liquid Democracy Can Completely Eliminate Gerrymandering <a href="http://gerrymandering.liquid.vote">http://gerrymandering.liquid.vote</a></Text>
           <Text style={{ marginBottom: 5 }}>How to Move Past A Two Party System <a href="http://two.liquid.vote">http://two.liquid.vote</a></Text>
