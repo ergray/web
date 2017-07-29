@@ -37698,7 +37698,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.90",
+	"version": "0.0.91",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -101419,8 +101419,8 @@ _react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},_react2
 
 _react2.default.createElement(_reactNative.Text,{style:{fontWeight:'bold',marginBottom:5,marginTop:30}},'RELATED'),
 _react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},'Upgrading Democracy: How voting could work now, 240 years later ',_react2.default.createElement('a',{href:'http://upgrading.liquid.vote'},'http://upgrading.liquid.vote')),
-_react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},'Let\'s End Hotdog Worship in America ',_react2.default.createElement('a',{href:'http://hotdogs.liquid.vote'},'http://hotdogs.liquid.vote')),
 _react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},'The Internet Party: How technology can disrupt politics and re-invent government ',_react2.default.createElement('a',{href:'http://netparty.liquid.vote'},'http://netparty.liquid.vote')),
+_react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},'Let\'s End Hotdog Worship in America ',_react2.default.createElement('a',{href:'http://hotdog.liquid.vote'},'http://hotdog.liquid.vote')),
 _react2.default.createElement(_reactNative.Text,{style:{marginBottom:5}},'The Power of Networks (video) ',_react2.default.createElement('a',{href:'http://networks.liquid.vote'},'http://networks.liquid.vote')))),
 
 
