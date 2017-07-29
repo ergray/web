@@ -37698,7 +37698,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.86",
+	"version": "0.0.87",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -101630,7 +101630,7 @@ _react2.default.createElement(_reactNative.Text,{style:{bottom:2,fontSize:large?
 
 _react2.default.createElement(_HoverableOpacity2.default,{
 hoverStyle:{backgroundColor:'hsla(0, 0%, 0%, 0.1)',borderColor:'black'},
-outerStyle:{borderColor:'white',borderRadius:3,borderStyle:'solid',borderWidth:1,cursor:'pointer',padding:3},
+outerStyle:{borderColor:'hsla(0, 0%, 0%, 0)',borderRadius:3,borderStyle:'solid',borderWidth:1,cursor:'pointer',padding:3},
 onPress:function onPress(){window.scrollTo(0,750);}},
 
 _react2.default.createElement(_reactNative.Text,{
