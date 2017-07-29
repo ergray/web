@@ -27,7 +27,7 @@ function ExtendedLandingPage() {
             <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Medium', fontSize: smallScreen ? 30 : 46, letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
               INTRODUCING LIQUID DEMOCRACY
             </Text>
-            <View style={{ flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: !smallScreen ? 920 : undefined }}>
+            <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
               <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }} >
                 Vote directly on legislation.
               </Text>
