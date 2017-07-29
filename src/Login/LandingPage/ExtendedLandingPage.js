@@ -3,6 +3,7 @@ import { Image, View, Text } from 'react-native'
 import MediaQuery from 'react-responsive'
 import SubscribeCTA from './SubscribeCTA'
 import constituencyGraphic from './constituency-graphic.png'
+import AmericaCover from './america_cover.jpg'
 
 function ExtendedLandingPage() {
   return (
@@ -183,6 +184,24 @@ function ExtendedLandingPage() {
 
       { /* Subscribe */ }
       <SubscribeCTA />
+
+      <MediaQuery maxWidth={960}>
+        {mediumScreen => (
+          <MediaQuery maxWidth={630}>
+            {smallScreen => (
+              <Image
+                source={AmericaCover}
+                style={[{
+                  alignSelf: 'center',
+                  height: mediumScreen ? 400 : 600,
+                  width: '100%',
+                }, smallScreen && { height: 230 },
+                ]}
+              />
+            )}
+          </MediaQuery>
+        )}
+      </MediaQuery>
 
       { /* Footer */ }
       <View style={{ padding: 60 }}>
