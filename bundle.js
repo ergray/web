@@ -37698,7 +37698,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.91",
+	"version": "0.0.92",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -101298,7 +101298,7 @@ _react2.default.createElement(_reactNative.View,null,
 
 
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',backgroundColor:'#191723',paddingHorizontal:20,paddingVertical:60}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:43,fontWeight:100,letterSpacing:1,marginBottom:60,textAlign:'center'}},'People, Not Parties'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:43,fontWeight:'100',letterSpacing:1,marginBottom:60,textAlign:'center'}},'People, Not Parties'),
 
 
 _react2.default.createElement(_reactResponsive2.default,{maxWidth:740},
@@ -101312,18 +101312,18 @@ _react2.default.createElement('iframe',{allowFullScreen:true,frameBorder:'0',hei
 _react2.default.createElement(_reactResponsive2.default,{maxWidth:960},
 function(smallScreen){return(
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',backgroundColor:'white',paddingHorizontal:20,paddingVertical:60}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:smallScreen?30:46,fontWeight:500,letterSpacing:4.63,marginBottom:30,textAlign:'center'}},'INTRODUCING LIQUID DEMOCRACY'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:smallScreen?30:46,fontWeight:'500',letterSpacing:4.63,marginBottom:30,textAlign:'center'}},'INTRODUCING LIQUID DEMOCRACY'),
 
 
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',flexDirection:!smallScreen?'row':'column',justifyContent:'space-between',width:smallScreen?undefined:920}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1}},'Vote directly on legislation.'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1}},'Vote directly on legislation.'),
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginTop:smallScreen?15:0}},'Or delegate your vote to anyone you know.')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginTop:smallScreen?15:0}},'Or delegate your vote to anyone you know.')),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginTop:60,maxWidth:480,textAlign:'center',width:'100%'}},'We\'ll grade elected politicians on how well they truly represent their voters.')));}),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginTop:60,maxWidth:480,textAlign:'center',width:'100%'}},'We\'ll grade elected politicians on how well they truly represent their voters.')));}),
 
 
 
@@ -101334,15 +101334,15 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFami
 _react2.default.createElement(_reactResponsive2.default,{maxWidth:575},
 function(verySmallScreen){return(
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',maxWidth:920,paddingHorizontal:20,paddingVertical:60,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:2.17,marginBottom:60}},'REMOVE CORRUPTION'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:2.17,marginBottom:60}},'REMOVE CORRUPTION'),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScreen?'auto':'center',color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:2.17,marginBottom:60}},'MOVE PAST A TWO PARTY SYSTEM'),
+_react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScreen?'auto':'center',color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:2.17,marginBottom:60}},'MOVE PAST A TWO PARTY SYSTEM'),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScreen?'auto':'flex-end',color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:2.17}},'GET REAL REPRESENTATION')));}),
+_react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScreen?'auto':'flex-end',color:'#E2E2E2',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:2.17}},'GET REAL REPRESENTATION')));}),
 
 
 
@@ -101352,7 +101352,7 @@ _react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScree
 
 _react2.default.createElement(_reactNative.View,{style:{backgroundColor:'white',paddingHorizontal:20,paddingVertical:60}},
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',alignSelf:'center',maxWidth:920,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1}},'POWERED by Liquid Democracy'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1}},'POWERED by Liquid Democracy'),
 
 
 
@@ -101366,7 +101366,7 @@ width:310}}),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1}},'Build your constituency to gain VOTING POWER'))),
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1}},'Build your constituency to gain VOTING POWER'))),
 
 
 
@@ -101375,11 +101375,11 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFami
 
 _react2.default.createElement(_reactNative.View,{style:{paddingHorizontal:20,paddingVertical:60}},
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',maxWidth:920,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:27,fontWeight:700,letterSpacing:2}},'Law is the expression of the general will.'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:27,fontWeight:'700',letterSpacing:2}},'Law is the expression of the general will.'),
 
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:27,fontWeight:700,letterSpacing:2,marginTop:30}},'Every citizen has a right to participate personally, or through their representative, in its foundation.'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:27,fontWeight:'700',letterSpacing:2,marginTop:30}},'Every citizen has a right to participate personally, or through their representative, in its foundation.'),
 
 
 _react2.default.createElement(_reactNative.Text,{style:{alignSelf:'flex-end',color:'white',fontFamily:'Helvetica Neue',fontSize:24,fontStyle:'italic',marginTop:60}},'\u2014 Declaration of the Rights of Man and of the Citizen'),
@@ -101395,7 +101395,7 @@ _react2.default.createElement(_reactNative.Text,{style:{alignSelf:'flex-end',col
 
 _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',backgroundColor:'white',paddingHorizontal:20,paddingVertical:60}},
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',maxWidth:920,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{fontFamily:'Helvetica Neue',fontSize:45,fontWeight:100,letterSpacing:0.12}},'LEARN MORE'),
+_react2.default.createElement(_reactNative.Text,{style:{fontFamily:'Helvetica Neue',fontSize:45,fontWeight:'100',letterSpacing:0.12}},'LEARN MORE'),
 
 
 
@@ -101431,35 +101431,35 @@ _react2.default.createElement(_reactResponsive2.default,{maxWidth:500},
 function(verySmallScreen){return(
 _react2.default.createElement(_reactNative.View,{style:{paddingBottom:30,paddingHorizontal:20,paddingTop:60}},
 _react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',maxWidth:920,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:35,fontWeight:500,letterSpacing:0.5,marginBottom:60}},'LIQUID DEMOCRACY'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:35,fontWeight:'500',letterSpacing:0.5,marginBottom:60}},'LIQUID DEMOCRACY'),
 
 
 
 _react2.default.createElement(_reactNative.View,{style:{flexDirection:verySmallScreen?'column':'row',justifyContent:'space-between'}},
 
 _react2.default.createElement(_reactNative.View,null,
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Digital'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Digital'),
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Authentic')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Authentic')),
 
 
 
 
 _react2.default.createElement(_reactNative.View,null,
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Transparent'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Transparent'),
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Accountable')),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Accountable')),
 
 
 
 
 _react2.default.createElement(_reactNative.View,{style:{alignItems:verySmallScreen?'flex-start':'flex-end'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Easy'),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Easy'),
 
 
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:200,letterSpacing:1,marginBottom:30}},'Participatory'))))));}),
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:26,fontWeight:'200',letterSpacing:1,marginBottom:30}},'Participatory'))))));}),
 
 
 
@@ -101492,7 +101492,7 @@ smallScreen&&{height:230}]}));}));}),
 
 
 _react2.default.createElement(_reactNative.View,{style:{padding:60}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:30,fontWeight:100,letterSpacing:0.12,textAlign:'center'}},'Liquid Democracy is Now Possible'))));
+_react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily:'Helvetica Neue',fontSize:30,fontWeight:'100',letterSpacing:0.12,textAlign:'center'}},'Liquid Democracy is Now Possible'))));
 
 
 
