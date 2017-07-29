@@ -11,7 +11,7 @@ function ExtendedLandingPage() {
 
       { /* Video section */ }
       <View style={{ alignItems: 'center', backgroundColor: '#191723', paddingHorizontal: 20, paddingVertical: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 43, fontWeight: 100, letterSpacing: 1, marginBottom: 60, textAlign: 'center' }} >
+        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 43, fontWeight: '100', letterSpacing: 1, marginBottom: 60, textAlign: 'center' }} >
           People, Not Parties
         </Text>
         <MediaQuery maxWidth={740}>
@@ -25,18 +25,18 @@ function ExtendedLandingPage() {
       <MediaQuery maxWidth={960}>
         {smallScreen => (
           <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
-            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: smallScreen ? 30 : 46, fontWeight: 500, letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
+            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: smallScreen ? 30 : 46, fontWeight: '500', letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
               INTRODUCING LIQUID DEMOCRACY
             </Text>
             <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
-              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1 }} >
+              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
                 Vote directly on legislation.
               </Text>
-              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
+              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
                 Or delegate your vote to anyone you know.
               </Text>
             </View>
-            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
+            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
               We'll grade elected politicians on how well they truly represent their voters.
             </Text>
           </View>
@@ -47,15 +47,15 @@ function ExtendedLandingPage() {
       <MediaQuery maxWidth={575}>
         {verySmallScreen => (
           <View style={{ alignSelf: 'center', maxWidth: 920, paddingHorizontal: 20, paddingVertical: 60, width: '100%' }}>
-            <Text style={{ color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 2.17, marginBottom: 60 }}>
+            <Text style={{ color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
               REMOVE CORRUPTION
             </Text>
 
-            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'center', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 2.17, marginBottom: 60 }}>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'center', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
               MOVE PAST A TWO PARTY SYSTEM
             </Text>
 
-            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 2.17 }}>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17 }}>
               GET REAL REPRESENTATION
             </Text>
           </View>
@@ -65,7 +65,7 @@ function ExtendedLandingPage() {
       { /* voting power */ }
       <View style={{ backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignItems: 'center', alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1 }}>
+          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
             POWERED by Liquid Democracy
           </Text>
 
@@ -79,7 +79,7 @@ function ExtendedLandingPage() {
             }}
           />
 
-          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1 }}>
+          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
             Build your constituency to gain VOTING POWER
           </Text>
         </View>
@@ -88,11 +88,11 @@ function ExtendedLandingPage() {
       { /* RoM&C */ }
       <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: 700, letterSpacing: 2 }}>
+          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2 }}>
             Law is the expression of the general will.
           </Text>
 
-          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: 700, letterSpacing: 2, marginTop: 30 }}>
+          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2, marginTop: 30 }}>
             Every citizen has a right to participate personally, or through their representative, in its foundation.
           </Text>
           <Text style={{ alignSelf: 'flex-end', color: 'white', fontFamily: 'Helvetica Neue', fontSize: 24, fontStyle: 'italic', marginTop: 60 }}>
@@ -108,7 +108,7 @@ function ExtendedLandingPage() {
       { /* Learn More */ }
       <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ fontFamily: 'Helvetica Neue', fontSize: 45, fontWeight: 100, letterSpacing: 0.12 }}>
+          <Text style={{ fontFamily: 'Helvetica Neue', fontSize: 45, fontWeight: '100', letterSpacing: 0.12 }}>
             LEARN MORE
           </Text>
 
@@ -144,35 +144,35 @@ function ExtendedLandingPage() {
         {verySmallScreen => (
           <View style={{ paddingBottom: 30, paddingHorizontal: 20, paddingTop: 60 }}>
             <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-              <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 35, fontWeight: 500, letterSpacing: 0.5, marginBottom: 60 }}>
+              <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 35, fontWeight: '500', letterSpacing: 0.5, marginBottom: 60 }}>
                 LIQUID DEMOCRACY
               </Text>
 
               <View style={{ flexDirection: verySmallScreen ? 'column' : 'row', justifyContent: 'space-between' }}>
 
                 <View>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Digital
                   </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Authentic
                   </Text>
                 </View>
 
                 <View>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Transparent
                   </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Accountable
                   </Text>
                 </View>
 
                 <View style={{ alignItems: verySmallScreen ? 'flex-start' : 'flex-end' }}>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Easy
                   </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: 200, letterSpacing: 1, marginBottom: 30 }}>
+                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
                     Participatory
                   </Text>
                 </View>
@@ -205,7 +205,7 @@ function ExtendedLandingPage() {
 
       { /* Footer */ }
       <View style={{ padding: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 30, fontWeight: 100, letterSpacing: 0.12, textAlign: 'center' }}>
+        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 30, fontWeight: '100', letterSpacing: 0.12, textAlign: 'center' }}>
           Liquid Democracy is Now Possible
         </Text>
       </View>
