@@ -132,8 +132,8 @@ function ExtendedLandingPage() {
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>RELATED</Text>
           <Text style={{ marginBottom: 5 }}>Upgrading Democracy: How voting could work now, 240 years later <a href="http://upgrading.liquid.vote">http://upgrading.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Let's End Hotdog Worship in America <a href="http://hotdogs.liquid.vote">http://hotdogs.liquid.vote</a></Text>
           <Text style={{ marginBottom: 5 }}>The Internet Party: How technology can disrupt politics and re-invent government <a href="http://netparty.liquid.vote">http://netparty.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}>Let's End Hotdog Worship in America <a href="http://hotdog.liquid.vote">http://hotdog.liquid.vote</a></Text>
           <Text style={{ marginBottom: 5 }}>The Power of Networks (video) <a href="http://networks.liquid.vote">http://networks.liquid.vote</a></Text>
 
         </View>
