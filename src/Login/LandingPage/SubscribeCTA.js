@@ -48,7 +48,7 @@ export default class SubscribeCTA extends Component {
                   margin: verySmallScreen ? '15px auto' : '',
                   padding: '0 12px',
                   textTransform: 'uppercase',
-                  WebkitAppearance: null,
+                  WebkitAppearance: 'none',
                 }} type="submit" value="Subscribe" onClick={() => {
                   fetch('https://api.liquid.vote/subscribe', {
                     body: JSON.stringify({
