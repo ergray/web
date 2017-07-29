@@ -63,13 +63,9 @@ function ExtendedLandingPage() {
 
       { /* voting power */ }
       <View style={{ backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
-        <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
+        <View style={{ alignItems: 'center', alignSelf: 'center', maxWidth: 920, width: '100%' }}>
           <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
-            POWERED by Liquid Democracy.
-          </Text>
-
-          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1, marginTop: 15 }}>
-            Build your constituency to gain VOTING POWER.
+            POWERED by Liquid Democracy
           </Text>
 
           <Image
@@ -77,9 +73,14 @@ function ExtendedLandingPage() {
             style={{
               alignSelf: 'center',
               height: 200,
+              marginVertical: 30,
               width: 310,
             }}
           />
+
+          <Text style={{ color: '#262626', fontFamily: 'HelveticaNeue-Light', fontSize: 26, letterSpacing: 1 }}>
+            Build your constituency to gain VOTING POWER
+          </Text>
         </View>
       </View>
 
