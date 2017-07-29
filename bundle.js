@@ -37698,7 +37698,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.92",
+	"version": "0.0.93",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -101979,7 +101979,7 @@ height:40,
 margin:verySmallScreen?'15px auto':'',
 padding:'0 12px',
 textTransform:'uppercase',
-WebkitAppearance:null},
+WebkitAppearance:'none'},
 type:'submit',value:'Subscribe',onClick:function onClick(){
 fetch('https://api.liquid.vote/subscribe',{
 body:JSON.stringify({
