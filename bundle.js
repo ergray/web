@@ -37698,7 +37698,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.87",
+	"version": "0.0.88",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -101314,7 +101314,7 @@ _react2.default.createElement(_reactNative.View,{style:{alignItems:'center',back
 _react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Medium',fontSize:smallScreen?30:46,letterSpacing:4.63,marginBottom:30,textAlign:'center'}},'INTRODUCING LIQUID DEMOCRACY'),
 
 
-_react2.default.createElement(_reactNative.View,{style:{flexDirection:!smallScreen?'row':'column',justifyContent:'space-between',width:!smallScreen?920:undefined}},
+_react2.default.createElement(_reactNative.View,{style:{alignItems:'center',flexDirection:!smallScreen?'row':'column',justifyContent:'space-between',width:smallScreen?undefined:920}},
 _react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Light',fontSize:26,letterSpacing:1}},'Vote directly on legislation.'),
 
 
@@ -101350,12 +101350,8 @@ _react2.default.createElement(_reactNative.Text,{style:{alignSelf:verySmallScree
 
 
 _react2.default.createElement(_reactNative.View,{style:{backgroundColor:'white',paddingHorizontal:20,paddingVertical:60}},
-_react2.default.createElement(_reactNative.View,{style:{alignSelf:'center',maxWidth:920,width:'100%'}},
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Light',fontSize:26,letterSpacing:1}},'POWERED by Liquid Democracy.'),
-
-
-
-_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Light',fontSize:26,letterSpacing:1,marginTop:15}},'Build your constituency to gain VOTING POWER.'),
+_react2.default.createElement(_reactNative.View,{style:{alignItems:'center',alignSelf:'center',maxWidth:920,width:'100%'}},
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Light',fontSize:26,letterSpacing:1}},'POWERED by Liquid Democracy'),
 
 
 
@@ -101364,7 +101360,12 @@ source:_constituencyGraphic2.default,
 style:{
 alignSelf:'center',
 height:200,
-width:310}}))),
+marginVertical:30,
+width:310}}),
+
+
+
+_react2.default.createElement(_reactNative.Text,{style:{color:'#262626',fontFamily:'HelveticaNeue-Light',fontSize:26,letterSpacing:1}},'Build your constituency to gain VOTING POWER'))),
 
 
 
