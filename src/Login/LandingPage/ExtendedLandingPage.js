@@ -30,14 +30,14 @@ function ExtendedLandingPage() {
             </Text>
             <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
               <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
-                Vote directly on legislation.
+                Vote on real legislation.
               </Text>
               <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
-                Or delegate your vote to anyone you know.
+                Or delegate your vote to anyone you trust.
               </Text>
             </View>
             <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
-              We'll grade elected politicians on how well they truly represent their voters.
+              We'll grade politicians on how well they truly represent their voters.
             </Text>
           </View>
         )}
