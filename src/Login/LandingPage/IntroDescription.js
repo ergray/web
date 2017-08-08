@@ -1,10 +1,9 @@
-/* global window */
-
 import React from 'react'
 import {
   Text,
   View,
 } from 'react-native'
+import { animateScroll } from 'react-scroll'
 import HoverableLink from '../../HoverableLink'
 
 export default function IntroDescription({ large }) {
@@ -43,7 +42,7 @@ export default function IntroDescription({ large }) {
       <Text style={{ fontSize: 16 }}>
         <HoverableLink
           href="#" text="LEARN MORE"
-          onClick={(event) => { event.preventDefault(); window.scrollTo(0, 750) }}
+          onClick={(event) => { event.preventDefault(); animateScroll.scrollTo(750, { duration: 200 }) }}
           onContextMenu={(event) => { event.preventDefault() }}
         />
       </Text>
