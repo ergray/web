@@ -88,8 +88,10 @@ function ExtendedLandingPage() {
       </View>
 
       { /* RoM&C */ }
-      <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}>
-        <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
+      <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}><MediaQuery maxWidth={1025}>{medium => (
+        <View style={{ alignSelf: 'center', maxWidth: 920, paddingLeft: medium ? 55 : 0, width: '100%' }}>
+          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 100, fontWeight: '700', left: medium ? 0 : -55, opacity: 0.3, position: 'absolute', top: -49 }}>&ldquo;</Text>
+
           <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2 }}>
             Law is the expression of the general will.
           </Text>
@@ -105,7 +107,7 @@ function ExtendedLandingPage() {
             AUGUST 1789
           </Text>
         </View>
-      </View>
+      )}</MediaQuery></View>
 
       { /* Learn More */ }
       <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
