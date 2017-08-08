@@ -1,11 +1,10 @@
-/* global window */
-
 import React from 'react'
 import {
   Text,
   View,
 } from 'react-native'
-import HoverableOpacity from '../../HoverableOpacity'
+import { animateScroll } from 'react-scroll'
+import HoverableLink from '../../HoverableLink'
 
 export default function IntroDescription({ large }) {
   return (
@@ -40,20 +39,13 @@ export default function IntroDescription({ large }) {
         &nbsp;LAWS
       </Text>
 
-      <HoverableOpacity
-        hoverStyle={{ backgroundColor: 'hsla(0, 0%, 0%, 0.1)', borderColor: 'black' }}
-        outerStyle={{ borderColor: 'hsla(0, 0%, 0%, 0)', borderRadius: 3, borderStyle: 'solid', borderWidth: 1, cursor: 'pointer', padding: 3 }}
-        onPress={() => { window.scrollTo(0, 750) }}
-      >
-        <Text
-          style={{
-            color: '#0000FF',
-            cursor: 'pointer',
-            fontSize: 16,
-            textDecorationLine: 'underline',
-          }}
-        >LEARN MORE</Text>
-      </HoverableOpacity>
+      <Text style={{ fontSize: 16 }}>
+        <HoverableLink
+          href="#" text="LEARN MORE"
+          onClick={(event) => { event.preventDefault(); animateScroll.scrollTo(750, { duration: 200 }) }}
+          onContextMenu={(event) => { event.preventDefault() }}
+        />
+      </Text>
 
     </View>
   )

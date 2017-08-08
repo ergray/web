@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, View, Text } from 'react-native'
 import MediaQuery from 'react-responsive'
+import HoverableLink from '../../HoverableLink'
 import SubscribeCTA from './SubscribeCTA'
 import constituencyGraphic from './constituency-graphic.png'
 import AmericaCover from './america_cover.jpg'
@@ -30,14 +31,14 @@ function ExtendedLandingPage() {
             </Text>
             <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
               <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
-                Vote directly on legislation.
+                Vote on real legislation.
               </Text>
               <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
-                Or delegate your vote to anyone you know.
+                Or delegate your vote to anyone you trust.
               </Text>
             </View>
             <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
-              We'll grade elected politicians on how well they truly represent their voters.
+              We'll grade politicians on how well they truly represent their voters.
             </Text>
           </View>
         )}
@@ -113,28 +114,28 @@ function ExtendedLandingPage() {
           </Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>INTRODUCTION</Text>
-          <Text style={{ marginBottom: 5 }}>What is Liquid Democracy? <a href="http://intro.liquid.vote">http://intro.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://intro.liquid.vote" text="What is Liquid Democracy?" /></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>ARTICLES</Text>
-          <Text style={{ marginBottom: 5 }}>Liquid Democracy Candidates: How to upgrade our legislature, one seat at a time <a href="http://candidate.liquid.vote">http://candidate.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Liquid Democracy and A Free Political Economy <a href="http://free.liquid.vote">http://free.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Liquid Democracy Can Completely Eliminate Gerrymandering <a href="http://gerrymandering.liquid.vote">http://gerrymandering.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>How to Move Past A Two Party System <a href="http://two.liquid.vote">http://two.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Don't Care About Politics? Liquid democracy is easier for you too <a href="http://easy.liquid.vote">http://easy.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Liquid Privacy <a href="http://privacy.liquid.vote">http://privacy.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://candidate.liquid.vote" text="Liquid Democracy Candidates: How to upgrade our legislature, one seat at a time" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://free.liquid.vote" text="Liquid Democracy and A Free Political Economy" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://gerrymandering.liquid.vote" text="Liquid Democracy Can Completely Eliminate Gerrymandering" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://two.liquid.vote" text="How to Move Past A Two Party System" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://easy.liquid.vote" text="Don't Care About Politics? Liquid democracy is easier for you too" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://privacy.liquid.vote" text="Liquid Privacy" /></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>TECHNICAL PAPERS</Text>
-          <Text style={{ marginBottom: 5 }}>How to Calculate a Politician's Representative Score <a href="http://score.liquid.vote">http://score.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Secure Internet Voting <a href="http://secure.liquid.vote">http://secure.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://score.liquid.vote" text="How to Calculate a Politician's Representative Score" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://secure.liquid.vote" text="Secure Internet Voting" /></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>INTERACTIVE DEMO</Text>
-          <Text style={{ marginBottom: 5 }}><a href="http://demo.liquid.vote">http://demo.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://demo.liquid.vote" text="http://demo.liquid.vote" /></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>RELATED</Text>
-          <Text style={{ marginBottom: 5 }}>Upgrading Democracy: How voting could work now, 240 years later <a href="http://upgrading.liquid.vote">http://upgrading.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>The Internet Party: How technology can disrupt politics and re-invent government <a href="http://netparty.liquid.vote">http://netparty.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>Let's End Hotdog Worship in America <a href="http://hotdog.liquid.vote">http://hotdog.liquid.vote</a></Text>
-          <Text style={{ marginBottom: 5 }}>The Power of Networks (video) <a href="http://networks.liquid.vote">http://networks.liquid.vote</a></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://upgrading.liquid.vote" text="Upgrading Democracy: How voting could work now, 240 years later" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://netparty.liquid.vote" text="The Internet Party: How technology can disrupt politics and re-invent government" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://hotdog.liquid.vote" text="Let's End Hotdog Worship in America" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://networks.liquid.vote" text="The Power of Networks (video)" /></Text>
 
         </View>
       </View>

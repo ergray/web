@@ -1,6 +1,6 @@
 {
   "name": "liquid-web",
-  "version": "0.0.93",
+  "version": "0.0.94",
   "description": "React-native-web client to connect to api.liquid.vote",
   "author": "github.com/liquidvote",
   "private": true,
@@ -62,6 +62,7 @@
   },
   "devDependencies": {
     "babel-plugin-transform-react-remove-prop-types": "^0.4.5",
+    "babel-preset-react": "^6.24.1",
     "eslint-plugin-react-filenames": "github:dsernst/eslint-plugin-react-filenames"
   }
 }

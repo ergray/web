@@ -21,14 +21,13 @@ export default function GetStartedButton({ large, pressGetStarted }) {
       style={{
         height: 64,
         justifyContent: 'center',
-        paddingHorizontal: 30,
       }}
       onPress={pressGetStarted}
     >
       <Text
         style={{
           color: '#fff',
-          fontSize: 24,
+          fontSize: large ? 24 : 21,
           fontWeight: '700',
           letterSpacing: large ? 2 : 0,
           textAlign: 'center',
