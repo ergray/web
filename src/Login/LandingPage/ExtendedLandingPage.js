@@ -1,6 +1,7 @@
 import React from 'react'
 import { Image, View, Text } from 'react-native'
 import MediaQuery from 'react-responsive'
+import { Parallax, Background } from 'react-parallax'
 import HoverableLink from '../../HoverableLink'
 import SubscribeCTA from './SubscribeCTA'
 import constituencyGraphic from './constituency-graphic.png'
@@ -87,8 +88,10 @@ function ExtendedLandingPage() {
       </View>
 
       { /* RoM&C */ }
-      <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}>
-        <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
+      <View style={{ paddingHorizontal: 20, paddingVertical: 60 }}><MediaQuery maxWidth={1025}>{medium => (
+        <View style={{ alignSelf: 'center', maxWidth: 920, paddingLeft: medium ? 55 : 0, width: '100%' }}>
+          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 100, fontWeight: '700', left: medium ? 0 : -55, opacity: 0.3, position: 'absolute', top: -49 }}>&ldquo;</Text>
+
           <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2 }}>
             Law is the expression of the general will.
           </Text>
@@ -104,7 +107,7 @@ function ExtendedLandingPage() {
             AUGUST 1789
           </Text>
         </View>
-      </View>
+      )}</MediaQuery></View>
 
       { /* Learn More */ }
       <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
@@ -186,23 +189,19 @@ function ExtendedLandingPage() {
       { /* Subscribe */ }
       <SubscribeCTA />
 
-      <MediaQuery maxWidth={960}>
-        {mediumScreen => (
-          <MediaQuery maxWidth={630}>
-            {smallScreen => (
-              <Image
-                source={AmericaCover}
-                style={[{
-                  alignSelf: 'center',
-                  height: mediumScreen ? 400 : 600,
-                  width: '100%',
-                }, smallScreen && { height: 230 },
-                ]}
-              />
-            )}
-          </MediaQuery>
-        )}
-      </MediaQuery>
+      <MediaQuery maxWidth={1300}>{mediumScreen => (<MediaQuery maxWidth={880}>
+        { (smallScreen) => {
+          let height = 600
+          if (mediumScreen) { height = 400 }
+          if (smallScreen) { height = 230 }
+
+          return (
+            <Parallax bgHeight={`${height * 1.6}px`} bgImage="https://blog.liquid.vote/assets/america_cover.jpg" strength={height / -5}>
+              <View style={{ height: (height * 1.17) }} />
+            </Parallax>
+          )
+        }}
+      </MediaQuery>)}</MediaQuery>
 
       { /* Footer */ }
       <View style={{ padding: 60 }}>
