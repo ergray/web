@@ -1,6 +1,6 @@
 {
   "name": "liquid-web",
-  "version": "0.0.94",
+  "version": "0.0.95",
   "description": "React-native-web client to connect to api.liquid.vote",
   "author": "github.com/liquidvote",
   "private": true,
