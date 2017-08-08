@@ -7,14 +7,14 @@ export default class HoverableLink extends Component {
   }
 
   render() {
-    const { href, text } = this.props
-
+    const { href, text, ...restProps } = this.props
     return (
       <a
         href={href}
         style={{ textDecoration: this.state.hover ? 'underline' : 'none' }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
+        {...restProps}
       >
         {text}
       </a>
