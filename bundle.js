@@ -38583,7 +38583,7 @@ _react2.default.createElement(_screens2.default,null)));
 
 module.exports = {
 	"name": "liquid-web",
-	"version": "0.0.95",
+	"version": "0.0.96",
 	"description": "React-native-web client to connect to api.liquid.vote",
 	"author": "github.com/liquidvote",
 	"private": true,
@@ -102729,7 +102729,7 @@ _react2.default.createElement(_reactNative.Text,{style:{color:'white',fontFamily
 
 _react2.default.createElement(_reactResponsive2.default,{maxWidth:740},
 function(smallScreen){return(
-_react2.default.createElement('iframe',{allowFullScreen:true,frameBorder:'0',height:smallScreen?200:315,src:'https://www.youtube.com/embed/nJmGrNdJ5Gw',width:smallScreen?360:560}));})),
+_react2.default.createElement('iframe',{allowFullScreen:true,frameBorder:'0',height:smallScreen?200:315,src:'https://www.youtube.com/embed/8Eqo0LMQKEA',width:smallScreen?360:560}));})),
 
 
 
