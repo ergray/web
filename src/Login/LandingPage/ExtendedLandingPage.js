@@ -18,7 +18,7 @@ function ExtendedLandingPage() {
         </Text>
         <MediaQuery maxWidth={740}>
           {smallScreen => (
-            <iframe allowFullScreen frameBorder="0" height={smallScreen ? 200 : 315} src="https://www.youtube.com/embed/nJmGrNdJ5Gw" width={smallScreen ? 360 : 560} />
+            <iframe allowFullScreen frameBorder="0" height={smallScreen ? 200 : 315} src="https://www.youtube.com/embed/8Eqo0LMQKEA" width={smallScreen ? 360 : 560} />
           )}
         </MediaQuery>
       </View>
