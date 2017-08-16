@@ -1,12 +1,10 @@
 import React from 'react'
 import {
-  Image,
   Text,
   View,
 } from 'react-native'
 import BackIcon from 'react-icons/lib/md/chevron-left'
 import HoverableOpacity from './HoverableOpacity'
-import logo from './logo.png'
 import { screens } from './_screens'
 import NoHeader from './NoHeader'
 
@@ -46,15 +44,6 @@ function Header(props) {
       <View
         style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}
       >
-        <Image
-          source={logo}
-          style={{
-            height: 27,
-            marginRight: 7,
-            marginTop: 3,
-            width: 25,
-          }}
-        />
         <Text
           style={{
             color: '#fff',

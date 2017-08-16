@@ -15,15 +15,10 @@ class MenuLogo extends Component {
       <Image
         source={logo}
         style={{
-          alignSelf: 'center',
-          animationDuration: '3s',
-          animationIterationCount: 'infinite',
-          animationName: this.state.hover ? 'App-logo-spin' : '',
-          animationTimingFunction: 'linear',
-          height: 84,
-          marginBottom: 10,
-          marginTop: 12,
-          width: 79,
+          alignSelf: 'left',
+          resizeMode: 'contain',
+          height: 30,
+          width: 33,
         }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}

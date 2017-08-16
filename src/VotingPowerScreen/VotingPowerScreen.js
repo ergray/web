@@ -6,7 +6,7 @@ import graphic from './voting_power_graphic.png'
 
 function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
   return (
-    <View style={{ alignSelf: 'center', marginHorizontal: 20 }}>
+    <View style={{ marginHorizontal: 20 }}>
 
       <HoverableOpacity
         activeOpacity={0.5}

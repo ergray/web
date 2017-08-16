@@ -31,26 +31,17 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
   }
 
   return (
-    <View style={style}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', ...style }}>
       <MenuLogo />
-      <Text
-        style={{
-          color: '#fff',
-          fontSize: 19,
-          fontWeight: 'bold',
-          textAlign: 'center',
-        }}
-      >LIQUID DEMOCRACY</Text>
 
       <HoverableOpacity
         hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{
-          alignSelf: isLoggedOut ? 'center' : 'stretch',
           borderColor: 'rgb(5, 165, 209)',
           borderRadius: 3,
           borderStyle: 'solid',
           borderWidth: isLoggedOut ? 1 : 0,
-          marginVertical: isLoggedOut ? 34 : 20,
+          marginLeft: 20,
         }}
         onPress={() => history.push(isLoggedOut ? '/' : '/voting-power')}
       >
@@ -59,39 +50,33 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
             color: '#fff',
             fontSize: isLoggedOut ? 16 : 21,
             fontWeight: '200',
-            paddingHorizontal: isLoggedOut ? 30 : 0,
-            paddingVertical: isLoggedOut ? 8 : 20,
-            textAlign: 'center',
           }}
         >{message}</Text>
       </HoverableOpacity>
 
-      <View>
-        <MenuOptionWithNav text="LEGISLATURE" to="/sf" />
-        <MenuOptionWithNav notifications={numRequests} text="YOUR DELEGATES" to="/delegates" />
+      <View style={{ flexDirection: 'row', flexGrow: 1, justifyContent: 'flex-end' }}>
+        <MenuOptionWithNav text="Legislature" to="/sf" />
+        <MenuOptionWithNav notifications={numRequests} text="Your Delegates" to="/delegates" />
         { user.sf_district
-          ? <MenuOptionWithNav text="ELECTED REP: A+" to="/sf/elected-rep" />
-          : <MenuOptionWithNav text="ELECTED REPS" to="/sf/board" />
+          ? <MenuOptionWithNav text="Your Legislator: A+" to="/sf/elected-rep" />
+          : <MenuOptionWithNav text="Your Legislators" to="/sf/board" />
         }
-        <MenuOptionWithNav text="ABOUT" to="/about" />
-        <MenuOptionWithNav style={{ marginTop: 30 }} text="SEND FEEDBACK" to="/feedback" />
+        <MenuOptionWithNav text="About" to="/about" />
+        <MenuOptionWithNav text="Feedback" to="/feedback" />
 
         { !isLoggedOut &&
           <MenuOptionWithNav
             hoverColor="rgba(251, 82, 82, 0.1)"
-            style={{ marginTop: 30 }}
-            text="LOG OUT" onPress={() => {
+            text="Log out" onPress={() => {
               dispatch({ type: 'LOGOUT' })
               history.replace('/')
             }}
           />
         }
 
-        <View style={{ flexDirection: 'row', marginTop: smallScreen ? 0 : 20 }}>
+        <View style={{ flexDirection: 'row' }}>
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'rgba(0,132,180,0.5)' }}
-            outerStyle={{ marginLeft: 20 }}
-            style={{ padding: 10 }}
+            style={{ padding: 10, marginLeft: 20 }}
             onPress={() => {
               Linking.openURL('https://twitter.com/liquid_vote')
               .catch(() => {})
@@ -100,8 +85,6 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
             <TwitterIcon color="white" size={18} />
           </HoverableOpacity>
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'rgba(59,89,152,0.5)' }}
-            outerStyle={{ marginLeft: 10 }}
             style={{ padding: 10 }}
             onPress={() => {
               Linking.openURL('https://facebook.com/liquidvote')
