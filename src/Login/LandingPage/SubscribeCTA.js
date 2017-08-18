@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
 import MediaQuery from 'react-responsive'
+import { api_url } from '../../Config'
 
 export default class SubscribeCTA extends Component {
   constructor() {
@@ -50,7 +51,7 @@ export default class SubscribeCTA extends Component {
                   textTransform: 'uppercase',
                   WebkitAppearance: 'none',
                 }} type="submit" value="Subscribe" onClick={() => {
-                  fetch('https://api.liquid.vote/subscribe', {
+                  fetch(`${api_url}/subscribe`, {
                     body: JSON.stringify({
                       email: this.state.email,
                     }),

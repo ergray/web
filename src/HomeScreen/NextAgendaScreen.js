@@ -3,26 +3,20 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import LinearGradient from '../LinearGradient'
-import HomeScreenHeader from './HomeScreenHeader'
+import legislatureIcon from './legislature-icon.png'
 import NextAgendaContent from './NextAgendaContent'
 const pick = require('lodash/fp/pick')
 
 function NextAgendaScreen({ history }) {
   return (
     <View style={{ flex: 1, height: '100%' }}>
-      <HomeScreenHeader />
-      <LinearGradient
-        colors={['#000', '#292929']}
-        style={{ flex: 1, justifyContent: 'flex-start' }}
-      >
-        <NextAgendaContent history={history} />
-      </LinearGradient>
+      <NextAgendaContent history={history} />
     </View>
   )
 }
 
-NextAgendaScreen.disableHeader = true
+NextAgendaScreen.titleIcon = legislatureIcon
+NextAgendaScreen.title = 'San Francisco Legislature'
 
 NextAgendaScreen.propTypes = {
   history: React.PropTypes.shape({

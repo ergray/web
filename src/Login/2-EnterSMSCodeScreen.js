@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {
   Image,
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
+import Button from '../Button'
 import logo from '../logo.png'
-import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
+import TextInput from '../TextInput'
 
 class EnterSMSCodeScreen extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class EnterSMSCodeScreen extends Component {
     this.setState({ loading: true, status: 'Confirming...' })
 
 
-    fetch('https://api.liquid.vote/enter-session-code', {
+    fetch(`${api_url}/enter-session-code`, {
       body: JSON.stringify({
         phone: this.props.phoneNumber,
         session_code,
@@ -75,6 +76,7 @@ class EnterSMSCodeScreen extends Component {
 
   render() {
     const inputErrorStyle = {}
+    const { history } = this.props
 
     if (this.state.error) {
       inputErrorStyle.borderColor = 'red'
@@ -87,22 +89,21 @@ class EnterSMSCodeScreen extends Component {
           source={logo}
           style={{
             alignSelf: 'center',
-            height: 63,
+            height: 52,
             marginBottom: 5,
             marginTop: 32,
-            width: 59,
+            width: 60,
           }}
         />
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 19,
           fontWeight: '700',
+          textTransform: 'uppercase',
         }}
-        >LIQUID DEMOCRACY</Text>
+        >Liquid Democracy</Text>
 
         <Text style={{
-          color: '#fff',
           fontSize: 18,
           fontWeight: '200',
           marginHorizontal: 30,
@@ -113,7 +114,6 @@ class EnterSMSCodeScreen extends Component {
 
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 15,
           fontWeight: '100',
           marginBottom: 5,
@@ -128,7 +128,7 @@ class EnterSMSCodeScreen extends Component {
           editable={this.state.editable}
           keyboardType="number-pad"
           maxLength={3}
-          style={[{
+          style={{
             alignSelf: 'center',
             backgroundColor: '#fff',
             borderColor: '#979797',
@@ -140,7 +140,8 @@ class EnterSMSCodeScreen extends Component {
             marginBottom: 30,
             textAlign: 'center',
             width: 170,
-          }, inputErrorStyle]}
+            ...inputErrorStyle,
+          }}
           value={this.state.session_code}
           onChangeText={(newText) => {
             // When done
@@ -160,29 +161,13 @@ class EnterSMSCodeScreen extends Component {
         />
 
         { !this.state.loading &&
-          <HoverableOpacity
-            activeOpacity={0.5}
-            hoverStyle={{ backgroundColor: 'rgba(90, 6, 7, 0.15)' }}
-            outerStyle={{
-              borderColor: 'rgb(90, 6, 7)',
-              borderRadius: 30,
-              borderWidth: 3,
-              marginBottom: 30,
-              marginTop: 30,
-            }}
-            style={{
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingVertical: 16,
-            }}
+          <Button
+            history={history}
+            text="Back"
             onPress={() => {
               this.props.history.replace('/')
             }}
-          >
-            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
-              BACK
-            </Text>
-          </HoverableOpacity>
+          />
         }
 
       </View>

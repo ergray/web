@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {
-  Text,
   View,
 } from 'react-native'
-import HoverableOpacity from '../HoverableOpacity'
+import { api_url } from '../Config'
+import Button from '../Button'
+import Text from '../Text'
 
 function prettifyPhone(tenDigits) {
   const areaCode = tenDigits.slice(0, 3)
@@ -21,7 +22,6 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
     <View style={{ alignSelf: 'center', justifyContent: 'space-between', marginHorizontal: 30, width: 500 }}>
       <View style={{ alignItems: 'center' }}>
         <Text style={{
-          color: '#fff',
           fontSize: 26,
           fontWeight: '700',
           marginTop: 40,
@@ -30,20 +30,18 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
           {prettifyPhone(phoneNumber)}
         </Text>
         <Text style={{
-          color: '#ccc',
           fontSize: 26,
           fontWeight: '500',
-          marginTop: 40,
+          marginTop: '1rem',
         }}
         >
           Are you sure this is you?
         </Text>
         <Text style={{
-          color: '#ccc',
           fontSize: 20,
           fontWeight: '500',
           lineHeight: 28,
-          marginTop: 20,
+          marginTop: '1rem',
         }}
         >
           This will send a text message.
@@ -51,22 +49,12 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
       </View>
 
       <View style={{}}>
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.15)' }}
-          outerStyle={{
-            borderColor: 'rgb(52, 65, 132)',
-            borderRadius: 30,
-            borderWidth: 3,
-            marginTop: 60,
-          }}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 16,
-          }}
+        <Button
+          primary
+          style={{ marginTop: '1rem' }}
+          text="Confirm"
           onPress={() => {
-            fetch('https://api.liquid.vote/login', {
+            fetch(`${api_url}/login`, {
               body: JSON.stringify({
                 phone: phoneNumber,
               }),
@@ -81,35 +69,15 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
             dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
             history.replace('/enter-sms')
           }}
-        >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
-            CONFIRM
-          </Text>
-        </HoverableOpacity>
+        />
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'rgba(90, 6, 7, 0.15)' }}
-          outerStyle={{
-            borderColor: 'rgb(90, 6, 7)',
-            borderRadius: 30,
-            borderWidth: 3,
-            marginBottom: 30,
-            marginTop: 30,
-          }}
-          style={{
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 16,
-          }}
+        <Button
+          style={{ marginTop: '.5rem' }}
+          text="Cancel"
           onPress={() => {
             history.goBack()
           }}
-        >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
-            CANCEL
-          </Text>
-        </HoverableOpacity>
+        />
       </View>
     </View>
   )

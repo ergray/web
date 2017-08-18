@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
+import Text from '../Text'
 
 class YourRegistrationScreen extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class YourRegistrationScreen extends Component {
   }
 
   getInfo(props) {
-    fetch('https://api.liquid.vote/my-registration-info', { headers: { Session_ID: props.sessionId } })
+    fetch(`${api_url}/my-registration-info`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((registrationInfo) => {
         props.dispatch({ sf_district: registrationInfo.sf_district, type: 'UPDATE_SF_DISTRICT' })
@@ -64,8 +65,8 @@ class YourRegistrationScreen extends Component {
       return `(${areaCode}) ${middle3}-${final4}`
     }
 
-    const header = { color: 'white', fontSize: 14, fontWeight: 'bold', marginBottom: 10, marginTop: 30, textAlign: 'center' }
-    const normal = { color: 'white', fontSize: 18 }
+    const header = { fontSize: 14, fontWeight: 'bold', marginBottom: 10, marginTop: 30, textAlign: 'center' }
+    const normal = { fontSize: 18 }
     const label = { fontSize: 14, fontWeight: 'bold' }
 
     const verificationBorderColor = {
@@ -80,12 +81,12 @@ class YourRegistrationScreen extends Component {
       <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20, width: 400 }}>
 
         { !this.state.registrationInfo.first_name
-          ? <Text style={[normal, { marginTop: 10 }]}>Loading...</Text> :
+          ? <Text style={{ ...normal, marginTop: 10 }}>Loading...</Text> :
 
           <ScrollView style={{ flex: 1, paddingTop: 10 }}>
             <View style={{ borderColor: verificationBorderColor, borderRadius: 3, borderWidth: 1, padding: 10 }}>
-              <Text style={[header, { marginTop: 0 }]}>VERIFICATION STATUS</Text>
-              <Text style={[normal, { textAlign: 'center' }]}>{{
+              <Text style={{ ...header, marginTop: 0 }}>VERIFICATION STATUS</Text>
+              <Text style={{ ...normal, textAlign: 'center' }}>{{
                 invalid: '✗ There\'s a problem with your verification.',
                 outside_sf: '✗ You\'re not a legal voter in San Francisco.',
                 submitted: 'Your verification is pending review.',
@@ -94,7 +95,7 @@ class YourRegistrationScreen extends Component {
               }[verification_status]}</Text>
             </View>
 
-            <Text style={[header]}>THE BASICS</Text>
+            <Text style={header}>THE BASICS</Text>
             <Text style={normal}><Text style={label}>FIRST NAME:</Text> {first_name}</Text>
             <Text style={normal}><Text style={label}>LAST NAME:</Text> {last_name}</Text>
 

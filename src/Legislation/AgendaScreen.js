@@ -3,14 +3,10 @@ import {
 } from 'react-native'
 import BillsList from './BillsList'
 
-function AgendaScreen(props) {
+export default function AgendaScreen(props) {
   return (
     <BillsList {...props} />
   )
 }
 
-AgendaScreen.title = 'PAST AGENDA'
-
-AgendaScreen.propTypes = {}
-
-export default AgendaScreen
+AgendaScreen.disableHeader = true

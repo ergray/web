@@ -3,11 +3,14 @@
 import React from 'react'
 import { View } from 'react-native'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import CommonStyle from './CommonStyle'
 import Header from './Header'
 import ScreenWithMenu from './ScreenWithMenu'
 
+const cstyle = CommonStyle()
+
 export const screens = {
-  '/': require('./Login/LandingPage/1-LoginScreen').default,
+  '/': require('./LegislationScreen').default,
   '/about': require('./AboutScreen').default,
   '/auth-error': require('./AuthErrorScreen').default,
   '/confirm-new-number/:phoneNumber': require('./Login/1.5-ConfirmNewNumberScreen').default,
@@ -18,6 +21,10 @@ export const screens = {
   '/delegates/:phoneNumber': require('./Delegation/DelegateInfoScreen').default, // eslint-disable-line sort-keys
   '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
   '/feedback': require('./FeedbackScreen').default,
+  '/legislation': require('./LegislationScreen').default,
+  '/legislation/:bill_id': require('./Legislation/LoadBillScreen').default,  // eslint-disable-line sort-keys
+  '/legislation/:bill_id/audit': require('./Legislation/AuditScreen').default,
+  '/legislation/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
   '/registration': require('./Registration/0-RegistrationIntroScreen').default,
   '/registration/address': require('./Registration/2.5-AddressScreen').default,
   '/registration/camera': require('./Registration/3.3-CameraScreen').default,
@@ -36,6 +43,7 @@ export const screens = {
   '/sf/:date/:bill_id': require('./Legislation/LoadBillScreen').default,
   '/sf/:date/:bill_id/audit': require('./Legislation/AuditScreen').default,
   '/sf/:date/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
+  '/sign-in': require('./Login').default,
   '/sms-login/:phoneNumber/:session_code': require('./Login/SMSLoginScreen').default,
   '/voting-power': require('./VotingPowerScreen/VotingPowerScreen').default,
   '/your-registration': require('./Registration/YourRegistrationScreen').default,
@@ -53,7 +61,7 @@ export default () => (
             exact key={path} path={path} render={({ history, location, match }) => {
               if (Screen.disableMenu) {
                 return (
-                  <View style={{ flex: 1, height: '100%', width: '100%' }}>
+                  <View style={{ backgroundColor: cstyle.bgColor, flex: 1, height: '100%', width: '100%' }}>
                     <Header location={location} path={path} />
                     <Screen history={history} location={location} match={match} />
                   </View>

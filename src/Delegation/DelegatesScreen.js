@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
+import { api_url } from '../Config'
+import Button from '../Button'
 import HoverableOpacity from '../HoverableOpacity'
+import HoverableListItemPanel from '../HoverableListItemPanel'
+import Text from '../Text'
 
 class DelegatesScreen extends Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class DelegatesScreen extends Component {
     // Sync delegation updates to the server for persistence
     // Check if there were prevProps (to skip first load) and if the delegate list changed
     if (prevProps.delegates && !deepEqual(prevProps.delegates, this.props.delegates)) {
-      fetch('https://api.liquid.vote/my-delegates', {
+      fetch(`${api_url}/my-delegates`, {
         body: JSON.stringify({
           delegates: this.props.delegates,
         }),
@@ -55,12 +58,12 @@ class DelegatesScreen extends Component {
     }
 
     function P(props) {
-      return <Text style={{ color: '#fff', fontSize: 15 }}> {props.children}</Text>
+      return <Text style={{ fontSize: 15 }}> {props.children}</Text>
     }
 
     if (!this.props.sessionId) {
       return (
-        <View style={{ margin: 30 }}>
+        <View style={{ margin: '2rem' }}>
           <P>You are not logged in. Press JOIN on the left.</P>
           <View style={{ height: 30 }} />
           <P>Then you can add personal delegates.</P>
@@ -69,48 +72,28 @@ class DelegatesScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, marginHorizontal: 20 }}>
+      <View style={{ flex: 1, margin: '2rem' }}>
 
-        <View style={{ flexDirection: 'row', marginVertical: 30 }}>
+        <View style={{ flexDirection: 'row', marginBottom: 30 }}>
           { /* ADD NEW DELEGATE button */ }
-          <HoverableOpacity
-            activeOpacity={0.5}
-            hoverStyle={{ backgroundColor: 'rgba(5, 165, 209,0.1)' }}
-            outerStyle={{ flex: 1, marginRight: 30 }}
-            style={{
-              alignItems: 'center',
-              borderColor: 'rgb(5, 165, 209)',
-              borderRadius: 5,
-              borderWidth: 1,
-              height: 38,
-              justifyContent: 'center',
-            }}
-            onPress={() => history.push('/delegates/add')}
-          >
-            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
-              ADD NEW DELEGATE
-            </Text>
-          </HoverableOpacity>
+          <Button
+            backable
+            primary
+            history={history}
+            style={{ flexGrow: 1, marginRight: 8 }}
+            text="Add new delegate"
+            to="/delegates/add"
+          />
 
           { /* VIEW REQUESTS button */ }
-          <HoverableOpacity
-            activeOpacity={0.5}
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-            outerStyle={{ flex: 1 }}
-            style={{
-              alignItems: 'center',
-              borderColor: 'grey',
-              borderRadius: 5,
-              borderWidth: 1,
-              height: 38,
-              justifyContent: 'center',
-            }}
-            onPress={() => history.push('/delegates/requests')}
-          >
-            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
-              VIEW DELEGATE REQUESTS
-            </Text>
-          </HoverableOpacity>
+          <Button
+            backable
+            secondary
+            history={history}
+            style={{ flexGrow: 1, marginLeft: 8 }}
+            text="View delegate requests"
+            to="/delegates/requests"
+          />
 
         </View>
 
@@ -133,54 +116,50 @@ class DelegatesScreen extends Component {
         { /* YOU row */ }
         { delegates.length > 0 &&
           (
-            <HoverableOpacity
-              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
-              outerStyle={{ backgroundColor: '#252525', marginBottom: 30 }}
+            <HoverableListItemPanel
+              outerStyle={{ marginBottom: '.1rem' }}
               style={{
-                borderBottomWidth: 1,
-                borderColor: '#000',
                 flexDirection: 'row',
-                paddingHorizontal: 20,
-                paddingVertical: 15,
+                padding: '1rem',
               }}
               onPress={() => history.push('/voting-power')}
             >
-              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
-                0.
-              </Text>
-              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
-                You
-              </Text>
-            </HoverableOpacity>
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={{ fontSize: 18, fontWeight: '200', width: 25 }}>
+                  0.
+                </Text>
+                <Text style={{ fontSize: 18, fontWeight: '200' }}>
+                  You
+                </Text>
+              </View>
+            </HoverableListItemPanel>
           )
         }
 
         { /* Static list of delegates */ }
         <ScrollView>
           { delegates.map(({ name, status }, rowIndex) => (
-            <HoverableOpacity
-              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.2)' }}
+            <HoverableListItemPanel
               key={name}
-              outerStyle={{ backgroundColor: '#333' }}
               style={{
-                borderBottomWidth: 1,
-                borderColor: '#000',
                 flexDirection: 'row',
-                padding: 20,
+                padding: '1rem',
               }}
               onPress={() => { this.props.history.push(`/delegates/${delegates[rowIndex].phone}`, { rowIndex }) }}
             >
-              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200', width: 25 }}>
-                {Number(rowIndex) + 1}.
-              </Text>
-              <Text style={{ color: '#fff', fontSize: 18, fontWeight: '200' }}>
-                {name}
+              <View style={{ flexDirection: 'row' }}>
+                <Text style={{ fontSize: 18, fontWeight: '200', width: 25 }}>
+                  {Number(rowIndex) + 1}.
+                </Text>
+                <Text style={{ fontSize: 18, fontWeight: '200' }}>
+                  {name}
 
-                { (status && status !== 'APPROVED') &&
-                  <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
-                }
-              </Text>
-            </HoverableOpacity>
+                  { (status && status !== 'APPROVED') &&
+                    <Text style={{ color: '#d62728' }}> &nbsp;( ! )</Text>
+                  }
+                </Text>
+              </View>
+            </HoverableListItemPanel>
           ))}
         </ScrollView>
 
@@ -188,7 +167,7 @@ class DelegatesScreen extends Component {
   }
 }
 
-DelegatesScreen.title = 'DELEGATES'
+DelegatesScreen.title = 'Delegates'
 
 DelegatesScreen.propTypes = {
   delegates: React.PropTypes.arrayOf(React.PropTypes.shape({

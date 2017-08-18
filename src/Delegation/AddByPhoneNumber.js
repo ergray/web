@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import {
   Image,
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import usaFlag from '../Login/LandingPage/usa-flag.png'
+import Text from '../Text'
+import TextInput from '../TextInput'
 
 class AddByPhoneNumber extends Component {
   constructor(props) {

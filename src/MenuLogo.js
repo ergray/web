@@ -15,10 +15,9 @@ class MenuLogo extends Component {
       <Image
         source={logo}
         style={{
-          alignSelf: 'left',
+          height: 32,
           resizeMode: 'contain',
-          height: 30,
-          width: 33,
+          width: 40,
         }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}

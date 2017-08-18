@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import {
   ScrollView,
   Switch,
-  Text,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
 import PastAgendas from '../Legislation/PastAgendas'
+import Text from '../Text'
 import CountdownTimer from './react-countdown-timer'
 const pick = require('lodash/fp/pick')
 
@@ -15,7 +16,7 @@ class BetweenWeeks extends Component {
     this.state = {}
 
     function getNextAgenda() {
-      fetch('https://api.liquid.vote/next-agenda')
+      fetch(`${api_url}/next-agenda`)
       .then(response => response.json())
       .then((nextAgenda) => {
         props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
@@ -55,7 +56,6 @@ class BetweenWeeks extends Component {
     return (
       <ScrollView>
         <Text style={{
-          color: '#fff',
           fontSize: 18,
           fontWeight: '300',
           margin: 30,
@@ -64,7 +64,6 @@ class BetweenWeeks extends Component {
         {<CountdownTimer initialTimeRemaining={millisecondsUntilFridayAtNoon()} />}.</Text>
 
         <Text style={{
-          color: '#fff',
           fontSize: 18,
           fontWeight: '300',
           margin: 30,
@@ -86,7 +85,7 @@ class BetweenWeeks extends Component {
             value={user.legislation_notification}
             onValueChange={() => {
               dispatch({ type: 'TOGGLE_LEGISLATION_NOTIFICATIONS' })
-              fetch('https://api.liquid.vote/legislation-notifications', {
+              fetch(`${api_url}/legislation-notifications`, {
                 headers: { Session_ID: this.props.sessionId },
                 method: 'PUT',
               })

@@ -1,10 +1,11 @@
 import React from 'react'
 import {
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
 const pick = require('lodash/fp/pick')
 
 function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId }) {
@@ -66,7 +67,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
         }}
         onPress={() => {
           dispatch({ delegates: [...delegates, newDelegate], type: 'SYNC_DELEGATES' })
-          fetch('https://api.liquid.vote/my-delegates', {
+          fetch(`${api_url}/my-delegates`, {
             body: JSON.stringify({
               delegates: [...delegates, newDelegate],
             }),

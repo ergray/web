@@ -1,11 +1,12 @@
 import React from 'react'
-import { Dimensions, Linking, Text, View } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
-import TwitterIcon from 'react-icons/lib/fa/twitter'
-import FacebookIcon from 'react-icons/lib/fa/facebook'
+import CommonStyle from './CommonStyle'
 import MenuLogo from './MenuLogo'
 import MenuOption from './MenuOption'
 import HoverableOpacity from './HoverableOpacity'
+
+const cstyle = CommonStyle()
 
 function Menu({ constituents, dispatch, history, style = {}, user, votingPower = '..' }) {
   const MenuOptionWithNav = props => <MenuOption history={history} {...props} /> // eslint-disable-line
@@ -15,14 +16,12 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
     numRequests = constituents.requests.length
   }
 
-  const smallScreen = Dimensions.get('window').height < 600
-
   let first_name = user.first_name
   if (!first_name) {
     first_name = 'UNREGISTERED'
   }
 
-  let message = `Hello, ${first_name} (${votingPower})`
+  let message = `Hi, ${first_name} (${votingPower})`
 
   const isLoggedOut = Object.keys(user).length === 0
 
@@ -31,72 +30,62 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
   }
 
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', ...style }}>
-      <MenuLogo />
+    <View
+      style={{
+        alignItems: 'center',
+        backgroundColor: cstyle.panelColor,
+        borderBottomColor: cstyle.panelBorderColor,
+        borderBottomStyle: 'solid',
+        borderBottomWidth: 1,
+        flexDirection: 'row',
+        height: '4rem',
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        ...style,
+      }}
+    >
 
       <HoverableOpacity
-        hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.04)' }}
         outerStyle={{
-          borderColor: 'rgb(5, 165, 209)',
-          borderRadius: 3,
-          borderStyle: 'solid',
-          borderWidth: isLoggedOut ? 1 : 0,
-          marginLeft: 20,
+          alignItems: 'center',
+          cursor: 'pointer',
+          flexDirection: 'row',
+          height: '100%',
+          paddingRight: '1rem',
         }}
-        onPress={() => history.push(isLoggedOut ? '/' : '/voting-power')}
-      >
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: isLoggedOut ? 16 : 21,
-            fontWeight: '200',
-          }}
-        >{message}</Text>
-      </HoverableOpacity>
+        onPress={() => history.push('/about')}
+      ><MenuLogo /></HoverableOpacity>
 
-      <View style={{ flexDirection: 'row', flexGrow: 1, justifyContent: 'flex-end' }}>
-        <MenuOptionWithNav text="Legislature" to="/sf" />
-        <MenuOptionWithNav notifications={numRequests} text="Your Delegates" to="/delegates" />
-        { user.sf_district
-          ? <MenuOptionWithNav text="Your Legislator: A+" to="/sf/elected-rep" />
-          : <MenuOptionWithNav text="Your Legislators" to="/sf/board" />
+      <MenuOptionWithNav text="Legislature" to="/legislation" />
+      <MenuOptionWithNav notifications={numRequests} text="Your Delegates" to="/delegates" />
+      <MenuOptionWithNav text="About" to="/about" />
+
+      <View style={{ alignItems: 'center', flexDirection: 'row', flexGrow: 1, height: '100%', justifyContent: 'flex-end' }}>
+        { isLoggedOut &&
+          <MenuOptionWithNav
+            text="Sign in"
+            to="/sign-in"
+          />
         }
-        <MenuOptionWithNav text="About" to="/about" />
-        <MenuOptionWithNav text="Feedback" to="/feedback" />
 
         { !isLoggedOut &&
           <MenuOptionWithNav
-            hoverColor="rgba(251, 82, 82, 0.1)"
-            text="Log out" onPress={() => {
+            style={{ color: cstyle.menuHoverColor }}
+            text={message}
+            to="/voting-power"
+          />
+        }
+
+        { !isLoggedOut &&
+          <MenuOptionWithNav
+            text="Log out"
+            onPress={() => {
               dispatch({ type: 'LOGOUT' })
               history.replace('/')
             }}
           />
         }
-
-        <View style={{ flexDirection: 'row' }}>
-          <HoverableOpacity
-            style={{ padding: 10, marginLeft: 20 }}
-            onPress={() => {
-              Linking.openURL('https://twitter.com/liquid_vote')
-              .catch(() => {})
-            }}
-          >
-            <TwitterIcon color="white" size={18} />
-          </HoverableOpacity>
-          <HoverableOpacity
-            style={{ padding: 10 }}
-            onPress={() => {
-              Linking.openURL('https://facebook.com/liquidvote')
-              .catch(() => {})
-            }}
-          >
-            <FacebookIcon color="white" size={18} />
-          </HoverableOpacity>
-        </View>
-
       </View>
-
     </View>
   )
 }

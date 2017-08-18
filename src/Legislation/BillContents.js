@@ -1,20 +1,26 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View, Platform, WebView } from 'react-native'
+import Text from '../Text'
 import { convertDateToLongFormat } from './convert-dates'
 
 function BillContents({ bill }) {
   return (
     <View style={{ padding: 20 }}>
 
-      <Text style={{ color: 'white', fontStyle: 'italic', marginBottom: 10 }}>{convertDateToLongFormat(bill.date)}</Text>
+      <Text style={{ fontStyle: 'italic', marginBottom: 10 }}>{convertDateToLongFormat(bill.date)}</Text>
 
       { bill.sponsors &&
-        <Text style={{ color: 'white', marginBottom: 10 }}>Sponsors: {bill.sponsors.join('; ')}</Text>
+        <Text style={{ marginBottom: 10 }}>Sponsors: {bill.sponsors.join('; ')}</Text>
       }
 
-      <Text style={{ color: 'white', marginBottom: 30 }}>{bill.text}</Text>
+      {Platform.OS !== 'web' &&
+        <WebView source={{ html: bill.text }} style={{ marginBottom: 30 }} />
+      }
+      {Platform.OS === 'web' &&
+        <div dangerouslySetInnerHTML={{ __html: bill.text }} />
+      }
 
-      <Text style={{ color: 'white', fontWeight: '700', marginBottom: 20 }}>{bill.question}</Text>
+      <Text style={{ fontWeight: '700', marginBottom: 20 }}>{bill.question}</Text>
 
     </View>
   )

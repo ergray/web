@@ -2,10 +2,10 @@ import React from 'react'
 import {
   Image,
   ScrollView,
-  Text,
   View,
 } from 'react-native'
-import HoverableOpacity from '../HoverableOpacity'
+import Button from '../Button'
+import Text from '../Text'
 import reps from './current-reps'
 
 function BoardScreen({ history }) {
@@ -14,32 +14,22 @@ function BoardScreen({ history }) {
   ), [])
 
   return (
-    <ScrollView>
-      <HoverableOpacity
-        activeOpacity={0.5}
-        hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
-        outerStyle={{ margin: 30 }}
-        style={{
-          alignItems: 'center',
-          borderColor: 'hsl(215, 100%, 68%)',
-          borderRadius: 5,
-          borderWidth: 1,
-          height: 40,
-          justifyContent: 'center',
-        }}
-        onPress={() => history.push('/sf/districts-map', { backable: true })}
-      >
-        <Text style={{ color: '#fff', fontSize: 13 }}>
-          VIEW DISTRICTS MAP
-        </Text>
-      </HoverableOpacity>
+    <ScrollView style={{ padding: '2rem' }}>
+      <Button
+        backable
+        primary
+        history={history}
+        style={{ marginBottom: '2rem' }}
+        text="View districts map"
+        to="/sf/districts-map"
+      />
 
       {repsArray.map(rep => (
         <View
           key={rep.name}
           style={{
             alignSelf: 'center',
-            borderColor: '#fff',
+            borderColor: '#ebebeb',
             borderWidth: 1,
             flexDirection: 'row',
             marginBottom: 20,
@@ -47,7 +37,6 @@ function BoardScreen({ history }) {
         >
           <Text style={{
             alignSelf: 'center',
-            color: '#fff',
             fontSize: 15,
             fontStyle: 'italic',
             fontWeight: '300',
@@ -62,13 +51,13 @@ function BoardScreen({ history }) {
           <Text
             style={{
               alignSelf: 'center',
-              color: '#fff',
               fontSize: 17,
               marginBottom: 3,
               textAlign: 'center',
+              textTransform: 'uppercase',
               width: 90,
             }}
-          >{rep.name.toUpperCase()}</Text>
+          >{rep.name}</Text>
         </View>
 
       ))}
@@ -76,7 +65,7 @@ function BoardScreen({ history }) {
   )
 }
 
-BoardScreen.title = 'BOARD OF SUPERVISORS'
+BoardScreen.title = 'Board of Supervisors'
 
 BoardScreen.propTypes = {
   history: React.PropTypes.shape({

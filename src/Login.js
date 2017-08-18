@@ -1,28 +1,26 @@
 /* eslint-env browser */
 
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {
-  Image,
-  View,
-} from 'react-native'
-import { api_url } from '../../Config'
-import Text from '../../Text'
-import TextInput from '../../TextInput'
-import usaFlag from './usa-flag.png'
+import { Image, View } from 'react-native'
+import { api_url } from './Config'
+import Text from './Text'
+import TextInput from './TextInput'
+import usaFlag from './Login/LandingPage/usa-flag.png'
 const pick = require('lodash/fp/pick')
 const isAndroid = /Android/i.test(navigator && navigator.userAgent)
 
-class PhoneLoginBox extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      loginRef: { input: { focus: () => {} } },
       phone: '',
     }
   }
 
   handleAndroid() {
-    const textInputRef = this.props.loginRef.input
+    const textInputRef = this.state.loginRef.input
     const inputLength = textInputRef.props ? textInputRef.props.value.length : 0
     let offSet
 
@@ -53,7 +51,6 @@ class PhoneLoginBox extends Component {
     return null
   }
 
-
   render() {
     const { dispatch, history, large, verySmall } = this.props
 
@@ -64,28 +61,17 @@ class PhoneLoginBox extends Component {
 
     return (
       <View style={{
-        alignSelf: 'flex-start',
-        backgroundColor: 'hsla(0, 0%, 13%, 0.9)',
-        borderRadius: 10,
         paddingVertical: 40,
         width: large ? 450 : undefined,
       }}
       >
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 32,
-            fontWeight: '100',
-            marginLeft: 40,
-          }}
-        >Login <Text style={{ opacity: 0.7 }}>/</Text> Join</Text>
         <TextInput
           autoCorrect={false}
           placeholder={placeholderText}
           ref={(input) => {
             // Enable autofocus on all but the smallest screens
             if (!verySmall) {
-              this.props.loginRef.input = input
+              this.state.loginRef.input = input
             }
           }}
           selection={this.handleAndroid()}
@@ -206,7 +192,6 @@ class PhoneLoginBox extends Component {
         >+1</Text>
         <Text
           style={{
-            color: '#fff',
             fontSize: 14,
             fontWeight: '100',
             marginLeft: 40,
@@ -218,7 +203,6 @@ class PhoneLoginBox extends Component {
                  href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
                  rel="noopener noreferrer"
                  style={{
-                   color: '#fff',
                    cursor: 'pointer',
                  }}
                  target="_blank"
@@ -229,20 +213,19 @@ class PhoneLoginBox extends Component {
   }
 }
 
-PhoneLoginBox.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
+Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
-  knownNumbers: React.PropTypes.shape({}).isRequired,
-  large: React.PropTypes.bool,
-  loginRef: React.PropTypes.shape({
-    input: React.PropTypes.any,
-  }).isRequired,
-  verySmall: React.PropTypes.bool,
+  knownNumbers: PropTypes.shape({}).isRequired,
+  large: PropTypes.bool,
+  verySmall: PropTypes.bool,
 }
+
+Login.title = 'Sign in'
 
 export default connect(pick([
   'knownNumbers',
-]))(PhoneLoginBox)
+]))(Login)

@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import {
   Dimensions,
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
+import Button from '../Button'
+import Text from '../Text'
+import TextInput from '../TextInput'
 import Header from './Header'
 
 class ZipScreen extends Component {
@@ -25,6 +27,7 @@ class ZipScreen extends Component {
   }
 
   render() {
+    const history = this.props.history
     const width = Math.min(315, Dimensions.get('window').width - 60)
 
     return (
@@ -33,7 +36,6 @@ class ZipScreen extends Component {
 
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 18,
           fontWeight: '200',
           marginBottom: 15,
@@ -78,7 +80,7 @@ class ZipScreen extends Component {
               })
 
               // Send the new value to the server
-              fetch('https://api.liquid.vote/my-registration-info', {
+              fetch(`${api_url}/my-registration-info`, {
                 body: JSON.stringify({
                   zip: newText,
                 }),
@@ -96,6 +98,14 @@ class ZipScreen extends Component {
               })
             }
           }}
+        />
+
+        <Button
+          primary
+          history={history}
+          style={{ alignSelf: 'center', paddingLeft: 0, paddingRight: 0, width }}
+          text="Next"
+          to="/registration/address"
         />
 
       </View>

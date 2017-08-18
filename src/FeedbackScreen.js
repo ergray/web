@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Dimensions, Text, TextInput, View } from 'react-native'
+import { Dimensions, View } from 'react-native'
 import { connect } from 'react-redux'
-import HoverableOpacity from './HoverableOpacity'
+import { api_url } from './Config'
+import Button from './Button'
+import Text from './Text'
+import TextInput from './TextInput'
 
 class FeedbackScreen extends Component {
   constructor(props) {
@@ -47,19 +50,14 @@ class FeedbackScreen extends Component {
           onChangeText={text => this.setState({ text })}
         />
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(0, 0%, 100%, 0.1)' }}
-          style={{
-            alignItems: 'center',
-            borderColor: '#5DA0FF',
-            borderRadius: 5,
-            borderWidth: 1,
-            height: 38,
-            justifyContent: 'center',
+        <Button
+          primary
+          outerStyle={{
+            height: '3rem',
           }}
+          text="Send"
           onPress={() => {
-            fetch('https://api.liquid.vote/feedback', {
+            fetch(`${api_url}/feedback`, {
               body: JSON.stringify({
                 dimensions: Dimensions.get('window'),
                 sessionId,
@@ -75,17 +73,13 @@ class FeedbackScreen extends Component {
             })
             .then(() => this.setState({ sent: true }))
           }}
-        >
-          <Text style={{ color: '#fff', fontSize: 14 }}>
-            SEND
-          </Text>
-        </HoverableOpacity>
+        />
       </View>
     )
   }
 }
 
-FeedbackScreen.title = 'FEEDBACK'
+FeedbackScreen.title = 'Feedback'
 
 FeedbackScreen.propTypes = {
   sessionId: React.PropTypes.string.isRequired,

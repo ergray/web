@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import CommonStyle from './CommonStyle'
+import Link from './Link'
+
+const cstyle = CommonStyle()
 
 class MenuOption extends Component {
   constructor() {
@@ -8,57 +11,63 @@ class MenuOption extends Component {
   }
 
   render() {
-    const { hoverColor = 'hsl(0,0%,10%)', history, notifications, style, text, to } = this.props
-    let { onPress } = this.props
+    const { history, onPress, text, style = {}, to } = this.props
+    // todo add back notifications marker
 
-    if (!onPress) {
-      onPress = () => { // eslint-disable-line no-param-reassign
-        history.push(to)
-      }
+    let active = history.location.pathname.substr(0, (to ? to.length : 0)) === to
+    if (history.location.pathname === '/') {
+      active = to === '/legislation'
+    }
+    let borderColor = 'transparent'
+    let color = cstyle.bodyColorLowlight
+
+    if (active) {
+      borderColor = cstyle.btnPrimaryHoverBgColor
+      color = cstyle.menuHoverColor
     }
 
     return (
-      <TouchableOpacity
-        delayPressIn={60}
-        style={{ backgroundColor: this.state.hover ? hoverColor : null, flexDirection: 'row', ...style }}
-        onMouseEnter={() => this.setState({ hover: true })}
-        onMouseLeave={() => this.setState({ hover: false })}
-        onPress={onPress}
-      >
-        <Text style={{
-          color: '#fff',
-          fontSize: 14,
-          fontWeight: '400',
-          marginLeft: 30,
-          marginVertical: 10,
+      <Link
+        history={history}
+        hoverStyle={{
+          borderBottomColor: cstyle.btnPrimaryHoverBgColor,
+          borderBottomStyle: 'solid',
+          borderBottomWidth: 2,
+          color: cstyle.menuHoverColor,
         }}
-        >{text}</Text>
-        { !!notifications &&
-          <View style={{
-            alignSelf: 'center',
-            borderColor: '#d62728',
-            borderRadius: 15,
-            borderWidth: 2,
-            height: 28,
-            justifyContent: 'center',
-            marginLeft: 5,
-            width: 28,
-          }}
-          >
-            <Text style={{ color: '#fff', textAlign: 'center' }}>{notifications}</Text>
-          </View>
-        }
-      </TouchableOpacity>
+        href={to}
+        pressedStyle={{
+          borderBottomColor: cstyle.btnPrimaryHoverBgColor,
+          borderBottomStyle: 'solid',
+          borderBottomWidth: 2,
+          color: cstyle.menuHoverColor,
+          paddingTop: 1,
+        }}
+        style={{
+          alignItems: 'center',
+          borderBottomColor: borderColor,
+          borderBottomStyle: 'solid',
+          borderBottomWidth: 2,
+          color,
+          cursor: 'pointer',
+          display: 'flex',
+          fontSize: 13,
+          fontWeight: '500',
+          height: '100%',
+          marginLeft: '1rem',
+          marginRight: '1rem',
+          textTransform: 'uppercase',
+          ...style,
+        }}
+        text={text}
+        onPress={onPress}
+      />
     )
   }
 }
 
 MenuOption.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func,
-  }).isRequired,
-  hoverColor: React.PropTypes.string,
-  notifications: React.PropTypes.number,
+  history: React.PropTypes.shape({}).isRequired,
   onPress: React.PropTypes.func,
   style: React.PropTypes.shape({}),
   text: React.PropTypes.string.isRequired,

@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import BackIcon from 'react-icons/lib/md/chevron-left'
+import { api_url } from '../Config'
+import CommonStyle from '../CommonStyle'
+import Header from '../Header'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
 import BillContents from './BillContents'
 import BillArguments from './BillArguments'
+
+const cstyle = CommonStyle()
 
 class BillScreen extends Component {
   constructor(props) {
@@ -19,7 +23,7 @@ class BillScreen extends Component {
 
     // Refresh vote count
     const activeBill = props.bill.uid
-    fetch(`https://api.liquid.vote/bill/${activeBill}/votes`)
+    fetch(`${api_url}/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
       props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })
@@ -84,10 +88,14 @@ class BillScreen extends Component {
       }
 
       // Go to ConfirmVoteScreen
-      history.push(`/sf/${bill.date}/${bill.id}/vote/${tappedPosition}`, { backable: true, bill })
+      if (bill.introduced) {
+        history.push(`/legislation/${bill.bill_uid}/vote/${tappedPosition}`, { backable: true, bill })
+      } else {
+        history.push(`/sf/${bill.date}/${bill.id}/vote/${tappedPosition}`, { backable: true, bill })
+      }
     }
 
-    const highlightColor = '#444'
+    const highlightColor = cstyle.panelBorderColor
 
     const selected = { abstain: {}, nay: {}, yea: {} }
     if (vote) {
@@ -98,23 +106,11 @@ class BillScreen extends Component {
       <View style={{ flex: 1 }}>
 
         { /* Header */ }
-        <View style={{ alignItems: 'center', backgroundColor: '#000', flexDirection: 'row', paddingRight: 40 }}>
-          <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-            style={{ paddingHorizontal: 15, paddingVertical: 10 }}
-            onPress={() => history.goBack()}
-          >
-            <BackIcon color="white" size={30} />
-          </HoverableOpacity>
-          <Text style={{ color: 'white', fontSize: 16, marginLeft: 5, marginVertical: 10 }}>
-            {bill.id}: {bill.title}
-          </Text>
-        </View>
+        <Header left backUrl="/legislation" history={history} location={location} title={bill.title} />
 
         { /* Vote buttons */ }
         <View
           style={{
-            backgroundColor: '#0D0D0D',
             borderColor: highlightColor,
             borderLeftWidth: 0,
             borderRightWidth: 0,
@@ -123,44 +119,50 @@ class BillScreen extends Component {
             justifyContent: 'space-between',
           }}
         >
-          <HoverableOpacity hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('yea')}>
-            <Text style={[{
-              color: '#2ca02c',
-              fontSize: 16,
-              fontWeight: '800',
-              paddingVertical: 15,
-              textAlign: 'center',
-            }, selected.yea]}
-            >✓ YEA</Text>
+          <HoverableOpacity hoverStyle={{ backgroundColor: cstyle.panelHoverColor }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('yea')}>
+            <Text
+              style={{
+                color: '#2ca02c',
+                fontSize: 16,
+                fontWeight: '800',
+                paddingVertical: 15,
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                ...selected.yea,
+              }}
+            >✓ Yea</Text>
           </HoverableOpacity>
           <View style={{ backgroundColor: highlightColor, width: 1 }} />
-          <HoverableOpacity hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('nay')}>
-            <Text style={[{
-              color: '#d62728',
-              fontSize: 16,
-              fontWeight: '800',
-              paddingVertical: 15,
-              textAlign: 'center',
-            }, selected.nay]}
-            >✗ NAY</Text>
+          <HoverableOpacity hoverStyle={{ backgroundColor: cstyle.panelHoverColor }} outerStyle={{ flex: 1 }} onPress={() => tapPosition('nay')}>
+            <Text
+              style={{
+                color: '#d62728',
+                fontSize: 16,
+                fontWeight: '800',
+                paddingVertical: 15,
+                textAlign: 'center',
+                textTransform: 'uppercase',
+                ...selected.nay,
+              }}
+            >✗ Nay</Text>
           </HoverableOpacity>
         </View>
         <View style={{
-          backgroundColor: '#0D0D0D',
           borderBottomWidth: 1,
           borderColor: highlightColor,
         }}
         >
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            hoverStyle={{ backgroundColor: cstyle.panelHoverColor }}
             onPress={() => tapPosition('abstain')}
           >
-            <Text style={[{
-              color: '#fff',
-              fontSize: 13,
-              paddingVertical: 8,
-              textAlign: 'center',
-            }, selected.abstain]}
+            <Text
+              style={{
+                fontSize: 13,
+                paddingVertical: 8,
+                textAlign: 'center',
+                ...selected.abstain,
+              }}
             >ABSTAIN</Text>
           </HoverableOpacity>
         </View>
@@ -168,7 +170,7 @@ class BillScreen extends Component {
         { /* Delegate info */ }
         { delegate && (
           <View style={{ borderBottomWidth: 1, borderColor: highlightColor }}>
-            <Text style={{ color: '#fff', paddingVertical: 10, textAlign: 'center' }}>
+            <Text style={{ paddingVertical: 10, textAlign: 'center' }}>
               Vote delegated from {delegate.name}
             </Text>
           </View>
@@ -179,14 +181,16 @@ class BillScreen extends Component {
         <ScrollView contentContainerStyle={{ flex: 1 }} style={{ flex: 1 }}>
           <BillContents bill={bill} />
 
-          <Text style={{ backgroundColor: 'hsla(0, 0%, 50%, .1)', border: '1px solid #303030', color: '#fff', fontSize: 15, fontWeight: '700', paddingVertical: 8, textAlign: 'center' }}>ARGUMENTS</Text>
+          <Text style={{ borderBottomColor: cstyle.panelBorderColor, borderBottomWidth: 1, borderTopColor: cstyle.panelBorderColor, borderTopWidth: 1, fontSize: 15, fontWeight: '700', paddingVertical: 8, textAlign: 'center', textTransform: 'uppercase' }}>
+            Arguments
+          </Text>
           <BillArguments activeBill={bill.uid} />
         </ScrollView>
 
         { /* Vote Counts */ }
         <View style={{
           alignItems: 'center',
-          borderColor: 'grey',
+          borderColor: cstyle.panelBorderColor,
           borderTopWidth: 1,
           borderWidth: 0,
           flexDirection: 'row',
@@ -199,18 +203,19 @@ class BillScreen extends Component {
               cursor: user.sf_district ? 'pointer' : 'default',
             }}
             outerStyle={{ flex: 3, paddingLeft: 20 }}
-            style={{ alignItems: 'center', cursor: 'default', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}
             onPress={() => {
               if (user.sf_district) {
                 dispatch({ type: 'TOGGLE_VOTE_COUNTS_MODE' })
               }
             }}
           >
-            <Text style={{ color: 'white', fontSize: 12, fontWeight: '600' }}>
-              { showDistrictVotes ? `DISTRICT ${user.sf_district}` : 'ALL VOTES' }
-            </Text>
-            <Text style={[{ color: 'white' }, yeaOutcome]}>Yea: {voteCount.yea}</Text>
-            <Text style={[{ color: 'white' }, nayOutcome]}>Nay: {voteCount.nay}</Text>
+            <View style={{ alignItems: 'center', cursor: 'default', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}>
+              <Text style={{ fontSize: 12, fontWeight: '600', textTransform: 'uppercase' }}>
+                { showDistrictVotes ? `District ${user.sf_district}` : 'All Votes' }
+              </Text>
+              <Text style={yeaOutcome}>Yea: {voteCount.yea}</Text>
+              <Text style={nayOutcome}>Nay: {voteCount.nay}</Text>
+            </View>
           </HoverableOpacity>
           <View style={{ flex: 1 }}>
             <HoverableOpacity
@@ -218,7 +223,7 @@ class BillScreen extends Component {
               outerStyle={{ alignSelf: 'flex-end' }}
               onPress={() => history.push(`${location.pathname}/audit`, { backable: true })}
             >
-              <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19 }}>AUDIT</Text>
+              <Text style={{ color: '#5DA0FF', fontSize: 12, paddingHorizontal: 35, paddingVertical: 19, textTransform: 'uppercase' }}>Audit</Text>
             </HoverableOpacity>
           </View>
         </View>

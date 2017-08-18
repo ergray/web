@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import {
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import SaveIcon from 'react-icons/lib/fa/floppy-o'
+import { api_url } from '../Config'
+import Button from '../Button'
+import CommonStyle from '../CommonStyle'
+import Header from '../Header'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
+import TextInput from '../TextInput'
+
+const cstyle = CommonStyle()
 
 class ConfirmVoteScreen extends Component {
   constructor(props) {
@@ -32,7 +37,7 @@ class ConfirmVoteScreen extends Component {
   }
 
   getVotingPower(sessionId) {
-    fetch(`https://api.liquid.vote/bill/${this.props.location.state.bill.uid}/voting-power`, { headers: { Session_ID: sessionId } })
+    fetch(`${api_url}/bill/${this.props.location.state.bill.uid}/voting-power`, { headers: { Session_ID: sessionId } })
       .then(response => response.json())
       .then(({ voting_power }) => this.setState({ voting_power }))
   }
@@ -56,7 +61,7 @@ class ConfirmVoteScreen extends Component {
     const Position = (
       <Text style={{
         color: {
-          abstain: '#ccc',
+          abstain: cstyle.bodyColorLowlight,
           nay: '#d62728',
           yea: '#2ca02c',
         }[position],
@@ -68,14 +73,11 @@ class ConfirmVoteScreen extends Component {
     )
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginTop: 10 }}>
+      <View style={{ alignSelf: 'center', flex: 1 }}>
 
-        <Text style={{ color: 'white', marginHorizontal: 20 }}>
-          {bill.id}: <Text style={{ fontWeight: '700' }}>{bill.title}</Text>
-        </Text>
+        <Header backable history={history} location={location} title={bill.title} />
 
         <Text style={{
-          color: 'white',
           marginBottom: 5,
           marginHorizontal: 20,
           marginTop: 20,
@@ -90,8 +92,17 @@ class ConfirmVoteScreen extends Component {
           placeholder="Because..."
           style={{
             alignSelf: 'stretch',
-            backgroundColor: '#bbb',
+            backgroundColor: cstyle.panelColor,
             borderRadius: 3,
+            borderBottomColor: cstyle.panelBorderColor,
+            borderBottomStyle: 'solid',
+            borderBottomWidth: 1,
+            borderLeftColor: cstyle.panelBorderHoverColor,
+            borderLeftStyle: 'solid',
+            borderLeftWidth: 1,
+            borderTopColor: cstyle.panelBorderHoverColor,
+            borderTopStyle: 'solid',
+            borderTopWidth: 1,
             fontSize: 16,
             height: 665,
             marginHorizontal: 20,
@@ -104,18 +115,14 @@ class ConfirmVoteScreen extends Component {
 
         <View
           style={{
-            borderColor: 'lightgrey',
-            borderTopWidth: 1,
-            marginHorizontal: 20,
-            marginTop: 30,
-            paddingTop: 25,
+            margin: 20,
           }}
         >
-          <Text style={{ color: 'white', fontWeight: '700' }}>
+          <Text style={{ fontWeight: '700' }}>
             Your voting power for this bill is: &nbsp;{ this.state.voting_power || '...Loading...' }
           </Text>
           { this.state.voting_power < this.props.votingPower &&
-            <Text style={{ color: 'white', marginTop: 10 }}>
+            <Text style={{ marginTop: 10 }}>
               This is less than your max voting power because some of your constituents have directly voted.
             </Text>
           }
@@ -128,69 +135,56 @@ class ConfirmVoteScreen extends Component {
               Invite more people to increase your voting power.
             </Text>
           </HoverableOpacity>
+
+          <Button
+            primary
+            outerStyle={{
+              opacity: this.state.disabled ? 0.4 : 1,
+            }}
+            style={{ marginTop: '1rem' }}
+            text={`SAV${this.state.disabled ? 'ING' : 'E'}`}
+            onPress={() => {
+              // Don't let them vote if they're not logged in
+              if (!sessionId) {
+                window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
+                return
+              }
+
+              // Dont let them press this button multiple times
+              if (this.state.disabled) {
+                return
+              }
+              this.setState({ disabled: true })
+
+              // Save the position to redux store
+              dispatch({ bill, position, type: 'VOTE_ON_BILL' })
+
+              // Save the position to the server
+              fetch(`${api_url}/bill/${bill.uid}/vote`, {
+                body: JSON.stringify({
+                  argument: this.state.argument,
+                  position,
+                }),
+                headers: {
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                  Session_ID: sessionId,
+                },
+                method: 'POST',
+              })
+              .then(() => history.goBack())
+            }}
+          />
         </View>
 
         <View style={{ flex: 1 }} />
-
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-          outerStyle={{
-            borderColor: this.state.disabled ? '#aaa' : '#5DA0FF',
-            borderRadius: 5,
-            borderWidth: 1,
-            marginBottom: 20,
-            marginHorizontal: 20,
-          }}
-          style={{
-            alignItems: 'center',
-            height: 38,
-            justifyContent: 'center',
-          }}
-          onPress={() => {
-            // Don't let them vote if they're not logged in
-            if (!sessionId) {
-              window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
-              return
-            }
-
-            // Dont let them press this button multiple times
-            if (this.state.disabled) {
-              return
-            }
-            this.setState({ disabled: true })
-
-            // Save the position to redux store
-            dispatch({ bill, position, type: 'VOTE_ON_BILL' })
-
-            // Save the position to the server
-            fetch(`https://api.liquid.vote/bill/${bill.uid}/vote`, {
-              body: JSON.stringify({
-                argument: this.state.argument,
-                position,
-              }),
-              headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                Session_ID: sessionId,
-              },
-              method: 'POST',
-            })
-            .then(() => history.goBack())
-          }}
-        >
-          <Text style={{ color: '#fff', fontSize: 14 }}>
-            <SaveIcon size={15} style={{ paddingBottom: 3 }} />
-            &nbsp;&nbsp;SAV{ this.state.disabled ? 'ING' : 'E'}
-          </Text>
-        </HoverableOpacity>
 
       </View>
     )
   }
 }
 
-ConfirmVoteScreen.title = 'CONFIRM VOTE'
+ConfirmVoteScreen.title = 'Confirm Vote'
 
 ConfirmVoteScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired,

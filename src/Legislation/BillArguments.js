@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
+import CommonStyle from '../CommonStyle'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
 const pick = require('lodash/fp/pick')
+
+const cstyle = CommonStyle()
 
 class BillArguments extends Component {
   constructor(props) {
@@ -16,7 +20,7 @@ class BillArguments extends Component {
       yea: [],
     }
 
-    fetch(`https://api.liquid.vote/bill/${props.activeBill}/arguments`, { headers: { Session_ID: props.sessionId } })
+    fetch(`${api_url}/bill/${props.activeBill}/arguments`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(({ nay, yea }) => this.setState({
         loading: false,
@@ -29,7 +33,7 @@ class BillArguments extends Component {
     if (this.state.loading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
-          <Text style={{ color: '#fff' }}>Loading...</Text>
+          <Text>Loading...</Text>
         </View>
       )
     }
@@ -39,14 +43,18 @@ class BillArguments extends Component {
       ({ id, recommended, recommendations, text }) => (
         <View
           key={id} style={{
-            backgroundColor: '#222',
+            backgroundColor: cstyle.panelColor,
+            borderBottomColor: cstyle.panelBorderColor,
+            borderBottomWidth: 2,
             borderRadius: 5,
+            borderRightColor: cstyle.panelBorderColor,
+            borderRightWidth: 1,
             marginBottom: 30,
             overflow: 'hidden',
             padding: 10,
           }}
         >
-          <Text style={{ color: 'white' }}>
+          <Text>
             {text}
           </Text>
 
@@ -56,7 +64,7 @@ class BillArguments extends Component {
             outerStyle={{ alignSelf: 'flex-end', marginTop: 5 }}
             style={{ padding: 5 }}
             onPress={() => {
-              fetch(`https://api.liquid.vote/argument/${id}/recommendations`, {
+              fetch(`${api_url}/argument/${id}/recommendations`, {
                 headers: { Session_ID: this.props.sessionId },
                 method: 'PUT',
               })
@@ -101,14 +109,14 @@ class BillArguments extends Component {
             padding: 20,
           }}
         >
-          <Text style={{ color: '#fff', fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>FOR</Text>
+          <Text style={{ fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center', textTransform: 'uppercase' }}>For</Text>
           { this.state.yea.length > 0
             ? this.state.yea.map(Argument('yea'))
             : <Text style={{ color: '#bbb' }}>None given yet.</Text>
           }
         </View>
 
-        <View style={{ backgroundColor: '#303030', width: 1 }} />
+        <View style={{ backgroundColor: cstyle.panelBorderColor, width: 1 }} />
 
         <View
           style={{
@@ -117,7 +125,7 @@ class BillArguments extends Component {
             padding: 20,
           }}
         >
-          <Text style={{ color: '#fff', fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center' }}>AGAINST</Text>
+          <Text style={{ fontSize: 13, fontWeight: '700', marginBottom: 20, textAlign: 'center', textTransform: 'uppercase' }}>Against</Text>
           { this.state.nay.length > 0
             ? this.state.nay.map(Argument('nay'))
             : <Text style={{ color: '#bbb' }}>None given yet.</Text>

@@ -22,7 +22,7 @@ function DistrictsMapScreen() {
   )
 }
 
-DistrictsMapScreen.title = 'SF DISTRICTS'
+DistrictsMapScreen.title = 'SF Districts'
 
 DistrictsMapScreen.propTypes = {}
 

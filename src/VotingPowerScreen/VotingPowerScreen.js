@@ -1,41 +1,32 @@
 import React from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, View } from 'react-native'
 import { connect } from 'react-redux'
-import HoverableOpacity from '../HoverableOpacity'
+import Button from '../Button'
+import Text from '../Text'
 import graphic from './voting_power_graphic.png'
 
 function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
   return (
-    <View style={{ marginHorizontal: 20 }}>
+    <View style={{ margin: '2rem' }}>
 
-      <HoverableOpacity
-        activeOpacity={0.5}
-        hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-        outerStyle={{ marginVertical: 30 }}
-        style={{
-          alignItems: 'center',
-          borderColor: 'grey',
-          borderRadius: 5,
-          borderWidth: 1,
-          height: 38,
-          justifyContent: 'center',
-        }}
-        onPress={() => history.push('/your-registration')}
-      >
-        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 13 }}>
-          VIEW REGISTRATION
-        </Text>
-      </HoverableOpacity>
+      <Button
+        backable
+        primary
+        history={history}
+        style={{ marginBottom: 30 }}
+        text="View registration"
+        to="/your-registration"
+      />
 
-      <Text style={{ color: 'white', fontSize: 50 }}>
+      <Text style={{ fontSize: 50 }}>
         { user.first_name } { user.last_name }
       </Text>
 
-      <Text style={{ color: 'white', fontSize: 40, fontWeight: '700', marginTop: 20 }}>
+      <Text style={{ fontSize: 40, fontWeight: '700', marginTop: 20 }}>
         <Text style={{ fontSize: 18, fontWeight: '400', marginRight: 10 }}>Your max voting power:</Text>
         { votingPower }
       </Text>
-      <Text style={{ color: 'white', marginTop: 30 }}>
+      <Text style={{ marginTop: 30 }}>
         This is all the people delegating to you, all the people delegating to them, and to them, and so on.
       </Text>
 
@@ -49,7 +40,7 @@ function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
         }}
       />
 
-      <Text style={{ color: 'white', fontStyle: 'italic', textAlign: 'center' }}>
+      <Text style={{ fontStyle: 'italic', textAlign: 'center' }}>
         Invite more people to increase your voting power.
       </Text>
 
@@ -57,7 +48,7 @@ function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
   )
 }
 
-VotingPowerScreen.title = 'VOTING POWER'
+VotingPowerScreen.title = 'Voting Power'
 
 VotingPowerScreen.propTypes = {
   history: React.PropTypes.shape({}).isRequired,

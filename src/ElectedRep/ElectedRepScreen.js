@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import {
   Image,
   Linking,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import letterGrade from 'letter-grade'
-import HoverableOpacity from '../HoverableOpacity'
+import Button from '../Button'
+import Text from '../Text'
 import reps from './current-reps'
 
 class ElectedRepScreen extends Component {
@@ -20,27 +20,14 @@ class ElectedRepScreen extends Component {
     if (!this.props.user || !this.props.user.sf_district) {
       return (
         <View style={{ alignItems: 'center', margin: 30 }}>
-          <Text style={{ color: '#fff', fontSize: 18 }}>Unknown voting district.</Text>
+          <Text style={{ fontSize: 18 }}>Unknown voting district.</Text>
 
-          <HoverableOpacity
-            activeOpacity={0.5}
-            hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
-            outerStyle={{ margin: 30 }}
-            style={{
-              alignItems: 'center',
-              borderColor: 'hsl(215, 100%, 68%)',
-              borderRadius: 5,
-              borderWidth: 1,
-              height: 40,
-              justifyContent: 'center',
-              width: 250,
-            }}
+          <Button
+            style={{ margin: 30 }}
             onPress={() => this.props.history.push('/sf/board', { backable: true })}
           >
-            <Text style={{ color: '#fff', fontSize: 13 }}>
-              VIEW ALL ELECTED REPS
-            </Text>
-          </HoverableOpacity>
+            View all elected reps
+          </Button>
         </View>
       )
     }
@@ -68,14 +55,12 @@ class ElectedRepScreen extends Component {
           <View style={{ alignItems: 'center', alignSelf: 'center', width: 120 }}>
             <Text
               style={{
-                color: '#fff',
                 fontSize: 17,
                 marginBottom: 3,
               }}
             >{rep.name.toUpperCase()}</Text>
             <Text
               style={{
-                color: '#fff',
                 fontSize: 28,
                 fontWeight: '700',
               }}
@@ -86,7 +71,6 @@ class ElectedRepScreen extends Component {
         <Text
           style={{
             alignSelf: 'center',
-            color: '#fff',
             fontSize: 15,
             fontStyle: 'italic',
             fontWeight: '300',
@@ -96,7 +80,6 @@ class ElectedRepScreen extends Component {
 
         <Text
           style={{
-            color: '#fff',
             fontSize: 18,
             fontWeight: '300',
             marginHorizontal: 30,
@@ -106,74 +89,38 @@ class ElectedRepScreen extends Component {
         <Text style={{ fontWeight: '700' }}> {rep.score}% </Text>
         of the time.</Text>
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(193, 95%, 42%, 0.1)' }}
-          outerStyle={{ marginHorizontal: 30, marginTop: 30 }}
-          style={{
-            alignItems: 'center',
-            borderColor: 'hsl(193, 95%, 42%)',
-            borderRadius: 5,
-            borderWidth: 1,
-            height: 40,
-            justifyContent: 'center',
-          }}
+        <Button
+          style={{ marginHorizontal: 30, marginTop: 30 }}
           onPress={() => {
             Linking.openURL(`tel:${rep.officePhone.replace(/\D/g, '')}`)
             .catch(() => {})
           }}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
-            CALL OFFICE: &nbsp; {rep.officePhone}
-          </Text>
-        </HoverableOpacity>
+          Call Office: &nbsp; {rep.officePhone}
+        </Button>
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(193, 95%, 42%, 0.1)' }}
-          outerStyle={{ marginHorizontal: 30, marginTop: 30 }}
-          style={{
-            alignItems: 'center',
-            borderColor: 'hsl(193, 95%, 42%)',
-            borderRadius: 5,
-            borderWidth: 1,
-            height: 40,
-            justifyContent: 'center',
-          }}
+        <Button
+          style={{ marginHorizontal: 30, marginTop: 30 }}
           onPress={() => {
             Linking.openURL(`mailto:${rep.name.split(' ').join('.')}@sfgov.org`)
             .catch(() => {})
           }}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
-            EMAIL: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
-          </Text>
-        </HoverableOpacity>
+          Email: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org
+        </Button>
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'hsla(215, 100%, 68%, 0.1)' }}
-          outerStyle={{ margin: 30 }}
-          style={{
-            alignItems: 'center',
-            borderColor: 'hsl(215, 100%, 68%)',
-            borderRadius: 5,
-            borderWidth: 1,
-            height: 40,
-            justifyContent: 'center',
-          }}
+        <Button
+          style={{ margin: 30 }}
           onPress={() => this.props.history.push('/sf/board', { backable: true })}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
-            VIEW ALL ELECTED REPS
-          </Text>
-        </HoverableOpacity>
+          View all elected reps
+        </Button>
       </View>
     )
   }
 }
 
-ElectedRepScreen.title = 'ELECTED REP'
+ElectedRepScreen.title = 'Elected Rep'
 
 ElectedRepScreen.propTypes = {
   history: React.PropTypes.shape({

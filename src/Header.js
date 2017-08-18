@@ -1,74 +1,104 @@
 import React from 'react'
 import {
-  Text,
+  Image,
   View,
 } from 'react-native'
 import BackIcon from 'react-icons/lib/md/chevron-left'
+import CommonStyle from './CommonStyle'
 import HoverableOpacity from './HoverableOpacity'
 import { screens } from './_screens'
 import NoHeader from './NoHeader'
+import Text from './Text'
+
+const cstyle = CommonStyle()
 
 function Header(props) {
-  const screen = screens[props.path]
+  const { backUrl, location, title } = props
+  const screen = screens[location.pathname]
+  const disableHeader = !title && (!screen || screen.disableHeader)
+  const titleIcon = screen && screen.titleIcon
+  const screenTitle = (screen ? (title || screen.title) : title) || location.pathname
+  const backable = backUrl || props.backable || (location.state && location.state.backable)
 
-  if (screen.disableHeader) {
+  if (disableHeader) {
     return <NoHeader {...props} />
   }
 
-  const CustomHeader = screen.header
+  const CustomHeader = screen && screen.header
   if (CustomHeader) {
     return <CustomHeader {...props} {...screen.headerProps} />
   }
 
   return (
     <View style={{
-      backgroundColor: '#000',
-      borderBottomWidth: 1,
-      borderColor: '#222',
       flexDirection: 'row',
-      height: 50,
       justifyContent: 'space-between',
     }}
     >
       <View style={{ width: 65 }}>
-        { props.location.state && props.location.state.backable && (
+        { backable && (
           <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-            style={{ height: 49, paddingHorizontal: 15, paddingTop: 10 }}
-            onPress={() => { props.history.goBack() }}
+            hoverStyle={{ backgroundColor: cstyle.panelHoverColor }}
+            outerStyle={{ alignItems: 'center', cursor: 'pointer', flex: 1, flexDirection: 'row', justifyContent: 'center' }}
+            onPress={() => {
+              if (backUrl) {
+                props.history.push(backUrl)
+              } else {
+                props.history.goBack()
+              }
+            }}
           >
-            <BackIcon color="white" size={30} />
+            <BackIcon color={cstyle.bodyColor} size={30} />
           </HoverableOpacity>
         ) }
       </View>
       <View
-        style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}
+        style={{
+          alignItems: 'center',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          maxWidth: 'calc(100% - 130px)',
+          paddingBottom: '1rem',
+          paddingLeft: backable ? '2.5rem' : 0,
+          paddingTop: '1rem',
+        }}
       >
+        {titleIcon &&
+          <Image
+            source={titleIcon}
+            style={{
+              height: 20,
+              marginRight: 7,
+              width: 20,
+            }}
+          />
+        }
         <Text
           style={{
-            color: '#fff',
             fontSize: 19,
-            fontWeight: '700',
+            fontWeight: '500',
           }}
-        >{screen.title}</Text>
-        <View style={{ width: 24 }} />
+        >{screenTitle}</Text>
       </View>
-
       <View style={{ width: 65 }} />
     </View>
   )
 }
 
 Header.propTypes = {
+  backable: React.PropTypes.bool,
+  backUrl: React.PropTypes.string,
   history: React.PropTypes.shape({ // eslint-disable-line
     goBack: React.PropTypes.func.isRequired,
+    push: React.PropTypes.func.isRequired,
   }),
   location: React.PropTypes.shape({
+    pathname: React.PropTypes.string.isRequired,
     state: React.PropTypes.shape({
       backable: React.PropTypes.bool,
     }),
   }),
-  path: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string,
 }
 
 export default Header

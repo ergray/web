@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 import { RNS3 } from 'react-native-aws3'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Entypo from 'react-native-vector-icons/Entypo'
+import { api_url } from '../Config'
 
 class IdReviewScreen extends Component {
   constructor() {
@@ -23,7 +24,7 @@ class IdReviewScreen extends Component {
   uploadPhoto() {
     this.setState({ isUploading: true })
 
-    fetch('https://api.liquid.vote/registration/photo', {
+    fetch(`${api_url}/registration/photo`, {
       headers: {
         Session_ID: this.props.sessionId,
       },

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
 
 class RequestsScreen extends Component {
   constructor(props) {
@@ -14,14 +15,14 @@ class RequestsScreen extends Component {
 
     // If they're verified, update delegation approvals, rejections, and requests
     if (props.isVerified) {
-      fetch('https://api.liquid.vote/my-delegation-permissions', { headers: { Session_ID: props.sessionId } })
+      fetch(`${api_url}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }
   }
 
   updatePermissions(from, to, user) {
-    fetch('https://api.liquid.vote/my-delegation-permissions', {
+    fetch(`${api_url}/my-delegation-permissions`, {
       body: JSON.stringify({
         from,
         to,
@@ -40,7 +41,7 @@ class RequestsScreen extends Component {
 
   render() {
     if (!this.props.constituents) {
-      return <Text style={{ color: 'white', fontSize: 16, marginLeft: 20, marginTop: 10 }}>Loading...</Text>
+      return <Text style={{ fontSize: 16, marginLeft: 20, marginTop: 10 }}>Loading...</Text>
     }
 
     const { approved, rejected, requests } = this.props.constituents
@@ -52,17 +53,17 @@ class RequestsScreen extends Component {
 
     return (
       <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20, marginTop: 20 }}>
-        <Text style={{ color: 'white', marginBottom: 20 }}>Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.</Text>
+        <Text style={{ marginBottom: 20 }}>Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.</Text>
 
         <ScrollView style={{ flex: 1 }}>
-          <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginBottom: 10 }}>REQUESTS {numRequested}</Text>
+          <Text style={{ fontSize: 12, fontWeight: '700', marginBottom: 10, textTransform: 'uppercase' }}>Requests {numRequested}</Text>
           {requests.length === 0
             ? <View>
-              <Text style={{ color: 'white', fontStyle: 'italic' }}>No requests— try inviting people.</Text>
+              <Text style={{ fontStyle: 'italic' }}>No requests— try inviting people.</Text>
             </View>
             : requests.map(user => (
               <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row' }}>
-                <Text style={{ color: 'white', flex: 1, marginBottom: 5 }}>{user.first_name} {user.last_name}</Text>
+                <Text style={{ flex: 1, marginBottom: 5 }}>{user.first_name} {user.last_name}</Text>
                 <HoverableOpacity
                   hoverStyle={{ backgroundColor: 'hsla(120, 57%, 40%, 0.1)' }}
                   outerStyle={{
@@ -79,7 +80,7 @@ class RequestsScreen extends Component {
                     width: 50,
                   }}
                   onPress={() => { this.updatePermissions('requests', 'approved', user) }}
-                ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></HoverableOpacity>
+                ><Text style={{ fontSize: 20 }}>✓</Text></HoverableOpacity>
                 <HoverableOpacity
                   hoverStyle={{ backgroundColor: 'rgba(251, 82, 82, 0.1)' }}
                   outerStyle={{
@@ -95,12 +96,12 @@ class RequestsScreen extends Component {
                     width: 50,
                   }}
                   onPress={() => { this.updatePermissions('requests', 'rejected', user) }}
-                ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></HoverableOpacity>
+                ><Text style={{ fontSize: 20 }}>✗</Text></HoverableOpacity>
               </View>
             ))
           }
 
-          <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 30 }}>APPROVED {numApproved}</Text>
+          <Text style={{ fontSize: 12, fontWeight: '700', marginTop: 30, textTransform: 'uppercase' }}>Approved {numApproved}</Text>
           {approved && approved.map(user => (
             <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row', marginVertical: 7 }}>
               <HoverableOpacity
@@ -118,12 +119,12 @@ class RequestsScreen extends Component {
                   width: 30,
                 }}
                 onPress={() => { this.updatePermissions('approved', 'rejected', user) }}
-              ><Text style={{ color: 'white', fontSize: 20 }}>✗</Text></HoverableOpacity>
-              <Text style={{ color: 'white', flex: 1 }}>{user.first_name} {user.last_name}</Text>
+              ><Text style={{ fontSize: 20 }}>✗</Text></HoverableOpacity>
+              <Text style={{ flex: 1 }}>{user.first_name} {user.last_name}</Text>
             </View>
           ))}
 
-          <Text style={{ color: 'white', fontSize: 12, fontWeight: '700', marginTop: 15 }}>REJECTED {numRejected}</Text>
+          <Text style={{ fontSize: 12, fontWeight: '700', marginTop: 15, textTransform: 'uppercase' }}>Rejected {numRejected}</Text>
           {rejected && rejected.map(user => (
             <View key={user.id} style={{ alignItems: 'center', flexDirection: 'row', marginVertical: 7 }}>
               <HoverableOpacity
@@ -141,8 +142,8 @@ class RequestsScreen extends Component {
                   width: 30,
                 }}
                 onPress={() => { this.updatePermissions('rejected', 'approved', user) }}
-              ><Text style={{ color: 'white', fontSize: 20 }}>✓</Text></HoverableOpacity>
-              <Text style={{ color: 'white', flex: 1 }}>{user.first_name} {user.last_name}</Text>
+              ><Text style={{ fontSize: 20 }}>✓</Text></HoverableOpacity>
+              <Text style={{ flex: 1 }}>{user.first_name} {user.last_name}</Text>
             </View>
           ))}
         </ScrollView>
@@ -152,7 +153,7 @@ class RequestsScreen extends Component {
   }
 }
 
-RequestsScreen.title = 'REQUESTS'
+RequestsScreen.title = 'Requests'
 
 RequestsScreen.propTypes = {
   constituents: React.PropTypes.shape({

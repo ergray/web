@@ -32,6 +32,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_URL': `"${process.env.API_URL}"`,
+      'process.env.API_URL2': `"${process.env.API_URL2}"`,
+    }),
     new webpack.ProvidePlugin({
       Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise',
       fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',

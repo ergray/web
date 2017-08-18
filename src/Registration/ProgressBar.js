@@ -10,7 +10,7 @@ import DotCicleOIcon from 'react-icons/lib/fa/dot-circle-o'
 
 function ProgressBar({ step, style }) {
   function color(stepIndex) {
-    return step < stepIndex ? 'grey' : 'white'
+    return step < stepIndex ? 'grey' : '#00AEEF'
   }
 
   function shape(stepIndex) {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {
   Dimensions,
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import HoverableOpacity from '../HoverableOpacity'
+import { api_url } from '../Config'
+import Button from '../Button'
+import Text from '../Text'
+import TextInput from '../TextInput'
 import Header from './Header'
 
 class FirstNameScreen extends Component {
@@ -38,7 +39,7 @@ class FirstNameScreen extends Component {
       })
 
       // Send the new value to the server
-      fetch('https://api.liquid.vote/my-registration-info', {
+      fetch(`${api_url}/my-registration-info`, {
         body: JSON.stringify({
           first_name: this.state.firstName,
         }),
@@ -62,7 +63,6 @@ class FirstNameScreen extends Component {
 
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 18,
           fontWeight: '200',
           marginBottom: 15,
@@ -94,27 +94,12 @@ class FirstNameScreen extends Component {
           onSubmitEditing={() => submit()}
         />
 
-        <HoverableOpacity
-          activeOpacity={0.5}
-          hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.2)' }}
-          outerStyle={{
-            alignSelf: 'center',
-            borderColor: 'rgb(52, 65, 132)',
-            borderRadius: 30,
-            borderWidth: 3,
-          }}
-          style={{
-            alignItems: 'center',
-            height: 58,
-            justifyContent: 'center',
-            width: 500,
-          }}
+        <Button
+          primary
+          style={{ alignSelf: 'center', paddingLeft: 0, paddingRight: 0, width }}
+          text="Next"
           onPress={() => submit()}
-        >
-          <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
-            NEXT
-          </Text>
-        </HoverableOpacity>
+        />
 
       </View>
     )

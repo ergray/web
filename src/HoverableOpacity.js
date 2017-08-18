@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 
 export default class HoverableOpacity extends Component {
   constructor(props) {
@@ -8,22 +8,30 @@ export default class HoverableOpacity extends Component {
   }
 
   render() {
-    const { outerStyle, hoverStyle, ...remainingProps } = this.props
+    const { children, hoverStyle, outerStyle, style, ...remainingProps } = this.props
 
     return (
       <TouchableOpacity
-        activeOpacity={1}
-        style={[{ cursor: 'inherit' }, outerStyle, this.state.hover ? hoverStyle : {}]}
+        {...remainingProps}
+        activeOpacity={0.6}
+        style={{
+          cursor: 'pointer',
+          outline: 'none',
+          ...outerStyle,
+          ...this.state.hover ? hoverStyle : {},
+        }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
       >
-        <TouchableOpacity {...remainingProps} />
+        <View style={style}>{children}</View>
       </TouchableOpacity>
     )
   }
 }
 
 HoverableOpacity.propTypes = {
+  children: React.PropTypes.element,
   hoverStyle: React.PropTypes.shape({}),
   outerStyle: React.PropTypes.shape({}),
+  style: React.PropTypes.shape({}),
 }

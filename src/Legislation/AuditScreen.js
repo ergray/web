@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, Text, View } from 'react-native'
+import { api_url } from '../Config'
 
 class AuditScreen extends Component {
   constructor(props) {
@@ -10,8 +11,9 @@ class AuditScreen extends Component {
     }
 
     const { date, bill_id } = props.match.params
+    const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-    fetch(`https://api.liquid.vote/bill/${date}-${bill_id}/audit`)
+    fetch(`${api_url}/bill/${bill_uid}/audit`)
       .then(response => response.text())
       .then(audit => this.setState({ audit }))
 
@@ -28,8 +30,9 @@ class AuditScreen extends Component {
 
   getMyHash(sessionId) {
     const { date, bill_id } = this.props.match.params
+    const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-    fetch(`https://api.liquid.vote/bill/${date}-${bill_id}/audit/mine`, {
+    fetch(`${api_url}/bill/${bill_uid}/audit/mine`, {
       headers: { Session_ID: sessionId },
     })
     .then((response) => {
@@ -52,19 +55,19 @@ class AuditScreen extends Component {
             paddingBottom: 30,
           }}
           >
-            <Text style={{ color: 'white', marginBottom: 15 }}>
+            <Text style={{ marginBottom: 15 }}>
               You can find your vote to ensure your position was tallied correctly.
             </Text>
-            <Text style={{ color: 'white' }}>
+            <Text>
               YOUR HASH:
             </Text>
-            <Text style={{ color: 'white' }}>
+            <Text>
               {this.state.mine.hash} {this.state.mine.position}
             </Text>
           </View>
         )}
 
-        <Text style={{ color: 'white' }}>
+        <Text>
           {this.state.audit}
         </Text>
 
@@ -74,7 +77,7 @@ class AuditScreen extends Component {
 
 }
 
-AuditScreen.title = 'AUDIT VOTE'
+AuditScreen.title = 'Audit Vote'
 
 AuditScreen.propTypes = {
   match: React.PropTypes.shape({

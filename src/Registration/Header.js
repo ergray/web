@@ -18,17 +18,17 @@ function Header({ step, title }) {
             source={logo}
             style={{
               alignSelf: 'center',
-              height: 63,
+              height: 52,
               marginBottom: 5,
               marginTop: 32,
-              width: 59,
+              width: 60,
             }}
           />
           <Text style={{
             alignSelf: 'center',
-            color: '#fff',
             fontSize: 19,
             fontWeight: '700',
+            textTransform: 'uppercase',
           }}
           >{title}</Text>
         </View>

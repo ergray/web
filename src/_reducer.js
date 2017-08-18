@@ -131,7 +131,7 @@ export default function reducer(state, action) {
       const date = action.activeBill.slice(0, 10)
       return { ...state,
         bills: { ...state.bills,
-          [date]: state.bills[date].map((bill) => {
+          [date]: (state.bills[date] || []).map((bill) => {
             const newBill = { ...bill }
             // Modify just the bill we want
             if (bill.uid === action.activeBill) {

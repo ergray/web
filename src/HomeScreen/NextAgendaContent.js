@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import {
   ScrollView,
-  Text,
 } from 'react-native'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from '../Legislation/convert-dates'
+import { api_url } from '../Config'
 import PastAgendas from '../Legislation/PastAgendas'
 import BillsList from '../Legislation/BillsList'
+import Text from '../Text'
 import BetweenWeeks from './BetweenWeeks'
 const pick = require('lodash/fp/pick')
 
@@ -16,7 +17,7 @@ class NextAgendaContent extends Component {
     this.state = {}
 
     function getNextAgenda() {
-      fetch('https://api.liquid.vote/next-agenda')
+      fetch(`${api_url}/next-agenda`)
       .then(response => response.json())
       .then((nextAgenda) => {
         props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
@@ -48,7 +49,6 @@ class NextAgendaContent extends Component {
     if (!nextAgenda) {
       return (
         <Text style={{
-          color: '#fff',
           fontSize: 18,
           fontWeight: '300',
           margin: 30,
@@ -71,11 +71,10 @@ class NextAgendaContent extends Component {
     if (!bills) {
       return (
         <ScrollView>
-          <Text style={{ color: '#fff', marginTop: 15, textAlign: 'center' }}>
-            NO AGENDA FOR {convertDateToLongFormat(date).toUpperCase()}
+          <Text style={{ marginTop: 15, textAlign: 'center', textTransform: 'uppercase' }}>
+            No agenda for {convertDateToLongFormat(date)}
           </Text>
           <Text style={{
-            color: '#fff',
             fontSize: 16,
             fontWeight: '300',
             margin: 30,

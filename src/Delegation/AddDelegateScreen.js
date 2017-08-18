@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import Text from '../Text'
 import AddByPhoneNumber from './AddByPhoneNumber'
 const pick = require('lodash/fp/pick')
 
@@ -11,14 +11,12 @@ function AddDelegateScreen({ history }) {
   return (
     <View style={{ margin: 30 }}>
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
       >Delegating lets someone else vote on your behalf, increasing their voting power.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
@@ -26,7 +24,6 @@ function AddDelegateScreen({ history }) {
       look into individual legislation.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
@@ -34,14 +31,12 @@ function AddDelegateScreen({ history }) {
         href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
         rel="noopener noreferrer"
         style={{
-          color: '#fff',
           cursor: 'pointer',
         }}
         target="_blank"
       >kept private</a>.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 50,
       }}
@@ -52,7 +47,7 @@ function AddDelegateScreen({ history }) {
   )
 }
 
-AddDelegateScreen.title = 'ADD DELEGATE'
+AddDelegateScreen.title = 'Add Delegate'
 
 AddDelegateScreen.propTypes = {
   history: React.PropTypes.shape({}).isRequired,

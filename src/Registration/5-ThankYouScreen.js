@@ -17,24 +17,23 @@ function ThankYouScreen({ history, user }) {
         source={logo}
         style={{
           alignSelf: 'center',
-          height: 63,
+          height: 53,
           marginBottom: 5,
           marginTop: 32,
-          width: 59,
+          width: 60,
         }}
       />
       <Text style={{
         alignSelf: 'center',
-        color: '#fff',
         fontSize: 19,
         fontWeight: '700',
+        textTransform: 'uppercase',
       }}
-      >THANK YOU</Text>
+      >Thank you</Text>
 
       <ProgressBar step={5} style={{ marginVertical: 15 }} />
 
       <Text style={{
-        color: '#fff',
         fontSize: 18,
         fontWeight: '200',
         marginTop: 70,
@@ -48,14 +47,12 @@ function ThankYouScreen({ history, user }) {
       </Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 18,
         fontWeight: '200',
         marginTop: 40,
       }}
       >Please use the <Text style={{ fontWeight: '700' }}>SEND FEEDBACK</Text> button in the left menu</Text>
       <Text style={{
-        color: '#fff',
         fontSize: 18,
         fontWeight: '200',
         marginBottom: 70,
@@ -79,8 +76,8 @@ function ThankYouScreen({ history, user }) {
         }}
         onPress={() => history.push('/sf')}
       >
-        <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
-          GO TO LEGISLATION &nbsp;→
+        <Text style={{ fontSize: 16, fontWeight: '600', textTransform: 'uppercase' }}>
+          Go to Legislation &nbsp;→
         </Text>
       </HoverableOpacity>
 

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
 
 function prettifyPhone(tenDigits) {
   const areaCode = tenDigits.slice(0, 3)
@@ -35,7 +36,7 @@ class DelegateInfoScreen extends Component {
 
     if (activeDelegate) {
       // Get delegate info from the server
-      fetch(`https://api.liquid.vote/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${api_url}/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(({ name, status, user_id }) => {
         this.props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
@@ -52,7 +53,7 @@ class DelegateInfoScreen extends Component {
 
     if (!activeDelegate) {
       return (
-        <Text style={{ color: '#fff', margin: 30 }}>Not a delegate</Text>
+        <Text style={{ margin: 30 }}>Not a delegate</Text>
       )
     }
 
@@ -61,7 +62,7 @@ class DelegateInfoScreen extends Component {
       APPROVAL_NEEDED: {
         button: {
           onPress() {
-            fetch(`https://api.liquid.vote/delegate/${activeDelegate.phone}/request`, {
+            fetch(`${api_url}/delegate/${activeDelegate.phone}/request`, {
               headers: {
                 Session_ID: sessionId,
               },
@@ -172,7 +173,7 @@ class DelegateInfoScreen extends Component {
             }}
             onPress={statusCodeResponse.button.onPress}
           >
-            <Text style={{ color: '#fff', fontSize: 13 }}>
+            <Text style={{ fontSize: 13 }}>
               {statusCodeResponse.button.text}
             </Text>
           </HoverableOpacity>
@@ -197,7 +198,7 @@ class DelegateInfoScreen extends Component {
             const updatedDelegates = [...this.props.delegates] // clone delegate list
             updatedDelegates.splice(rowIndex, 1) // remove one at the right index
 
-            fetch('https://api.liquid.vote/my-delegates', {
+            fetch(`${api_url}/my-delegates`, {
               body: JSON.stringify({
                 delegates: updatedDelegates,
               }),
@@ -214,7 +215,7 @@ class DelegateInfoScreen extends Component {
             })
           }}
         >
-          <Text style={{ color: '#fff', fontSize: 13 }}>
+          <Text style={{ fontSize: 13 }}>
             REMOVE
           </Text>
         </HoverableOpacity>

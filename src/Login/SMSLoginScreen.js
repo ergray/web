@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import {
   Image,
-  Text,
-  TextInput,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
 import logo from '../logo.png'
 import HoverableOpacity from '../HoverableOpacity'
+import Text from '../Text'
+import TextInput from '../TextInput'
 
 class SMSLoginScreen extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class SMSLoginScreen extends Component {
     this.setState({ loading: true, status: 'Confirming...' })
 
 
-    fetch('https://api.liquid.vote/enter-session-code', {
+    fetch(`${api_url}/enter-session-code`, {
       body: JSON.stringify({
         phone: this.props.match.params.phoneNumber,
         session_code,
@@ -101,14 +102,13 @@ class SMSLoginScreen extends Component {
         />
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 19,
           fontWeight: '700',
+          textTransform: 'uppercase',
         }}
-        >LIQUID DEMOCRACY</Text>
+        >Liquid Democracy</Text>
 
         <Text style={{
-          color: '#fff',
           fontSize: 18,
           fontWeight: '200',
           marginHorizontal: 30,
@@ -119,7 +119,6 @@ class SMSLoginScreen extends Component {
 
         <Text style={{
           alignSelf: 'center',
-          color: '#fff',
           fontSize: 15,
           fontWeight: '100',
           marginBottom: 5,
@@ -134,7 +133,7 @@ class SMSLoginScreen extends Component {
           editable={this.state.editable}
           keyboardType="number-pad"
           maxLength={3}
-          style={[{
+          style={{
             alignSelf: 'center',
             backgroundColor: '#fff',
             borderColor: '#979797',
@@ -146,7 +145,8 @@ class SMSLoginScreen extends Component {
             marginBottom: 30,
             textAlign: 'center',
             width: 170,
-          }, inputErrorStyle]}
+            ...inputErrorStyle,
+          }}
           value={this.state.session_code}
           onChangeText={(newText) => {
             // When done
@@ -185,7 +185,7 @@ class SMSLoginScreen extends Component {
               this.props.history.replace('/')
             }}
           >
-            <Text style={{ color: '#fff', fontFamily: 'HelveticaNeue, Helvetica', fontSize: 16, fontWeight: '600' }}>
+            <Text style={{ fontSize: 16, fontWeight: '600' }}>
               BACK
             </Text>
           </HoverableOpacity>

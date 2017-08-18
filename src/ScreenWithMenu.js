@@ -2,9 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
+import { api_url } from './Config'
+import CommonStyle from './CommonStyle'
+import IntroHeader from './IntroHeader'
 import Menu from './Menu'
 import Header from './Header'
 const pick = require('lodash/fp/pick')
+
+const cstyle = CommonStyle()
 
 class ScreenWithMenu extends Component {
   constructor(props) {
@@ -34,7 +39,7 @@ class ScreenWithMenu extends Component {
     if (!props.isVerified) {
       props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: 0 })
     } else {
-      fetch('https://api.liquid.vote/my-voting-power', { headers: { Session_ID: props.sessionId } })
+      fetch(`${api_url}/my-voting-power`, { headers: { Session_ID: props.sessionId } })
       .then((response) => {
         if (response.status === 401) { return props.history.push('/auth-error') }
 
@@ -45,7 +50,7 @@ class ScreenWithMenu extends Component {
 
     // Get delegates from the server
     if (props.sessionId) {
-      fetch('https://api.liquid.vote/my-delegates', { headers: { Session_ID: props.sessionId } })
+      fetch(`${api_url}/my-delegates`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((serverDelegates) => {
         if (!deepEqual(serverDelegates, this.state.delegates)) {
@@ -57,22 +62,23 @@ class ScreenWithMenu extends Component {
     // Get constituents from the server
     if (props.sessionId) {
       // Get delegation approvals, rejections, and requests from the server
-      fetch('https://api.liquid.vote/my-delegation-permissions', { headers: { Session_ID: props.sessionId } })
+      fetch(`${api_url}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
         .then(response => response.json())
         .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }
   }
 
   render() {
-    const { history, location, match, path, Screen } = this.props
+    const { history, location, match, Screen, sessionId } = this.props
 
     return (
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ flex: 1, height: '100%' }}>
-          <Menu history={history} style={{ backgroundColor: '#080808', padding: 30 }} />
-          <Header history={history} location={location} path={path} />
-          <Screen history={history} location={location} match={match} />
-        </View>
+      <View style={{ backgroundColor: cstyle.bgColor, height: '100%' }}>
+        <Menu history={history} />
+        {!sessionId && location.pathname !== '/sign-in' &&
+          <IntroHeader history={history} />
+        }
+        <Header history={history} location={location} />
+        <Screen history={history} location={location} match={match} />
       </View>
     )
   }
@@ -87,7 +93,6 @@ ScreenWithMenu.propTypes = {
   isVerified: React.PropTypes.bool.isRequired,
   location: React.PropTypes.shape({}).isRequired,
   match: React.PropTypes.shape({}).isRequired,
-  path: React.PropTypes.string.isRequired,
   sessionId: React.PropTypes.string,
   Screen: React.PropTypes.func.isRequired, // eslint-disable-line
 }

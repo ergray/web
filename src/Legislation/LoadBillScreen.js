@@ -1,14 +1,16 @@
 import React from 'react'
 import {
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
+import { api_url } from '../Config'
+import { oldBill } from '../_util'
+import Text from '../Text'
 import BillScreen from './BillScreen'
 
 function LoadBillScreen({ bills, history, location, dispatch, match }) {
   const { date, bill_id } = match.params
-  const bill_uid = `${date}-${bill_id}`
+  const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
   let message = `Loading bill ${bill_uid}...`
   if (bills[date]) {
@@ -18,15 +20,20 @@ function LoadBillScreen({ bills, history, location, dispatch, match }) {
     } else {
       return <BillScreen bill={bill} history={history} location={location} />
     }
-  } else {
-    fetch(`https://api.liquid.vote/bills/${date}`)
+  } else if (date) {
+    fetch(`${api_url}/bills/${date}`)
     .then(response => response.json())
+    .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
+  } else {
+    fetch('http://localhost:2018/v2/legislation/?legislature=us')
+    .then(response => response.json())
+    .then(loadedBills => loadedBills.map(oldBill))
     .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
   }
 
   return (
     <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-      <Text style={{ color: '#fff' }}>{message}</Text>
+      <Text>{message}</Text>
     </View>
   )
 }
