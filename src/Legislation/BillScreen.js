@@ -4,7 +4,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import CommonStyle from '../CommonStyle'
 import Header from '../Header'
 import HoverableOpacity from '../HoverableOpacity'
@@ -56,7 +55,7 @@ class BillScreen extends Component {
       if (!showDistrictVotes) {
         voteCount = billVotes.total
       } else {
-        voteCount = billVotes[user.sf_district] || { nay: 0, yea: 0 }
+        voteCount = billVotes[user.us_district] || { nay: 0, yea: 0 }
       }
     }
 
@@ -198,20 +197,21 @@ class BillScreen extends Component {
         }}
         >
           <HoverableOpacity
+            activeOpacity={1}
             hoverStyle={{
-              backgroundColor: user.sf_district ? 'hsla(0,0%,0%,0.03)' : null,
-              cursor: user.sf_district ? 'pointer' : 'default',
+              backgroundColor: user.us_district ? 'hsla(0,0%,0%,0.03)' : null,
+              cursor: user.us_district ? 'pointer' : 'default',
             }}
             outerStyle={{ flex: 3, paddingLeft: 20 }}
             onPress={() => {
-              if (user.sf_district) {
+              if (user.us_district) {
                 dispatch({ type: 'TOGGLE_VOTE_COUNTS_MODE' })
               }
             }}
           >
             <View style={{ alignItems: 'center', cursor: 'default', flex: 1, flexDirection: 'row', justifyContent: 'space-between', padding: 13 }}>
               <Text style={{ fontSize: 12, fontWeight: '600', textTransform: 'uppercase' }}>
-                { showDistrictVotes ? `District ${user.sf_district}` : 'All Votes' }
+                { showDistrictVotes ? `District ${user.us_district}` : 'All Votes' }
               </Text>
               <Text style={yeaOutcome}>Yea: {voteCount.yea}</Text>
               <Text style={nayOutcome}>Nay: {voteCount.nay}</Text>
@@ -250,7 +250,7 @@ BillScreen.propTypes = {
   }).isRequired,
   showDistrictVotes: React.PropTypes.bool,
   user: React.PropTypes.shape({
-    sf_district: React.PropTypes.number,
+    us_district: React.PropTypes.number,
   }),
   votes: React.PropTypes.shape({}),
 }
