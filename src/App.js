@@ -12,6 +12,8 @@ const store = createStore(reducer, initialState, compose(autoRehydrate(), devToo
 // Store session info to device so it's not lost when closed
 persistStore(store, { storage: localForage,
   whitelist: ['billSort', 'isVerified', 'knownNumbers', 'sessionId', 'user'],
+}, () => {
+  store.dispatch({ client: false, type: 'LOADING' })
 })
 
 export default class App extends Component {
@@ -23,8 +25,6 @@ export default class App extends Component {
   componentDidMount() {
     // Ping server to wake it up
     fetch(API_URL_V1)
-
-    store.dispatch({ client: false, type: 'LOADING' })
   }
 
   render() {
