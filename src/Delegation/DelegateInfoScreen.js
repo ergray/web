@@ -125,21 +125,20 @@ class DelegateInfoScreen extends Component {
 
         { /* Name */ }
         { !nameMatchesPhone &&
-          <Text style={{ color: 'white', fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
+          <Text style={{ fontSize: 24, marginBottom: 5 }}>{activeDelegate.name}</Text>
         }
 
         { /* Show nickname if there is one */ }
         { (activeDelegate.nickname
           && activeDelegate.nickname !== activeDelegate.name) && (
 
-            <Text style={{ color: 'white', marginBottom: 15 }}>
+            <Text style={{ marginBottom: 15 }}>
               Nickname: {activeDelegate.nickname}
             </Text>
         )}
 
         { /* Phone number */ }
         <Text style={{
-          color: 'white',
           fontSize: nameMatchesPhone ? 24 : undefined,
         }}
         >{prettifyPhone(activeDelegate.phone)}</Text>
@@ -147,11 +146,11 @@ class DelegateInfoScreen extends Component {
         <View style={{ height: 40 }} />
 
         { /* Delegation status */ }
-        <Text style={{ color: 'white', marginVertical: 15 }}>Status: <Text style={{ fontWeight: '700' }}>{statusCodeResponse.text}</Text></Text>
+        <Text style={{ marginVertical: 15 }}>Status: <Text style={{ fontWeight: '700' }}>{statusCodeResponse.text}</Text></Text>
 
         { /* Delegation status description */ }
         { statusCodeResponse.description && (
-          <Text style={{ color: 'white' }}>{statusCodeResponse.description}</Text>
+          <Text>{statusCodeResponse.description}</Text>
         )}
 
         { /* Delegation status action button, if there is one */ }
