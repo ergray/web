@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
-import CommonStyle from './CommonStyle'
 import IntroHeader from './IntroHeader'
 import Menu from './Menu'
 import Header from './Header'
 const pick = require('lodash/fp/pick')
-
-const cstyle = CommonStyle()
 
 class ScreenWithMenu extends Component {
   constructor(props) {
@@ -71,7 +68,7 @@ class ScreenWithMenu extends Component {
     const { history, location, match, Screen, sessionId } = this.props
 
     return (
-      <View style={{ backgroundColor: cstyle.bgColor, height: '100%' }}>
+      <View>
         <Menu history={history} />
         {!sessionId && location.pathname !== '/sign-in' &&
           <IntroHeader history={history} />

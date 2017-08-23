@@ -3,7 +3,6 @@ const white = '#FFFFFF'
 const lightStyle = {
   aColor: '#1b2428',
   aHoverColor: '#1C75BC',
-  bgColor: '#f5f5f5',
   bodyColor: '#36444d',
   bodyColorLowlight: '#adafb3',
   btnOutlineBgColor: 'transparent',

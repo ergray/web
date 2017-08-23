@@ -3,11 +3,8 @@
 import React from 'react'
 import { View } from 'react-native'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import CommonStyle from './CommonStyle'
 import Header from './Header'
 import ScreenWithMenu from './ScreenWithMenu'
-
-const cstyle = CommonStyle()
 
 export const screens = {
   '/': require('./LegislationScreen').default,
@@ -61,7 +58,7 @@ export default () => (
             exact key={path} path={path} render={({ history, location, match }) => {
               if (Screen.disableMenu) {
                 return (
-                  <View style={{ backgroundColor: cstyle.bgColor, flex: 1, height: '100%', width: '100%' }}>
+                  <View style={{ flex: 1, height: '100%', width: '100%' }}>
                     <Header location={location} path={path} />
                     <Screen history={history} location={location} match={match} />
                   </View>
