@@ -16,9 +16,10 @@ export default function IntroHeader({ history }) {
         borderBottomColor: cstyle.panelBorderColor,
         borderBottomStyle: 'solid',
         borderBottomWidth: 1,
-        height: '200px',
         justifyContent: 'center',
+        minHeight: '200px',
         overflow: 'hidden',
+        paddingVertical: 30,
       }}
     >
       <div
@@ -70,7 +71,7 @@ export default function IntroHeader({ history }) {
         style={{
           bottom: 0,
           flex: 1,
-          height: '200px',
+          height: '100%',
           left: 0,
           opacity: 0.4,
           position: 'absolute',
