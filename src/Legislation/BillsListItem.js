@@ -91,8 +91,8 @@ class BillsListItem extends Component {
                 <Text style={metaStyle}>Last action {dateFormat(bill.last_action || bill.updated || bill.date, 'ddd, mmm dS, h:MM TT')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                <Text style={metaStyle}>Yea: 0</Text>
-                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: 0</Text>
+                <Text style={metaStyle}>Yea: {bill.votes.yea}</Text>
+                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text>
               </View>
             </View>
 
