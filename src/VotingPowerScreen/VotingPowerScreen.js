@@ -7,7 +7,7 @@ import graphic from './voting_power_graphic.png'
 
 function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
   return (
-    <View style={{ margin: '2rem' }}>
+    <View style={{ alignSelf: 'center', margin: '2rem', maxWidth: 650 }}>
 
       <Button
         backable
