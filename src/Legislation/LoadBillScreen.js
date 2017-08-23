@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+import { api_url, api_url2 } from '../Config'
 import { oldBill } from '../_util'
 import Text from '../Text'
 import BillScreen from './BillScreen'
@@ -25,7 +25,7 @@ function LoadBillScreen({ bills, history, location, dispatch, match }) {
     .then(response => response.json())
     .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
   } else {
-    fetch('http://localhost:2018/v2/legislation/?legislature=us')
+    fetch(`${api_url2}/legislation/?legislature=us`)
     .then(response => response.json())
     .then(loadedBills => loadedBills.map(oldBill))
     .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))

@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+import { api_url, api_url2 } from '../Config'
 import { oldBill } from '../_util'
 import Header from '../Header'
 import Text from '../Text'
@@ -25,7 +25,7 @@ class BillsList extends Component {
         .then(response => response.json())
         .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
       } else {
-        fetch('http://localhost:2018/v2/legislation/?legislature=us')
+        fetch(`${api_url2}/legislation/?legislature=us`)
         .then(response => response.json())
         .then(bills => bills.map(oldBill))
         .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
