@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   View,
 } from 'react-native'
@@ -7,34 +7,47 @@ import { oldBill } from '../_util'
 import Text from '../Text'
 import BillScreen from './BillScreen'
 
-function LoadBillScreen({ bills, history, location, dispatch, match }) {
-  const { date, bill_id } = match.params
-  const bill_uid = date ? `${date}-${bill_id}` : bill_id
+class LoadBillScreen extends Component {
+  componentDidMount() {
+    const { bills, dispatch, match } = this.props
+    const { date, bill_id } = match.params
+    const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-  let message = `Loading bill ${bill_uid}...`
-  if (bills[date]) {
-    const bill = bills[date].filter(b => b.uid === bill_uid)[0]
-    if (!bill) {
-      message = `Bill ${bill_uid} not found`
-    } else {
-      return <BillScreen bill={bill} history={history} location={location} />
+    if (date && bills) {
+      fetch(`${API_URL_V1}/bills/${date}`)
+      .then(response => response.json())
+      .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
+    } else if (!bills.us || !bills.us.filter(b => b.uid === bill_uid).length) {
+      fetch(`${API_URL_V2}/legislation/?legislature=us&bill_uid=${bill_uid}`)
+      .then(response => response.json())
+      .then(loadedBills => loadedBills.map(oldBill))
+      .then(loadedBills => dispatch({ bills: loadedBills, legislature: 'us', type: 'SYNC_BILLS' }))
     }
-  } else if (date) {
-    fetch(`${API_URL_V1}/bills/${date}`)
-    .then(response => response.json())
-    .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
-  } else {
-    fetch(`${API_URL_V2}/legislation/?legislature=us`)
-    .then(response => response.json())
-    .then(loadedBills => loadedBills.map(oldBill))
-    .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
   }
 
-  return (
-    <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-      <Text>{message}</Text>
-    </View>
-  )
+  render() {
+    const { bills, history, location, match } = this.props
+    const { date, bill_id } = match.params
+    const bill_uid = date ? `${date}-${bill_id}` : bill_id
+    const key = date || 'us'
+
+    let message = `Loading bill ${bill_uid}...`
+
+    if (bills[key]) {
+      const bill = bills[key].filter(b => b.uid === bill_uid)[0]
+      if (!bill) {
+        message = `Bill ${bill_uid} not found`
+      } else {
+        return <BillScreen bill={bill} history={history} location={location} />
+      }
+    }
+
+    return (
+      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+        <Text>{message}</Text>
+      </View>
+    )
+  }
 }
 
 LoadBillScreen.disableHeader = true

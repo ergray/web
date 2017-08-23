@@ -25,7 +25,7 @@ class BillScreen extends Component {
     fetch(`${API_URL_V1}/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
-      props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })
+      props.dispatch({ activeBill, legislature: 'us', type: 'UPDATE_BILL_VOTE_COUNTS', votes })
       this.setState({ billVotes: votes })
     })
   }

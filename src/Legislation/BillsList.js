@@ -14,35 +14,35 @@ import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
 class BillsList extends Component {
-  constructor(props) {
-    super(props)
-
-    const { date } = props.match.params
-    if (!props.bills[date]) {
+  componentDidMount() {
+    const { dispatch, isVerified, match, sessionId } = this.props
+    const { date } = match.params
+    if (!this.props.bills[date]) {
       if (date) {
         fetch(`${API_URL_V1}/bills/${date}`)
         .then(response => response.json())
-        .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
+        .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
       } else {
         fetch(`${API_URL_V2}/legislation/?legislature=us`)
         .then(response => response.json())
         .then(bills => bills.map(oldBill))
-        .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
+        .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
       }
     }
 
     // If the user is verified, get their votes
-    if (props.isVerified) {
-      fetch(`${API_URL_V1}/my-votes/${date}`, { headers: { Session_ID: props.sessionId } })
+    if (isVerified) {
+      fetch(`${API_URL_V1}/my-votes/${date}`, { headers: { Session_ID: sessionId } })
       .then(response => response.json())
-      .then(votes => props.dispatch({ date, type: 'SYNC_VOTES', votes }))
+      .then(votes => dispatch({ date, type: 'SYNC_VOTES', votes }))
     }
   }
 
   render() {
     const { bills, homescreen, history, location, match, votes } = this.props
     const { date } = match.params
-    let agenda = bills[date]
+    const key = date || 'us'
+    let agenda = bills[key]
 
     if (!agenda) {
       return (

@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 export const initialState = {
   bills: {},
   billSort: 'mostVotes',
@@ -77,10 +79,15 @@ export default function reducer(state, action) {
         },
       }
 
-    case 'SYNC_BILLS':
+    case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
+      let bills = action.bills || []
+      if (action.legislature === 'us') {
+        bills = _.orderBy((state.bills.us || []).concat(bills), ['updated'], ['desc'])
+      }
+
       return { ...state,
         bills: { ...state.bills,
-          [action.date]: action.bills,
+          [action.legislature || action.date]: bills,
         },
       }
 
@@ -134,10 +141,10 @@ export default function reducer(state, action) {
       }
 
     case 'UPDATE_BILL_VOTE_COUNTS': {
-      const date = action.activeBill.slice(0, 10)
+      const key = action.legislature || action.activeBill.slice(0, 10)
       return { ...state,
         bills: { ...state.bills,
-          [date]: (state.bills[date] || []).map((bill) => {
+          [key]: (state.bills[key] || []).map((bill) => {
             const newBill = { ...bill }
             // Modify just the bill we want
             if (bill.uid === action.activeBill) {
