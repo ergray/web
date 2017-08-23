@@ -3,7 +3,7 @@ import { Image, View } from 'react-native'
 import { connect } from 'react-redux'
 import Button from '../Button'
 import Text from '../Text'
-import graphic from './voting_power_graphic.png'
+import graphic from './voting_power_graphic_dark.png'
 
 function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
   return (
