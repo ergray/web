@@ -3,13 +3,12 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
-import Button from '../Button'
-import CommonStyle from '../CommonStyle'
-import Header from '../Header'
-import HoverableOpacity from '../HoverableOpacity'
-import Text from '../Text'
-import TextInput from '../TextInput'
+import Button from 'Button'
+import CommonStyle from 'CommonStyle'
+import Header from 'Header'
+import HoverableOpacity from 'HoverableOpacity'
+import Text from 'Text'
+import TextInput from 'TextInput'
 
 const cstyle = CommonStyle()
 
@@ -73,7 +72,7 @@ class ConfirmVoteScreen extends Component {
     )
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1 }}>
+      <View style={{ flex: 1 }}>
 
         <Header backable history={history} location={location} title={bill.title} />
 
@@ -93,13 +92,13 @@ class ConfirmVoteScreen extends Component {
           style={{
             alignSelf: 'stretch',
             backgroundColor: cstyle.panelColor,
-            borderRadius: 3,
             borderBottomColor: cstyle.panelBorderColor,
             borderBottomStyle: 'solid',
             borderBottomWidth: 1,
             borderLeftColor: cstyle.panelBorderHoverColor,
             borderLeftStyle: 'solid',
             borderLeftWidth: 1,
+            borderRadius: 3,
             borderTopColor: cstyle.panelBorderHoverColor,
             borderTopStyle: 'solid',
             borderTopWidth: 1,
