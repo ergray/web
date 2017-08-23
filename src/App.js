@@ -4,9 +4,8 @@ import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import localForage from 'localforage'
 import devTools from 'remote-redux-devtools'
-
-import Screens from './_screens'
-import reducer, { initialState } from './_reducer'
+import Screens from '_screens'
+import reducer, { initialState } from '_reducer'
 
 
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))

@@ -1,4 +1,5 @@
 /* eslint-disable sort-keys */
+const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
@@ -11,6 +12,10 @@ module.exports = {
     alias: {
       'react-native': 'react-native-web',
     },
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules'),
+    ],
   },
   module: {
     rules: [
