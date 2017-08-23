@@ -23,6 +23,8 @@ export default class App extends Component {
   componentDidMount() {
     // Ping server to wake it up
     fetch(API_URL_V1)
+
+    store.dispatch('LOADING', { client: false })
   }
 
   render() {

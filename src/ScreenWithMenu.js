@@ -65,12 +65,12 @@ class ScreenWithMenu extends Component {
   }
 
   render() {
-    const { history, location, match, Screen, sessionId } = this.props
+    const { history, loading, location, match, Screen, sessionId } = this.props
 
     return (
       <View>
         <Menu history={history} />
-        {!sessionId && location.pathname !== '/sign-in' &&
+        {!loading.client && !sessionId && location.pathname !== '/sign-in' &&
           <IntroHeader history={history} />
         }
         <Header history={history} location={location} />
@@ -87,6 +87,7 @@ ScreenWithMenu.propTypes = {
     push: React.PropTypes.func.isRequired,
   }).isRequired,
   isVerified: React.PropTypes.bool.isRequired,
+  loading: React.PropTypes.shape({}).isRequired,
   location: React.PropTypes.shape({}).isRequired,
   match: React.PropTypes.shape({}).isRequired,
   sessionId: React.PropTypes.string,
@@ -95,6 +96,7 @@ ScreenWithMenu.propTypes = {
 
 const mapStateToProps = pick([
   'isVerified',
+  'loading',
   'sessionId',
 ])
 
