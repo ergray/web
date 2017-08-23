@@ -68,7 +68,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
 
         { !isLoggedOut &&
           <MenuOptionWithNav
-            text="Log out"
+            text="Sign out"
             onPress={() => {
               dispatch({ type: 'LOGOUT' })
               history.replace('/')
