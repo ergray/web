@@ -3,22 +3,16 @@ import {
   Image,
   View,
 } from 'react-native'
-import BackIcon from 'react-icons/lib/md/chevron-left'
-import CommonStyle from './CommonStyle'
-import HoverableOpacity from './HoverableOpacity'
 import { screens } from './_screens'
 import NoHeader from './NoHeader'
 import Text from './Text'
 
-const cstyle = CommonStyle()
-
 function Header(props) {
-  const { backUrl, location, title } = props
+  const { location, title } = props
   const screen = screens[location.pathname]
   const disableHeader = !title && (!screen || screen.disableHeader)
   const titleIcon = screen && screen.titleIcon
   const screenTitle = (screen ? (title || screen.title) : title) || location.pathname
-  const backable = backUrl || props.backable || (location.state && location.state.backable)
 
   if (disableHeader) {
     return <NoHeader {...props} />
@@ -35,23 +29,7 @@ function Header(props) {
       justifyContent: 'space-between',
     }}
     >
-      <View style={{ width: 65 }}>
-        { backable && (
-          <HoverableOpacity
-            hoverStyle={{ backgroundColor: cstyle.panelHoverColor }}
-            outerStyle={{ alignItems: 'center', cursor: 'pointer', flex: 1, flexDirection: 'row', justifyContent: 'center' }}
-            onPress={() => {
-              if (backUrl) {
-                props.history.push(backUrl)
-              } else {
-                props.history.goBack()
-              }
-            }}
-          >
-            <BackIcon color={cstyle.bodyColor} size={30} />
-          </HoverableOpacity>
-        ) }
-      </View>
+      <View style={{ width: 65 }} />
       <View
         style={{
           alignItems: 'center',
@@ -59,7 +37,7 @@ function Header(props) {
           justifyContent: 'center',
           maxWidth: 'calc(100% - 130px)',
           paddingBottom: '1rem',
-          paddingLeft: backable ? '2.5rem' : 0,
+          paddingLeft: 0,
           paddingTop: '1rem',
         }}
       >
@@ -86,8 +64,6 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  backable: React.PropTypes.bool,
-  backUrl: React.PropTypes.string,
   history: React.PropTypes.shape({ // eslint-disable-line
     goBack: React.PropTypes.func.isRequired,
     push: React.PropTypes.func.isRequired,
