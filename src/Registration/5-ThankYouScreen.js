@@ -1,13 +1,13 @@
 import React from 'react'
 import {
   Image,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import logo from '../logo.png'
-import HoverableOpacity from '../HoverableOpacity'
-import ProgressBar from './ProgressBar'
+import logo from 'logo.png'
+import Button from 'Button'
+import ProgressBar from 'Registration/ProgressBar'
+import Text from 'Text'
 const pick = require('lodash/fp/pick')
 
 function ThankYouScreen({ history, user }) {
@@ -60,26 +60,13 @@ function ThankYouScreen({ history, user }) {
       }}
       >to reach out with any questions or comments.</Text>
 
-      <HoverableOpacity
-        activeOpacity={0.5}
-        hoverStyle={{ backgroundColor: 'rgba(52, 65, 132, 0.2)' }}
-        outerStyle={{
-          borderColor: 'rgb(52, 65, 132)',
-          borderRadius: 30,
-          borderWidth: 3,
-        }}
-        style={{
-          alignItems: 'center',
-          height: 58,
-          justifyContent: 'center',
-          width: 500,
-        }}
-        onPress={() => history.push('/sf')}
-      >
-        <Text style={{ fontSize: 16, fontWeight: '600', textTransform: 'uppercase' }}>
-          Go to Legislation &nbsp;→
-        </Text>
-      </HoverableOpacity>
+      <Button
+        primary
+        history={history}
+        style={{ alignSelf: 'center' }}
+        text="Go to Legislation →"
+        to="/legislation"
+      />
 
     </View>
   )
