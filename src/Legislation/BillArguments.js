@@ -3,7 +3,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import CommonStyle from '../CommonStyle'
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
@@ -60,7 +59,7 @@ class BillArguments extends Component {
 
           <HoverableOpacity
             activeOpacity={0.5}
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+            hoverStyle={{ backgroundColor: 'hsla(0,0%,0%,0.1)' }}
             outerStyle={{ alignSelf: 'flex-end', marginTop: 5 }}
             style={{ padding: 5 }}
             onPress={() => {

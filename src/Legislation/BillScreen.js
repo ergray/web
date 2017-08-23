@@ -199,7 +199,7 @@ class BillScreen extends Component {
         >
           <HoverableOpacity
             hoverStyle={{
-              backgroundColor: user.sf_district ? 'hsla(0,0%,100%,0.03)' : null,
+              backgroundColor: user.sf_district ? 'hsla(0,0%,0%,0.03)' : null,
               cursor: user.sf_district ? 'pointer' : 'default',
             }}
             outerStyle={{ flex: 3, paddingLeft: 20 }}
@@ -219,7 +219,7 @@ class BillScreen extends Component {
           </HoverableOpacity>
           <View style={{ flex: 1 }}>
             <HoverableOpacity
-              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+              hoverStyle={{ backgroundColor: 'hsla(0,0%,0%,0.1)' }}
               outerStyle={{ alignSelf: 'flex-end' }}
               onPress={() => history.push(`${location.pathname}/audit`, { backable: true })}
             >
