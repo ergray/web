@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import CommonStyle from './CommonStyle'
 import MenuLogo from './MenuLogo'
 import MenuOption from './MenuOption'
-import HoverableOpacity from './HoverableOpacity'
 
 const cstyle = CommonStyle()
 
@@ -45,16 +44,7 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
       }}
     >
 
-      <HoverableOpacity
-        outerStyle={{
-          alignItems: 'center',
-          cursor: 'pointer',
-          flexDirection: 'row',
-          height: '100%',
-          paddingRight: '1rem',
-        }}
-        onPress={() => history.push('/about')}
-      ><MenuLogo /></HoverableOpacity>
+      <MenuLogo history={history} />
 
       <MenuOptionWithNav text="Legislature" to="/legislation" />
       <MenuOptionWithNav notifications={numRequests} text="Your Delegates" to="/delegates" />
