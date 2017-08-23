@@ -1,7 +1,7 @@
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import { slide as Menu } from 'react-burger-menu'
+import Menu from 'react-burger-menu/lib/menus/slide'
 import CommonStyle from '../CommonStyle'
 import MenuOption from './MenuOption'
 
