@@ -11,7 +11,7 @@ const cstyle = CommonStyle()
 
 export const screens = {
   '/': require('./LegislationScreen').default,
-  '/about': require('./AboutScreen').default,
+  '/about': require('./AboutScreen/AboutScreen').default,
   '/auth-error': require('./AuthErrorScreen').default,
   '/confirm-new-number/:phoneNumber': require('./Login/1.5-ConfirmNewNumberScreen').default,
   '/delegates': require('./Delegation/DelegatesScreen').default,
