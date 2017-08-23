@@ -1,32 +1,14 @@
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
-import CommonStyle from './CommonStyle'
+import CommonStyle from '../CommonStyle'
 import MenuLogo from './MenuLogo'
 import MenuOption from './MenuOption'
 
 const cstyle = CommonStyle()
 
-function Menu({ constituents, dispatch, history, style = {}, user, votingPower = '..' }) {
-  const MenuOptionWithNav = props => <MenuOption history={history} {...props} /> // eslint-disable-line
-
-  let numRequests
-  if (constituents && constituents.requests) {
-    numRequests = constituents.requests.length
-  }
-
-  let first_name = user.first_name
-  if (!first_name) {
-    first_name = 'UNREGISTERED'
-  }
-
-  let message = `Hi, ${first_name} (${votingPower})`
-
-  const isLoggedOut = Object.keys(user).length === 0
-
-  if (isLoggedOut) {
-    message = 'JOIN'
-  }
+function MenuFull({ numRequests, dispatch, history, isLoggedOut, message, style = {} }) {
+  const MenuOptionWithNav = props => <MenuOption history={history} {...props} style={{ height: '100%' }} /> // eslint-disable-line
 
   return (
     <View
@@ -80,13 +62,13 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
   )
 }
 
-Menu.propTypes = {
-  constituents: React.PropTypes.shape({}),
+MenuFull.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
   history: React.PropTypes.shape({}).isRequired,
+  isLoggedOut: React.PropTypes.bool.isRequired,
+  message: React.PropTypes.string.isRequired,
+  numRequests: React.PropTypes.number,
   style: React.PropTypes.shape({}),
-  user: React.PropTypes.shape({}),
-  votingPower: React.PropTypes.number,
 }
 
 const mapStateToProps = state => ({
@@ -95,4 +77,4 @@ const mapStateToProps = state => ({
   votingPower: state.votingPower,
 })
 
-export default connect(mapStateToProps)(Menu)
+export default connect(mapStateToProps)(MenuFull)

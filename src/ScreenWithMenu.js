@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
 import IntroHeader from './IntroHeader'
-import Menu from './Menu'
+import Menu from './Menu/Menu'
 import Header from './Header'
 const pick = require('lodash/fp/pick')
 

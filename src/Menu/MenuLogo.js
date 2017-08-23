@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Image } from 'react-native'
-import logo from './logo.png'
+import logo from '../logo.png'
 
 class MenuLogo extends Component {
   constructor(props) {

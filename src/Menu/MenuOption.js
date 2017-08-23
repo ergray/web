@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import CommonStyle from './CommonStyle'
-import Link from './Link'
+import CommonStyle from '../CommonStyle'
+import Link from '../Link'
 
 const cstyle = CommonStyle()
 
@@ -11,7 +11,8 @@ class MenuOption extends Component {
   }
 
   render() {
-    const { history, onPress, text, style = {}, to } = this.props
+    const { history, onPress, style = {}, underlineWidth = 2, text, to } = this.props
+    let { activeColor } = this.props
     // todo add back notifications marker
 
     let active = history.location.pathname.substr(0, (to ? to.length : 0)) === to
@@ -21,9 +22,11 @@ class MenuOption extends Component {
     let borderColor = 'transparent'
     let color = cstyle.bodyColorLowlight
 
+    activeColor = activeColor || cstyle.menuHoverColor
+
     if (active) {
       borderColor = cstyle.btnPrimaryHoverBgColor
-      color = cstyle.menuHoverColor
+      color = activeColor
     }
 
     return (
@@ -32,28 +35,27 @@ class MenuOption extends Component {
         hoverStyle={{
           borderBottomColor: cstyle.btnPrimaryHoverBgColor,
           borderBottomStyle: 'solid',
-          borderBottomWidth: 2,
-          color: cstyle.menuHoverColor,
+          borderBottomWidth: underlineWidth,
+          color: activeColor,
         }}
         href={to}
         pressedStyle={{
           borderBottomColor: cstyle.btnPrimaryHoverBgColor,
           borderBottomStyle: 'solid',
-          borderBottomWidth: 2,
-          color: cstyle.menuHoverColor,
+          borderBottomWidth: underlineWidth,
+          color: activeColor,
           paddingTop: 1,
         }}
         style={{
           alignItems: 'center',
           borderBottomColor: borderColor,
           borderBottomStyle: 'solid',
-          borderBottomWidth: 2,
+          borderBottomWidth: underlineWidth,
           color,
           cursor: 'pointer',
           display: 'flex',
           fontSize: 13,
           fontWeight: '500',
-          height: '100%',
           marginLeft: '1rem',
           marginRight: '1rem',
           textTransform: 'uppercase',
@@ -67,11 +69,13 @@ class MenuOption extends Component {
 }
 
 MenuOption.propTypes = {
+  activeColor: React.PropTypes.string,
   history: React.PropTypes.shape({}).isRequired,
   onPress: React.PropTypes.func,
   style: React.PropTypes.shape({}),
   text: React.PropTypes.string.isRequired,
   to: React.PropTypes.string,
+  underlineWidth: React.PropTypes.number,
 }
 
 export default MenuOption
