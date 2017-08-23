@@ -4,12 +4,13 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import Text from '../Text'
+import Link from '../Link'
 import AddByPhoneNumber from './AddByPhoneNumber'
 const pick = require('lodash/fp/pick')
 
 function AddDelegateScreen({ history }) {
   return (
-    <View style={{ margin: 30 }}>
+    <View style={{ alignSelf: 'center', margin: 30, maxWidth: 650 }}>
       <Text style={{
         fontSize: 16,
         marginBottom: 20,
@@ -27,14 +28,17 @@ function AddDelegateScreen({ history }) {
         fontSize: 16,
         marginBottom: 20,
       }}
-      >Your choice of delegates is <a
+      >Your choice of delegates is&nbsp;
+      <Link
+        hoverStyle={{ textDecoration: 'underline' }}
         href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
         rel="noopener noreferrer"
         style={{
           cursor: 'pointer',
         }}
         target="_blank"
-      >kept private</a>.</Text>
+        text="kept private"
+      />.</Text>
 
       <Text style={{
         fontSize: 16,
