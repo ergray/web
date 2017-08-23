@@ -1,6 +1,8 @@
 {
   extends: 'airbnb',
   globals: {
+    API_URL_V1: true,
+    API_URL_V2: true,
     fetch: true, // ships with react-native
   },
   plugins: [

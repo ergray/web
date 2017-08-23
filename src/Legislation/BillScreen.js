@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import CommonStyle from '../CommonStyle'
 import Header from '../Header'
 import HoverableOpacity from '../HoverableOpacity'
@@ -23,7 +23,7 @@ class BillScreen extends Component {
 
     // Refresh vote count
     const activeBill = props.bill.uid
-    fetch(`${api_url}/bill/${activeBill}/votes`)
+    fetch(`${API_URL_V1}/bill/${activeBill}/votes`)
     .then(response => response.json())
     .then((votes) => {
       props.dispatch({ activeBill, type: 'UPDATE_BILL_VOTE_COUNTS', votes })

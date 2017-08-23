@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from '../Legislation/convert-dates'
-import { api_url } from '../Config'
+
 import PastAgendas from '../Legislation/PastAgendas'
 import BillsList from '../Legislation/BillsList'
 import Text from '../Text'
@@ -17,7 +17,7 @@ class NextAgendaContent extends Component {
     this.state = {}
 
     function getNextAgenda() {
-      fetch(`${api_url}/next-agenda`)
+      fetch(`${API_URL_V1}/next-agenda`)
       .then(response => response.json())
       .then((nextAgenda) => {
         props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })

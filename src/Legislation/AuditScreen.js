@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, Text, View } from 'react-native'
-import { api_url } from '../Config'
+
 
 class AuditScreen extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class AuditScreen extends Component {
     const { date, bill_id } = props.match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-    fetch(`${api_url}/bill/${bill_uid}/audit`)
+    fetch(`${API_URL_V1}/bill/${bill_uid}/audit`)
       .then(response => response.text())
       .then(audit => this.setState({ audit }))
 
@@ -32,7 +32,7 @@ class AuditScreen extends Component {
     const { date, bill_id } = this.props.match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-    fetch(`${api_url}/bill/${bill_uid}/audit/mine`, {
+    fetch(`${API_URL_V1}/bill/${bill_uid}/audit/mine`, {
       headers: { Session_ID: sessionId },
     })
     .then((response) => {

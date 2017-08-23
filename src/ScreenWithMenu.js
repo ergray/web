@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
-import { api_url } from './Config'
+
 import CommonStyle from './CommonStyle'
 import IntroHeader from './IntroHeader'
 import Menu from './Menu'
@@ -39,7 +39,7 @@ class ScreenWithMenu extends Component {
     if (!props.isVerified) {
       props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: 0 })
     } else {
-      fetch(`${api_url}/my-voting-power`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/my-voting-power`, { headers: { Session_ID: props.sessionId } })
       .then((response) => {
         if (response.status === 401) { return props.history.push('/auth-error') }
 
@@ -50,7 +50,7 @@ class ScreenWithMenu extends Component {
 
     // Get delegates from the server
     if (props.sessionId) {
-      fetch(`${api_url}/my-delegates`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/my-delegates`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((serverDelegates) => {
         if (!deepEqual(serverDelegates, this.state.delegates)) {
@@ -62,7 +62,7 @@ class ScreenWithMenu extends Component {
     // Get constituents from the server
     if (props.sessionId) {
       // Get delegation approvals, rejections, and requests from the server
-      fetch(`${api_url}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
         .then(response => response.json())
         .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }

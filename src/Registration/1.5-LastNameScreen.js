@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import Button from '../Button'
 import Text from '../Text'
 import TextInput from '../TextInput'
@@ -39,7 +39,7 @@ class LastNameScreen extends Component {
       })
 
       // Send the new value to the server
-      fetch(`${api_url}/my-registration-info`, {
+      fetch(`${API_URL_V1}/my-registration-info`, {
         body: JSON.stringify({
           last_name: this.state.lastName,
         }),

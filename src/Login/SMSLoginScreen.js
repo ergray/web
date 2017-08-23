@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import logo from '../logo.png'
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
@@ -37,7 +37,7 @@ class SMSLoginScreen extends Component {
     this.setState({ loading: true, status: 'Confirming...' })
 
 
-    fetch(`${api_url}/enter-session-code`, {
+    fetch(`${API_URL_V1}/enter-session-code`, {
       body: JSON.stringify({
         phone: this.props.match.params.phoneNumber,
         session_code,

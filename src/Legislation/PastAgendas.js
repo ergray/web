@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import ForwardIcon from 'react-icons/lib/md/chevron-right'
-import { api_url } from '../Config'
+
 import CommonStyle from '../CommonStyle'
 import Text from '../Text'
 import HoverableListItemPanel from '../HoverableListItemPanel'
@@ -18,7 +18,7 @@ class PastAgendas extends Component {
       dates: null,
     }
 
-    fetch(`${api_url}/dates`)
+    fetch(`${API_URL_V1}/dates`)
     .then(response => response.json())
     .then((dates) => {
       this.setState({ dates: dates.filter(hasDatePassed) })

@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
 
@@ -36,7 +36,7 @@ class DelegateInfoScreen extends Component {
 
     if (activeDelegate) {
       // Get delegate info from the server
-      fetch(`${api_url}/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(({ name, status, user_id }) => {
         this.props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
@@ -62,7 +62,7 @@ class DelegateInfoScreen extends Component {
       APPROVAL_NEEDED: {
         button: {
           onPress() {
-            fetch(`${api_url}/delegate/${activeDelegate.phone}/request`, {
+            fetch(`${API_URL_V1}/delegate/${activeDelegate.phone}/request`, {
               headers: {
                 Session_ID: sessionId,
               },
@@ -198,7 +198,7 @@ class DelegateInfoScreen extends Component {
             const updatedDelegates = [...this.props.delegates] // clone delegate list
             updatedDelegates.splice(rowIndex, 1) // remove one at the right index
 
-            fetch(`${api_url}/my-delegates`, {
+            fetch(`${API_URL_V1}/my-delegates`, {
               body: JSON.stringify({
                 delegates: updatedDelegates,
               }),

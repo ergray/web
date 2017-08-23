@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
-import { api_url } from '../Config'
+
 import Button from '../Button'
 import HoverableOpacity from '../HoverableOpacity'
 import HoverableListItemPanel from '../HoverableListItemPanel'
@@ -21,7 +21,7 @@ class DelegatesScreen extends Component {
     // Sync delegation updates to the server for persistence
     // Check if there were prevProps (to skip first load) and if the delegate list changed
     if (prevProps.delegates && !deepEqual(prevProps.delegates, this.props.delegates)) {
-      fetch(`${api_url}/my-delegates`, {
+      fetch(`${API_URL_V1}/my-delegates`, {
         body: JSON.stringify({
           delegates: this.props.delegates,
         }),

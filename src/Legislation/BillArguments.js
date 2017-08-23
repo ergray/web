@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import CommonStyle from '../CommonStyle'
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
@@ -20,7 +20,7 @@ class BillArguments extends Component {
       yea: [],
     }
 
-    fetch(`${api_url}/bill/${props.activeBill}/arguments`, { headers: { Session_ID: props.sessionId } })
+    fetch(`${API_URL_V1}/bill/${props.activeBill}/arguments`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(({ nay, yea }) => this.setState({
         loading: false,
@@ -64,7 +64,7 @@ class BillArguments extends Component {
             outerStyle={{ alignSelf: 'flex-end', marginTop: 5 }}
             style={{ padding: 5 }}
             onPress={() => {
-              fetch(`${api_url}/argument/${id}/recommendations`, {
+              fetch(`${API_URL_V1}/argument/${id}/recommendations`, {
                 headers: { Session_ID: this.props.sessionId },
                 method: 'PUT',
               })

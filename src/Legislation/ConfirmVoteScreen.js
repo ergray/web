@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import Button from '../Button'
 import CommonStyle from '../CommonStyle'
 import Header from '../Header'
@@ -37,7 +37,7 @@ class ConfirmVoteScreen extends Component {
   }
 
   getVotingPower(sessionId) {
-    fetch(`${api_url}/bill/${this.props.location.state.bill.uid}/voting-power`, { headers: { Session_ID: sessionId } })
+    fetch(`${API_URL_V1}/bill/${this.props.location.state.bill.uid}/voting-power`, { headers: { Session_ID: sessionId } })
       .then(response => response.json())
       .then(({ voting_power }) => this.setState({ voting_power }))
   }
@@ -160,7 +160,7 @@ class ConfirmVoteScreen extends Component {
               dispatch({ bill, position, type: 'VOTE_ON_BILL' })
 
               // Save the position to the server
-              fetch(`${api_url}/bill/${bill.uid}/vote`, {
+              fetch(`${API_URL_V1}/bill/${bill.uid}/vote`, {
                 body: JSON.stringify({
                   argument: this.state.argument,
                   position,

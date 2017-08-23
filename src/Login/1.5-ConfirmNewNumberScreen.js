@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {
   View,
 } from 'react-native'
-import { api_url } from '../Config'
+
 import Button from '../Button'
 import Text from '../Text'
 
@@ -54,7 +54,7 @@ function ConfirmNewNumberScreen({ dispatch, history, match }) {
           style={{ marginTop: '1rem' }}
           text="Confirm"
           onPress={() => {
-            fetch(`${api_url}/login`, {
+            fetch(`${API_URL_V1}/login`, {
               body: JSON.stringify({
                 phone: phoneNumber,
               }),

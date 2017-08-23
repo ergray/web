@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import Text from '../Text'
 
 class YourRegistrationScreen extends Component {
@@ -26,7 +26,7 @@ class YourRegistrationScreen extends Component {
   }
 
   getInfo(props) {
-    fetch(`${api_url}/my-registration-info`, { headers: { Session_ID: props.sessionId } })
+    fetch(`${API_URL_V1}/my-registration-info`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then((registrationInfo) => {
         props.dispatch({ sf_district: registrationInfo.sf_district, type: 'UPDATE_SF_DISTRICT' })

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import localForage from 'localforage'
 import devTools from 'remote-redux-devtools'
-import { api_url } from './Config'
+
 import Screens from './_screens'
 import reducer, { initialState } from './_reducer'
 
@@ -23,7 +23,7 @@ export default class App extends Component {
 
   componentDidMount() {
     // Ping server to wake it up
-    fetch(api_url)
+    fetch(API_URL_V1)
   }
 
   render() {

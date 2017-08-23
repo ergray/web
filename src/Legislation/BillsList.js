@@ -5,7 +5,6 @@ import {
 } from 'react-native'
 import _ from 'lodash'
 import { connect } from 'react-redux'
-import { api_url, api_url2 } from '../Config'
 import { oldBill } from '../_util'
 import Header from '../Header'
 import Text from '../Text'
@@ -21,11 +20,11 @@ class BillsList extends Component {
     const { date } = props.match.params
     if (!props.bills[date]) {
       if (date) {
-        fetch(`${api_url}/bills/${date}`)
+        fetch(`${API_URL_V1}/bills/${date}`)
         .then(response => response.json())
         .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
       } else {
-        fetch(`${api_url2}/legislation/?legislature=us`)
+        fetch(`${API_URL_V2}/legislation/?legislature=us`)
         .then(response => response.json())
         .then(bills => bills.map(oldBill))
         .then(bills => props.dispatch({ bills, date, type: 'SYNC_BILLS' }))
@@ -34,7 +33,7 @@ class BillsList extends Component {
 
     // If the user is verified, get their votes
     if (props.isVerified) {
-      fetch(`${api_url}/my-votes/${date}`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/my-votes/${date}`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(votes => props.dispatch({ date, type: 'SYNC_VOTES', votes }))
     }

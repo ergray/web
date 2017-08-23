@@ -4,7 +4,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
 
@@ -15,14 +15,14 @@ class RequestsScreen extends Component {
 
     // If they're verified, update delegation approvals, rejections, and requests
     if (props.isVerified) {
-      fetch(`${api_url}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
+      fetch(`${API_URL_V1}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
       .then(response => response.json())
       .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }
   }
 
   updatePermissions(from, to, user) {
-    fetch(`${api_url}/my-delegation-permissions`, {
+    fetch(`${API_URL_V1}/my-delegation-permissions`, {
       body: JSON.stringify({
         from,
         to,

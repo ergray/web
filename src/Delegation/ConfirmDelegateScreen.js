@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from '../Config'
+
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
 const pick = require('lodash/fp/pick')
@@ -67,7 +67,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
         }}
         onPress={() => {
           dispatch({ delegates: [...delegates, newDelegate], type: 'SYNC_DELEGATES' })
-          fetch(`${api_url}/my-delegates`, {
+          fetch(`${API_URL_V1}/my-delegates`, {
             body: JSON.stringify({
               delegates: [...delegates, newDelegate],
             }),

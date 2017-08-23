@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Dimensions, View } from 'react-native'
 import { connect } from 'react-redux'
-import { api_url } from './Config'
+
 import Button from './Button'
 import Text from './Text'
 import TextInput from './TextInput'
@@ -57,7 +57,7 @@ class FeedbackScreen extends Component {
           }}
           text="Send"
           onPress={() => {
-            fetch(`${api_url}/feedback`, {
+            fetch(`${API_URL_V1}/feedback`, {
               body: JSON.stringify({
                 dimensions: Dimensions.get('window'),
                 sessionId,

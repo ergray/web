@@ -3,7 +3,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Image, View } from 'react-native'
-import { api_url } from './Config'
+
 import Text from './Text'
 import TextInput from './TextInput'
 import usaFlag from './Login/LandingPage/usa-flag.png'
@@ -135,7 +135,7 @@ class Login extends Component {
               // Special code to demo login
               if (phoneNumber === '0000001776') {
                 this.setState({ phone: newText })
-                return fetch(`${api_url}/login/demo`, {
+                return fetch(`${API_URL_V1}/login/demo`, {
                   headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
                   method: 'POST',
                 })
@@ -152,7 +152,7 @@ class Login extends Component {
                 return history.push(`confirm-new-number/${phoneNumber}`)
               }
 
-              fetch(`${api_url}/login`, {
+              fetch(`${API_URL_V1}/login`, {
                 body: JSON.stringify({
                   phone: phoneNumber,
                 }),
