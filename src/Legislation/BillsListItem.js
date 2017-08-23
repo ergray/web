@@ -83,8 +83,8 @@ class BillsListItem extends Component {
           </View>
           <View style={{ flex: 1, paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}>
             <Text>{bill.title}</Text>
-            <View style={{ flexDirection: 'row', marginTop: '.5rem' }}>
-              <View style={{ flexDirection: 'row', flexGrow: 1, justifyContent: 'flex-start' }}>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: '.5rem' }}>
+              <View style={{ flexDirection: 'row', flexGrow: 1, flexWrap: 'wrap', justifyContent: 'flex-start', maxWidth: '100%' }}>
                 <Text style={metaStyle}>{(bill.chamber || '').toUpperCase()}</Text>
                 <Text style={metaStyle}>#{bill.itemNumber}</Text>
                 <Text style={metaStyle}>Introduced {dateFormat(bill.date, 'yyyy-mm-dd')}</Text>
