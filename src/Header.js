@@ -3,14 +3,9 @@ import {
   Image,
   View,
 } from 'react-native'
-import BackIcon from 'react-icons/lib/md/chevron-left'
-import CommonStyle from './CommonStyle'
-import HoverableOpacity from './HoverableOpacity'
 import { screens } from './_screens'
 import NoHeader from './NoHeader'
 import Text from './Text'
-
-const cstyle = CommonStyle()
 
 function Header(props) {
   const { backUrl, location, title } = props
@@ -35,23 +30,7 @@ function Header(props) {
       justifyContent: 'space-between',
     }}
     >
-      <View style={{ width: 65 }}>
-        { backable && (
-          <HoverableOpacity
-            hoverStyle={{ backgroundColor: cstyle.panelHoverColor }}
-            outerStyle={{ alignItems: 'center', cursor: 'pointer', flex: 1, flexDirection: 'row', justifyContent: 'center' }}
-            onPress={() => {
-              if (backUrl) {
-                props.history.push(backUrl)
-              } else {
-                props.history.goBack()
-              }
-            }}
-          >
-            <BackIcon color={cstyle.bodyColor} size={30} />
-          </HoverableOpacity>
-        ) }
-      </View>
+      <View style={{ width: 65 }} />
       <View
         style={{
           alignItems: 'center',
