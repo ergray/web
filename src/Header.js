@@ -27,6 +27,7 @@ function Header(props) {
     <View style={{
       flexDirection: 'row',
       justifyContent: 'space-between',
+      marginTop: 15,
     }}
     >
       <View style={{ width: 65 }} />
