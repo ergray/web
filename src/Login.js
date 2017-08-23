@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { Image, View } from 'react-native'
 import Text from './Text'
 import TextInput from './TextInput'
+import Link from './Link'
 import usaFlag from './Login/LandingPage/usa-flag.png'
 const pick = require('lodash/fp/pick')
 const isAndroid = /Android/i.test(navigator && navigator.userAgent)
@@ -60,8 +61,9 @@ class Login extends Component {
 
     return (
       <View style={{
+        alignSelf: 'center',
         paddingVertical: 40,
-        width: large ? 450 : undefined,
+        width: 450,
       }}
       >
         <TextInput
@@ -198,14 +200,16 @@ class Login extends Component {
           }}
         >
          * Read about our&nbsp;
-               <a
+               <Link
+                 hoverStyle={{ textDecoration: 'underline' }}
                  href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
                  rel="noopener noreferrer"
                  style={{
                    cursor: 'pointer',
                  }}
                  target="_blank"
-               >strong privacy</a>
+                 text="strong privacy"
+               />
         </Text>
       </View>
     )
