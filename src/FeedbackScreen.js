@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Dimensions, View } from 'react-native'
 import { connect } from 'react-redux'
-
 import Button from './Button'
 import Text from './Text'
 import TextInput from './TextInput'

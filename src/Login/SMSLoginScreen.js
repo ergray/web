@@ -4,7 +4,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import logo from '../logo.png'
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'

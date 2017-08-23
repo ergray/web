@@ -1,11 +1,10 @@
 import React from 'react'
 import { Image, View, Text } from 'react-native'
 import MediaQuery from 'react-responsive'
-import { Parallax, Background } from 'react-parallax'
+import { Parallax } from 'react-parallax'
 import HoverableLink from '../../HoverableLink'
 import SubscribeCTA from './SubscribeCTA'
 import constituencyGraphic from './constituency-graphic.png'
-import AmericaCover from './america_cover.jpg'
 
 function ExtendedLandingPage() {
   return (

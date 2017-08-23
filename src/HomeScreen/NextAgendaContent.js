@@ -4,7 +4,6 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import { convertDateToLongFormat } from '../Legislation/convert-dates'
-
 import PastAgendas from '../Legislation/PastAgendas'
 import BillsList from '../Legislation/BillsList'
 import Text from '../Text'

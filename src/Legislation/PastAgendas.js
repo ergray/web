@@ -3,7 +3,6 @@ import {
   View,
 } from 'react-native'
 import ForwardIcon from 'react-icons/lib/md/chevron-right'
-
 import CommonStyle from '../CommonStyle'
 import Text from '../Text'
 import HoverableListItemPanel from '../HoverableListItemPanel'

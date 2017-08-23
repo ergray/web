@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {
   View,
 } from 'react-native'
-
 import Button from '../Button'
 import Text from '../Text'
 

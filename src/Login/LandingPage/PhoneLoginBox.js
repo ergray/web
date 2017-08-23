@@ -6,7 +6,6 @@ import {
   Image,
   View,
 } from 'react-native'
-
 import Text from '../../Text'
 import TextInput from '../../TextInput'
 import usaFlag from './usa-flag.png'

@@ -4,7 +4,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import Text from '../Text'
 
 class YourRegistrationScreen extends Component {

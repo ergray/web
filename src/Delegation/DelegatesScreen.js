@@ -5,9 +5,7 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
-
 import Button from '../Button'
-import HoverableOpacity from '../HoverableOpacity'
 import HoverableListItemPanel from '../HoverableListItemPanel'
 import Text from '../Text'
 

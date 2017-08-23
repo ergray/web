@@ -4,7 +4,6 @@ import {
   Switch,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import PastAgendas from '../Legislation/PastAgendas'
 import Text from '../Text'
 import CountdownTimer from './react-countdown-timer'

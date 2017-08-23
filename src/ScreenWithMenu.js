@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
 import { View } from 'react-native'
-
 import CommonStyle from './CommonStyle'
 import IntroHeader from './IntroHeader'
 import Menu from './Menu'
