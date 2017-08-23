@@ -22,7 +22,7 @@ function _404Screen({ history }) {
         history={history}
         style={{ marginTop: '.5rem' }}
         text="&#9664;&nbsp; HOME"
-        to="/sf"
+        to="/"
       />
     </View>
   )
