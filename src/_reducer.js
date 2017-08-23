@@ -4,6 +4,9 @@ export const initialState = {
   constituents: { approved: [], rejected: [], requests: [] },
   isVerified: false,
   knownNumbers: {},
+  loading: {
+    client: true,
+  },
   sessionId: '',
   user: {},
   votes: {},
@@ -23,6 +26,9 @@ export default function reducer(state, action) {
       return { ...state,
         registrationPhotoPath: action.path,
       }
+
+    case 'LOADING':
+      return { ...state, loading: { ...state.loading, ...action } }
 
     case 'LOGIN_USER':
       return { ...state,
