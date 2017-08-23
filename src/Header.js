@@ -8,12 +8,11 @@ import NoHeader from './NoHeader'
 import Text from './Text'
 
 function Header(props) {
-  const { backUrl, location, title } = props
+  const { location, title } = props
   const screen = screens[location.pathname]
   const disableHeader = !title && (!screen || screen.disableHeader)
   const titleIcon = screen && screen.titleIcon
   const screenTitle = (screen ? (title || screen.title) : title) || location.pathname
-  const backable = backUrl || props.backable || (location.state && location.state.backable)
 
   if (disableHeader) {
     return <NoHeader {...props} />
@@ -38,7 +37,7 @@ function Header(props) {
           justifyContent: 'center',
           maxWidth: 'calc(100% - 130px)',
           paddingBottom: '1rem',
-          paddingLeft: backable ? '2.5rem' : 0,
+          paddingLeft: 0,
           paddingTop: '1rem',
         }}
       >
@@ -65,8 +64,6 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  backable: React.PropTypes.bool,
-  backUrl: React.PropTypes.string,
   history: React.PropTypes.shape({ // eslint-disable-line
     goBack: React.PropTypes.func.isRequired,
     push: React.PropTypes.func.isRequired,

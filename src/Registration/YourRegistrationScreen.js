@@ -123,7 +123,7 @@ class YourRegistrationScreen extends Component {
   }
 }
 
-YourRegistrationScreen.title = 'REGISTRATION'
+YourRegistrationScreen.title = 'Registration'
 
 YourRegistrationScreen.propTypes = {
   dispatch: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
