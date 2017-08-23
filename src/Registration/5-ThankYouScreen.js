@@ -46,20 +46,6 @@ function ThankYouScreen({ history, user }) {
       but you're welcome to try it out.
       </Text>
 
-      <Text style={{
-        fontSize: 18,
-        fontWeight: '200',
-        marginTop: 40,
-      }}
-      >Please use the <Text style={{ fontWeight: '700' }}>SEND FEEDBACK</Text> button in the left menu</Text>
-      <Text style={{
-        fontSize: 18,
-        fontWeight: '200',
-        marginBottom: 70,
-        marginTop: 5,
-      }}
-      >to reach out with any questions or comments.</Text>
-
       <Button
         primary
         history={history}
