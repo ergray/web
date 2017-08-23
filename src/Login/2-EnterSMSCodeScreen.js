@@ -4,7 +4,6 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import Button from '../Button'
 import logo from '../logo.png'
 import Text from '../Text'
@@ -53,7 +52,7 @@ class EnterSMSCodeScreen extends Component {
             user: json.user,
           })
           if (json.user.complete) {
-            this.props.history.replace('/sf')
+            this.props.history.replace('/legislation')
           } else {
             this.props.history.replace('/registration')
           }

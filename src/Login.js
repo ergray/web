@@ -3,7 +3,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Image, View } from 'react-native'
-
 import Text from './Text'
 import TextInput from './TextInput'
 import usaFlag from './Login/LandingPage/usa-flag.png'
