@@ -38,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      API_URL_V1: `"${process.env.API_URL_V1 || 'http://localhost:2017'}"`,
+      API_URL_V1: `"${process.env.API_URL_V1 || 'http://localhost:1776'}"`,
       API_URL_V2: `"${process.env.API_URL_V2 || 'http://localhost:2018/v2'}"`,
     }),
     new webpack.ProvidePlugin({
