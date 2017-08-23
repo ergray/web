@@ -49,7 +49,7 @@ function ThankYouScreen({ history, user }) {
       <Button
         primary
         history={history}
-        style={{ alignSelf: 'center' }}
+        style={{ alignSelf: 'center', marginTop: '1rem' }}
         text="Go to Legislation →"
         to="/legislation"
       />
