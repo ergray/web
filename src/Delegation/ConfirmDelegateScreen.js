@@ -3,10 +3,10 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-
 import HoverableOpacity from '../HoverableOpacity'
 import Text from '../Text'
 const pick = require('lodash/fp/pick')
+
 
 function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId }) {
   const { phoneNumber } = match.params
@@ -19,7 +19,6 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
   return (
     <View style={{ margin: 30 }}>
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
@@ -28,7 +27,6 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
       look into individual legislation.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
@@ -36,14 +34,12 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
       then 3rd, and so on. Each acts as another backup to represent you.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         marginBottom: 20,
       }}
       >Your choice of delegates is kept private.</Text>
 
       <Text style={{
-        color: '#fff',
         fontSize: 16,
         fontWeight: '700',
         marginBottom: 20,
@@ -83,7 +79,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
           })
         }}
       >
-        <Text style={{ color: '#fff', fontSize: 13 }}>
+        <Text style={{ fontSize: 13 }}>
           YES, CONTINUE
         </Text>
       </HoverableOpacity>
@@ -103,7 +99,7 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
         }}
         onPress={() => history.goBack()}
       >
-        <Text style={{ color: '#fff', fontSize: 13 }}>
+        <Text style={{ fontSize: 13 }}>
           NO, NEVERMIND
         </Text>
       </HoverableOpacity>
