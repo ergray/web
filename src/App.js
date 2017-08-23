@@ -24,7 +24,7 @@ export default class App extends Component {
     // Ping server to wake it up
     fetch(API_URL_V1)
 
-    store.dispatch('LOADING', { client: false })
+    store.dispatch({ client: false, type: 'LOADING' })
   }
 
   render() {
