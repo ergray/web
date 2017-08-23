@@ -71,9 +71,6 @@ class BillsList extends Component {
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           ))}
 
-          { /* Bottom border for final item */ }
-          <View style={{ backgroundColor: 'grey', height: 1 }} />
-
           { !!homescreen &&
             <PastAgendas history={history} />
           }
