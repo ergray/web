@@ -73,7 +73,7 @@ class ConfirmVoteScreen extends Component {
     )
 
     return (
-      <View style={{ flex: 1 }}>
+      <View>
 
         <Header backable history={history} location={location} title={bill.title} />
 
@@ -104,7 +104,6 @@ class ConfirmVoteScreen extends Component {
             borderTopStyle: 'solid',
             borderTopWidth: 1,
             fontSize: 16,
-            height: 665,
             marginHorizontal: 20,
             paddingHorizontal: 10,
             paddingVertical: 5,
