@@ -197,8 +197,8 @@ ConfirmVoteScreen.propTypes = {
   }).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
-      bill_id: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
+      bill_id: PropTypes.string,
+      date: PropTypes.string,
       position: PropTypes.string.isRequired,
     }),
   }),
