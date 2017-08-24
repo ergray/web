@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {
-  ScrollView,
   View,
 } from 'react-native'
 import _ from 'lodash'
@@ -66,7 +65,7 @@ class BillsList extends Component {
     return (
       <View>
         <Header history={history} location={location} title={title} />
-        <ScrollView style={{ padding: '2rem' }}>
+        <View style={{ padding: '2rem' }}>
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           ))}
@@ -74,7 +73,7 @@ class BillsList extends Component {
           { !!homescreen &&
             <PastAgendas history={history} />
           }
-        </ScrollView>
+        </View>
       </View>
     )
   }

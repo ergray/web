@@ -81,7 +81,7 @@ class BillsListItem extends Component {
             }}
             >{ positionIcon[position] }</Text>
           </View>
-          <View style={{ flex: 1, paddingHorizontal: '1rem', paddingVertical: '0.5rem' }}>
+          <View style={{ paddingHorizontal: '1rem', paddingVertical: '0.5rem' }}>
             <Text>{bill.title}</Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: '.5rem' }}>
               <View style={{ flexDirection: 'row', flexGrow: 1, flexWrap: 'wrap', justifyContent: 'flex-start', maxWidth: '100%' }}>
