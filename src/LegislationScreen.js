@@ -13,6 +13,8 @@ function LegislationScreen(props) {
   )
 }
 
+LegislationScreen.title = 'Legislation'
+
 LegislationScreen.propTypes = {
   history: PropTypes.shape({}),
   user: PropTypes.shape({}),

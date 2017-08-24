@@ -1,57 +1,85 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Image,
+  Platform,
   View,
 } from 'react-native'
 import { screens } from './_screens'
 import NoHeader from './NoHeader'
 import Text from './Text'
 
-function Header(props) {
-  const { location, title } = props
-  const screen = screens[location.pathname]
-  const disableHeader = !title && (!screen || screen.disableHeader)
-  const titleIcon = screen && screen.titleIcon
-  const screenTitle = (screen ? (title || screen.title) : title) || location.pathname
-
-  if (disableHeader) {
-    return <NoHeader {...props} />
+class Header extends Component {
+  componentDidMount() {
+    this.setDocumentTitle()
   }
 
-  const CustomHeader = screen && screen.header
-  if (CustomHeader) {
-    return <CustomHeader {...props} {...screen.headerProps} />
+  componentDidUpdate() {
+    this.setDocumentTitle()
   }
 
-  return (
-    <View
-      style={{
-        alignSelf: 'center',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        marginTop: 15,
-        padding: '1rem',
-      }}
-    >
-      {titleIcon &&
-        <Image
-          source={titleIcon}
-          style={{
-            height: 20,
-            marginRight: 7,
-            width: 20,
-          }}
-        />
+  setDocumentTitle() {
+    if (Platform.OS === 'web') {
+      const title = this.title()
+      if (title) {
+        window.document.title = `Liquid: ${title}` // eslint-disable-line
+      } else {
+        window.document.title = 'Liquid' // eslint-disable-line
       }
-      <Text
+    }
+  }
+
+  title() {
+    const { location, title } = this.props
+    const screen = screens[location.pathname]
+    return screen ? (title || screen.title) : title
+  }
+
+  render() {
+    const { location, title } = this.props
+    const screen = screens[location.pathname]
+    const disableHeader = !title && (!screen || screen.disableHeader)
+    const titleIcon = screen && screen.titleIcon
+    const screenTitle = this.title()
+
+    if (disableHeader) {
+      return <NoHeader {...this.props} />
+    }
+
+    const CustomHeader = screen && screen.header
+    if (CustomHeader) {
+      return <CustomHeader {...this.props} {...screen.headerProps} />
+    }
+
+    return (
+      <View
         style={{
-          fontSize: 19,
-          fontWeight: '500',
+          alignSelf: 'center',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginTop: 15,
+          padding: '1rem',
         }}
-      >{screenTitle}</Text>
-    </View>
-  )
+      >
+        {titleIcon &&
+          <Image
+            source={titleIcon}
+            style={{
+              height: 20,
+              marginRight: 7,
+              width: 20,
+            }}
+          />
+        }
+        <Text
+          style={{
+            fontSize: 19,
+            fontWeight: '500',
+          }}
+        >{screenTitle}</Text>
+      </View>
+    )
+  }
 }
 
 Header.propTypes = {

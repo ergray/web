@@ -106,7 +106,7 @@ class BillScreen extends Component {
       <View style={{ flex: 1 }}>
 
         { /* Header */ }
-        <Header left backUrl="/legislation" history={history} location={location} title={bill.title} />
+        <Header backUrl="/legislation" history={history} location={location} title={bill.title} />
 
         { /* Vote buttons */ }
         <View
@@ -232,6 +232,8 @@ class BillScreen extends Component {
     )
   }
 }
+
+BillScreen.title = 'Legislation'
 
 BillScreen.disableHeader = true
 
