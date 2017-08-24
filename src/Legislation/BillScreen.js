@@ -79,7 +79,7 @@ class BillScreen extends Component {
     function tapPosition(tappedPosition) {
       // Don't let them vote if they're not logged in
       if (Object.keys(user).length === 0) {
-        window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
+        window.alert('You are not logged in. Press JOIN above to sign in.') // eslint-disable-line
         return
       }
 
