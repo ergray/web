@@ -24,42 +24,31 @@ function Header(props) {
   }
 
   return (
-    <View style={{
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginTop: 15,
-    }}
+    <View
+      style={{
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: 15,
+        padding: '1rem',
+      }}
     >
-      <View style={{ width: 65 }} />
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          maxWidth: 'calc(100% - 130px)',
-          paddingBottom: '1rem',
-          paddingLeft: 0,
-          paddingTop: '1rem',
-        }}
-      >
-        {titleIcon &&
-          <Image
-            source={titleIcon}
-            style={{
-              height: 20,
-              marginRight: 7,
-              width: 20,
-            }}
-          />
-        }
-        <Text
+      {titleIcon &&
+        <Image
+          source={titleIcon}
           style={{
-            fontSize: 19,
-            fontWeight: '500',
+            height: 20,
+            marginRight: 7,
+            width: 20,
           }}
-        >{screenTitle}</Text>
-      </View>
-      <View style={{ width: 65 }} />
+        />
+      }
+      <Text
+        style={{
+          fontSize: 19,
+          fontWeight: '500',
+        }}
+      >{screenTitle}</Text>
     </View>
   )
 }
