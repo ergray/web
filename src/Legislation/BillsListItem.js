@@ -81,7 +81,7 @@ class BillsListItem extends Component {
             }}
             >{ positionIcon[position] }</Text>
           </View>
-          <View style={{ flex: 1, paddingLeft: '1rem', paddingRight: '1rem', paddingTop: '.5rem' }}>
+          <View style={{ flex: 1, paddingHorizontal: '1rem', paddingVertical: '0.5rem' }}>
             <Text>{bill.title}</Text>
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginTop: '.5rem' }}>
               <View style={{ flexDirection: 'row', flexGrow: 1, flexWrap: 'wrap', justifyContent: 'flex-start', maxWidth: '100%' }}>
@@ -97,19 +97,21 @@ class BillsListItem extends Component {
             </View>
 
           </View>
+
           {/* Vote count indicator */}
-          <View style={{
-            alignItems: 'center',
-            flex: 1,
-            flexDirection: 'row',
-            marginLeft: -2,
-            marginTop: '.5rem',
-            opacity: 0.4,
-          }}
-          >
-            <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
-            <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />
-          </View>
+          { Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && (
+            <View style={{
+              alignItems: 'center',
+              flex: 1,
+              flexDirection: 'row',
+              marginLeft: -2,
+              opacity: 0.4,
+            }}
+            >
+              <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
+              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />
+            </View>
+          ) }
         </View>
       </HoverableListItemPanel>
     )
