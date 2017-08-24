@@ -3,6 +3,7 @@ import { View } from 'react-native'
 import { connect } from 'react-redux'
 import Menu from 'react-burger-menu/lib/menus/slide'
 import CommonStyle from '../CommonStyle'
+import Logo from '../Logo'
 import MenuOption from './MenuOption'
 
 const cstyle = CommonStyle()
@@ -21,6 +22,14 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
         ...style,
       }}
     >
+      <Logo style={{
+        alignSelf: 'flex-end',
+        height: 21,
+        paddingRight: 35,
+        position: 'absolute',
+        top: 20,
+      }}
+      />
       <Menu styles={{
         bmBurgerBars: {
           background: '#373a47',
