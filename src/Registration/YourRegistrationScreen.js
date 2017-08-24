@@ -78,12 +78,12 @@ class YourRegistrationScreen extends Component {
     }[verification_status]
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20, width: 400 }}>
+      <View style={{ alignSelf: 'center', marginHorizontal: 20, width: 400 }}>
 
         { !this.state.registrationInfo.first_name
           ? <Text style={{ ...normal, marginTop: 10 }}>Loading...</Text> :
 
-          <ScrollView style={{ flex: 1, paddingTop: 10 }}>
+          <View style={{ paddingTop: 10 }}>
             <View style={{ borderColor: verificationBorderColor, borderRadius: 3, borderWidth: 1, padding: 10 }}>
               <Text style={{ ...header, marginTop: 0 }}>VERIFICATION STATUS</Text>
               <Text style={{ ...normal, textAlign: 'center' }}>{{
@@ -115,7 +115,7 @@ class YourRegistrationScreen extends Component {
               undefined: '✗ You have not submitted a photo ID.',
               verified: '✓ Your photo ID has been verified.',
             }[photo_id_status]}</Text>
-          </ScrollView>
+          </View>
 
         }
 
