@@ -46,7 +46,7 @@ class AuditScreen extends Component {
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, padding: 20 }}>
+      <View style={{ padding: 20 }}>
 
         { this.state.mine && (
           <View style={{
@@ -72,7 +72,7 @@ class AuditScreen extends Component {
           {this.state.audit}
         </Text>
 
-      </ScrollView>
+      </View>
     )
   }
 }
