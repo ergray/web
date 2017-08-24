@@ -145,7 +145,7 @@ class ConfirmVoteScreen extends Component {
             onPress={() => {
               // Don't let them vote if they're not logged in
               if (!sessionId) {
-                window.alert('You are not logged in. Press JOIN in the left menu to sign in.') // eslint-disable-line
+                window.alert('You are not signed in. Please sign in or join first.') // eslint-disable-line
                 return
               }
 
