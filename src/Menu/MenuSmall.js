@@ -42,10 +42,15 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
         },
         bmCross: {
           background: '#bdc3c7',
+          height: 30,
+          right: 15,
+          top: 5,
         },
         bmCrossButton: {
-          height: 30,
-          width: 30,
+          height: 50,
+          right: 0,
+          top: 0,
+          width: 50,
         },
         bmItemList: {
           color: '#b8b7ad',
