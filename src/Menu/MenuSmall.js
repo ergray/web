@@ -23,10 +23,9 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
       }}
     >
       <Logo style={{
-        alignSelf: 'flex-end',
         height: 21,
-        paddingRight: 35,
         position: 'absolute',
+        right: 35,
         top: 20,
       }}
       />
