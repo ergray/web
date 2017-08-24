@@ -50,11 +50,11 @@ class EmailScreen extends Component {
         },
         method: 'PUT',
       })
-      .then((response) => {
-        if (response.status === 200) {
-          this.props.history.push('/registration/thank-you')
-        }
-      })
+        .then((response) => {
+          if (response.status === 200) {
+            this.props.history.push('/registration/thank-you')
+          }
+        })
     }
 
     return (

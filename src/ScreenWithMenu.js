@@ -36,23 +36,23 @@ class ScreenWithMenu extends Component {
       props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: 0 })
     } else {
       fetch(`${API_URL_V1}/my-voting-power`, { headers: { Session_ID: props.sessionId } })
-      .then((response) => {
-        if (response.status === 401) { return props.history.push('/auth-error') }
+        .then((response) => {
+          if (response.status === 401) { return props.history.push('/auth-error') }
 
-        return response.json()
-        .then(({ voting_power }) => props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: voting_power }))
-      })
+          return response.json()
+            .then(({ voting_power }) => props.dispatch({ type: 'SYNC_VOTING_POWER', votingPower: voting_power }))
+        })
     }
 
     // Get delegates from the server
     if (props.sessionId) {
       fetch(`${API_URL_V1}/my-delegates`, { headers: { Session_ID: props.sessionId } })
-      .then(response => response.json())
-      .then((serverDelegates) => {
-        if (!deepEqual(serverDelegates, this.state.delegates)) {
-          props.dispatch({ delegates: serverDelegates, type: 'SYNC_DELEGATES' })
-        }
-      })
+        .then(response => response.json())
+        .then((serverDelegates) => {
+          if (!deepEqual(serverDelegates, this.state.delegates)) {
+            props.dispatch({ delegates: serverDelegates, type: 'SYNC_DELEGATES' })
+          }
+        })
     }
 
     // Get constituents from the server

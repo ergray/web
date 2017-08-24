@@ -86,14 +86,14 @@ class ElectedRepScreen extends Component {
             marginTop: 20,
           }}
         >Representative {rep.name} votes with {rep.pronoun} constituents
-        <Text style={{ fontWeight: '700' }}> {rep.score}% </Text>
+          <Text style={{ fontWeight: '700' }}> {rep.score}% </Text>
         of the time.</Text>
 
         <Button
           style={{ marginHorizontal: 30, marginTop: 30 }}
           onPress={() => {
             Linking.openURL(`tel:${rep.officePhone.replace(/\D/g, '')}`)
-            .catch(() => {})
+              .catch(() => {})
           }}
         >
           Call Office: &nbsp; {rep.officePhone}
@@ -103,7 +103,7 @@ class ElectedRepScreen extends Component {
           style={{ marginHorizontal: 30, marginTop: 30 }}
           onPress={() => {
             Linking.openURL(`mailto:${rep.name.split(' ').join('.')}@sfgov.org`)
-            .catch(() => {})
+              .catch(() => {})
           }}
         >
           Email: &nbsp; {rep.name.split(' ').join('.')}@sfgov.org

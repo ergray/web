@@ -70,7 +70,7 @@ class FeedbackScreen extends Component {
               },
               method: 'POST',
             })
-            .then(() => this.setState({ sent: true }))
+              .then(() => this.setState({ sent: true }))
           }}
         />
       </View>

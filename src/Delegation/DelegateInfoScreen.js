@@ -36,10 +36,10 @@ class DelegateInfoScreen extends Component {
     if (activeDelegate) {
       // Get delegate info from the server
       fetch(`${API_URL_V1}/delegate/${activeDelegate.phone}`, { headers: { Session_ID: props.sessionId } })
-      .then(response => response.json())
-      .then(({ name, status, user_id }) => {
-        this.props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
-      })
+        .then(response => response.json())
+        .then(({ name, status, user_id }) => {
+          this.props.dispatch({ name, rowIndex, status, type: 'UPDATE_DELEGATE_INFO', user_id })
+        })
     }
   }
 
@@ -67,11 +67,11 @@ class DelegateInfoScreen extends Component {
               },
               method: 'POST',
             })
-            .then((response) => {
-              if (response.status === 201) {
-                dispatch({ routeIndex: route.rowIndex, status: 'APPROVAL_REQUESTED', type: 'UPDATE_DELEGATE_INFO' })
-              }
-            })
+              .then((response) => {
+                if (response.status === 201) {
+                  dispatch({ routeIndex: route.rowIndex, status: 'APPROVAL_REQUESTED', type: 'UPDATE_DELEGATE_INFO' })
+                }
+              })
           },
           text: 'REQUEST APPROVAL',
         },
@@ -135,7 +135,7 @@ class DelegateInfoScreen extends Component {
             <Text style={{ marginBottom: 15 }}>
               Nickname: {activeDelegate.nickname}
             </Text>
-        )}
+          )}
 
         { /* Phone number */ }
         <Text style={{
@@ -207,10 +207,10 @@ class DelegateInfoScreen extends Component {
               },
               method: 'PUT',
             })
-            .then(() => {
-              this.props.dispatch({ delegates: updatedDelegates, type: 'SYNC_DELEGATES' })
-              history.replace('/delegates')
-            })
+              .then(() => {
+                this.props.dispatch({ delegates: updatedDelegates, type: 'SYNC_DELEGATES' })
+                history.replace('/delegates')
+              })
           }}
         >
           <Text style={{ fontSize: 13 }}>

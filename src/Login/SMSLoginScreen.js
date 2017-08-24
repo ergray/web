@@ -47,36 +47,36 @@ class SMSLoginScreen extends Component {
       },
       method: 'POST',
     })
-    .then((response) => {
-      if (response.status === 200) {
-        response.json()
-        .then((json) => {
-          this.props.dispatch({
-            isVerified: json.is_verified,
-            sessionId: json.session_id,
-            type: 'LOGIN_USER',
-            user: json.user,
-          })
-          if (json.user.complete) {
-            this.props.history.replace('/sf')
-          } else {
-            this.props.history.replace('/registration')
-          }
-        })
-      }
+      .then((response) => {
+        if (response.status === 200) {
+          response.json()
+            .then((json) => {
+              this.props.dispatch({
+                isVerified: json.is_verified,
+                sessionId: json.session_id,
+                type: 'LOGIN_USER',
+                user: json.user,
+              })
+              if (json.user.complete) {
+                this.props.history.replace('/sf')
+              } else {
+                this.props.history.replace('/registration')
+              }
+            })
+        }
 
-      if (response.status === 400) {
-        this.setState({ error: true, loading: false, status: 'Bad request.' })
-      }
+        if (response.status === 400) {
+          this.setState({ error: true, loading: false, status: 'Bad request.' })
+        }
 
-      if (response.status === 401) {
-        this.setState({ error: true, loading: false, status: 'Invalid.' })
-      }
+        if (response.status === 401) {
+          this.setState({ error: true, loading: false, status: 'Invalid.' })
+        }
 
-      if (response.status === 429) {
-        this.setState({ editable: false, error: true, loading: false, status: 'Too many failed attempts. Go back.' })
-      }
-    })
+        if (response.status === 429) {
+          this.setState({ editable: false, error: true, loading: false, status: 'Too many failed attempts. Go back.' })
+        }
+      })
   }
 
   render() {

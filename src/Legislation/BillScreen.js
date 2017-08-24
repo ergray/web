@@ -23,11 +23,11 @@ class BillScreen extends Component {
     // Refresh vote count
     const activeBill = props.bill.uid
     fetch(`${API_URL_V1}/bill/${activeBill}/votes`)
-    .then(response => response.json())
-    .then((votes) => {
-      props.dispatch({ activeBill, legislature: 'us', type: 'UPDATE_BILL_VOTE_COUNTS', votes })
-      this.setState({ billVotes: votes })
-    })
+      .then(response => response.json())
+      .then((votes) => {
+        props.dispatch({ activeBill, legislature: 'us', type: 'UPDATE_BILL_VOTE_COUNTS', votes })
+        this.setState({ billVotes: votes })
+      })
   }
 
   render() {

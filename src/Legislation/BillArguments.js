@@ -41,7 +41,8 @@ class BillArguments extends Component {
     const Argument = position => (
       ({ id, recommended, recommendations, text }) => (
         <View
-          key={id} style={{
+          key={id}
+          style={{
             backgroundColor: cstyle.panelColor,
             borderBottomColor: cstyle.panelBorderColor,
             borderBottomWidth: 2,
@@ -134,7 +135,6 @@ class BillArguments extends Component {
       </View>
     )
   }
-
 }
 
 BillArguments.propTypes = {

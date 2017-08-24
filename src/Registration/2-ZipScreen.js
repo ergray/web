@@ -90,11 +90,11 @@ class ZipScreen extends Component {
                 },
                 method: 'PUT',
               })
-              .then((response) => {
-                if (response.status === 200) {
-                  this.props.history.push('/registration/address')
-                }
-              })
+                .then((response) => {
+                  if (response.status === 200) {
+                    this.props.history.push('/registration/address')
+                  }
+                })
             }
           }}
         />

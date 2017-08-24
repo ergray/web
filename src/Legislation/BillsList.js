@@ -20,21 +20,21 @@ class BillsList extends Component {
     if (!this.props.bills[date]) {
       if (date) {
         fetch(`${API_URL_V1}/bills/${date}`)
-        .then(response => response.json())
-        .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
+          .then(response => response.json())
+          .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
       } else {
         fetch(`${API_URL_V2}/legislation/?legislature=us`)
-        .then(response => response.json())
-        .then(bills => bills.map(oldBill))
-        .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
+          .then(response => response.json())
+          .then(bills => bills.map(oldBill))
+          .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
       }
     }
 
     // If the user is verified, get their votes
     if (isVerified) {
       fetch(`${API_URL_V1}/my-votes/${date}`, { headers: { Session_ID: sessionId } })
-      .then(response => response.json())
-      .then(votes => dispatch({ date, type: 'SYNC_VOTES', votes }))
+        .then(response => response.json())
+        .then(votes => dispatch({ date, type: 'SYNC_VOTES', votes }))
     }
   }
 

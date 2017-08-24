@@ -30,39 +30,39 @@ class IdReviewScreen extends Component {
       },
       method: 'POST',
     })
-    .then(response => response.json())
-    .then(({ filename }) => (
-      RNS3.put({
-        name: filename,
-        type: 'image/jpeg',
-        uri: this.props.registrationPhotoPath,
-      }, {
-        accessKey: 'AKIAJDBHLVJIULUKBVEA',
-        acl: 'private',
-        bucket: 'liquid-vote-uploads',
-        keyPrefix: 'ids/',
-        region: 'us-west-1',
-        secretKey: 'aniNzv5pXv0GAzPERt3tkfDnRflhOXzvc98j0zEQ',
-        successActionStatus: 201,
-      })
+      .then(response => response.json())
+      .then(({ filename }) => (
+        RNS3.put({
+          name: filename,
+          type: 'image/jpeg',
+          uri: this.props.registrationPhotoPath,
+        }, {
+          accessKey: 'AKIAJDBHLVJIULUKBVEA',
+          acl: 'private',
+          bucket: 'liquid-vote-uploads',
+          keyPrefix: 'ids/',
+          region: 'us-west-1',
+          secretKey: 'aniNzv5pXv0GAzPERt3tkfDnRflhOXzvc98j0zEQ',
+          successActionStatus: 201,
+        })
 
-      // Show progress updates
-      .progress((event) => {
-        this.setState({ status: `Uploading: ${Math.floor(event.percent * 100)}%` })
-      })
+        // Show progress updates
+          .progress((event) => {
+            this.setState({ status: `Uploading: ${Math.floor(event.percent * 100)}%` })
+          })
 
-      // Handle success
-      .then((response) => {
-        if (response.status !== 201) {
-          throw new Error('Failed to upload image')
-        }
+        // Handle success
+          .then((response) => {
+            if (response.status !== 201) {
+              throw new Error('Failed to upload image')
+            }
 
-        this.setState({ status: 'Upload complete.' })
-        setTimeout(() => this.props.history.push('/registration/email'), 800)
-      })
-    ))
+            this.setState({ status: 'Upload complete.' })
+            setTimeout(() => this.props.history.push('/registration/email'), 800)
+          })
+      ))
 
-    .catch(() => this.setState({ status: 'Failed to upload image' }))
+      .catch(() => this.setState({ status: 'Failed to upload image' }))
   }
 
   render() {

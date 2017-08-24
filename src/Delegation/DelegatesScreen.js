@@ -101,12 +101,12 @@ class DelegatesScreen extends Component {
             <P>
               Like elected reps, delegates are personal representatives who can vote for you.
             </P>
-            )
+          )
 
-          : (
-            <P>
+            : (
+              <P>
               Press and drag a name to reorder.
-            </P>
+              </P>
             )
           }
         </View>

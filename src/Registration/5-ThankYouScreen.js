@@ -39,10 +39,10 @@ function ThankYouScreen({ history, user }) {
         marginTop: 70,
       }}
       >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is
-      { user && user.zip && user.zip.slice(0, 2) === '94'
-        ? ' in beta '
-        : ' only available for San Francisco right now '
-      }
+        { user && user.zip && user.zip.slice(0, 2) === '94'
+          ? ' in beta '
+          : ' only available for San Francisco right now '
+        }
       but you're welcome to try it out.
       </Text>
 

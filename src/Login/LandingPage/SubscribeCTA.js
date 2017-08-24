@@ -21,7 +21,9 @@ export default class SubscribeCTA extends Component {
             </label>
             <div id="subscribe-inputs" style={{ display: this.state.showConfirmation ? 'none' : 'block' }}>
               <input
-                id="voter-email" placeholder="Email Address" style={{
+                id="voter-email"
+                placeholder="Email Address"
+                style={{
                   border: this.state.voterEmailError ? '5px solid red' : '',
                   borderRadius: 2,
                   borderWidth: 0,
@@ -32,11 +34,14 @@ export default class SubscribeCTA extends Component {
                   height: 40,
                   paddingLeft: this.state.voterEmailError ? 8 : 12,
                   width: 240,
-                }} type="text" value={this.state.email}
+                }}
+                type="text"
+                value={this.state.email}
                 onChange={event => this.setState({ email: event.target.value })}
               />
               <input
-                id="btn-subscribe" style={{
+                id="btn-subscribe"
+                style={{
                   backgroundColor: !this.state.submitHover ? '#2b71b1' : '#16548E',
                   border: 'none',
                   borderRadius: 2,
@@ -50,7 +55,10 @@ export default class SubscribeCTA extends Component {
                   padding: '0 12px',
                   textTransform: 'uppercase',
                   WebkitAppearance: 'none',
-                }} type="submit" value="Subscribe" onClick={() => {
+                }}
+                type="submit"
+                value="Subscribe"
+                onClick={() => {
                   fetch(`${API_URL_V1}/subscribe`, {
                     body: JSON.stringify({
                       email: this.state.email,
@@ -61,22 +69,22 @@ export default class SubscribeCTA extends Component {
                     },
                     method: 'POST',
                   })
-                  .then((response) => {
+                    .then((response) => {
                     // Success
-                    if (response.status === 201) {
-                      this.setState({ showConfirmation: true })
-                    }
+                      if (response.status === 201) {
+                        this.setState({ showConfirmation: true })
+                      }
 
-                    // Already subscribed, show confirmation anyway
-                    if (response.status === 409) {
-                      this.setState({ showConfirmation: true })
-                    }
+                      // Already subscribed, show confirmation anyway
+                      if (response.status === 409) {
+                        this.setState({ showConfirmation: true })
+                      }
 
-                    // Server reports invalid email
-                    if (response.status === 400) {
-                      this.setState({ voterEmailError: true })
-                    }
-                  })
+                      // Server reports invalid email
+                      if (response.status === 400) {
+                        this.setState({ voterEmailError: true })
+                      }
+                    })
                 }}
                 onMouseEnter={() => this.setState({ submitHover: true })}
                 onMouseLeave={() => this.setState({ submitHover: false })}

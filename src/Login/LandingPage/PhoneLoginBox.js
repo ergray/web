@@ -152,11 +152,11 @@ class PhoneLoginBox extends Component {
                   headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
                   method: 'POST',
                 })
-                .then(response => response.json())
-                .then(({ sessionId, user }) => {
-                  dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
-                  return history.replace('sf')
-                })
+                  .then(response => response.json())
+                  .then(({ sessionId, user }) => {
+                    dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
+                    return history.replace('sf')
+                  })
               }
 
               // Check if this is a new number
@@ -213,15 +213,15 @@ class PhoneLoginBox extends Component {
           }}
         >
          * Read about our&nbsp;
-               <a
-                 href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
-                 rel="noopener noreferrer"
-                 style={{
-                   color: '#fff',
-                   cursor: 'pointer',
-                 }}
-                 target="_blank"
-               >strong privacy</a>
+          <a
+            href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+            rel="noopener noreferrer"
+            style={{
+              color: '#fff',
+              cursor: 'pointer',
+            }}
+            target="_blank"
+          >strong privacy</a>
         </Text>
       </View>
     )

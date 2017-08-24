@@ -16,19 +16,19 @@ class BetweenWeeks extends Component {
 
     function getNextAgenda() {
       fetch(`${API_URL_V1}/next-agenda`)
-      .then(response => response.json())
-      .then((nextAgenda) => {
-        props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
+        .then(response => response.json())
+        .then((nextAgenda) => {
+          props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
 
-        // Did nextAgenda not include bills?
-        // (Upcoming break, or agenda hasn't been published yet)
-        if (!nextAgenda.bills) {
-          return
-        }
+          // Did nextAgenda not include bills?
+          // (Upcoming break, or agenda hasn't been published yet)
+          if (!nextAgenda.bills) {
+            return
+          }
 
-        const { bills, date } = nextAgenda
-        props.dispatch({ bills, date, type: 'SYNC_BILLS' })
-      })
+          const { bills, date } = nextAgenda
+          props.dispatch({ bills, date, type: 'SYNC_BILLS' })
+        })
     }
 
     // Refresh every 5 minutes
@@ -60,7 +60,7 @@ class BetweenWeeks extends Component {
           margin: 30,
         }}
         >{message} Expected in&nbsp;
-        {<CountdownTimer initialTimeRemaining={millisecondsUntilFridayAtNoon()} />}.</Text>
+          {<CountdownTimer initialTimeRemaining={millisecondsUntilFridayAtNoon()} />}.</Text>
 
         <Text style={{
           fontSize: 18,

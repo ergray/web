@@ -171,7 +171,7 @@ class ConfirmVoteScreen extends Component {
                 },
                 method: 'POST',
               })
-              .then(() => history.goBack())
+                .then(() => history.goBack())
             }}
           />
         </View>

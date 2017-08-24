@@ -41,7 +41,8 @@ export default function IntroDescription({ large }) {
 
       <Text style={{ fontSize: 16 }}>
         <HoverableLink
-          href="#" text="LEARN MORE"
+          href="#"
+          text="LEARN MORE"
           onClick={(event) => { event.preventDefault(); animateScroll.scrollTo(750, { duration: 200 }) }}
           onContextMenu={(event) => { event.preventDefault() }}
         />

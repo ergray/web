@@ -33,7 +33,7 @@ export default class FadeIn extends Component {
           >
             {child}
           </div>
-          ))}
+        ))}
       </div>
     )
   }

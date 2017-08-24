@@ -74,9 +74,9 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
             },
             method: 'PUT',
           })
-          .then(() => {
-            history.replace(`/delegates/${phoneNumber}`)
-          })
+            .then(() => {
+              history.replace(`/delegates/${phoneNumber}`)
+            })
         }}
       >
         <Text style={{ fontSize: 13 }}>

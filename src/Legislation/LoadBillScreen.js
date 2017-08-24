@@ -15,13 +15,13 @@ class LoadBillScreen extends Component {
 
     if (date && bills) {
       fetch(`${API_URL_V1}/bills/${date}`)
-      .then(response => response.json())
-      .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
+        .then(response => response.json())
+        .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
     } else if (!bills.us || !bills.us.filter(b => b.uid === bill_uid).length) {
       fetch(`${API_URL_V2}/legislation/?legislature=us&bill_uid=${bill_uid}`)
-      .then(response => response.json())
-      .then(loadedBills => loadedBills.map(oldBill))
-      .then(loadedBills => dispatch({ bills: loadedBills, legislature: 'us', type: 'SYNC_BILLS' }))
+        .then(response => response.json())
+        .then(loadedBills => loadedBills.map(oldBill))
+        .then(loadedBills => dispatch({ bills: loadedBills, legislature: 'us', type: 'SYNC_BILLS' }))
     }
   }
 

@@ -35,12 +35,12 @@ class AuditScreen extends Component {
     fetch(`${API_URL_V1}/bill/${bill_uid}/audit/mine`, {
       headers: { Session_ID: sessionId },
     })
-    .then((response) => {
-      if (response.status === 200) {
-        response.json()
-        .then(mine => this.setState({ mine }))
-      }
-    })
+      .then((response) => {
+        if (response.status === 200) {
+          response.json()
+            .then(mine => this.setState({ mine }))
+        }
+      })
   }
 
   render() {
@@ -74,7 +74,6 @@ class AuditScreen extends Component {
       </ScrollView>
     )
   }
-
 }
 
 AuditScreen.title = 'Audit Vote'

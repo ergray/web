@@ -18,10 +18,10 @@ class PastAgendas extends Component {
     }
 
     fetch(`${API_URL_V1}/dates`)
-    .then(response => response.json())
-    .then((dates) => {
-      this.setState({ dates: dates.filter(hasDatePassed) })
-    })
+      .then(response => response.json())
+      .then((dates) => {
+        this.setState({ dates: dates.filter(hasDatePassed) })
+      })
   }
 
   render() {

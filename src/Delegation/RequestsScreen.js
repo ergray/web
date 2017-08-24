@@ -15,8 +15,8 @@ class RequestsScreen extends Component {
     // If they're verified, update delegation approvals, rejections, and requests
     if (props.isVerified) {
       fetch(`${API_URL_V1}/my-delegation-permissions`, { headers: { Session_ID: props.sessionId } })
-      .then(response => response.json())
-      .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
+        .then(response => response.json())
+        .then(constituents => props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
     }
   }
 
@@ -34,8 +34,8 @@ class RequestsScreen extends Component {
       },
       method: 'PUT',
     })
-    .then(response => response.json())
-    .then(constituents => this.props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
+      .then(response => response.json())
+      .then(constituents => this.props.dispatch({ constituents, type: 'SYNC_CONSTITUENTS' }))
   }
 
   render() {

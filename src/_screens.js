@@ -19,7 +19,7 @@ export const screens = {
   '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
   '/feedback': require('./FeedbackScreen').default,
   '/legislation': require('./LegislationScreen').default,
-  '/legislation/:bill_id': require('./Legislation/LoadBillScreen').default,  // eslint-disable-line sort-keys
+  '/legislation/:bill_id': require('./Legislation/LoadBillScreen').default, // eslint-disable-line sort-keys
   '/legislation/:bill_id/audit': require('./Legislation/AuditScreen').default,
   '/legislation/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
   '/registration': require('./Registration/0-RegistrationIntroScreen').default,
@@ -36,7 +36,7 @@ export const screens = {
   '/sf/board': require('./ElectedRep/BoardScreen').default,
   '/sf/districts-map': require('./ElectedRep/DistrictsMapScreen').default,
   '/sf/elected-rep': require('./ElectedRep/ElectedRepScreen').default,
-  '/sf/:date': require('./Legislation/AgendaScreen').default,  // eslint-disable-line sort-keys
+  '/sf/:date': require('./Legislation/AgendaScreen').default, // eslint-disable-line sort-keys
   '/sf/:date/:bill_id': require('./Legislation/LoadBillScreen').default,
   '/sf/:date/:bill_id/audit': require('./Legislation/AuditScreen').default,
   '/sf/:date/:bill_id/vote/:position': require('./Legislation/ConfirmVoteScreen').default,
@@ -55,7 +55,10 @@ export default () => (
 
         return (
           <Route
-            exact key={path} path={path} render={({ history, location, match }) => {
+            exact
+            key={path}
+            path={path}
+            render={({ history, location, match }) => {
               if (Screen.disableMenu) {
                 return (
                   <View style={{ flex: 1, height: '100%', width: '100%' }}>

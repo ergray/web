@@ -29,16 +29,16 @@ function AddDelegateScreen({ history }) {
         marginBottom: 20,
       }}
       >Your choice of delegates is&nbsp;
-      <Link
-        hoverStyle={{ textDecoration: 'underline' }}
-        href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
-        rel="noopener noreferrer"
-        style={{
-          cursor: 'pointer',
-        }}
-        target="_blank"
-        text="kept private"
-      />.</Text>
+        <Link
+          hoverStyle={{ textDecoration: 'underline' }}
+          href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+          rel="noopener noreferrer"
+          style={{
+            cursor: 'pointer',
+          }}
+          target="_blank"
+          text="kept private"
+        />.</Text>
 
       <Text style={{
         fontSize: 16,

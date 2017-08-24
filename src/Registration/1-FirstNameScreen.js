@@ -49,11 +49,11 @@ class FirstNameScreen extends Component {
         },
         method: 'PUT',
       })
-      .then((response) => {
-        if (response.status === 200) {
-          this.props.history.push('/registration/last-name')
-        }
-      })
+        .then((response) => {
+          if (response.status === 200) {
+            this.props.history.push('/registration/last-name')
+          }
+        })
     }
 
     return (
