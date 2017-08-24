@@ -18,6 +18,7 @@ export const screens = {
   '/delegates/:phoneNumber': require('./Delegation/DelegateInfoScreen').default, // eslint-disable-line sort-keys
   '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
   '/feedback': require('./FeedbackScreen').default,
+  '/join': require('./JoinScreen').default,
   '/legislation': require('./LegislationScreen').default,
   '/legislation/:bill_id': require('./Legislation/LoadBillScreen').default, // eslint-disable-line sort-keys
   '/legislation/:bill_id/audit': require('./Legislation/AuditScreen').default,
