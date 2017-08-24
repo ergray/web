@@ -63,8 +63,8 @@ class Login extends Component {
     return (
       <View style={{
         alignSelf: 'center',
-        paddingVertical: 40,
-        width: 450,
+        marginVertical: 40,
+        width: 350,
       }}
       >
         <TextInput
@@ -85,8 +85,6 @@ class Login extends Component {
             fontSize: 18,
             fontWeight: '300',
             height: 42,
-            marginHorizontal: 38,
-            marginTop: 27,
             paddingLeft: 75,
           }}
           value={this.state.phone}
@@ -173,34 +171,40 @@ class Login extends Component {
             return this.setState({ phone: newText })
           }}
         />
-        <Image
-          source={usaFlag}
+        <View
           style={{
-            bottom: large ? 94 : 96,
-            height: 24,
-            left: 50,
+            alignItems: 'center',
+            flexDirection: 'row',
+            height: 42,
+            left: '.5rem',
             position: 'absolute',
-            width: 30,
+            top: 0,
           }}
-        />
-        <Text
-          style={{
-            bottom: large ? 96 : 98,
-            fontSize: 18,
-            fontWeight: '300',
-            left: 87,
-            position: 'absolute',
-          }}
-        >+1</Text>
+        >
+          <Image
+            source={usaFlag}
+            style={{
+              height: 24,
+              width: 30,
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: '300',
+              marginLeft: '.5rem',
+              marginTop: 1,
+            }}
+          >+1</Text>
+        </View>
         <Text
           style={{
             fontSize: 14,
             fontWeight: '100',
-            marginLeft: 40,
             marginTop: 30,
           }}
         >
-         * Read about our&nbsp;
+         We will never share your information, and we use the same security and encryption used by banks. Read about our&nbsp;
           <Link
             hoverStyle={{ textDecoration: 'underline' }}
             href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
@@ -211,6 +215,7 @@ class Login extends Component {
             target="_blank"
             text="strong privacy"
           />
+          .
         </Text>
       </View>
     )
