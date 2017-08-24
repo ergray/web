@@ -22,7 +22,7 @@ class ConfirmVoteScreen extends Component {
     }
 
     if (!props.location.state || !props.location.state.bill) {
-      return props.history.replace(props.location.pathname.slice(0, 21))
+      return props.history.replace(`/legislation/${props.match.params.bill_id}`)
     }
 
     if (props.sessionId) {
