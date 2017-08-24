@@ -2,8 +2,8 @@
 
 // copied from https://github.com/uken/react-countdown-timer/blob/8e473bb5b878383dab30ddf60160efca9e861128/countdown_timer.jsx
 
-const React = require('react')
-const PropTypes = require('prop-types')
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 // Generic Countdown Timer UI component
 //
@@ -20,16 +20,8 @@ const PropTypes = require('prop-types')
 //   - tickCallback(timeRemaining): Function (optional)
 //       A function to call each tick.
 //
-const CountdownTimer = React.createClass({
 
-  propTypes: {
-    initialTimeRemaining: PropTypes.number.isRequired,
-    interval: PropTypes.number,
-    formatFunc: PropTypes.func,
-    tickCallback: PropTypes.func,
-    completeCallback: PropTypes.func,
-  },
-
+class CountdownTimer extends Component {
   getDefaultProps() {
     return {
       interval: 1000,
@@ -37,7 +29,7 @@ const CountdownTimer = React.createClass({
       tickCallback: undefined,
       completeCallback: undefined,
     }
-  },
+  }
 
   getInitialState() {
     // Normally an anti-pattern to use this.props in getInitialState,
@@ -47,26 +39,26 @@ const CountdownTimer = React.createClass({
       timeoutId: undefined,
       prevTime: undefined,
     }
-  },
+  }
 
   componentWillReceiveProps(newProps, oldProps) {
     if (this.state.timeoutId) clearTimeout(this.state.timeoutId)
     this.setState({ prevTime: undefined, timeRemaining: newProps.initialTimeRemaining })
-  },
+  }
 
   componentDidMount() {
     this.tick()
-  },
+  }
 
   componentDidUpdate() {
     if ((!this.state.prevTime) && this.state.timeRemaining > 0 && this.isMounted()) {
       this.tick()
     }
-  },
+  }
 
   componentWillUnmount() {
     clearTimeout(this.state.timeoutId)
-  },
+  }
 
   tick() {
     const currentTime = Date.now()
@@ -101,7 +93,7 @@ const CountdownTimer = React.createClass({
     if (this.props.tickCallback) {
       this.props.tickCallback(timeRemaining)
     }
-  },
+  }
 
 
   getFormattedTime(milliseconds) {
@@ -120,7 +112,7 @@ const CountdownTimer = React.createClass({
     hours = hours < 10 ? `0${hours}` : hours
 
     return `${hours} hours ${minutes} minutes and ${seconds} seconds`
-  },
+  }
 
   render() {
     const timeRemaining = this.state.timeRemaining
@@ -130,7 +122,15 @@ const CountdownTimer = React.createClass({
         {this.getFormattedTime(timeRemaining)}
       </span>
     )
-  },
-})
+  }
+}
 
-module.exports = CountdownTimer
+CountdownTimer.propTypes = {
+  initialTimeRemaining: PropTypes.number.isRequired,
+  interval: PropTypes.number,
+  formatFunc: PropTypes.func,
+  tickCallback: PropTypes.func,
+  completeCallback: PropTypes.func,
+}
+
+export default CountdownTimer
