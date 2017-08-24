@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import {
@@ -86,12 +87,12 @@ ConfirmNewNumberScreen.title = 'CONFIRM NEW NUMBER'
 ConfirmNewNumberScreen.disableMenu = true
 
 ConfirmNewNumberScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    goBack: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }),
-  match: React.PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({}).isRequired,
 }
 
 export default connect()(ConfirmNewNumberScreen)

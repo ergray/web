@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -235,24 +236,24 @@ class BillScreen extends Component {
 BillScreen.disableHeader = true
 
 BillScreen.propTypes = {
-  bill: React.PropTypes.shape({
-    uid: React.PropTypes.string.isRequired,
-    votes: React.PropTypes.shape({}),
+  bill: PropTypes.shape({
+    uid: PropTypes.string.isRequired,
+    votes: PropTypes.shape({}),
   }),
-  delegates: React.PropTypes.arrayOf(React.PropTypes.shape({})),
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  delegates: PropTypes.arrayOf(PropTypes.shape({})),
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired,
+  isVerified: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }).isRequired,
-  showDistrictVotes: React.PropTypes.bool,
-  user: React.PropTypes.shape({
-    us_district: React.PropTypes.number,
+  showDistrictVotes: PropTypes.bool,
+  user: PropTypes.shape({
+    us_district: PropTypes.number,
   }),
-  votes: React.PropTypes.shape({}),
+  votes: PropTypes.shape({}),
 }
 
 const mapStateToProps = state => ({

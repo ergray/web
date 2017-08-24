@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { View } from 'react-native'
 import LiquidName from './liquid-text-dark.svg'
@@ -13,5 +14,5 @@ export default function Logo({ style }) { // eslint-disable-line react-filenames
 }
 
 Logo.propTypes = {
-  style: React.PropTypes.shape({}),
+  style: PropTypes.shape({}),
 }

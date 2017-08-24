@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -59,8 +60,8 @@ class PastAgendas extends Component {
 }
 
 PastAgendas.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
 }
 

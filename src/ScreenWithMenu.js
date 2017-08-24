@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import deepEqual from 'deep-equal'
@@ -83,15 +84,15 @@ class ScreenWithMenu extends Component {
 ScreenWithMenu.disableHeader = true
 
 ScreenWithMenu.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
-  loading: React.PropTypes.shape({}).isRequired,
-  location: React.PropTypes.shape({}).isRequired,
-  match: React.PropTypes.shape({}).isRequired,
-  sessionId: React.PropTypes.string,
-  Screen: React.PropTypes.func.isRequired, // eslint-disable-line
+  isVerified: PropTypes.bool.isRequired,
+  loading: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({}).isRequired,
+  sessionId: PropTypes.string,
+  Screen: PropTypes.func.isRequired, // eslint-disable-line
 }
 
 const mapStateToProps = pick([

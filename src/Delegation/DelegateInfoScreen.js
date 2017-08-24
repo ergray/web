@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -226,20 +227,20 @@ class DelegateInfoScreen extends Component {
 DelegateInfoScreen.title = 'DELEGATE INFO'
 
 DelegateInfoScreen.propTypes = {
-  delegates: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
+  delegates: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
   })),
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}),
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      phoneNumber: React.PropTypes.string,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({}),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      phoneNumber: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  route: React.PropTypes.shape({
-    rowIndex: React.PropTypes.number.isRequired,
+  route: PropTypes.shape({
+    rowIndex: PropTypes.number.isRequired,
   }),
-  sessionId: React.PropTypes.string.isRequired,
+  sessionId: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

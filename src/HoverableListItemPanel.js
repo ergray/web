@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import HoverableOpacity from './HoverableOpacity'
 import CommonStyle from './CommonStyle'
@@ -39,6 +40,6 @@ export default class HoverableListItemPanel extends Component { // eslint-disabl
 }
 
 HoverableListItemPanel.propTypes = {
-  outerStyle: React.PropTypes.shape({}),
-  style: React.PropTypes.shape({}),
+  outerStyle: PropTypes.shape({}),
+  style: PropTypes.shape({}),
 }

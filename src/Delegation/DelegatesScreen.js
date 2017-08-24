@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -168,15 +169,15 @@ class DelegatesScreen extends Component {
 DelegatesScreen.title = 'Delegates'
 
 DelegatesScreen.propTypes = {
-  delegates: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
+  delegates: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
   })),
-  delegatesEditMode: React.PropTypes.bool,
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  delegatesEditMode: PropTypes.bool,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
-  sessionId: React.PropTypes.string.isRequired,
+  sessionId: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

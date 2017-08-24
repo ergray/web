@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Text,
@@ -53,5 +54,5 @@ export default function IntroDescription({ large }) {
 }
 
 IntroDescription.propTypes = {
-  large: React.PropTypes.bool,
+  large: PropTypes.bool,
 }

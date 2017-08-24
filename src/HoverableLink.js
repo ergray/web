@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 export default class HoverableLink extends Component {
@@ -23,6 +24,6 @@ export default class HoverableLink extends Component {
 }
 
 HoverableLink.propTypes = {
-  href: React.PropTypes.string.isRequired,
-  text: React.PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 }

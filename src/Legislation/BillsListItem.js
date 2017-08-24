@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -119,9 +120,9 @@ class BillsListItem extends Component {
 }
 
 BillsListItem.propTypes = {
-  agendaVotes: React.PropTypes.shape(),
-  bill: React.PropTypes.shape().isRequired,
-  history: React.PropTypes.shape({}).isRequired,
+  agendaVotes: PropTypes.shape(),
+  bill: PropTypes.shape().isRequired,
+  history: PropTypes.shape({}).isRequired,
 }
 
 export default BillsListItem

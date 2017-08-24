@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -138,8 +139,8 @@ class BillArguments extends Component {
 }
 
 BillArguments.propTypes = {
-  activeBill: React.PropTypes.string.isRequired,
-  sessionId: React.PropTypes.string,
+  activeBill: PropTypes.string.isRequired,
+  sessionId: PropTypes.string,
 }
 
 export default connect(pick([

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -53,12 +54,12 @@ class LoadBillScreen extends Component {
 LoadBillScreen.disableHeader = true
 
 LoadBillScreen.propTypes = {
-  bills: React.PropTypes.shape(),
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape().isRequired,
-  location: React.PropTypes.shape().isRequired,
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({}).isRequired,
+  bills: PropTypes.shape(),
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired,
+  location: PropTypes.shape().isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({}).isRequired,
   }).isRequired,
 }
 

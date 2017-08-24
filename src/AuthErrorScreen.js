@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Text, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -42,9 +43,9 @@ AuthErrorScreen.title = 'AUTH ERROR'
 AuthErrorScreen.disableMenu = true
 
 AuthErrorScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    goBackToTop: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    goBackToTop: PropTypes.func.isRequired,
   }),
 }
 

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { View, Platform, WebView } from 'react-native'
 import Text from '../Text'
@@ -27,7 +28,7 @@ function BillContents({ bill }) {
 }
 
 BillContents.propTypes = {
-  bill: React.PropTypes.shape({}),
+  bill: PropTypes.shape({}),
 }
 
 export default BillContents

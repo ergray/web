@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Image,
@@ -41,8 +42,8 @@ function Header({ step, title }) {
 }
 
 Header.propTypes = {
-  step: React.PropTypes.number.isRequired,
-  title: React.PropTypes.string.isRequired,
+  step: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default connect()(Header)

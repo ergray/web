@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import CommonStyle from './CommonStyle'
 import Link from './Link'
@@ -81,13 +82,13 @@ export default class Button extends Component { // eslint-disable-line react/pre
 }
 
 Button.propTypes = {
-  backable: React.PropTypes.bool,
-  history: React.PropTypes.shape({}),
-  icon: React.PropTypes.func,
-  onPress: React.PropTypes.func,
-  outline: React.PropTypes.bool,
-  primary: React.PropTypes.bool,
-  style: React.PropTypes.shape({}),
-  text: React.PropTypes.string.isRequired,
-  to: React.PropTypes.string,
+  backable: PropTypes.bool,
+  history: PropTypes.shape({}),
+  icon: PropTypes.func,
+  onPress: PropTypes.func,
+  outline: PropTypes.bool,
+  primary: PropTypes.bool,
+  style: PropTypes.shape({}),
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string,
 }

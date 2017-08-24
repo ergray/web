@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -155,14 +156,14 @@ class RequestsScreen extends Component {
 RequestsScreen.title = 'Requests'
 
 RequestsScreen.propTypes = {
-  constituents: React.PropTypes.shape({
-    approved: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-    rejected: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
-    requests: React.PropTypes.arrayOf(React.PropTypes.shape({})).isRequired,
+  constituents: PropTypes.shape({
+    approved: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    rejected: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+    requests: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   }),
-  dispatch: React.PropTypes.func.isRequired,
-  isVerified: React.PropTypes.bool.isRequired,
-  sessionId: React.PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  isVerified: PropTypes.bool.isRequired,
+  sessionId: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

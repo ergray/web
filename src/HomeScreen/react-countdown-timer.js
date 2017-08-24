@@ -3,6 +3,7 @@
 // copied from https://github.com/uken/react-countdown-timer/blob/8e473bb5b878383dab30ddf60160efca9e861128/countdown_timer.jsx
 
 const React = require('react')
+const PropTypes = require('prop-types')
 
 // Generic Countdown Timer UI component
 //
@@ -22,11 +23,11 @@ const React = require('react')
 const CountdownTimer = React.createClass({
 
   propTypes: {
-    initialTimeRemaining: React.PropTypes.number.isRequired,
-    interval: React.PropTypes.number,
-    formatFunc: React.PropTypes.func,
-    tickCallback: React.PropTypes.func,
-    completeCallback: React.PropTypes.func,
+    initialTimeRemaining: PropTypes.number.isRequired,
+    interval: PropTypes.number,
+    formatFunc: PropTypes.func,
+    tickCallback: PropTypes.func,
+    completeCallback: PropTypes.func,
   },
 
   getDefaultProps() {

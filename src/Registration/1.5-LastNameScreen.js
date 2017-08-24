@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Dimensions,
@@ -107,13 +108,13 @@ class LastNameScreen extends Component {
 LastNameScreen.disableHeader = true
 
 LastNameScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
-  sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape({
-    last_name: React.PropTypes.string,
+  sessionId: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    last_name: PropTypes.string,
   }),
 }
 

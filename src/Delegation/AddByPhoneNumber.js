@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Image,
@@ -120,9 +121,9 @@ class AddByPhoneNumber extends Component {
 }
 
 AddByPhoneNumber.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
 }
 

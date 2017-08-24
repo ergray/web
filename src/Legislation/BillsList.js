@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -80,21 +81,21 @@ class BillsList extends Component {
 }
 
 BillsList.propTypes = {
-  bills: React.PropTypes.shape(),
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}).isRequired,
-  homescreen: React.PropTypes.bool,
-  isVerified: React.PropTypes.bool.isRequired,
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired,
+  bills: PropTypes.shape(),
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired,
+  homescreen: PropTypes.bool,
+  isVerified: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }),
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      date: React.PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      date: PropTypes.string,
     }).isRequired,
   }).isRequired,
-  sessionId: React.PropTypes.string.isRequired,
-  votes: React.PropTypes.shape(),
+  sessionId: PropTypes.string.isRequired,
+  votes: PropTypes.shape(),
 }
 
 export default connect(pick([

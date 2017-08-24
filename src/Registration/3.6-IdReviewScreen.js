@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Dimensions,
@@ -157,12 +158,12 @@ class IdReviewScreen extends Component {
 IdReviewScreen.disableHeader = true
 
 IdReviewScreen.propTypes = {
-  history: React.PropTypes.shape({
-    goBack: React.PropTypes.func.isRequired,
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
   }),
-  registrationPhotoPath: React.PropTypes.string.isRequired,
-  sessionId: React.PropTypes.string.isRequired,
+  registrationPhotoPath: PropTypes.string.isRequired,
+  sessionId: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

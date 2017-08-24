@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import ReactNative from 'react-native'
 import CommonStyle from './CommonStyle'
@@ -24,5 +25,5 @@ export default class TextInput extends Component { // eslint-disable-line react/
 }
 
 TextInput.propTypes = {
-  style: React.PropTypes.shape({}),
+  style: PropTypes.shape({}),
 }

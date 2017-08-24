@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Platform, TouchableWithoutFeedback } from 'react-native'
 import Text from './Text'
@@ -79,15 +80,15 @@ export default class Link extends Component {
 }
 
 Link.propTypes = {
-  backable: React.PropTypes.bool,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func,
+  backable: PropTypes.bool,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }),
-  hoverStyle: React.PropTypes.shape({}),
-  href: React.PropTypes.string,
-  icon: React.PropTypes.func,
-  onPress: React.PropTypes.func,
-  pressedStyle: React.PropTypes.shape({}),
-  style: React.PropTypes.shape({}),
-  text: React.PropTypes.string.isRequired,
+  hoverStyle: PropTypes.shape({}),
+  href: PropTypes.string,
+  icon: PropTypes.func,
+  onPress: PropTypes.func,
+  pressedStyle: PropTypes.shape({}),
+  style: PropTypes.shape({}),
+  text: PropTypes.string.isRequired,
 }

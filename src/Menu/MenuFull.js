@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
@@ -63,12 +64,12 @@ function MenuFull({ numRequests, dispatch, history, isLoggedOut, message, style 
 }
 
 MenuFull.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}).isRequired,
-  isLoggedOut: React.PropTypes.bool.isRequired,
-  message: React.PropTypes.string.isRequired,
-  numRequests: React.PropTypes.number,
-  style: React.PropTypes.shape({}),
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired,
+  isLoggedOut: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+  numRequests: PropTypes.number,
+  style: PropTypes.shape({}),
 }
 
 const mapStateToProps = state => ({

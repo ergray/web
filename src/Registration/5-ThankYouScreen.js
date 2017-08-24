@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Image,
@@ -61,9 +62,9 @@ function ThankYouScreen({ history, user }) {
 ThankYouScreen.disableHeader = true
 
 ThankYouScreen.propTypes = {
-  history: React.PropTypes.shape({}).isRequired,
-  user: React.PropTypes.shape({
-    zip: React.PropTypes.string,
+  history: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({
+    zip: PropTypes.string,
   }),
 }
 

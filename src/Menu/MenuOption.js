@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import CommonStyle from '../CommonStyle'
 import Link from '../Link'
@@ -69,13 +70,13 @@ class MenuOption extends Component {
 }
 
 MenuOption.propTypes = {
-  activeColor: React.PropTypes.string,
-  history: React.PropTypes.shape({}).isRequired,
-  onPress: React.PropTypes.func,
-  style: React.PropTypes.shape({}),
-  text: React.PropTypes.string.isRequired,
-  to: React.PropTypes.string,
-  underlineWidth: React.PropTypes.number,
+  activeColor: PropTypes.string,
+  history: PropTypes.shape({}).isRequired,
+  onPress: PropTypes.func,
+  style: PropTypes.shape({}),
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string,
+  underlineWidth: PropTypes.number,
 }
 
 export default MenuOption

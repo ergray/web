@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Image, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -51,9 +52,9 @@ function VotingPowerScreen({ history, user, votingPower = 'Loading...' }) {
 VotingPowerScreen.title = 'Voting Power'
 
 VotingPowerScreen.propTypes = {
-  history: React.PropTypes.shape({}).isRequired,
-  user: React.PropTypes.shape({}),
-  votingPower: React.PropTypes.number,
+  history: PropTypes.shape({}).isRequired,
+  user: PropTypes.shape({}),
+  votingPower: PropTypes.number,
 }
 
 const mapStateToProps = state => ({

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Image } from 'react-native'
 import logo from '../logo.png'
@@ -44,8 +45,8 @@ class MenuLogo extends Component {
 }
 
 MenuLogo.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
 }
 

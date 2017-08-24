@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Text,
@@ -38,6 +39,6 @@ export default function GetStartedButton({ large, pressGetStarted }) {
 }
 
 GetStartedButton.propTypes = {
-  large: React.PropTypes.bool,
-  pressGetStarted: React.PropTypes.func.isRequired,
+  large: PropTypes.bool,
+  pressGetStarted: PropTypes.func.isRequired,
 }

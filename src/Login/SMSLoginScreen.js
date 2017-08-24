@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Image,
@@ -199,14 +200,14 @@ SMSLoginScreen.disableHeader = true
 SMSLoginScreen.disableMenu = true
 
 SMSLoginScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
   }),
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      phoneNumber: React.PropTypes.string,
-      session_code: React.PropTypes.string,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      phoneNumber: PropTypes.string,
+      session_code: PropTypes.string,
     }).isRequired,
   }).isRequired,
 }

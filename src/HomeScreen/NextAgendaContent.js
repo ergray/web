@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -93,11 +94,11 @@ class NextAgendaContent extends Component {
 NextAgendaContent.disableHeader = true
 
 NextAgendaContent.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
-  nextAgenda: React.PropTypes.shape(),
+  nextAgenda: PropTypes.shape(),
 }
 
 const mapStateToProps = pick([

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   View,
@@ -110,17 +111,17 @@ function ConfirmDelegateScreen({ delegates, dispatch, history, match, sessionId 
 ConfirmDelegateScreen.title = 'CONFIRM DELEGATE'
 
 ConfirmDelegateScreen.propTypes = {
-  delegates: React.PropTypes.arrayOf(React.PropTypes.shape({
-    name: React.PropTypes.string,
+  delegates: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
   })).isRequired,
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}).isRequired,
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      phoneNumber: React.PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      phoneNumber: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  sessionId: React.PropTypes.string,
+  sessionId: PropTypes.string,
 }
 
 

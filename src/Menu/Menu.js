@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
@@ -38,12 +39,12 @@ function Menu({ constituents, dispatch, history, style = {}, user, votingPower =
 }
 
 Menu.propTypes = {
-  constituents: React.PropTypes.shape({}),
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({}).isRequired,
-  style: React.PropTypes.shape({}),
-  user: React.PropTypes.shape({}),
-  votingPower: React.PropTypes.number,
+  constituents: PropTypes.shape({}),
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired,
+  style: PropTypes.shape({}),
+  user: PropTypes.shape({}),
+  votingPower: PropTypes.number,
 }
 
 const mapStateToProps = state => ({

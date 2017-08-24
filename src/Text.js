@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import ReactNative from 'react-native'
 import CommonStyle from './CommonStyle'
@@ -23,5 +24,5 @@ export default class Text extends Component { // eslint-disable-line react/prefe
 }
 
 Text.propTypes = {
-  style: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]),
+  style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 }

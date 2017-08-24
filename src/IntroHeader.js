@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { Image, View } from 'react-native'
 import StarIcon from 'react-icons/lib/md/star'
 import cover from './landing.jpg'

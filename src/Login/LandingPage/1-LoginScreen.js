@@ -1,6 +1,7 @@
 /* global document, window */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import MediaQuery from 'react-responsive'
@@ -122,10 +123,10 @@ LoginScreen.disableHeader = true
 LoginScreen.disableMenu = true
 
 LoginScreen.propTypes = {
-  history: React.PropTypes.shape({
-    replace: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
   }).isRequired,
-  sessionId: React.PropTypes.string, // eslint-disable-line
+  sessionId: PropTypes.string, // eslint-disable-line
 }
 
 const mapStateToProps = state => ({ sessionId: state.sessionId })

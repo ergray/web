@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   View,
@@ -54,7 +55,7 @@ function AddDelegateScreen({ history }) {
 AddDelegateScreen.title = 'Add Delegate'
 
 AddDelegateScreen.propTypes = {
-  history: React.PropTypes.shape({}).isRequired,
+  history: PropTypes.shape({}).isRequired,
 }
 
 export default connect(pick([

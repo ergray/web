@@ -1,6 +1,7 @@
 /* eslint-env browser */
 
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
   Image,
@@ -229,17 +230,17 @@ class PhoneLoginBox extends Component {
 }
 
 PhoneLoginBox.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
-  knownNumbers: React.PropTypes.shape({}).isRequired,
-  large: React.PropTypes.bool,
-  loginRef: React.PropTypes.shape({
-    input: React.PropTypes.any,
+  knownNumbers: PropTypes.shape({}).isRequired,
+  large: PropTypes.bool,
+  loginRef: PropTypes.shape({
+    input: PropTypes.any,
   }).isRequired,
-  verySmall: React.PropTypes.bool,
+  verySmall: PropTypes.bool,
 }
 
 export default connect(pick([

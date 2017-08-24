@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ScrollView, Text, View } from 'react-native'
@@ -79,13 +80,13 @@ class AuditScreen extends Component {
 AuditScreen.title = 'Audit Vote'
 
 AuditScreen.propTypes = {
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      bill_id: React.PropTypes.string.isRequired,
-      date: React.PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      bill_id: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
     }),
   }),
-  sessionId: React.PropTypes.string,
+  sessionId: PropTypes.string,
 }
 
 const mapStateToProps = state => ({

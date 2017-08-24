@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 
@@ -18,7 +19,7 @@ export default class HoverableOpacity extends Component {
           cursor: 'pointer',
           outline: 'none',
           ...outerStyle,
-          ...this.state.hover ? hoverStyle : {},
+          ...((this.state.hover ? hoverStyle : {})),
         }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
@@ -30,8 +31,8 @@ export default class HoverableOpacity extends Component {
 }
 
 HoverableOpacity.propTypes = {
-  children: React.PropTypes.element,
-  hoverStyle: React.PropTypes.shape({}),
-  outerStyle: React.PropTypes.shape({}),
-  style: React.PropTypes.shape({}),
+  children: PropTypes.element,
+  hoverStyle: PropTypes.shape({}),
+  outerStyle: PropTypes.shape({}),
+  style: PropTypes.shape({}),
 }

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Dimensions,
@@ -66,9 +67,9 @@ function CameraScreen({ dispatch, history }) {
 CameraScreen.disableHeader = true
 
 CameraScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
 }
 

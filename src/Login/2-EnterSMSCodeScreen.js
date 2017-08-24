@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Image,
@@ -178,11 +179,11 @@ EnterSMSCodeScreen.disableHeader = true
 EnterSMSCodeScreen.disableMenu = true
 
 EnterSMSCodeScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
   }),
-  phoneNumber: React.PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

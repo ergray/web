@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -126,12 +127,12 @@ class YourRegistrationScreen extends Component {
 YourRegistrationScreen.title = 'Registration'
 
 YourRegistrationScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
-  history: React.PropTypes.shape({ // eslint-disable-line react/no-unused-prop-types
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  history: PropTypes.shape({ // eslint-disable-line react/no-unused-prop-types
+    replace: PropTypes.func.isRequired,
   }),
-  isVerified: React.PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
-  sessionId: React.PropTypes.string.isRequired,
+  isVerified: PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
+  sessionId: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => ({

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Text,
@@ -64,8 +65,8 @@ function LegalIdScreen({ history }) {
 LegalIdScreen.disableHeader = true
 
 LegalIdScreen.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
 }
 

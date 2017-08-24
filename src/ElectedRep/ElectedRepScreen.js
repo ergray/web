@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Image,
@@ -123,11 +124,11 @@ class ElectedRepScreen extends Component {
 ElectedRepScreen.title = 'Elected Rep'
 
 ElectedRepScreen.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
-  user: React.PropTypes.shape({
-    sf_district: React.PropTypes.number,
+  user: PropTypes.shape({
+    sf_district: PropTypes.number,
   }),
 }
 

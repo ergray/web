@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Image,
@@ -54,17 +55,17 @@ function Header(props) {
 }
 
 Header.propTypes = {
-  history: React.PropTypes.shape({ // eslint-disable-line
-    goBack: React.PropTypes.func.isRequired,
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({ // eslint-disable-line
+    goBack: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
   }),
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired,
-    state: React.PropTypes.shape({
-      backable: React.PropTypes.bool,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    state: PropTypes.shape({
+      backable: PropTypes.bool,
     }),
   }),
-  title: React.PropTypes.string,
+  title: PropTypes.string,
 }
 
 export default Header

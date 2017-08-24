@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   ScrollView,
@@ -103,13 +104,13 @@ class BetweenWeeks extends Component {
 }
 
 BetweenWeeks.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
-  message: React.PropTypes.string,
-  sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape().isRequired,
+  message: PropTypes.string,
+  sessionId: PropTypes.string.isRequired,
+  user: PropTypes.shape().isRequired,
 }
 
 const mapStateToProps = pick([

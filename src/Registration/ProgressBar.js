@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Text,
@@ -37,8 +38,8 @@ function ProgressBar({ step, style }) {
 }
 
 ProgressBar.propTypes = {
-  step: React.PropTypes.number.isRequired,
-  style: React.PropTypes.shape({}),
+  step: PropTypes.number.isRequired,
+  style: PropTypes.shape({}),
 }
 
 export default connect()(ProgressBar)

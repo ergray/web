@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   Image,
@@ -68,8 +69,8 @@ function BoardScreen({ history }) {
 BoardScreen.title = 'Board of Supervisors'
 
 BoardScreen.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }).isRequired,
 }
 

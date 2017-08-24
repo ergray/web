@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
 export default class FadeIn extends Component {
@@ -40,5 +41,5 @@ export default class FadeIn extends Component {
 }
 
 FadeIn.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 }

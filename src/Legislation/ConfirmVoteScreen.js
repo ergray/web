@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   View,
@@ -186,24 +187,24 @@ class ConfirmVoteScreen extends Component {
 ConfirmVoteScreen.title = 'Confirm Vote'
 
 ConfirmVoteScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    goBack: React.PropTypes.func.isRequired,
-    replace: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
+    replace: PropTypes.func.isRequired,
   }).isRequired,
-  location: React.PropTypes.shape({
-    pathname: React.PropTypes.string.isRequired,
-    state: React.PropTypes.shape(),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+    state: PropTypes.shape(),
   }).isRequired,
-  match: React.PropTypes.shape({
-    params: React.PropTypes.shape({
-      bill_id: React.PropTypes.string.isRequired,
-      date: React.PropTypes.string.isRequired,
-      position: React.PropTypes.string.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      bill_id: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+      position: PropTypes.string.isRequired,
     }),
   }),
-  sessionId: React.PropTypes.string.isRequired,
-  votingPower: React.PropTypes.number,
+  sessionId: PropTypes.string.isRequired,
+  votingPower: PropTypes.number,
 }
 
 const mapStateToProps = state => ({

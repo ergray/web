@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
   Dimensions,
@@ -104,13 +105,13 @@ class AddressScreen extends Component {
 AddressScreen.disableHeader = true
 
 AddressScreen.propTypes = {
-  dispatch: React.PropTypes.func.isRequired,
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
-  sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape({
-    address: React.PropTypes.string,
+  sessionId: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    address: PropTypes.string,
   }),
 }
 

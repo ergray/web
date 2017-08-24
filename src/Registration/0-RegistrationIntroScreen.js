@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Text, View } from 'react-native'
 import Button from '../Button'
@@ -33,7 +34,7 @@ export default function RegistrationIntroScreen({ history }) {
 RegistrationIntroScreen.disableHeader = true
 
 RegistrationIntroScreen.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
 }

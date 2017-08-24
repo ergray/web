@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import {
   View,
@@ -19,8 +20,8 @@ NextAgendaScreen.titleIcon = legislatureIcon
 NextAgendaScreen.title = 'San Francisco Legislature'
 
 NextAgendaScreen.propTypes = {
-  history: React.PropTypes.shape({
-    push: React.PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
   }),
 }
 

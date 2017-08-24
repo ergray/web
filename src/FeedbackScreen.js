@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Dimensions, View } from 'react-native'
 import { connect } from 'react-redux'
@@ -81,8 +82,8 @@ class FeedbackScreen extends Component {
 FeedbackScreen.title = 'Feedback'
 
 FeedbackScreen.propTypes = {
-  sessionId: React.PropTypes.string.isRequired,
-  user: React.PropTypes.shape({}),
+  sessionId: PropTypes.string.isRequired,
+  user: PropTypes.shape({}),
 }
 
 const mapStateToProps = state => ({ sessionId: state.sessionId, user: state.user })
