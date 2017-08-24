@@ -14,6 +14,7 @@ export default class Text extends Component { // eslint-disable-line react/prefe
       ...this.props,
       style: [{
         color: cstyle.bodyColor,
+        lineHeight: '160%',
       }, style],
     }
 

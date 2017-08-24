@@ -54,6 +54,7 @@ class Header extends Component {
     return (
       <View
         style={{
+          alignItems: 'center',
           alignSelf: 'center',
           flexDirection: 'row',
           justifyContent: 'center',
