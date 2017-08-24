@@ -10,12 +10,10 @@ export default class HoverableOpacity extends Component {
   }
 
   render() {
-    const { children, hoverStyle, onPress, outerStyle, style, ...remainingProps } = this.props
+    const { children, hoverStyle, onPress, outerStyle, style } = this.props
 
     return (
       <Tappable
-        {...remainingProps}
-        activeOpacity={0.6}
         component="div"
         moveThreshold={150}
         style={{
