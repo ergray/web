@@ -63,7 +63,6 @@ class BillsListItem extends Component {
 
     return (
       <HoverableListItemPanel
-        key={bill.uid}
         onPress={() => history.push(billUrl)}
       >
         <View>

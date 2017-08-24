@@ -79,14 +79,17 @@ export default function reducer(state, action) {
     }
 
   case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
-    let bills = action.bills || []
+    const bills = (state.bills.us || []).reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
+
     if (action.legislature === 'us') {
-      bills = _.orderBy((state.bills.us || []).concat(bills), ['updated'], ['desc'])
+      action.bills.forEach((bill) => {
+        bills[bill.bill_uid] = bill
+      })
     }
 
     return { ...state,
       bills: { ...state.bills,
-        [action.legislature || action.date]: bills,
+        [action.legislature || action.date]: _.orderBy(Object.values(bills), ['updated'], ['desc']),
       },
     }
 

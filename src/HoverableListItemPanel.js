@@ -7,7 +7,7 @@ const cstyle = CommonStyle()
 
 export default class HoverableListItemPanel extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { outerStyle, style, ...remainingProps } = this.props
+    const { children, onPress, outerStyle, style } = this.props
 
     return (
       <HoverableOpacity
@@ -33,13 +33,15 @@ export default class HoverableListItemPanel extends Component { // eslint-disabl
           ...outerStyle,
         }}
         style={style}
-        {...remainingProps}
-      />
+        onPress={onPress}
+      >{children}</HoverableOpacity>
     )
   }
 }
 
 HoverableListItemPanel.propTypes = {
+  children: PropTypes.element,
+  onPress: PropTypes.func,
   outerStyle: PropTypes.shape({}),
   style: PropTypes.shape({}),
 }
