@@ -7,7 +7,7 @@ import Header from './Header'
 
 export default function RegistrationIntroScreen({ history }) {
   return (
-    <View style={{ alignItems: 'center' }}>
+    <View style={{ alignItems: 'center', paddingHorizontal: 30 }}>
       <Header history={history} step={0} title="Voter Registration" />
 
       <View style={{ marginVertical: 50 }}>
