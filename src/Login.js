@@ -63,7 +63,6 @@ class Login extends Component {
     return (
       <View style={{
         alignSelf: 'center',
-        marginVertical: 40,
         width: 350,
       }}
       >

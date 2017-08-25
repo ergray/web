@@ -52,7 +52,8 @@ class BillArguments extends Component {
             borderRightWidth: 1,
             marginBottom: 30,
             overflow: 'hidden',
-            padding: 10,
+            paddingHorizontal: '1rem',
+            paddingVertical: '.5rem',
           }}
         >
           <Text>

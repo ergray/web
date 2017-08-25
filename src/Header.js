@@ -58,8 +58,8 @@ class Header extends Component {
           alignSelf: 'center',
           flexDirection: 'row',
           justifyContent: 'center',
-          marginTop: 15,
-          padding: '1rem',
+          paddingHorizontal: '2rem',
+          paddingVertical: '2rem',
         }}
       >
         {titleIcon &&

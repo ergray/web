@@ -66,7 +66,7 @@ class BillsList extends Component {
     return (
       <View>
         <Header history={history} location={location} title={title} />
-        <View style={{ padding: '2rem' }}>
+        <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           ))}

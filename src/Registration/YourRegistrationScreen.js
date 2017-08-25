@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
-  ScrollView,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -78,7 +77,7 @@ class YourRegistrationScreen extends Component {
     }[verification_status]
 
     return (
-      <View style={{ alignSelf: 'center', marginHorizontal: 20, width: 400 }}>
+      <View style={{ alignSelf: 'center', paddingHorizontal: '2rem', width: 400 }}>
 
         { !this.state.registrationInfo.first_name
           ? <Text style={{ ...normal, marginTop: 10 }}>Loading...</Text> :

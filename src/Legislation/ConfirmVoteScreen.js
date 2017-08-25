@@ -74,110 +74,108 @@ class ConfirmVoteScreen extends Component {
 
     return (
       <View>
-
         <Header backable history={history} location={location} title={bill.title} />
 
-        <Text style={{
-          marginBottom: 5,
-          marginHorizontal: 20,
-          marginTop: 20,
-        }}
-        >
-          Why are you voting {Position}?
-        </Text>
-
-        <TextInput
-          multiline
-          numberOfLines={7}
-          placeholder="Because..."
-          style={{
-            alignSelf: 'stretch',
-            backgroundColor: cstyle.panelColor,
-            borderBottomColor: cstyle.panelBorderColor,
-            borderBottomStyle: 'solid',
-            borderBottomWidth: 1,
-            borderLeftColor: cstyle.panelBorderHoverColor,
-            borderLeftStyle: 'solid',
-            borderLeftWidth: 1,
-            borderRadius: 3,
-            borderTopColor: cstyle.panelBorderHoverColor,
-            borderTopStyle: 'solid',
-            borderTopWidth: 1,
-            fontSize: 16,
-            marginHorizontal: 20,
-            paddingHorizontal: 10,
-            paddingVertical: 5,
+        <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
+          <Text style={{
+            marginBottom: 5,
           }}
-          value={this.state.argument}
-          onChangeText={argument => this.setState({ argument })}
-        />
-
-        <View
-          style={{
-            margin: 20,
-          }}
-        >
-          <Text style={{ fontWeight: '700' }}>
-            Your voting power for this bill is: &nbsp;{ this.state.voting_power || '...Loading...' }
-          </Text>
-          { this.state.voting_power < this.props.votingPower &&
-            <Text style={{ marginTop: 10 }}>
-              This is less than your max voting power because some of your constituents have directly voted.
-            </Text>
-          }
-          <HoverableOpacity
-            hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
-            outerStyle={{ alignSelf: 'flex-start', marginTop: 10 }}
-            onPress={() => history.push('/voting-power')}
           >
-            <Text style={{ color: '#5DA0FF', textDecorationLine: 'underline' }}>
-              Invite more people to increase your voting power.
-            </Text>
-          </HoverableOpacity>
+            Why are you voting {Position}?
+          </Text>
 
-          <Button
-            primary
-            outerStyle={{
-              opacity: this.state.disabled ? 0.4 : 1,
+          <TextInput
+            multiline
+            numberOfLines={7}
+            placeholder="Because..."
+            style={{
+              alignSelf: 'stretch',
+              backgroundColor: cstyle.panelColor,
+              borderBottomColor: cstyle.panelBorderColor,
+              borderBottomStyle: 'solid',
+              borderBottomWidth: 1,
+              borderLeftColor: cstyle.panelBorderHoverColor,
+              borderLeftStyle: 'solid',
+              borderLeftWidth: 1,
+              borderRadius: 3,
+              borderTopColor: cstyle.panelBorderHoverColor,
+              borderTopStyle: 'solid',
+              borderTopWidth: 1,
+              fontSize: 16,
+              paddingHorizontal: 10,
+              paddingVertical: 5,
             }}
-            style={{ marginTop: '1rem' }}
-            text={`SAV${this.state.disabled ? 'ING' : 'E'}`}
-            onPress={() => {
-              // Don't let them vote if they're not logged in
-              if (!sessionId) {
-                window.alert('You are not signed in. Please sign in or join first.') // eslint-disable-line
-                return
-              }
-
-              // Dont let them press this button multiple times
-              if (this.state.disabled) {
-                return
-              }
-              this.setState({ disabled: true })
-
-              // Save the position to redux store
-              dispatch({ bill, position, type: 'VOTE_ON_BILL' })
-
-              // Save the position to the server
-              fetch(`${API_URL_V1}/bill/${bill.uid}/vote`, {
-                body: JSON.stringify({
-                  argument: this.state.argument,
-                  position,
-                }),
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                  Session_ID: sessionId,
-                },
-                method: 'POST',
-              })
-                .then(() => history.goBack())
-            }}
+            value={this.state.argument}
+            onChangeText={argument => this.setState({ argument })}
           />
+
+          <View
+            style={{
+              marginTop: 20,
+            }}
+          >
+            <Text style={{ fontWeight: '700' }}>
+              Your voting power for this bill is: &nbsp;{ this.state.voting_power || '...Loading...' }
+            </Text>
+            { this.state.voting_power < this.props.votingPower &&
+              <Text style={{ marginTop: 10 }}>
+                This is less than your max voting power because some of your constituents have directly voted.
+              </Text>
+            }
+            <HoverableOpacity
+              hoverStyle={{ backgroundColor: 'hsla(0,0%,100%,0.1)' }}
+              outerStyle={{ alignSelf: 'flex-start', marginTop: 10 }}
+              onPress={() => history.push('/voting-power')}
+            >
+              <Text style={{ color: '#5DA0FF', textDecorationLine: 'underline' }}>
+                Invite more people to increase your voting power.
+              </Text>
+            </HoverableOpacity>
+
+            <Button
+              primary
+              outerStyle={{
+                opacity: this.state.disabled ? 0.4 : 1,
+              }}
+              style={{ marginTop: '1rem' }}
+              text={`SAV${this.state.disabled ? 'ING' : 'E'}`}
+              onPress={() => {
+                // Don't let them vote if they're not logged in
+                if (!sessionId) {
+                  window.alert('You are not signed in. Please sign in or join first.') // eslint-disable-line
+                  return
+                }
+
+                // Dont let them press this button multiple times
+                if (this.state.disabled) {
+                  return
+                }
+                this.setState({ disabled: true })
+
+                // Save the position to redux store
+                dispatch({ bill, position, type: 'VOTE_ON_BILL' })
+
+                // Save the position to the server
+                fetch(`${API_URL_V1}/bill/${bill.uid}/vote`, {
+                  body: JSON.stringify({
+                    argument: this.state.argument,
+                    position,
+                  }),
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Session_ID: sessionId,
+                  },
+                  method: 'POST',
+                })
+                  .then(() => history.goBack())
+              }}
+            />
+          </View>
+
+          <View style={{ flex: 1 }} />
+
         </View>
-
-        <View style={{ flex: 1 }} />
-
       </View>
     )
   }

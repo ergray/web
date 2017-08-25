@@ -41,7 +41,7 @@ class RequestsScreen extends Component {
 
   render() {
     if (!this.props.constituents) {
-      return <Text style={{ fontSize: 16, marginLeft: 20, marginTop: 10 }}>Loading...</Text>
+      return <Text style={{ fontSize: 16, paddingBottom: '2rem', paddingHorizontal: '2rem' }}>Loading...</Text>
     }
 
     const { approved, rejected, requests } = this.props.constituents
@@ -52,7 +52,7 @@ class RequestsScreen extends Component {
     const numRejected = !rejected ? '' : `(${rejected.length})`
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, marginHorizontal: 20, marginTop: 20 }}>
+      <View style={{ alignSelf: 'center', flex: 1, paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
         <Text style={{ marginBottom: 20 }}>Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.</Text>
 
         <ScrollView style={{ flex: 1 }}>

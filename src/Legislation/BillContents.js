@@ -6,7 +6,7 @@ import { convertDateToLongFormat } from './convert-dates'
 
 function BillContents({ bill }) {
   return (
-    <View style={{ padding: 20 }}>
+    <View style={{ padding: '2rem' }}>
 
       <Text style={{ fontStyle: 'italic', marginBottom: 10 }}>{convertDateToLongFormat(bill.date)}</Text>
 

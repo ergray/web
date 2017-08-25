@@ -178,14 +178,12 @@ class BillScreen extends Component {
 
 
         { /* Main content area */ }
-        <ScrollView contentContainerStyle={{ flex: 1 }} style={{ flex: 1 }}>
-          <BillContents bill={bill} />
+        <BillContents bill={bill} />
 
-          <Text style={{ borderBottomColor: cstyle.panelBorderColor, borderBottomWidth: 1, borderTopColor: cstyle.panelBorderColor, borderTopWidth: 1, fontSize: 15, fontWeight: '700', paddingVertical: 8, textAlign: 'center', textTransform: 'uppercase' }}>
-            Arguments
-          </Text>
-          <BillArguments activeBill={bill.uid} />
-        </ScrollView>
+        <Text style={{ borderBottomColor: cstyle.panelBorderColor, borderBottomWidth: 1, borderTopColor: cstyle.panelBorderColor, borderTopWidth: 1, fontSize: 15, fontWeight: '700', paddingVertical: 8, textAlign: 'center', textTransform: 'uppercase' }}>
+          Arguments
+        </Text>
+        <BillArguments activeBill={bill.uid} />
 
         { /* Vote Counts */ }
         <View style={{

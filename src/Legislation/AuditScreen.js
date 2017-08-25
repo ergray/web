@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { ScrollView, Text, View } from 'react-native'
-
+import { View } from 'react-native'
+import Header from 'Header'
+import Text from 'Text'
 
 class AuditScreen extends Component {
   constructor(props) {
@@ -45,8 +46,11 @@ class AuditScreen extends Component {
   }
 
   render() {
+    const { history, location } = this.props
+
     return (
-      <View style={{ padding: 20 }}>
+      <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
+        <Header backable history={history} location={location} title="Vote Audit" />
 
         { this.state.mine && (
           <View style={{
@@ -80,6 +84,8 @@ class AuditScreen extends Component {
 AuditScreen.title = 'Audit Vote'
 
 AuditScreen.propTypes = {
+  history: PropTypes.shape({}),
+  location: PropTypes.shape({}),
   match: PropTypes.shape({
     params: PropTypes.shape({
       bill_id: PropTypes.string.isRequired,

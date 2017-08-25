@@ -62,7 +62,7 @@ class DelegatesScreen extends Component {
 
     if (!this.props.sessionId) {
       return (
-        <View style={{ margin: '2rem' }}>
+        <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
           <P>You are not logged in. Press JOIN above.</P>
           <View style={{ height: 30 }} />
           <P>Then you can add personal delegates.</P>
@@ -71,7 +71,7 @@ class DelegatesScreen extends Component {
     }
 
     return (
-      <View style={{ flex: 1, margin: '2rem' }}>
+      <View style={{ flex: 1, paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
 
         <View style={{ flexDirection: 'row', marginBottom: 30 }}>
           { /* ADD NEW DELEGATE button */ }
