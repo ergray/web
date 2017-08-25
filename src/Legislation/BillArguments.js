@@ -4,9 +4,10 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import CommonStyle from '../CommonStyle'
-import HoverableOpacity from '../HoverableOpacity'
-import Text from '../Text'
+import ActivityIndicator from 'ActivityIndicator'
+import CommonStyle from 'CommonStyle'
+import HoverableOpacity from 'HoverableOpacity'
+import Text from 'Text'
 const pick = require('lodash/fp/pick')
 
 const cstyle = CommonStyle()
@@ -33,7 +34,7 @@ class BillArguments extends Component {
     if (this.state.loading) {
       return (
         <View style={{ flex: 1, padding: 20 }}>
-          <Text>Loading...</Text>
+          <ActivityIndicator />
         </View>
       )
     }

@@ -5,10 +5,10 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import Button from '../Button'
-import logo from '../logo.png'
-import Text from '../Text'
-import TextInput from '../TextInput'
+import Button from 'Button'
+import logo from 'logo.png'
+import Text from 'Text'
+import TextInput from 'TextInput'
 
 class EnterSMSCodeScreen extends Component {
   constructor(props) {

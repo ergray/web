@@ -5,9 +5,9 @@ import {
 } from 'react-native'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import ActivityIndicator from 'ActivityIndicator'
 import { oldBill } from '../_util'
 import Header from '../Header'
-import Text from '../Text'
 import { convertDateToLongFormat } from './convert-dates'
 import BillsListItem from './BillsListItem'
 import PastAgendas from './PastAgendas'
@@ -45,15 +45,7 @@ class BillsList extends Component {
     let agenda = bills[key]
 
     if (!agenda) {
-      return (
-        <Text style={{
-          fontSize: 18,
-          fontWeight: '300',
-          marginHorizontal: 30,
-          marginTop: 20,
-        }}
-        >Loading...</Text>
-      )
+      return <ActivityIndicator />
     }
 
     if (date) {

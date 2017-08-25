@@ -4,9 +4,10 @@ import {
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import { oldBill } from '../_util'
-import Text from '../Text'
-import BillScreen from './BillScreen'
+import { oldBill } from '_util'
+import ActivityIndicator from 'ActivityIndicator'
+import Text from 'Text'
+import BillScreen from 'Legislation/BillScreen'
 
 class LoadBillScreen extends Component {
   componentDidMount() {
@@ -32,21 +33,20 @@ class LoadBillScreen extends Component {
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
     const key = date || 'us'
 
-    let message = `Loading bill ${bill_uid}...`
-
     if (bills[key]) {
       const bill = bills[key].filter(b => b.uid === bill_uid)[0]
       if (!bill) {
-        message = `Bill ${bill_uid} not found`
-      } else {
-        return <BillScreen bill={bill} history={history} location={location} />
+        return (
+          <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+            <Text>Bill {bill_uid} not found</Text>
+          </View>
+        )
       }
+      return <BillScreen bill={bill} history={history} location={location} />
     }
 
     return (
-      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-        <Text>{message}</Text>
-      </View>
+      <ActivityIndicator text={`Loading bill ${bill_uid}...`} />
     )
   }
 }
