@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
-  ScrollView,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -52,10 +51,10 @@ class RequestsScreen extends Component {
     const numRejected = !rejected ? '' : `(${rejected.length})`
 
     return (
-      <View style={{ alignSelf: 'center', flex: 1, paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
+      <View style={{ alignSelf: 'center', paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
         <Text style={{ marginBottom: 20 }}>Approving someone to delegate to you increases your voting power, but also allows them to see how you vote.</Text>
 
-        <ScrollView style={{ flex: 1 }}>
+        <View>
           <Text style={{ fontSize: 12, fontWeight: '700', marginBottom: 10, textTransform: 'uppercase' }}>Requests {numRequested}</Text>
           {requests.length === 0
             ? <View>
@@ -146,7 +145,7 @@ class RequestsScreen extends Component {
               <Text style={{ flex: 1 }}>{user.first_name} {user.last_name}</Text>
             </View>
           ))}
-        </ScrollView>
+        </View>
 
       </View>
     )
