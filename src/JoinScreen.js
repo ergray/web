@@ -55,7 +55,7 @@ class JoinScreen extends Component {
   render() {
     const { dispatch, history, large, verySmall } = this.props
 
-    let placeholderText = `Enter your mobile ${large ? 'number' : '#'}`
+    let placeholderText = `Enter your phone ${large ? 'number' : '#'} to sign up`
     if (verySmall) {
       placeholderText = 'Mobile #'
     }
@@ -237,7 +237,7 @@ JoinScreen.propTypes = {
   verySmall: PropTypes.bool,
 }
 
-JoinScreen.title = 'Join using your phone'
+JoinScreen.title = 'Join us and take back our democracy'
 
 export default connect(pick([
   'knownNumbers',
