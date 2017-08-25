@@ -55,7 +55,7 @@ class JoinScreen extends Component {
   render() {
     const { dispatch, history, large, verySmall } = this.props
 
-    let placeholderText = `Enter your phone ${large ? 'number' : '#'} to sign up`
+    let placeholderText = `Enter your mobile ${large ? 'number' : '#'} to sign up`
     if (verySmall) {
       placeholderText = 'Mobile #'
     }
