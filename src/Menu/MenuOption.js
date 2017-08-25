@@ -59,6 +59,7 @@ class MenuOption extends Component {
           fontWeight: '500',
           marginLeft: '1rem',
           marginRight: '1rem',
+          textDecoration: 'none',
           textTransform: 'uppercase',
           ...style,
         }}

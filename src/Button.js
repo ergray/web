@@ -10,6 +10,7 @@ const cstyle = CommonStyle()
  *
  * primary    primary button style
  * secondary  secondary button style (default)
+ * outline    outline button style
  * icon=      optional icon image to use
  * onPress=   handler for button press
  */
@@ -27,12 +28,16 @@ export default class Button extends Component { // eslint-disable-line react/pre
     if (outline) bgColor = cstyle.btnOutlineBgColor
 
     let bgHoverColor = cstyle.btnSecondaryHoverBgColor
-    if (primary) bgHoverColor = cstyle.btnPrimaryHoverBgColor
+    if (primary) bgHoverColor = cstyle.btnPrimaryBgColor
     if (outline) bgHoverColor = cstyle.btnOutlineHoverBgColor
 
-    let color = cstyle.btnSecondaryColor
+    let color = cstyle.menuColor
     if (primary) color = cstyle.btnPrimaryColor
     if (outline) color = cstyle.btnOutlineColor
+
+    let hoverColor = cstyle.bodyColor
+    if (primary) hoverColor = cstyle.btnPrimaryHoverColor
+    if (outline) hoverColor = cstyle.btnOutlineHoverColor
 
     return (
       <Link
@@ -40,26 +45,28 @@ export default class Button extends Component { // eslint-disable-line react/pre
         history={history}
         hoverStyle={{
           backgroundColor: bgHoverColor,
-          color: outline ? cstyle.btnOutlineHoverColor : color,
+          color: hoverColor,
         }}
         href={to}
         icon={icon}
         pressedStyle={{
-          backgroundColor: borderColor,
+          backgroundColor: bgHoverColor,
           borderBottomWidth: 1,
-          paddingTop: 1,
+          borderTopColor: bgColor,
+          borderTopWidth: 1,
+          color: hoverColor,
         }}
         style={{
           alignItems: 'center',
           backgroundColor: bgColor,
           borderBottomStyle: 'solid',
-          borderBottomWidth: 2,
+          borderBottomWidth: outline ? 2 : 2,
           borderColor,
           borderLeftStyle: 'solid',
           borderLeftWidth: outline ? 2 : 0,
-          borderRadius: 3,
+          borderRadius: 2,
           borderRightStyle: 'solid',
-          borderRightWidth: outline ? 2 : 1,
+          borderRightWidth: outline ? 2 : 0,
           borderTopStyle: 'solid',
           borderTopWidth: outline ? 2 : 0,
           color,
@@ -71,6 +78,7 @@ export default class Button extends Component { // eslint-disable-line react/pre
           justifyContent: 'center',
           paddingLeft: '1rem',
           paddingRight: '1rem',
+          textDecoration: 'none',
           textTransform: 'uppercase',
           ...style,
         }}

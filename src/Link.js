@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Platform, TouchableWithoutFeedback } from 'react-native'
-import Text from './Text'
+import CommonStyle from 'CommonStyle'
+import Text from 'Text'
+
+const cstyle = CommonStyle()
 
 export default class Link extends Component {
   constructor(props) {
@@ -12,14 +15,14 @@ export default class Link extends Component {
   render() {
     const { backable, hoverStyle = {}, history, href, icon, onPress, pressedStyle = {}, text } = this.props
     const Icon = icon
-    let style = this.props.style || {}
+    let style = { color: cstyle.aColor, ...this.props.style }
 
     if (this.state.hover) {
-      style = { ...style, ...hoverStyle }
+      style = { ...style, color: cstyle.aHoverColor, ...hoverStyle }
     }
 
     if (this.state.pressed) {
-      style = { ...style, ...pressedStyle }
+      style = { ...style, color: cstyle.aHoverColor, ...pressedStyle }
     }
 
     if (Platform.OS === 'web') {
