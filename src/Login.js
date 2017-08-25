@@ -77,10 +77,6 @@ class Login extends Component {
           }}
           selection={this.handleAndroid()}
           style={{
-            backgroundColor: '#fff',
-            borderColor: '#979797',
-            borderRadius: 3,
-            borderWidth: 1,
             fontSize: 18,
             fontWeight: '300',
             height: 42,

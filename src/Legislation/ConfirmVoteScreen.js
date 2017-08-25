@@ -88,23 +88,7 @@ class ConfirmVoteScreen extends Component {
             multiline
             numberOfLines={7}
             placeholder="Because..."
-            style={{
-              alignSelf: 'stretch',
-              backgroundColor: cstyle.panelColor,
-              borderBottomColor: cstyle.panelBorderColor,
-              borderBottomStyle: 'solid',
-              borderBottomWidth: 1,
-              borderLeftColor: cstyle.panelBorderHoverColor,
-              borderLeftStyle: 'solid',
-              borderLeftWidth: 1,
-              borderRadius: 3,
-              borderTopColor: cstyle.panelBorderHoverColor,
-              borderTopStyle: 'solid',
-              borderTopWidth: 1,
-              fontSize: 16,
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-            }}
+            style={{ alignSelf: 'stretch' }}
             value={this.state.argument}
             onChangeText={argument => this.setState({ argument })}
           />

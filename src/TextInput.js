@@ -13,7 +13,21 @@ export default class TextInput extends Component { // eslint-disable-line react/
     const props = {
       ...remainingProps,
       style: {
+        backgroundColor: cstyle.panelColor,
+        borderBottomColor: cstyle.panelBorderColor,
+        borderBottomStyle: 'solid',
+        borderBottomWidth: 1,
+        borderLeftColor: cstyle.bodyColorLowlight,
+        borderLeftStyle: 'solid',
+        borderLeftWidth: 1,
+        borderRadius: 3,
+        borderTopColor: cstyle.bodyColorLowlight,
+        borderTopStyle: 'solid',
+        borderTopWidth: 1,
         color: cstyle.bodyColor,
+        fontSize: 16,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
         ...style,
       },
     }
