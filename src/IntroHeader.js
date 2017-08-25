@@ -68,8 +68,7 @@ export default function IntroHeader({ history, sessionId, showVideo = false }) {
               textShadow: '1px 1px 1px #000',
             }}
           >
-            Vote directly on real legislation,
-            or delegate to someone you trust. It's called Liquid Democracy.
+            Vote directly on real legislation or delegate to someone you trust. It's called Liquid Democracy.
           </div>
 
           {!sessionId && <Button
