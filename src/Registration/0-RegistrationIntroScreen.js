@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Text, View } from 'react-native'
-import Button from '../Button'
+import { View } from 'react-native'
+import Button from 'Button'
+import Text from 'Text'
 import Header from './Header'
 
 export default function RegistrationIntroScreen({ history }) {
@@ -15,7 +16,7 @@ export default function RegistrationIntroScreen({ history }) {
           To join, you must be legally registered to vote.</Text>
         <Text style={{ fontSize: 20, marginVertical: 10 }}>
           You will be asked a few questions to confirm your legal voter registration.</Text>
-        <Text style={{ fontSize: 20, marginVertical: 10 }}>All information is strictly confidential.</Text>
+        <Text style={{ fontSize: 20, marginTop: 10 }}>All information is strictly confidential.</Text>
       </View>
 
       <Button
@@ -36,5 +37,5 @@ RegistrationIntroScreen.disableHeader = true
 RegistrationIntroScreen.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
-  }),
+  }).isRequired,
 }

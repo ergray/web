@@ -37,7 +37,7 @@ function ThankYouScreen({ history, user }) {
       <Text style={{
         fontSize: 18,
         fontWeight: '200',
-        marginTop: 70,
+        marginTop: 50,
       }}
       >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is
         { user && user.zip && user.zip.slice(0, 2) === '94'

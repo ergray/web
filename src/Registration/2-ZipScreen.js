@@ -14,7 +14,7 @@ class ZipScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      zip: props.user.zip,
+      zip: props.user.zip || '',
     }
   }
 
@@ -100,13 +100,13 @@ class ZipScreen extends Component {
           }}
         />
 
-        <Button
+        {this.state.zip.length === 5 && <Button
           primary
           history={history}
           style={{ alignSelf: 'center', paddingLeft: 0, paddingRight: 0, width }}
           text="Next"
           to="/registration/address"
-        />
+        />}
 
       </View>
     )
