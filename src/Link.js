@@ -13,7 +13,7 @@ export default class Link extends Component {
   }
 
   render() {
-    const { backable, hoverStyle = {}, history, href, icon, onPress, pressedStyle = {}, text } = this.props
+    const { backable, hoverStyle = {}, history, href, icon, onPress, pressedStyle = {}, rel, target, text } = this.props
     const Icon = icon
     let style = { color: cstyle.aColor, ...this.props.style }
 
@@ -29,13 +29,17 @@ export default class Link extends Component {
       return (
         <a
           href={href}
+          rel={rel}
           style={style}
+          target={target}
           onClick={(e) => {
-            e.preventDefault()
-            if (onPress) {
-              onPress(e)
-            } else {
-              history.push(href, { backable })
+            if (history) {
+              e.preventDefault()
+              if (onPress) {
+                onPress(e)
+              } else {
+                history.push(href, { backable })
+              }
             }
           }}
           onMouseDown={() => {
@@ -92,6 +96,8 @@ Link.propTypes = {
   icon: PropTypes.func,
   onPress: PropTypes.func,
   pressedStyle: PropTypes.shape({}),
+  rel: PropTypes.string,
   style: PropTypes.shape({}),
+  target: PropTypes.string,
   text: PropTypes.string.isRequired,
 }
