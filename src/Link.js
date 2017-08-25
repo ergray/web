@@ -33,13 +33,12 @@ export default class Link extends Component {
           style={style}
           target={target}
           onClick={(e) => {
-            if (history) {
+            if (onPress) {
               e.preventDefault()
-              if (onPress) {
-                onPress(e)
-              } else {
-                history.push(href, { backable })
-              }
+              onPress(e)
+            } else if (history) {
+              e.preventDefault()
+              history.push(href, { backable })
             }
           }}
           onMouseDown={() => {
