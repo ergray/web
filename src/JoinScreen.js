@@ -63,7 +63,6 @@ class JoinScreen extends Component {
     return (
       <View style={{
         alignSelf: 'center',
-        marginVertical: 40,
         width: 350,
       }}
       >
@@ -197,26 +196,31 @@ class JoinScreen extends Component {
             }}
           >+1</Text>
         </View>
-        <Text
-          style={{
-            fontSize: 14,
-            fontWeight: '100',
-            marginTop: 30,
-          }}
-        >
-         We will never share your information, and we use the same security and encryption used by banks. Read about our&nbsp;
-          <Link
-            hoverStyle={{ textDecoration: 'underline' }}
-            href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
-            rel="noopener noreferrer"
+        <View style={{ alignItems: 'center', marginTop: '2rem' }}>
+          <Text
             style={{
-              cursor: 'pointer',
+              fontSize: '13px',
+              fontWeight: '600',
             }}
-            target="_blank"
-            text="strong privacy"
-          />
-          .
-        </Text>
+          >
+           We will never share your phone number.
+          </Text>
+          <Text style={{ fontSize: '11px', marginTop: '1rem', textAlign: 'center' }}>
+            Your personal information is safeguarded using the same encryption that banks use.
+            Read about our strong&nbsp;
+            <Link
+              hoverStyle={{ textDecoration: 'underline' }}
+              href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+              rel="noopener noreferrer"
+              style={{
+                cursor: 'pointer',
+              }}
+              target="_blank"
+              text="privacy protections"
+            />
+            .
+          </Text>
+        </View>
       </View>
     )
   }
@@ -233,7 +237,7 @@ JoinScreen.propTypes = {
   verySmall: PropTypes.bool,
 }
 
-JoinScreen.title = 'Join'
+JoinScreen.title = 'Join using your phone'
 
 export default connect(pick([
   'knownNumbers',
