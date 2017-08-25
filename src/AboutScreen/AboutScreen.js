@@ -1,43 +1,37 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-import { Image, View, Text } from 'react-native'
+import { connect } from 'react-redux'
+import { View } from 'react-native'
 import MediaQuery from 'react-responsive'
 import { Parallax } from 'react-parallax'
-import HoverableLink from '../HoverableLink'
-import SubscribeCTA from './SubscribeCTA'
-import constituencyGraphic from './constituency-graphic.png'
+import HoverableLink from 'HoverableLink'
+import Image from 'Image'
+import IntroHeader from 'IntroHeader'
+import SubscribeCTA from 'AboutScreen/SubscribeCTA'
+import constituencyGraphic from 'AboutScreen/constituency-graphic.png'
+import Text from 'Text'
 
-function AboutScreen() {
+function AboutScreen({ history, sessionId }) {
   return (
     <View>
-
-      { /* Video section */}
-      <View style={{ alignItems: 'center', backgroundColor: '#191723', paddingHorizontal: 20, paddingVertical: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 43, fontWeight: '100', letterSpacing: 1, marginBottom: 60, textAlign: 'center' }} >
-          People, Not Parties
-        </Text>
-        <MediaQuery maxWidth={740}>
-          {smallScreen => (
-            <iframe allowFullScreen frameBorder="0" height={smallScreen ? 200 : 315} src="https://www.youtube.com/embed/u9-hvwPSbhM" width={smallScreen ? 360 : 560} />
-          )}
-        </MediaQuery>
-      </View>
+      <IntroHeader showVideo history={history} sessionId={sessionId} />
 
       { /* Introducing LD */}
       <MediaQuery maxWidth={960}>
         {smallScreen => (
           <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
-            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: smallScreen ? 30 : 46, fontWeight: '500', letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
+            <Text style={{ fontSize: smallScreen ? 30 : 46, fontWeight: '500', letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
               INTRODUCING LIQUID DEMOCRACY
             </Text>
             <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
-              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
+              <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
                 Vote on real legislation.
               </Text>
-              <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
+              <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
                 Or delegate your vote to anyone you trust.
               </Text>
             </View>
-            <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
+            <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
               We'll grade politicians on how well they truly represent their voters.
             </Text>
           </View>
@@ -48,15 +42,15 @@ function AboutScreen() {
       <MediaQuery maxWidth={575}>
         {verySmallScreen => (<View style={{ backgroundColor: '#191723' }}>
           <View style={{ alignSelf: 'center', maxWidth: 920, paddingHorizontal: 20, paddingVertical: 60, width: '100%' }}>
-            <Text style={{ color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
+            <Text style={{ color: '#E2E2E2', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
               REMOVE CORRUPTION
             </Text>
 
-            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'center', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'center', color: '#E2E2E2', fontSize: 26, fontWeight: '200', letterSpacing: 2.17, marginBottom: 60 }}>
               MOVE PAST A TWO PARTY SYSTEM
             </Text>
 
-            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 2.17 }}>
+            <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontSize: 26, fontWeight: '200', letterSpacing: 2.17 }}>
               GET REAL REPRESENTATION
             </Text>
           </View>
@@ -66,21 +60,17 @@ function AboutScreen() {
       { /* voting power */}
       <View style={{ backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignItems: 'center', alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
-            POWERED by Liquid Democracy
-          </Text>
-
           <Image
             source={constituencyGraphic}
             style={{
               alignSelf: 'center',
               height: 200,
-              marginVertical: 30,
+              marginBottom: 30,
               width: 310,
             }}
           />
 
-          <Text style={{ color: '#262626', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
+          <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
             Build your constituency to gain VOTING POWER
           </Text>
         </View>
@@ -89,29 +79,29 @@ function AboutScreen() {
       { /* RoM&C */}
       <View style={{ backgroundColor: '#191723', paddingHorizontal: 20, paddingVertical: 60 }}><MediaQuery maxWidth={1025}>{medium => (
         <View style={{ alignSelf: 'center', maxWidth: 920, paddingLeft: medium ? 55 : 0, width: '100%' }}>
-          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 100, fontWeight: '700', left: medium ? 0 : -55, opacity: 0.3, position: 'absolute', top: -49 }}>&ldquo;</Text>
+          <Text style={{ color: '#E2E2E2', fontSize: 100, fontWeight: '700', left: medium ? 0 : -55, opacity: 0.3, position: 'absolute', top: -49 }}>&ldquo;</Text>
 
-          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2 }}>
+          <Text style={{ color: '#E2E2E2', fontSize: 27, fontWeight: '700', letterSpacing: 2 }}>
             Law is the expression of the general will.
           </Text>
 
-          <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 27, fontWeight: '700', letterSpacing: 2, marginTop: 30 }}>
+          <Text style={{ color: '#E2E2E2', fontSize: 27, fontWeight: '700', letterSpacing: 2, marginTop: 30 }}>
             Every citizen has a right to participate personally, or through their representative, in its foundation.
           </Text>
-          <Text style={{ alignSelf: 'flex-end', color: 'white', fontFamily: 'Helvetica Neue', fontSize: 24, fontStyle: 'italic', marginTop: 60 }}>
+          <Text style={{ alignSelf: 'flex-end', color: '#E2E2E2', fontSize: 24, fontStyle: 'italic', marginTop: 60 }}>
             — Declaration of the Rights of Man and of the Citizen
           </Text>
 
-          <Text style={{ alignSelf: 'flex-end', color: 'white', marginTop: 20 }}>
+          <Text style={{ alignSelf: 'flex-end', color: '#E2E2E2', marginTop: 20 }}>
             AUGUST 1789
           </Text>
         </View>
       )}</MediaQuery></View>
 
       { /* Learn More */}
-      <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
+      <View style={{ alignItems: 'center', paddingHorizontal: 20, paddingVertical: 60 }}>
         <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-          <Text style={{ fontFamily: 'Helvetica Neue', fontSize: 45, fontWeight: '100', letterSpacing: 0.12 }}>
+          <Text style={{ fontSize: 45, fontWeight: '100', letterSpacing: 0.12 }}>
             LEARN MORE
           </Text>
 
@@ -130,9 +120,6 @@ function AboutScreen() {
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://score.liquid.vote" text="How to Calculate a Politician's Representative Score" /></Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://secure.liquid.vote" text="Secure Internet Voting" /></Text>
 
-          <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>INTERACTIVE DEMO</Text>
-          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://demo.liquid.vote" text="http://demo.liquid.vote" /></Text>
-
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>RELATED</Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://upgrading.liquid.vote" text="Upgrading Democracy: How voting could work now, 240 years later" /></Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://netparty.liquid.vote" text="The Internet Party: How technology can disrupt politics and re-invent government" /></Text>
@@ -141,49 +128,6 @@ function AboutScreen() {
 
         </View>
       </View>
-
-      { /* Attributes */}
-      <MediaQuery maxWidth={500}>
-        {verySmallScreen => (
-          <View style={{ backgroundColor: '#191723', paddingBottom: 30, paddingHorizontal: 20, paddingTop: 60 }}>
-            <View style={{ alignSelf: 'center', maxWidth: 920, width: '100%' }}>
-              <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 35, fontWeight: '500', letterSpacing: 0.5, marginBottom: 60 }}>
-                LIQUID DEMOCRACY
-              </Text>
-
-              <View style={{ flexDirection: verySmallScreen ? 'column' : 'row', justifyContent: 'space-between' }}>
-
-                <View>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Digital
-                  </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Authentic
-                  </Text>
-                </View>
-
-                <View>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Transparent
-                  </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Accountable
-                  </Text>
-                </View>
-
-                <View style={{ alignItems: verySmallScreen ? 'flex-start' : 'flex-end' }}>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Easy
-                  </Text>
-                  <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 26, fontWeight: '200', letterSpacing: 1, marginBottom: 30 }}>
-                    Participatory
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        )}
-      </MediaQuery>
 
       { /* Subscribe */}
       <SubscribeCTA />
@@ -204,7 +148,7 @@ function AboutScreen() {
 
       { /* Footer */}
       <View style={{ backgroundColor: '#191723', padding: 60 }}>
-        <Text style={{ color: 'white', fontFamily: 'Helvetica Neue', fontSize: 30, fontWeight: '100', letterSpacing: 0.12, textAlign: 'center' }}>
+        <Text style={{ color: '#E2E2E2', fontSize: 30, fontWeight: '100', letterSpacing: 0.12, textAlign: 'center' }}>
           Liquid Democracy is Now Possible
         </Text>
       </View>
@@ -216,6 +160,8 @@ function AboutScreen() {
 AboutScreen.disableHeader = true
 
 AboutScreen.propTypes = {
+  history: PropTypes.shape({}).isRequired,
+  sessionId: PropTypes.string,
 }
 
-export default AboutScreen
+export default connect(({ sessionId }) => ({ sessionId }))(AboutScreen)
