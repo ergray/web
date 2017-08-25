@@ -63,7 +63,7 @@ class DelegatesScreen extends Component {
     if (!this.props.sessionId) {
       return (
         <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
-          <P>You are not logged in. Press JOIN above.</P>
+          <P>You are not signed in. Press SIGN IN above.</P>
           <View style={{ height: 30 }} />
           <P>Then you can add personal delegates.</P>
         </View>
