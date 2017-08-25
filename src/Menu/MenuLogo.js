@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import { Image } from 'react-native'
-import logo from '../logo.png'
+import Image from 'Image'
+import LiquidMark from 'images/liquid_mark.svg'
 
 class MenuLogo extends Component {
   constructor(props) {
@@ -32,7 +32,7 @@ class MenuLogo extends Component {
         onMouseLeave={() => { this.setState({ hover: false }) }}
       >
         <Image
-          source={logo}
+          source={LiquidMark}
           style={{
             height: 32,
             resizeMode: 'contain',

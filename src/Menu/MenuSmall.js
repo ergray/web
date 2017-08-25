@@ -3,9 +3,11 @@ import React from 'react'
 import { View } from 'react-native'
 import { connect } from 'react-redux'
 import Menu from 'react-burger-menu/lib/menus/slide'
-import CommonStyle from '../CommonStyle'
-import Logo from '../Logo'
-import MenuOption from './MenuOption'
+import CommonStyle from 'CommonStyle'
+import LiquidMark from 'images/liquid_mark.svg'
+import LiquidText from 'images/liquid_text_dark.svg'
+import Image from 'Image'
+import MenuOption from 'Menu/MenuOption'
 
 const cstyle = CommonStyle()
 
@@ -23,13 +25,18 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
         ...style,
       }}
     >
-      <Logo style={{
-        height: 21,
-        position: 'absolute',
-        right: 35,
-        top: 20,
-      }}
-      />
+      <View
+        style={{
+          flexDirection: 'row',
+          height: 21,
+          position: 'absolute',
+          right: 35,
+          top: 20,
+        }}
+      >
+        <Image alt="Liquid" source={LiquidText} style={{ height: '100%', marginRight: 10 }} />
+        <Image alt="^" source={LiquidMark} style={{ height: '100%' }} />
+      </View>
       <Menu styles={{
         bmBurgerBars: {
           background: '#373a47',

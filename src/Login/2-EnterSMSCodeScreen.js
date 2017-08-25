@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
-  Image,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
 import Button from 'Button'
-import logo from 'logo.png'
+import LiquidMark from 'images/liquid_mark.svg'
+import Image from 'Image'
 import Text from 'Text'
 import TextInput from 'TextInput'
 
@@ -86,7 +86,7 @@ class EnterSMSCodeScreen extends Component {
     return (
       <View style={{ alignSelf: 'center', maxWidth: 385, width: '100%' }}>
         <Image
-          source={logo}
+          source={LiquidMark}
           style={{
             alignSelf: 'center',
             height: 52,

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import {
-  Image,
-  Text,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import logo from '../logo.png'
-import ProgressBar from './ProgressBar'
+import LiquidMark from 'images/liquid_mark.svg'
+import Image from 'Image'
+import ProgressBar from 'Registration/ProgressBar'
+import Text from 'Text'
 
 function Header({ step, title }) {
   return (
@@ -16,7 +16,7 @@ function Header({ step, title }) {
 
         <View>
           <Image
-            source={logo}
+            source={LiquidMark}
             style={{
               alignSelf: 'center',
               height: 52,

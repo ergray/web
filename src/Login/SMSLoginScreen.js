@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import {
-  Image,
   View,
 } from 'react-native'
 import { connect } from 'react-redux'
-import logo from '../logo.png'
-import HoverableOpacity from '../HoverableOpacity'
-import Text from '../Text'
-import TextInput from '../TextInput'
+import LiquidMark from 'images/liquid_mark.svg'
+import HoverableOpacity from 'HoverableOpacity'
+import Image from 'Image'
+import Text from 'Text'
+import TextInput from 'TextInput'
 
 class SMSLoginScreen extends Component {
   constructor(props) {
@@ -91,7 +91,7 @@ class SMSLoginScreen extends Component {
     return (
       <View style={{ alignSelf: 'center', maxWidth: 385, width: '100%' }}>
         <Image
-          source={logo}
+          source={LiquidMark}
           style={{
             alignSelf: 'center',
             height: 63,
