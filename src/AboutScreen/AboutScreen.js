@@ -21,19 +21,16 @@ function AboutScreen({ history, sessionId }) {
         {smallScreen => (
           <View style={{ alignItems: 'center', backgroundColor: 'white', paddingHorizontal: 20, paddingVertical: 60 }}>
             <Text style={{ fontSize: smallScreen ? 30 : 46, fontWeight: '500', letterSpacing: 4.63, marginBottom: 30, textAlign: 'center' }} >
-              INTRODUCING LIQUID DEMOCRACY
+              What is Liquid Democracy?
             </Text>
-            <View style={{ alignItems: 'center', flexDirection: !smallScreen ? 'row' : 'column', justifyContent: 'space-between', width: smallScreen ? undefined : 920 }}>
+            <View style={{ alignItems: 'center', width: smallScreen ? undefined : 920 }}>
               <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1 }} >
-                Vote on real legislation.
+                  Liquid makes it possible to vote directly on legislation, instead of waiting years to choose between two corrupt parties. You can delegate to someone you trust to vote on your behalf whenever you don’t have the time or expertise. You can take back your delegation at any time, and delegates can only vote on legislation if you don’t.
               </Text>
-              <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: smallScreen ? 15 : 0 }} >
-                Or delegate your vote to anyone you trust.
+              <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: '2rem' }} >
+                Our politicians are no longer representatives of the people, but of the party and the corporation. Liquid gives you the opportunity to represent yourself, instead of being held hostage by elections. Liquid Democracy can end the two-party system and restore power to the people.
               </Text>
             </View>
-            <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1, marginTop: 60, maxWidth: 480, textAlign: 'center', width: '100%' }} >
-              We'll grade politicians on how well they truly represent their voters.
-            </Text>
           </View>
         )}
       </MediaQuery>
@@ -51,7 +48,7 @@ function AboutScreen({ history, sessionId }) {
             </Text>
 
             <Text style={{ alignSelf: verySmallScreen ? 'auto' : 'flex-end', color: '#E2E2E2', fontSize: 26, fontWeight: '200', letterSpacing: 2.17 }}>
-              GET REAL REPRESENTATION
+              RESTORE REPRESENTATION
             </Text>
           </View>
         </View>)}
@@ -71,7 +68,7 @@ function AboutScreen({ history, sessionId }) {
           />
 
           <Text style={{ fontSize: 26, fontWeight: '200', letterSpacing: 1 }}>
-            Build your constituency to gain VOTING POWER
+            Build your constituency through delegation to gain voting power
           </Text>
         </View>
       </View>
