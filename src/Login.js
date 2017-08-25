@@ -204,7 +204,7 @@ class Login extends Component {
             marginTop: 30,
           }}
         >
-         We will never share your information, and we use the same security and encryption used by banks. Read about our&nbsp;
+         We will never share your information, and we use the same security and encryption that banks do. Read about our&nbsp;
           <Link
             hoverStyle={{ textDecoration: 'underline' }}
             href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
