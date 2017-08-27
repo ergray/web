@@ -11,7 +11,7 @@ import ProgressBar from 'Registration/ProgressBar'
 import Text from 'Text'
 const pick = require('lodash/fp/pick')
 
-function ThankYouScreen({ history, user }) {
+function ThankYouScreen({ history }) {
   return (
     <View style={{ alignItems: 'center' }}>
       <Image
@@ -39,12 +39,8 @@ function ThankYouScreen({ history, user }) {
         fontWeight: '200',
         marginTop: 50,
       }}
-      >The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is
-        { user && user.zip && user.zip.slice(0, 2) === '94'
-          ? ' in beta '
-          : ' only available for San Francisco right now '
-        }
-      but you're welcome to try it out.
+      >
+        The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is in beta but you're welcome to try it out.
       </Text>
 
       <Button
@@ -63,9 +59,6 @@ ThankYouScreen.disableHeader = true
 
 ThankYouScreen.propTypes = {
   history: PropTypes.shape({}).isRequired,
-  user: PropTypes.shape({
-    zip: PropTypes.string,
-  }),
 }
 
 export default connect(pick([
