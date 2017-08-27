@@ -25,10 +25,10 @@ function AboutScreen({ history, sessionId }) {
             </Text>
             <View style={{ alignItems: 'center', width: smallScreen ? undefined : 920 }}>
               <Text style={{ fontSize: 21, fontWeight: '200', letterSpacing: 1 }} >
-                  Liquid makes it possible to vote directly on legislation, instead of waiting years to choose between two corrupt parties. You can delegate to someone you trust to vote on your behalf whenever you don’t have the time or expertise. You can take back your delegation at any time, and delegates can only vote on legislation if you don’t.
+                  Liquid makes it possible to vote directly on legislation, instead of waiting years to choose between two out-of-touch parties. You can delegate to someone you trust to vote on your behalf whenever you don’t have the time or expertise. You can take back your delegation at any time, and delegates can only vote on legislation when you don’t.
               </Text>
               <Text style={{ fontSize: 21, fontWeight: '200', letterSpacing: 1, marginTop: '2rem' }} >
-                Our politicians are no longer representatives of the people, but of the party and the corporation. Liquid gives you the opportunity to represent yourself, instead of being held hostage by elections. Liquid Democracy can end the two-party system and restore power to the people.
+                Our politicians ought to be representatives of the people, not party or corporation. Liquid gives you the opportunity to represent yourself, instead of being held hostage by elections. Liquid democracy can end the two-party system and restore power to the people.
               </Text>
             </View>
           </View>
