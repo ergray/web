@@ -88,8 +88,8 @@ AuditScreen.propTypes = {
   location: PropTypes.shape({}),
   match: PropTypes.shape({
     params: PropTypes.shape({
-      bill_id: PropTypes.string.isRequired,
-      date: PropTypes.string.isRequired,
+      bill_id: PropTypes.string,
+      date: PropTypes.string,
     }),
   }),
   sessionId: PropTypes.string,
