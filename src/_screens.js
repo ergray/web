@@ -3,8 +3,9 @@
 import React from 'react'
 import { View } from 'react-native'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Header from './Header'
-import ScreenWithMenu from './ScreenWithMenu'
+import Header from 'Header'
+import ScreenWithMenu from 'ScreenWithMenu'
+import ScrollToTop from 'ScrollToTop'
 
 export const screens = {
   '/': require('./LegislationScreen').default,
@@ -62,20 +63,26 @@ export default () => (
             render={({ history, location, match }) => {
               if (Screen.disableMenu) {
                 return (
-                  <View style={{ flex: 1, height: '100%', width: '100%' }}>
-                    <Header location={location} path={path} />
-                    <Screen history={history} location={location} match={match} />
-                  </View>
+                  <ScrollToTop>
+                    <View style={{ flex: 1, height: '100%', width: '100%' }}>
+                      <Header location={location} path={path} />
+                      <Screen history={history} location={location} match={match} />
+                    </View>
+                  </ScrollToTop>
                 )
               }
 
-              return (<ScreenWithMenu
-                Screen={Screen}
-                history={history}
-                location={location}
-                match={match}
-                path={path}
-              />)
+              return (
+                <ScrollToTop>
+                  <ScreenWithMenu
+                    Screen={Screen}
+                    history={history}
+                    location={location}
+                    match={match}
+                    path={path}
+                  />
+                </ScrollToTop>
+              )
             }}
           />
         )
