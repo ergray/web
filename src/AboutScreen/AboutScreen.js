@@ -11,10 +11,10 @@ import SubscribeCTA from 'AboutScreen/SubscribeCTA'
 import constituencyGraphic from 'AboutScreen/constituency-graphic.png'
 import Text from 'Text'
 
-function AboutScreen({ history, sessionId }) {
+function AboutScreen({ history, location, sessionId }) {
   return (
     <View>
-      <IntroHeader showVideo history={history} sessionId={sessionId} />
+      <IntroHeader showVideo history={history} location={location} sessionId={sessionId} />
 
       { /* Introducing LD */}
       <MediaQuery maxWidth={960}>
@@ -158,6 +158,9 @@ AboutScreen.disableHeader = true
 
 AboutScreen.propTypes = {
   history: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }),
   sessionId: PropTypes.string,
 }
 

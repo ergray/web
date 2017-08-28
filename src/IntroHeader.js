@@ -10,7 +10,7 @@ import Image from 'Image'
 
 const cstyle = CommonStyle()
 
-export default function IntroHeader({ history, sessionId, showVideo = false }) {
+export default function IntroHeader({ history, location, sessionId, showVideo = false }) {
   return (
     <View
       style={{
@@ -66,17 +66,33 @@ export default function IntroHeader({ history, sessionId, showVideo = false }) {
           }}
         >It's called Liquid Democracy.</div>
 
-        {!sessionId && <Button
-          outline
-          history={history}
-          icon={StarIcon}
-          style={{
-            fontWeight: '600',
-            marginTop: '1.5rem',
-          }}
-          text="Join Us"
-          to="/join"
-        />}
+        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+          {!sessionId && <Button
+            outline
+            history={history}
+            icon={StarIcon}
+            style={{
+              fontWeight: '600',
+              marginLeft: '.5rem',
+              marginRight: '.5rem',
+              marginTop: '1.5rem',
+            }}
+            text="Join Us"
+            to="/join"
+          />}
+          {location.pathname !== '/about' && <Button
+            outline
+            history={history}
+            style={{
+              fontWeight: '600',
+              marginLeft: '.5rem',
+              marginRight: '.5rem',
+              marginTop: '1.5rem',
+            }}
+            text="Learn More"
+            to="/about"
+          />}
+        </View>
 
         { showVideo &&
           <View
@@ -102,6 +118,9 @@ export default function IntroHeader({ history, sessionId, showVideo = false }) {
 IntroHeader.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
+  }),
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
   }),
   sessionId: PropTypes.string,
   showVideo: PropTypes.bool,

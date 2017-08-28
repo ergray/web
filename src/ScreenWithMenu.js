@@ -72,7 +72,7 @@ class ScreenWithMenu extends Component {
       <View>
         <Menu history={history} />
         {!loading.client && !sessionId && ['/about', '/sign-in', '/join'].indexOf(location.pathname) === -1 &&
-          <IntroHeader history={history} />
+          <IntroHeader history={history} location={location} />
         }
         <Header history={history} location={location} />
         <Screen history={history} location={location} match={match} />
