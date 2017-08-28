@@ -47,14 +47,13 @@ export default function IntroHeader({ history, sessionId, showVideo = false }) {
               color: '#FFF',
               fontSize: '28px',
               fontWeight: '600',
-              marginBottom: '.5rem',
               paddingLeft: '2rem',
               paddingRight: '2rem',
               textAlign: 'center',
               textShadow: '1px 1px 1px #000',
             }}
           >
-            End the two-party system.
+            Vote directly on real legislation or delegate to someone you trust.
           </div>
           <div
             style={{
@@ -62,14 +61,13 @@ export default function IntroHeader({ history, sessionId, showVideo = false }) {
               color: '#FFF',
               fontSize: '21px',
               fontWeight: '400',
+              marginTop: '1rem',
               paddingLeft: '2rem',
               paddingRight: '2rem',
               textAlign: 'center',
               textShadow: '1px 1px 1px #000',
             }}
-          >
-            Vote directly on real legislation or delegate to someone you trust. It's called Liquid Democracy.
-          </div>
+          >It's called Liquid Democracy.</div>
 
           {!sessionId && <Button
             outline
