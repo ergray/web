@@ -4,10 +4,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Image, View } from 'react-native'
-import Text from './Text'
-import TextInput from './TextInput'
-import Link from './Link'
-import usaFlag from './Login/LandingPage/usa-flag.png'
+import Text from 'Text'
+import TextInput from 'TextInput'
+import Link from 'Link'
+import usaFlag from 'usa.png'
 const pick = require('lodash/fp/pick')
 const isAndroid = /Android/i.test(navigator && navigator.userAgent)
 
