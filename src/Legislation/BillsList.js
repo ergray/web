@@ -5,6 +5,7 @@ import {
 } from 'react-native'
 import _ from 'lodash'
 import { connect } from 'react-redux'
+import VisibilitySensor from 'react-visibility-sensor'
 import ActivityIndicator from 'ActivityIndicator'
 import { oldBill } from '../_util'
 import Header from '../Header'
@@ -14,6 +15,11 @@ import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
 class BillsList extends Component {
+  constructor(props) {
+    super(props)
+    this.visibilitySensorOnChange = this.visibilitySensorOnChange.bind(this)
+  }
+
   componentDidMount() {
     const { dispatch, isVerified, match, sessionId } = this.props
     const { date } = match.params
@@ -23,7 +29,7 @@ class BillsList extends Component {
           .then(response => response.json())
           .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
       } else {
-        fetch(`${API_URL_V2}/legislation/?legislature=us`)
+        fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us' })}`)
           .then(response => response.json())
           .then(bills => bills.map(oldBill))
           .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
@@ -36,6 +42,20 @@ class BillsList extends Component {
         .then(response => response.json())
         .then(votes => dispatch({ date, type: 'SYNC_VOTES', votes }))
     }
+  }
+
+  visibilitySensorOnChange(isVisible) {
+    const { bills, dispatch, match } = this.props
+
+    if (!isVisible || match.params.date || bills.us.synced) return
+
+    const { bill_uid, last_action_date } = bills.us[bills.us.length - 1]
+    const since = { bill_uid, last_action_date }
+    fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us', since })}`)
+      .then(response => response.json())
+      .then(items => items.map(oldBill))
+      .then(items =>
+        dispatch({ append: true, bills: items, legislature: 'us', synced: items.length === 0, type: 'SYNC_BILLS' }))
   }
 
   render() {
@@ -61,7 +81,11 @@ class BillsList extends Component {
         <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
-          ))}
+          )).concat([
+            <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>
+              {() => (!bills.us.synced && !match.params.date ? <ActivityIndicator /> : <span />)}
+            </VisibilitySensor>,
+          ])}
 
           { !!homescreen &&
             <PastAgendas history={history} />

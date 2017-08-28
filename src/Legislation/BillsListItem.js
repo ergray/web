@@ -88,7 +88,7 @@ class BillsListItem extends Component {
                 <Text style={metaStyle}>{(bill.chamber || '').toUpperCase()}</Text>
                 <Text style={metaStyle}>#{bill.itemNumber}</Text>
                 <Text style={metaStyle}>Introduced {dateFormat(bill.date, 'yyyy-mm-dd')}</Text>
-                <Text style={metaStyle}>Last action {dateFormat(bill.last_action || bill.updated || bill.date, 'ddd, mmm dS, h:MM TT')}</Text>
+                <Text style={metaStyle}>Last action {dateFormat(bill.last_action_date || bill.updated || bill.date, 'ddd, mmm dS')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
                 <Text style={metaStyle}>Yea: {bill.votes.yea}</Text>

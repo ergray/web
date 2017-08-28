@@ -87,9 +87,12 @@ export default function reducer(state, action) {
       })
     }
 
+    const newBills = _.orderBy(Object.values(bills), ['last_action_date'], ['desc'])
+    newBills.synced = action.synced
+
     return { ...state,
       bills: { ...state.bills,
-        [action.legislature || action.date]: _.orderBy(Object.values(bills), ['updated'], ['desc']),
+        [action.legislature || action.date]: newBills,
       },
     }
 
