@@ -20,33 +20,18 @@ class AddByPhoneNumber extends Component {
     return (
       <View style={{
         alignSelf: 'center',
-        backgroundColor: 'hsla(0, 0%, 17%, 0.9)',
-        borderRadius: 10,
-        paddingVertical: 30,
-        width: 370,
+        width: 350,
       }}
       >
-        <Text
-          style={{
-            color: '#fff',
-            fontSize: 28,
-            marginLeft: 40,
-          }}
-        >Add by phone number</Text>
         <TextInput
           autoFocus
           autoCorrect={false}
           placeholder="Enter their mobile number"
           style={{
-            backgroundColor: '#fff',
-            borderColor: '#979797',
-            borderRadius: 3,
-            borderWidth: 1,
             fontSize: 18,
             fontWeight: '300',
             height: 42,
-            marginHorizontal: 38,
-            marginTop: 20,
+            marginBottom: '2rem',
             paddingLeft: 75,
           }}
           value={this.state.phone}
@@ -95,25 +80,32 @@ class AddByPhoneNumber extends Component {
             return this.setState({ phone: newText })
           }}
         />
-        <Image
-          source={usaFlag}
+        <View
           style={{
-            height: 24,
-            left: 50,
+            alignItems: 'center',
+            flexDirection: 'row',
+            height: 42,
+            left: '.5rem',
             position: 'absolute',
-            top: 91,
-            width: 30,
+            top: 0,
           }}
-        />
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: '300',
-            left: 87,
-            position: 'absolute',
-            top: 93,
-          }}
-        >+1</Text>
+        >
+          <Image
+            source={usaFlag}
+            style={{
+              height: 24,
+              width: 30,
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: '300',
+              marginLeft: '.5rem',
+              marginTop: 1,
+            }}
+          >+1</Text>
+        </View>
 
       </View>
     )

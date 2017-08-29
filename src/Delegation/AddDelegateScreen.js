@@ -11,25 +11,22 @@ const pick = require('lodash/fp/pick')
 
 function AddDelegateScreen({ history }) {
   return (
-    <View style={{ alignSelf: 'center', margin: 30, maxWidth: 650 }}>
-      <Text style={{
-        fontSize: 16,
-        marginBottom: 20,
-      }}
-      >Delegating lets someone else vote on your behalf, increasing their voting power.</Text>
+    <View style={{ alignSelf: 'center', maxWidth: 600 }}>
+      <AddByPhoneNumber history={history} />
 
       <Text style={{
         fontSize: 16,
         marginBottom: 20,
       }}
-      >This way you can be represented even when you are too busy to
-      look into individual legislation.</Text>
+      >
+        Delegating lets someone else vote on your behalf, increasing their voting power. This way you can be represented even when you are too busy to look into individual legislation.
+      </Text>
 
       <Text style={{
         fontSize: 16,
-        marginBottom: 20,
+        marginBottom: 50,
       }}
-      >Your choice of delegates is&nbsp;
+      >You can override or remove a delegate at any time, and your choice of delegates is&nbsp;
         <Link
           href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
           rel="noopener noreferrer"
@@ -37,18 +34,11 @@ function AddDelegateScreen({ history }) {
           text="kept private"
         />.</Text>
 
-      <Text style={{
-        fontSize: 16,
-        marginBottom: 50,
-      }}
-      >You can override or remove a delegate at any time.</Text>
-
-      <AddByPhoneNumber history={history} />
     </View>
   )
 }
 
-AddDelegateScreen.title = 'Add Delegate'
+AddDelegateScreen.title = 'Add Delegate by Phone Number'
 
 AddDelegateScreen.propTypes = {
   history: PropTypes.shape({}).isRequired,
