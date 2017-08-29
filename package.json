@@ -8,10 +8,12 @@
     "start": "webpack-dev-server --port 3000 --progress --colors --inline --host 0.0.0.0",
     "start:prod": "API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote/v2 npm start",
     "build": "webpack --progress --colors",
-    "serve:prod": "API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote/v2 NODE_ENV=production serve",
+    "build:prod": "rm -rf dist && API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote/v2 NODE_ENV=production webpack --progress --colors",
+    "serve:prod": "API_URL_V1=https://api.liquid.vote API_URL_V2=https://pure-api.liquid.vote/v2 NODE_ENV=production serve -s dist",
     "predeploy": "npm version patch",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
     "postdeploy": "git push --follow-tags",
+    "heroku-postbuild": "npm run build:prod",
     "test": "eslint . --cache && npm run build"
   },
   "dependencies": {

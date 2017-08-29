@@ -1,5 +1,8 @@
 /* eslint-disable sort-keys */
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const webpack = require('webpack')
 
 const plugins = [
@@ -14,6 +17,25 @@ const plugins = [
     Promise: 'imports-loader?this=>global!exports-loader?global.Promise!es6-promise',
     fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
   }),
+  new CopyWebpackPlugin([
+    { from: 'src/CommonStyle.css', to: 'screen.css' },
+  ]),
+  new HtmlWebpackPlugin({
+    title: 'Liquid',
+    favicon: 'favicon.png',
+    filename: 'index.html',
+    hash: true, // cache bust all script tags and css links
+  }),
+  new HtmlWebpackPlugin({
+    title: 'Liquid: 404 Not Found',
+    favicon: 'favicon.png',
+    filename: '404.html',
+    hash: true, // cache bust all script tags and css links
+  }),
+  new HtmlWebpackIncludeAssetsPlugin({
+    append: false,
+    assets: ['screen.css'],
+  }),
 ]
 
 if (process.env.NODE_ENV === 'production') {
@@ -23,8 +45,9 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   entry: './index.web.js',
   output: {
-    path: __dirname,
+    path: `${__dirname}/dist`,
     filename: 'bundle.js',
+    publicPath: '/',
   },
   resolve: {
     alias: {
