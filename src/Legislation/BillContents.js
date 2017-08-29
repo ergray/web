@@ -18,7 +18,7 @@ function BillContents({ bill }) {
         <WebView source={{ html: bill.text }} style={{ marginBottom: 30 }} />
       }
       {Platform.OS === 'web' &&
-        <div dangerouslySetInnerHTML={{ __html: bill.text }} />
+        <div dangerouslySetInnerHTML={{ __html: bill.text }} /> // eslint-disable-line react/no-danger
       }
 
       <Text style={{ fontWeight: '700', marginBottom: 20 }}>{bill.question}</Text>

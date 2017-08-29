@@ -13,7 +13,7 @@
     "predeploy": "npm version patch",
     "deploy": "git checkout gh-pages && git merge master --no-edit && npm run build && git commit -am 'Update bundle.js' && git push && git checkout master",
     "postdeploy": "git push --follow-tags",
-    "test": "eslint . --cache"
+    "test": "eslint . --cache && npm run build"
   },
   "dependencies": {
     "babel-core": "^6.24.1",
