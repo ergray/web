@@ -127,7 +127,7 @@ function AboutScreen({ history, location, sessionId }) {
       </View>
 
       { /* Subscribe */}
-      <SubscribeCTA />
+      {!sessionId && <SubscribeCTA />}
 
       <MediaQuery maxWidth={1300}>{mediumScreen => (<MediaQuery maxWidth={880}>
         {(smallScreen) => {
