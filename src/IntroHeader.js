@@ -3,7 +3,7 @@ import React from 'react'
 import { View } from 'react-native'
 import MediaQuery from 'react-responsive'
 import StarIcon from 'react-icons/lib/md/star'
-import cover from 'landing.jpg'
+import StatueOfLiberty from 'images/statue_of_liberty.jpg'
 import Button from 'Button'
 import CommonStyle from 'CommonStyle'
 import Image from 'Image'
@@ -23,10 +23,11 @@ export default function IntroHeader({ history, location, sessionId, showVideo = 
     >
       <Image
         alt="Statue of Liberty"
-        source={cover}
+        source={StatueOfLiberty}
         style={{
           height: '100%',
           objectFit: 'cover',
+          objectPosition: '50% 70%',
           opacity: 0.4,
           position: 'absolute',
           width: '100%',
