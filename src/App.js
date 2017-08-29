@@ -7,7 +7,6 @@ import devTools from 'remote-redux-devtools'
 import Screens from '_screens'
 import reducer, { initialState } from '_reducer'
 
-
 const store = createStore(reducer, initialState, compose(autoRehydrate(), devTools()))
 // Store session info to device so it's not lost when closed
 persistStore(store, { storage: localForage,
