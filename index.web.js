@@ -7,7 +7,7 @@ import App from './src/App'
 import { version } from './package.json'
 
 if (process.env.NODE_ENV !== 'production') {
-  a11y(React)
+  a11y(React, { filterFn: name => name !== 'Link' })
 }
 
 // Force https in production
