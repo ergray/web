@@ -87,7 +87,7 @@ export default function reducer(state, action) {
       })
     }
 
-    const newBills = _.orderBy(Object.values(bills), ['last_action_date'], ['desc'])
+    const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
     newBills.synced = action.synced
 
     return { ...state,
