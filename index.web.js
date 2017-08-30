@@ -1,9 +1,14 @@
 /* global window, document */
 
 import React from 'react'
+import a11y from 'react-a11y'
 import ReactNative from 'react-native-web'
 import App from './src/App'
 import { version } from './package.json'
+
+if (process.env.NODE_ENV !== 'production') {
+  a11y(React)
+}
 
 // Force https in production
 if (window.location.port !== '3000' && window.location.protocol !== 'https:') {

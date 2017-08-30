@@ -48,6 +48,7 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
+    "react-a11y": "^0.3.4",
     "react-burger-menu": "^2.1.4",
     "react-collapse": "^4.0.1",
     "react-dom": "^15.6.1",
