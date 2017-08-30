@@ -35,7 +35,7 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
         }}
       >
         <Image alt="Liquid" source={LiquidText} style={{ height: '100%', marginRight: 10 }} />
-        <Image alt="^" source={LiquidMark} style={{ height: '100%' }} />
+        <Image alt="" source={LiquidMark} style={{ height: '100%' }} />
       </View>
       <Menu styles={{
         bmBurgerBars: {

@@ -32,6 +32,7 @@ class MenuLogo extends Component {
         onMouseLeave={() => { this.setState({ hover: false }) }}
       >
         <Image
+          alt=""
           source={LiquidMark}
           style={{
             height: 32,

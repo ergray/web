@@ -28,7 +28,7 @@ export default function ActivityIndicator({ size, text }) {
       <View style={containerStyle}>
         {!!text && <Text style={textStyle}>{text}</Text>}
         <img
-          alt="Loading..."
+          alt="Loading data, please wait"
           className="rotating"
           src={ActivityIndicatorImage}
           style={{ height: size || defaultSize, resizeMode: 'contain', width: size }}

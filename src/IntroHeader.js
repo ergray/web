@@ -22,7 +22,7 @@ export default function IntroHeader({ history, location, sessionId, showVideo = 
       }}
     >
       <Image
-        alt="Statue of Liberty"
+        alt=""
         source={StatueOfLiberty}
         style={{
           height: '100%',
