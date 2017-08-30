@@ -14,6 +14,6 @@ export default function Image({ alt, size, source, style }) {
 Image.propTypes = {
   alt: PropTypes.string,
   size: PropTypes.number,
-  source: PropTypes.func,
+  source: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   style: PropTypes.shape({}),
 }
