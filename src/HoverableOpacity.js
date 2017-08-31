@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Tappable from 'react-tappable'
-import { View } from 'react-native'
+import { Platform, TouchableOpacity, View } from 'react-native'
 
 export default class HoverableOpacity extends Component {
   constructor(props) {
@@ -12,10 +12,29 @@ export default class HoverableOpacity extends Component {
   render() {
     const { children, hoverStyle, onPress, outerStyle, style } = this.props
 
+    if (Platform.OS === 'web') {
+      return (
+        <Tappable
+          component="div"
+          moveThreshold={150}
+          style={{
+            cursor: 'pointer',
+            outline: 'none',
+            ...outerStyle,
+            ...((this.state.hover ? hoverStyle : {})),
+          }}
+          onMouseEnter={() => this.setState({ hover: true })}
+          onMouseLeave={() => this.setState({ hover: false })}
+          onTap={onPress}
+        >
+          <View style={style}>{children}</View>
+        </Tappable>
+      )
+    }
+
     return (
-      <Tappable
-        component="div"
-        moveThreshold={150}
+      <TouchableOpacity
+        accessibilityRole="button"
         style={{
           cursor: 'pointer',
           outline: 'none',
@@ -24,10 +43,10 @@ export default class HoverableOpacity extends Component {
         }}
         onMouseEnter={() => this.setState({ hover: true })}
         onMouseLeave={() => this.setState({ hover: false })}
-        onTap={onPress}
+        onPress={onPress}
       >
         <View style={style}>{children}</View>
-      </Tappable>
+      </TouchableOpacity>
     )
   }
 }
