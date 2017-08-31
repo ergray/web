@@ -12,7 +12,7 @@ class MenuOption extends Component {
   }
 
   render() {
-    const { history, onPress, style = {}, underlineWidth = 2, text, to } = this.props
+    const { history, onPress, style = {}, tabIndex, underlineWidth = 2, text, to } = this.props
     let { activeColor } = this.props
     // todo add back notifications marker
 
@@ -63,6 +63,7 @@ class MenuOption extends Component {
           textTransform: 'uppercase',
           ...style,
         }}
+        tabIndex={tabIndex}
         text={text}
         onPress={onPress}
       />
@@ -75,6 +76,7 @@ MenuOption.propTypes = {
   history: PropTypes.shape({}).isRequired,
   onPress: PropTypes.func,
   style: PropTypes.shape({}),
+  tabIndex: PropTypes.number,
   text: PropTypes.string.isRequired,
   to: PropTypes.string,
   underlineWidth: PropTypes.number,

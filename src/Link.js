@@ -13,7 +13,7 @@ export default class Link extends Component {
   }
 
   render() {
-    const { backable, hoverStyle = {}, history, href, icon, onPress, pressedStyle = {}, rel, target, text } = this.props
+    const { backable, hoverStyle = {}, history, href, icon, onPress, pressedStyle = {}, rel, tabIndex, target, text } = this.props
     const Icon = icon
     let style = { color: cstyle.aColor, ...this.props.style }
 
@@ -31,6 +31,7 @@ export default class Link extends Component {
           href={href}
           rel={rel}
           style={style}
+          tabIndex={tabIndex}
           target={target}
           onClick={(e) => {
             if (onPress) {
@@ -97,6 +98,7 @@ Link.propTypes = {
   pressedStyle: PropTypes.shape({}),
   rel: PropTypes.string,
   style: PropTypes.shape({}),
+  tabIndex: PropTypes.number,
   target: PropTypes.string,
   text: PropTypes.string.isRequired,
 }
