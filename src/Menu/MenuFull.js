@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import { connect } from 'react-redux'
 import CommonStyle from '../CommonStyle'
 import MenuLogo from './MenuLogo'
@@ -13,6 +13,8 @@ function MenuFull({ numRequests, dispatch, history, isLoggedOut, message, style 
 
   return (
     <View
+      accessible
+      accessibilityRole="navigation"
       style={{
         alignItems: 'center',
         backgroundColor: cstyle.panelColor,
@@ -26,6 +28,7 @@ function MenuFull({ numRequests, dispatch, history, isLoggedOut, message, style 
         ...style,
       }}
     >
+      {Platform.OS === 'web' && <a href="#main" style={{ height: 0, overflow: 'hidden', width: 0 }}>Skip to main contents</a>}
 
       <MenuLogo history={history} />
 

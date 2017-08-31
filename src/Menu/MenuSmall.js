@@ -16,6 +16,8 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
 
   return (
     <View
+      accessible
+      accessibilityRole="navigation"
       style={{
         backgroundColor: cstyle.panelColor,
         borderBottomColor: cstyle.panelBorderColor,

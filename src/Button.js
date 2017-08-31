@@ -41,6 +41,7 @@ export default class Button extends Component { // eslint-disable-line react/pre
 
     return (
       <Link
+        accessibilityRole="button"
         backable={backable}
         history={history}
         hoverStyle={{
