@@ -5,10 +5,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 const webpack = require('webpack')
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+
 const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     },
     API_URL_V1: `"${process.env.API_URL_V1 || 'http://localhost:1776'}"`,
     API_URL_V2: `"${process.env.API_URL_V2 || 'http://localhost:2018/v2'}"`,
@@ -66,7 +68,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'stage-2'],
+            presets: ['react-app', 'env', 'stage-2'],
           },
         },
       },
