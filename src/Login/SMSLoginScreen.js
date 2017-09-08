@@ -81,13 +81,6 @@ class SMSLoginScreen extends Component {
   }
 
   render() {
-    const inputErrorStyle = {}
-
-    if (this.state.error) {
-      inputErrorStyle.borderColor = 'red'
-      inputErrorStyle.borderWidth = 3
-    }
-
     return (
       <View style={{ alignSelf: 'center', maxWidth: 385, width: '100%' }}>
         <Image
@@ -132,6 +125,7 @@ class SMSLoginScreen extends Component {
           aria-label="Code received from text message"
           autoCorrect={false}
           editable={this.state.editable}
+          error={this.state.error && this.state.status}
           keyboardType="number-pad"
           maxLength={3}
           style={{
@@ -146,7 +140,6 @@ class SMSLoginScreen extends Component {
             marginBottom: 30,
             textAlign: 'center',
             width: 170,
-            ...inputErrorStyle,
           }}
           value={this.state.session_code}
           onChangeText={(newText) => {
