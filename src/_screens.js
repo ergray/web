@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from 'Header'
 import ScreenWithMenu from 'ScreenWithMenu'
 import ScrollToTop from 'ScrollToTop'
+import { LiveAnnouncer, LiveMessage } from '../node_modules/react-aria-live/lib'
 
 export const screens = {
   '/': require('./LegislationScreen').default,
@@ -50,43 +51,48 @@ export const screens = {
 }
 
 export default () => (
-  <Router>
-    <Switch>
-      { Object.keys(screens).map((path) => {
-        const Screen = screens[path]
+  <LiveAnnouncer>
+    <Router>
+      <Switch>
+        { Object.keys(screens).map((path) => {
+          const Screen = screens[path]
 
-        return (
-          <Route
-            exact
-            key={path}
-            path={path}
-            render={({ history, location, match }) => {
-              if (Screen.disableMenu) {
+          return (
+            <Route
+              exact
+              key={path}
+              path={path}
+              render={({ history, location, match }) => {
+                if (Screen.disableMenu) {
+                  return (
+                    <ScrollToTop>
+                      <View style={{ flex: 1, height: '100%', width: '100%' }}>
+                        <Header location={location} path={path} />
+                        <Screen history={history} location={location} match={match} />
+                      </View>
+                    </ScrollToTop>
+                  )
+                }
+
                 return (
                   <ScrollToTop>
-                    <View style={{ flex: 1, height: '100%', width: '100%' }}>
-                      <Header location={location} path={path} />
-                      <Screen history={history} location={location} match={match} />
+                    <View>
+                      <LiveMessage aria-live="polite" message={`loaded page ${path}`} />
+                      <ScreenWithMenu
+                        Screen={Screen}
+                        history={history}
+                        location={location}
+                        match={match}
+                        path={path}
+                      />
                     </View>
                   </ScrollToTop>
                 )
-              }
-
-              return (
-                <ScrollToTop>
-                  <ScreenWithMenu
-                    Screen={Screen}
-                    history={history}
-                    location={location}
-                    match={match}
-                    path={path}
-                  />
-                </ScrollToTop>
-              )
-            }}
-          />
-        )
-      }) }
-    </Switch>
-  </Router>
+              }}
+            />
+          )
+        }) }
+      </Switch>
+    </Router>
+  </LiveAnnouncer>
 )
