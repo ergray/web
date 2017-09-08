@@ -67,6 +67,7 @@ class Login extends Component {
       }}
       >
         <TextInput
+          aria-label="Mobile Phone Number"
           autoCorrect={false}
           placeholder={placeholderText}
           ref={(input) => {

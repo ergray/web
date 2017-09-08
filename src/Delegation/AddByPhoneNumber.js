@@ -25,6 +25,7 @@ class AddByPhoneNumber extends Component {
       >
         <TextInput
           autoFocus
+          aria-label="Mobile Phone Number"
           autoCorrect={false}
           placeholder="Enter their mobile number"
           style={{

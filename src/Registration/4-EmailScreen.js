@@ -74,6 +74,7 @@ class EmailScreen extends Component {
 
         <TextInput
           autoFocus
+          aria-label="Email Address"
           autoCapitalize="none"
           autoCorrect={false}
           keyboardType="email-address"

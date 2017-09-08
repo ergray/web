@@ -86,6 +86,7 @@ class ConfirmVoteScreen extends Component {
 
           <TextInput
             multiline
+            aria-label="Argument for your position"
             numberOfLines={7}
             placeholder="Because..."
             style={{ alignSelf: 'stretch' }}

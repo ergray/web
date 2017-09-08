@@ -37,6 +37,7 @@ class FeedbackScreen extends Component {
         <TextInput
           autoFocus
           multiline
+          aria-label="Feedback message"
           numberOfLines={15}
           placeholder="Hi, I wanted to let you know that..."
           style={{

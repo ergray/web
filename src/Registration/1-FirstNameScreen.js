@@ -73,6 +73,7 @@ class FirstNameScreen extends Component {
 
         <TextInput
           autoFocus
+          aria-label="First name"
           autoCorrect={false}
           placeholder="first name"
           returnKeyType="next"

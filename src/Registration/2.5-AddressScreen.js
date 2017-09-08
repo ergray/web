@@ -73,6 +73,7 @@ class AddressScreen extends Component {
 
         <TextInput
           autoFocus
+          aria-label="Street Address"
           autoCorrect={false}
           placeholder="742 Evergreen Terrace"
           returnKeyType="next"

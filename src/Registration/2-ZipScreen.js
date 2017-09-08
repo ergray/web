@@ -47,6 +47,7 @@ class ZipScreen extends Component {
 
         <TextInput
           autoFocus
+          aria-label="Zip code"
           autoCorrect={false}
           keyboardType="number-pad"
           maxLength={5}

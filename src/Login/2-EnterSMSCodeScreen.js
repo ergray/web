@@ -124,6 +124,7 @@ class EnterSMSCodeScreen extends Component {
         <TextInput
           autoFocus
           clearTextOnFocus
+          aria-label="Code received from text message"
           autoCorrect={false}
           editable={this.state.editable}
           keyboardType="number-pad"
