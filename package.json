@@ -47,7 +47,6 @@
     "react": "^15.6.1",
     "react-aria-live": "^1.0.3",
     "react-burger-menu": "^2.1.4",
-    "react-collapse": "^4.0.1",
     "react-dom": "^15.6.1",
     "react-icons": "^2.2.3",
     "react-native-aws3": "^0.0.8",
