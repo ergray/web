@@ -61,7 +61,6 @@
     "react-redux": "^5.0.3",
     "react-responsive": "^1.2.10",
     "react-router-dom": "^4.1.1",
-    "react-scroll": "^1.5.4",
     "react-tappable": "^1.0.2",
     "react-visibility-sensor": "^3.10.1",
     "redux": "^3.6.0",
