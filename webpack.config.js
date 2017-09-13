@@ -64,7 +64,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules\/react-responsive/,
+        include: [
+          path.resolve(__dirname, 'index.web.js'),
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
+        ],
         use: {
           loader: 'babel-loader',
           options: {
