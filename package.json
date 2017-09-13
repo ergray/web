@@ -67,7 +67,6 @@
     "redux": "^3.6.0",
     "redux-persist": "^4.6.0",
     "remote-redux-devtools": "^0.5.7",
-    "replace": "^0.3.0",
     "serve": "^6.0.6",
     "url-loader": "^0.5.8",
     "webpack": "^2.3.3",
