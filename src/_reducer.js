@@ -79,7 +79,8 @@ export default function reducer(state, action) {
     }
 
   case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
-    const bills = (state.bills.us || []).reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
+    const oldBills = (action.replace ? [] : state.bills.us) || []
+    const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
 
     if (action.legislature === 'us') {
       action.bills.forEach((bill) => {

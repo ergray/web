@@ -9,14 +9,24 @@ import VisibilitySensor from 'react-visibility-sensor'
 import ActivityIndicator from 'ActivityIndicator'
 import { oldBill } from '../_util'
 import Header from '../Header'
+import TextInput from '../TextInput'
 import { convertDateToLongFormat } from './convert-dates'
 import BillsListItem from './BillsListItem'
 import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
+const searchQuery = _.debounce((terms, dispatch) => {
+  fetch(`${API_URL_V1}/bills/search?q=${terms}&legislature=us`)
+    .then(response => response.json())
+    .then(bills => bills.map(oldBill))
+    .then(bills => dispatch({ bills, legislature: 'us', replace: true, type: 'SYNC_BILLS' }))
+}, 1000)
+
 class BillsList extends Component {
   constructor(props) {
     super(props)
+    this.state = { search: { terms: '' } }
+    this.search = this.search.bind(this)
     this.visibilitySensorOnChange = this.visibilitySensorOnChange.bind(this)
   }
 
@@ -47,7 +57,7 @@ class BillsList extends Component {
   visibilitySensorOnChange(isVisible) {
     const { bills, dispatch, match } = this.props
 
-    if (!isVisible || match.params.date || bills.us.synced) return
+    if (!isVisible || match.params.date || bills.us.synced || this.state.search.terms) return
 
     const { bill_uid, last_action_date } = bills.us[bills.us.length - 1]
     const since = { bill_uid, last_action_date }
@@ -56,6 +66,13 @@ class BillsList extends Component {
       .then(items => items.map(oldBill))
       .then(items =>
         dispatch({ append: true, bills: items, legislature: 'us', synced: items.length === 0, type: 'SYNC_BILLS' }))
+  }
+
+  search(ev) {
+    const dispatch = this.props.dispatch
+    const terms = ev.target.value
+    this.setState({ search: { terms } })
+    searchQuery(terms, dispatch)
   }
 
   render() {
@@ -72,6 +89,7 @@ class BillsList extends Component {
       agenda = _.sortBy(agenda, 'itemNumber', 'number')
     }
 
+    const search = this.state.search
     const agendaVotes = votes[date] || {}
     const title = date ? convertDateToLongFormat(date) : 'US Congress'
 
@@ -79,11 +97,12 @@ class BillsList extends Component {
       <View>
         <Header history={history} location={location} title={title} />
         <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
+          <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>
-              {() => (!bills.us.synced && !match.params.date ? <ActivityIndicator /> : <span />)}
+              {() => (!search.terms && !bills.us.synced && !match.params.date ? <ActivityIndicator /> : <span />)}
             </VisibilitySensor>,
           ])}
 
