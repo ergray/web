@@ -98,6 +98,7 @@ class BillsList extends Component {
         <Header history={history} location={location} title={title} />
         <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
           <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />
+          { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
