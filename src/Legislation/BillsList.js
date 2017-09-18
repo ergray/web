@@ -15,7 +15,8 @@ import BillsListItem from './BillsListItem'
 import PastAgendas from './PastAgendas'
 const pick = require('lodash/fp/pick')
 
-const searchQuery = _.debounce((terms, dispatch) => {
+const searchQuery = _.debounce((terms, dispatch, setState) => {
+  setState({ search: { terms } })
   fetch(`${API_URL_V1}/bills/search?q=${terms}&legislature=us`)
     .then(response => response.json())
     .then(bills => bills.map(oldBill))
@@ -71,8 +72,7 @@ class BillsList extends Component {
   search(ev) {
     const dispatch = this.props.dispatch
     const terms = ev.target.value
-    this.setState({ search: { terms } })
-    searchQuery(terms, dispatch)
+    searchQuery(terms, dispatch, this.setState.bind(this))
   }
 
   render() {
