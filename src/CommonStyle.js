@@ -20,6 +20,7 @@ const lightStyle = {
   btnSecondaryBorderColor: '#e6e6e6',
   btnSecondaryColor: '#2b3840',
   btnSecondaryHoverBgColor: white,
+  errorColor: 'red',
   menuColor: '#616d72',
   menuHoverColor: '#36444d',
   panelBorderColor: '#e6e6e6',

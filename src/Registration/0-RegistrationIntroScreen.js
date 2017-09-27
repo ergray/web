@@ -11,7 +11,7 @@ export default function RegistrationIntroScreen({ history }) {
       <Header history={history} step={0} title="Voter Registration" />
 
       <View style={{ marginVertical: 50 }}>
-        <Text style={{ fontSize: 20, marginBottom: 10 }}>The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is built on strong guarantees of one-person-one-vote.</Text>
+        <Text style={{ fontSize: 20, marginBottom: 10 }}><Text style={{ fontWeight: '700' }}>United.Vote</Text> is built on strong guarantees of one-person-one-vote.</Text>
         <Text style={{ fontSize: 20, marginVertical: 10 }}>
           To join, you must be legally registered to vote.</Text>
         <Text style={{ fontSize: 20, marginVertical: 10 }}>

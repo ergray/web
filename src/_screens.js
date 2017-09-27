@@ -21,6 +21,7 @@ export const screens = {
   '/enter-sms': require('./Login/2-EnterSMSCodeScreen').default,
   '/feedback': require('./FeedbackScreen').default,
   '/join': require('./JoinScreen').default,
+  '/join/thank-you': require('./JoinThankYouScreen').default,
   '/legislation': require('./LegislationScreen').default,
   '/legislation/:bill_id': require('./Legislation/LoadBillScreen').default, // eslint-disable-line sort-keys
   '/legislation/:bill_id/audit': require('./Legislation/AuditScreen').default,

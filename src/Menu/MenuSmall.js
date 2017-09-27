@@ -36,7 +36,7 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
           top: 20,
         }}
       >
-        <Image alt="Liquid" source={LiquidText} style={{ height: '100%', marginRight: 10 }} />
+        <Image alt="United.Vote" source={LiquidText} style={{ height: '100%', marginRight: 10 }} />
         <Image alt="" source={LiquidMark} style={{ height: '100%' }} />
       </View>
       <Menu styles={{
@@ -82,8 +82,8 @@ function MenuSmall({ numRequests, dispatch, history, isLoggedOut, message, style
 
         {isLoggedOut &&
           <MenuOptionWithNav
-            text="Sign in"
-            to="/sign-in"
+            text="Join us"
+            to="/join"
           />
         }
 

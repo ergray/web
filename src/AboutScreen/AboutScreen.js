@@ -25,10 +25,10 @@ function AboutScreen({ history, location, sessionId }) {
             </Text>
             <View style={{ alignItems: 'center', width: smallScreen ? undefined : 920 }}>
               <Text style={{ fontSize: 21, fontWeight: '200', letterSpacing: 1 }} >
-                  Liquid makes it possible to vote directly on legislation, instead of waiting years to choose between two out-of-touch parties. You can delegate to someone you trust to vote on your behalf whenever you don’t have the time or expertise. You can take back your delegation at any time, and delegates can only vote on legislation when you don’t.
+                  United.vote makes it possible to vote directly on legislation, instead of waiting years to choose between two out-of-touch parties. You can delegate to someone you trust to vote on your behalf whenever you don’t have the time or expertise. You can take back your delegation at any time, and delegates can only vote on legislation when you don’t.
               </Text>
               <Text style={{ fontSize: 21, fontWeight: '200', letterSpacing: 1, marginTop: '2rem' }} >
-                Our politicians ought to be representatives of the people, not party or corporation. Liquid gives you the opportunity to represent yourself, instead of being held hostage by elections. Liquid democracy can end the two-party system and restore power to the people.
+                Our politicians ought to be representatives of the people, not party or corporation. United.vote gives you the opportunity to represent yourself, instead of being held hostage by elections. Liquid democracy can end the two-party system and restore power to the people.
               </Text>
             </View>
           </View>
@@ -111,7 +111,7 @@ function AboutScreen({ history, location, sessionId }) {
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://gerrymandering.liquid.vote" text="Liquid Democracy Can Completely Eliminate Gerrymandering" /></Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://two.liquid.vote" text="How to Move Past A Two Party System" /></Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://easy.liquid.vote" text="Don't Care About Politics? Liquid democracy is easier for you too" /></Text>
-          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://privacy.liquid.vote" text="Liquid Privacy" /></Text>
+          <Text style={{ marginBottom: 5 }}><HoverableLink href="http://privacy.liquid.vote" text="Privacy" /></Text>
 
           <Text style={{ fontWeight: 'bold', marginBottom: 5, marginTop: 30 }}>TECHNICAL PAPERS</Text>
           <Text style={{ marginBottom: 5 }}><HoverableLink href="http://score.liquid.vote" text="How to Calculate a Politician's Representative Score" /></Text>

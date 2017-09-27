@@ -1,22 +1,27 @@
 /* eslint-env browser */
+/* eslint-disable no-multi-assign */
 
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Image, View } from 'react-native'
+import { View } from 'react-native'
+import Button from 'Button'
+import CommonStyle from 'CommonStyle'
 import Text from 'Text'
 import TextInput from 'TextInput'
 import Link from 'Link'
-import usaFlag from 'usa.png'
 const pick = require('lodash/fp/pick')
 const isAndroid = /Android/i.test(navigator && navigator.userAgent)
+
+const cstyle = CommonStyle()
 
 class JoinScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      email: '',
+      invalidEmail: false,
       loginRef: { input: { focus: () => {} } },
-      phone: '',
     }
   }
 
@@ -53,192 +58,97 @@ class JoinScreen extends Component {
   }
 
   render() {
-    const { dispatch, history, large, verySmall } = this.props
+    const { history } = this.props
 
-    let placeholderText = `Enter your mobile ${large ? 'number' : '#'} to sign up`
-    if (verySmall) {
-      placeholderText = 'Mobile #'
+    const inputStyle = {
+      backgroundColor: '#fff',
+      borderRadius: 3,
+      borderWidth: 1,
+      fontSize: 18,
+      fontWeight: 300,
+      height: 42,
+      width: 350,
+    }
+
+    if (this.state.invalidEmail) {
+      inputStyle.borderBottomColor =
+      inputStyle.borderLeftColor =
+      inputStyle.borderRightColor =
+      inputStyle.borderTopColor = cstyle.errorColor
     }
 
     return (
       <View style={{
         alignSelf: 'center',
-        width: 350,
+        width: 450,
       }}
       >
-        <TextInput
-          aria-label="Mobile Phone Number"
-          autoCorrect={false}
-          placeholder={placeholderText}
-          ref={(input) => {
-            // Enable autofocus on all but the smallest screens
-            if (!verySmall) {
-              this.state.loginRef.input = input
-            }
-          }}
-          selection={this.handleAndroid()}
-          style={{
-            backgroundColor: '#fff',
-            borderColor: '#979797',
-            borderRadius: 3,
-            borderWidth: 1,
-            fontSize: 18,
-            fontWeight: '300',
-            height: 42,
-            paddingLeft: 75,
-          }}
-          value={this.state.phone}
-          onChangeText={(newText) => {
-            // Add area code opening parenthese
-            if (this.state.phone === '') {
-              return this.setState({ phone: `(${newText}` })
-            }
-
-            // Add area code closing parenthese
-            if (this.state.phone.length === 3 && newText.length === 4) {
-              return this.setState({ phone: `${newText}) ` })
-            }
-
-            // Split final four digits
-            if (this.state.phone.length === 8 && newText.length === 9) {
-              return this.setState({ phone: `${newText} - ` })
-            }
-
-            // Backspace final four digits separator
-            if (this.state.phone.length === 12 && newText.length === 11) {
-              return this.setState({ phone: this.state.phone.slice(0, 8) })
-            }
-
-            // Backspace area code closing parenthese
-            if (this.state.phone.length === 6 && newText.length === 5) {
-              return this.setState({ phone: this.state.phone.slice(0, 3) })
-            }
-
-            // Backspace area code opening parenthese
-            if (this.state.phone.length === 2 && newText.length === 1) {
-              return this.setState({ phone: '' })
-            }
-
-            // When done
-            if (newText.length === 16) {
-              // Remove all but digits
-              const phoneNumber = newText.split('')
-                .filter(character => '0123456789'.indexOf(character) > -1)
-                .join('')
-
-              // Special code to demo registration
-              if (phoneNumber === '5555551776') {
-                dispatch({ type: 'START_REGISTRATION_DEMO' })
-                return history.replace('registration')
-              }
-
-              // Special code to demo login
-              if (phoneNumber === '0000001776') {
-                this.setState({ phone: newText })
-                return fetch(`${API_URL_V1}/login/demo`, {
-                  headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        <Text style={{ fontWeight: 300, textAlign: 'center' }}>
+          Enter your e-mail to receive updates on our progress and when united.vote is released:
+        </Text>
+        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 32, width: 450 }}>
+          <TextInput
+            aria-label="E-mail"
+            autoCorrect={false}
+            placeholder="E-Mail Address"
+            selection={this.handleAndroid()}
+            style={inputStyle}
+            value={this.state.email}
+            onChangeText={email => this.setState({ email })}
+          />
+          <Button
+            primary
+            text="Submit"
+            onPress={() => {
+              const email = this.state.email
+              const valid = email.replace(/[^@]/g, '').length === 1 && email.length > 3
+              this.setState({ invalidEmail: !valid })
+              if (valid) {
+                this.setState({ invalidEmail: false })
+                fetch(`${API_URL_V1}/subscribe`, {
+                  body: JSON.stringify({
+                    email,
+                  }),
+                  headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                  },
                   method: 'POST',
-                })
-                  .then(response => response.json())
-                  .then(({ sessionId, user }) => {
-                    dispatch({ sessionId, type: 'START_LOGIN_DEMO', user })
-                    return history.replace('sf')
-                  })
+                }).then(() => history.replace('join/thank-you'))
               }
-
-              // Check if this is a new number
-              if (!this.props.knownNumbers[phoneNumber]) {
-                this.setState({ phone: newText })
-                return history.push(`confirm-new-number/${phoneNumber}`)
-              }
-
-              fetch(`${API_URL_V1}/login`, {
-                body: JSON.stringify({
-                  phone: phoneNumber,
-                }),
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                method: 'POST',
-              })
-
-              dispatch({ phoneNumber, type: 'SET_PHONE_NUMBER' })
-              history.replace('enter-sms')
-            }
-
-            // Otherwise, update backing state normally
-            return this.setState({ phone: newText })
-          }}
-        />
-        <View
-          style={{
-            alignItems: 'center',
-            flexDirection: 'row',
-            height: 42,
-            left: '.5rem',
-            position: 'absolute',
-            top: 0,
-          }}
-        >
-          <Image
-            source={usaFlag}
-            style={{
-              height: 24,
-              width: 30,
             }}
           />
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: '300',
-              marginLeft: '.5rem',
-              marginTop: 1,
-            }}
-          >+1</Text>
         </View>
-        <View style={{ alignItems: 'center', marginTop: '2rem' }}>
-          <Text
+        {this.state.invalidEmail && <Text style={{ color: cstyle.errorColor, fontSize: 13, textAlign: 'left' }}>The e-mail you entered was not valid. Please correct it and try again.</Text>}
+        <Text style={{ fontSize: 11, marginTop: 16, textAlign: 'center' }}>
+          <Text style={{ fontWeight: '600' }}>We will never share your e-mail.&nbsp;</Text>
+          Your personal information is safeguarded using the same encryption that banks use.
+          Read about our strong&nbsp;
+          <Link
+            hoverStyle={{ textDecoration: 'underline' }}
+            href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
+            rel="noopener noreferrer"
             style={{
-              fontSize: '13px',
-              fontWeight: '600',
+              cursor: 'pointer',
             }}
-          >
-           We will never share your phone number.
-          </Text>
-          <Text style={{ fontSize: '11px', marginTop: '1rem', textAlign: 'center' }}>
-            Your personal information is safeguarded using the same encryption that banks use.
-            Read about our strong&nbsp;
-            <Link
-              hoverStyle={{ textDecoration: 'underline' }}
-              href="https://blog.liquid.vote/2017/04/08/liquid-privacy/"
-              rel="noopener noreferrer"
-              style={{
-                cursor: 'pointer',
-              }}
-              target="_blank"
-              text="privacy protections"
-            />
-            .
-          </Text>
-        </View>
+            target="_blank"
+            text="privacy protections"
+          />
+          .
+        </Text>
       </View>
     )
   }
 }
 
 JoinScreen.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
     replace: PropTypes.func.isRequired,
   }).isRequired,
-  knownNumbers: PropTypes.shape({}).isRequired,
-  large: PropTypes.bool,
-  verySmall: PropTypes.bool,
 }
 
-JoinScreen.title = 'Join us and take back our democracy'
+JoinScreen.title = 'Join us to take back our democracy'
 
 export default connect(pick([
   'knownNumbers',

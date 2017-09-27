@@ -23,13 +23,13 @@ const plugins = [
     { from: 'src/CommonStyle.css', to: 'screen.css' },
   ]),
   new HtmlWebpackPlugin({
-    title: 'Liquid',
+    title: 'United.vote',
     favicon: 'favicon.png',
     filename: 'index.html',
     hash: true, // cache bust all script tags and css links
   }),
   new HtmlWebpackPlugin({
-    title: 'Liquid: 404 Not Found',
+    title: 'United.vote : 404 Not Found',
     favicon: 'favicon.png',
     filename: '404.html',
     hash: true, // cache bust all script tags and css links

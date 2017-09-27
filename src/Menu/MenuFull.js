@@ -39,8 +39,8 @@ function MenuFull({ numRequests, dispatch, history, isLoggedOut, message, style 
       <View style={{ alignItems: 'center', flexDirection: 'row', flexGrow: 1, height: '100%', justifyContent: 'flex-end' }}>
         { isLoggedOut &&
           <MenuOptionWithNav
-            text="Sign in"
-            to="/sign-in"
+            text="Join us"
+            to="/join"
           />
         }
 

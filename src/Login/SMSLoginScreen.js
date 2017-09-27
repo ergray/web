@@ -99,7 +99,7 @@ class SMSLoginScreen extends Component {
           fontWeight: '700',
           textTransform: 'uppercase',
         }}
-        >Liquid Democracy</Text>
+        >United.Vote</Text>
 
         <Text style={{
           fontSize: 18,

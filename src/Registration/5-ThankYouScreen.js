@@ -40,7 +40,7 @@ function ThankYouScreen({ history }) {
         marginTop: 50,
       }}
       >
-        The <Text style={{ fontWeight: '700' }}>Liquid Network</Text> is in beta but you're welcome to try it out.
+        <Text style={{ fontWeight: '700' }}>United.Vote</Text> is in beta but you're welcome to try it out.
       </Text>
 
       <Button

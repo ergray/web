@@ -71,7 +71,7 @@ class ScreenWithMenu extends Component {
     return (
       <View>
         <Menu history={history} />
-        {!loading.client && !sessionId && ['/about', '/sign-in', '/join'].indexOf(location.pathname) === -1 &&
+        {!loading.client && !sessionId && ['/about', '/sign-in', '/join', '/join/thank-you'].indexOf(location.pathname) === -1 &&
           <IntroHeader history={history} location={location} />
         }
         <View accessible accessibilityRole="main" id="main">

@@ -22,9 +22,9 @@ class Header extends Component {
     if (Platform.OS === 'web') {
       const title = this.title()
       if (title) {
-        window.document.title = `Liquid: ${title}` // eslint-disable-line
+        window.document.title = `United.Vote : ${title}` // eslint-disable-line
       } else {
-        window.document.title = 'Liquid' // eslint-disable-line
+        window.document.title = 'United.Vote' // eslint-disable-line
       }
     }
   }
