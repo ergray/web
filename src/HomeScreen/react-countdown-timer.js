@@ -22,6 +22,11 @@ import PropTypes from 'prop-types'
 //
 
 class CountdownTimer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   getDefaultProps() {
     return {
       interval: 1000,

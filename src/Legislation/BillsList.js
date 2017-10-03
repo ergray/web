@@ -17,10 +17,17 @@ const pick = require('lodash/fp/pick')
 
 const searchQuery = _.debounce((terms, dispatch, setState) => {
   setState({ search: { terms } })
-  fetch(`${API_URL_V1}/bills/search?q=${terms}&legislature=us`)
-    .then(response => response.json())
-    .then(bills => bills.map(oldBill))
-    .then(bills => dispatch({ bills, legislature: 'us', replace: true, type: 'SYNC_BILLS' }))
+  if (terms) {
+    fetch(`${API_URL_V1}/bills/search?q=${terms}&legislature=us`)
+      .then(response => response.json())
+      .then(bills => bills.map(oldBill))
+      .then(bills => dispatch({ bills, legislature: 'us', replace: true, type: 'SYNC_BILLS' }))
+  } else {
+    fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us' })}`)
+      .then(response => response.json())
+      .then(bills => bills.map(oldBill))
+      .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
+  }
 }, 1000)
 
 class BillsList extends Component {
@@ -55,10 +62,36 @@ class BillsList extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.date && !nextProps.match.params.date) {
+      const { dispatch, isVerified, match, sessionId } = nextProps
+      const { date } = match.params
+      if (!nextProps.bills[date]) {
+        if (date) {
+          fetch(`${API_URL_V1}/bills/${date}`)
+            .then(response => response.json())
+            .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
+        } else {
+          fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us' })}`)
+            .then(response => response.json())
+            .then(bills => bills.map(oldBill))
+            .then(bills => dispatch({ bills, legislature: 'us', type: 'SYNC_BILLS' }))
+        }
+      }
+
+      // If the user is verified, get their votes
+      if (isVerified) {
+        fetch(`${API_URL_V1}/my-votes/${date}`, { headers: { Session_ID: sessionId } })
+          .then(response => response.json())
+          .then(votes => dispatch({ date, type: 'SYNC_VOTES', votes }))
+      }
+    }
+  }
+
   visibilitySensorOnChange(isVisible) {
     const { bills, dispatch, match } = this.props
 
-    if (!isVisible || match.params.date || bills.us.synced || this.state.search.terms) return
+    if (!isVisible || match.params.date || (bills.us && bills.us.synced) || this.state.search.terms) return
 
     const { bill_uid, last_action_date } = bills.us[bills.us.length - 1]
     const since = { bill_uid, last_action_date }
@@ -97,13 +130,13 @@ class BillsList extends Component {
       <View>
         <Header history={history} location={location} title={title} />
         <View style={{ paddingBottom: '2rem', paddingHorizontal: '2rem' }}>
-          <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />
+          { !date && <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />}
           { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>
-              {() => (!search.terms && !bills.us.synced && !match.params.date ? <ActivityIndicator /> : <span />)}
+              {() => (!search.terms && !bills[key].synced && !match.params.date ? <ActivityIndicator /> : <span />)}
             </VisibilitySensor>,
           ])}
 
