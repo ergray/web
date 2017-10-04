@@ -109,6 +109,7 @@ class BillsList extends Component {
   }
 
   render() {
+    console.log('listing bills')
     const { bills, homescreen, history, location, match, votes } = this.props
     const { date } = match.params
     const key = date || 'us'

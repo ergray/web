@@ -8,6 +8,8 @@ import legislatureIcon from './legislature-icon.png'
 import NextAgendaContent from './NextAgendaContent'
 const pick = require('lodash/fp/pick')
 
+console.log(location)
+
 function NextAgendaScreen({ history }) {
   return (
     <View style={{ flex: 1, height: '100%' }}>
@@ -17,7 +19,12 @@ function NextAgendaScreen({ history }) {
 }
 
 NextAgendaScreen.titleIcon = legislatureIcon
-NextAgendaScreen.title = 'San Francisco Legislature'
+
+if (location.pathname === '/sf'){
+  NextAgendaScreen.title = 'San Francisco Legislature'
+} else if (location.pathname === '/nyc'){
+  NextAgendaScreen.title = 'New York City Legislature'
+}
 
 NextAgendaScreen.propTypes = {
   history: PropTypes.shape({

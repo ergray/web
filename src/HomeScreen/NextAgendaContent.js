@@ -16,10 +16,19 @@ class NextAgendaContent extends Component {
     super(props)
     this.state = {}
 
-    function getNextAgenda() {
+    //api goes to a single tidbit of info,
+    //will need a separate api to gather
+    //nyc data
+
+    //location is pages location.pathname
+    function getNextAgenda(location) {
+      console.log('here is location: ', location)
+      if (location === '/sf'){
+      console.log('in sf')
       fetch(`${API_URL_V1}/next-agenda`)
         .then(response => response.json())
         .then((nextAgenda) => {
+          console.log('this should be next agenda: ',nextAgenda)
           props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
 
           // Did nextAgenda not include bills?
@@ -29,14 +38,28 @@ class NextAgendaContent extends Component {
           }
 
           const { bills, date } = nextAgenda
+          console.log('should be dispatching sync right now')
           props.dispatch({ bills, date, type: 'SYNC_BILLS' })
         })
+      } else if (location === '/nyc'){
+          fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
+          .then(response => response.json())
+          .then((response => {
+            console.log('ignoring response for the moment')
+            const nextAgenda = {date: '2017-10-10', message: 'This is a hard coded message'}
+            console.log(nextAgenda)
+            props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
+            if (!nextAgenda.bills){
+              return
+            }
+          }))
+      }
     }
 
     // Refresh every 5 minutes
-    this.refreshId = setInterval(() => getNextAgenda(), 5 * 60 * 1000)
+    this.refreshId = setInterval(() => getNextAgenda(location.pathname), 5 * 60 * 1000)
 
-    getNextAgenda()
+    getNextAgenda(location.pathname)
   }
 
   componentWillUnmount() {
@@ -44,9 +67,14 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { history, nextAgenda } = this.props
+    console.log('calling next agenda content')
+    console.log('url call: ', API_URL_V1)
+    console.log('here are your props: ', this.props)
+    console.log(location)
+    const { history, nextAgenda} = this.props
 
     if (!nextAgenda) {
+      console.log('no agenda found')
       return (
         <Text style={{
           fontSize: 18,
@@ -57,9 +85,11 @@ class NextAgendaContent extends Component {
       )
     }
 
+    console.log('about to touch date, message')
     const { date, message } = nextAgenda
 
     if (!date) {
+      console.log('no date found')
       return (<BetweenWeeks
         history={history}
         message={message}
@@ -69,6 +99,7 @@ class NextAgendaContent extends Component {
     const { bills } = nextAgenda
 
     if (!bills) {
+      console.log('no bills found')
       return (
         <ScrollView>
           <Text style={{ marginTop: 15, textAlign: 'center', textTransform: 'uppercase' }}>
