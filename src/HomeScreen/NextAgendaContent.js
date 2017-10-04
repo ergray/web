@@ -46,7 +46,7 @@ class NextAgendaContent extends Component {
           .then(response => response.json())
           .then((response => {
             console.log('ignoring response for the moment')
-            const nextAgenda = {date: '2017-10-10', message: 'This is a hard coded message'}
+            const nextAgenda = {date: '2016-06-06', message: 'This is a hard coded message'}
             console.log(nextAgenda)
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
             if (!nextAgenda.bills){
@@ -116,6 +116,7 @@ class NextAgendaContent extends Component {
       )
     }
 
+    console.log('about to hit return billslist')
     return (
       <BillsList {...this.props} homescreen match={{ params: { date } }} />
     )
