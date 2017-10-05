@@ -22,6 +22,7 @@ class BillScreen extends Component {
 
     // Refresh vote count
     const activeBill = props.bill.uid
+    console.log('active bill inside bill screen: ', activeBill)
     fetch(`${API_URL_V1}/bill/${activeBill}/votes`)
       .then(response => response.json())
       .then((votes) => {
