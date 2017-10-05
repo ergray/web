@@ -40,16 +40,38 @@ class BillsListItem extends Component {
     }
 
 
-    let billUrl = `/sf/${bill.date}/${bill.id}`
+    //additions for nyc code
+    console.log('location path from billslistitem: ', location)
+    let pathRe = /[a-z]+/g
+    let parsedPath = pathRe.exec(location.pathname)
+    console.log('here is your parsed pathname: ', parsedPath)
+    let billUrl = `/`+parsedPath[0]+`/${bill.date}/${bill.id}`
+    //end additions
+
+
+    //commented out for nyc changes
+    // let billUrl = `/sf/${bill.date}/${bill.id}`
     if (bill.introduced) {
       billUrl = `/legislation/${bill.bill_uid}`
     }
 
-    let yea = bill.votes.yea || 0
-    let nay = bill.votes.nay || 0
+    // additions from nyc
+    let yea = 0
+    let nay = 0
+    let yea_flex = yea
+    let nay_flex = nay
+
+    if (bill.votes){
+      yea = bill.votes.yea || 0
+      nay = bill.votes.nay || 0
+    }
+    // end additions
+
+    // let yea = bill.votes.yea || 0
+    // let nay = bill.votes.nay || 0
     if (yea === 0 && nay === 0) {
-      yea = 1
-      nay = 1
+      yea_flex = 1
+      nay_flex = 1
     }
 
     const metaStyle = {
@@ -93,15 +115,21 @@ class BillsListItem extends Component {
                 <Text style={metaStyle}>Last action {dateFormat(bill.last_action_date || bill.updated || bill.date, 'ddd, mmm dS')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                <Text style={metaStyle}>Yea: {bill.votes.yea}</Text>
-                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text>
+              {/*<Text style={metaStyle}>Yea: {bill.votes.yea}</Text>*/}
+                {/*change for nyc:*/}
+                <Text style={metaStyle}>Yea: {yea}</Text>
+                {/*<Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text>*/}
+                {/*change for nyc:*/}
+                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {nay}</Text>
               </View>
             </View>
 
           </View>
 
           {/* Vote count indicator */}
-          { Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && (
+          {/*{ Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && (*/}
+          {/*change for nyc:*/}
+         { Number(yea || 0) + Number(nay || 0) > 0 && (
             <View style={{
               alignItems: 'center',
               flex: 1,
@@ -110,8 +138,10 @@ class BillsListItem extends Component {
               opacity: 0.4,
             }}
             >
-              <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
-              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />
+              <View style={{ backgroundColor: '#2ca02c', flex: yea_flex, height: 2 }} />
+              <View style={{ backgroundColor: '#d62728', flex: nay_flex, height: 2 }} />
+              {/*<View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
+              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />*/}
             </View>
           ) }
         </View>

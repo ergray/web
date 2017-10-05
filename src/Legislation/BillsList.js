@@ -43,9 +43,22 @@ class BillsList extends Component {
     const { date } = match.params
     if (!this.props.bills[date]) {
       if (date) {
+        console.log('hi im pulling bills now')
+        console.log(location.pathname)
+        if (location.pathname === `/sf/${date}`){
         fetch(`${API_URL_V1}/bills/${date}`)
           .then(response => response.json())
           .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
+        } else if (location.pathname === `/nyc/${date}`){
+          console.log('must be in nyc')
+          fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
+          .then(response => response.json())
+          .then(response => {
+            const bills = response.data
+            const date = "2017-09-07"
+            dispatch({bills, date, type: 'SYNC_BILLS'})
+          })
+        }
       } else {
         fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us' })}`)
           .then(response => response.json())
@@ -63,6 +76,7 @@ class BillsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log('in CWRP')
     if (this.props.match.params.date && !nextProps.match.params.date) {
       const { dispatch, isVerified, match, sessionId } = nextProps
       const { date } = match.params
@@ -135,7 +149,8 @@ class BillsList extends Component {
           { !date && <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />}
           { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
-            <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
+            <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} />
+            /*<BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />*/
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>
               {() => (!search.terms && !bills[key].synced && !match.params.date ? <ActivityIndicator /> : <span />)}

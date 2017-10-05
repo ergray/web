@@ -48,6 +48,7 @@ class NextAgendaContent extends Component {
           .then((response => {
             console.log('ignoring response for the moment')
             const nextAgenda = {date: '2016-06-06', message: 'This is a hard coded message'}
+            console.log(response.data[0])
             console.log(nextAgenda)
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
             if (!nextAgenda.bills){
