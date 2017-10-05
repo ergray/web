@@ -12,7 +12,7 @@ import BetweenWeeks from './BetweenWeeks'
 const pick = require('lodash/fp/pick')
 
 class NextAgendaContent extends Component {
-  constructor(props) {
+  constructor(props) {  
     super(props)
     this.state = {}
 
@@ -25,6 +25,7 @@ class NextAgendaContent extends Component {
       console.log('here is location: ', location)
       if (location === '/sf'){
       console.log('in sf')
+      console.log('and here is url: ',API_URL_V1 )
       fetch(`${API_URL_V1}/next-agenda`)
         .then(response => response.json())
         .then((nextAgenda) => {

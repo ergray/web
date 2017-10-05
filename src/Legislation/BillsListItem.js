@@ -17,6 +17,7 @@ class BillsListItem extends Component {
   }
 
   render() {
+    console.log('here are the props ive received in billslistitem: ', this.props)
     const { bill, history, agendaVotes } = this.props
     const vote = agendaVotes[bill.uid]
 
@@ -37,6 +38,7 @@ class BillsListItem extends Component {
       undefined: '',
       yea: '✓',
     }
+
 
     let billUrl = `/sf/${bill.date}/${bill.id}`
     if (bill.introduced) {

@@ -116,6 +116,7 @@ class BillsList extends Component {
     let agenda = bills[key]
 
     if (!agenda) {
+      console.log('returning from no agenda')
       return <ActivityIndicator />
     }
 

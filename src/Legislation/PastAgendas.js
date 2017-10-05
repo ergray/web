@@ -60,7 +60,9 @@ class PastAgendas extends Component {
             key={date}
             style={{ padding: '1rem' }}
             //this needs to be fixed to allow for nyc
-            onPress={() => this.props.history.push(`/sf/${date}`, { backable: true })}
+            /*onPress={() => this.props.history.push(`/sf/${date}`, { backable: true })}*/
+            //adjusted for scalability - no longer hardcodes in a location path
+            onPress={() => this.props.history.push(this.props.history.location.pathname+`/${date}`, { backable: true })}
           >
             <View style={{ flexDirection: 'row' }}>
               <Text style={{ flexGrow: 1, fontWeight: '500' }}>{ convertDateToLongFormat(date) }</Text>
