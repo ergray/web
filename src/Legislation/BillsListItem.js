@@ -42,30 +42,32 @@ class BillsListItem extends Component {
 
     //additions for nyc code
     console.log('location path from billslistitem: ', location)
+
+    this.fixDate = function(date){
+      let dateRe = /(\d+)\/(\d+)\/(\d+)/g
+      let parsedDate = dateRe.exec(date)
+      let month = parsedDate[1]
+      if (month.length < 2){
+        month = '0'+month
+      }
+      let year = parsedDate[3]
+      let day = parsedDate[2]
+      if (day.length < 2){
+        day = '0'+day
+      }
+      let realDate = year+'-'+month+'-'+day
+      return realDate  
+    }
+
     let pathRe = /[a-z]+/g
-    let dateRe = /(\d+)\/(\d+)\/(\d+)/g
     let parsedPath = pathRe.exec(location.pathname)
-    let parsedDate = dateRe.exec(bill.date)
-    let month = parsedDate[1]
-    if (month.length < 2){
-      month = '0'+month
-    }
-    let year = parsedDate[3]
-    let day = parsedDate[2]
-    if (day.length < 2){
-      day = '0'+day
-    }
-    let realDate = year+'-'+month+'-'+day
-    console.log('here is realDate: ', realDate)
-    console.log('here is parsed date: ', parsedDate)
-    console.log('here is your parsed pathname: ', parsedPath)
-    console.log('and here is bill date: ', bill.date)
+
     let billUrl = `/`+parsedPath[0]+`/${bill.date}/${bill.id}`
-    console.log('here is bill url: ', billUrl)
     if (parsedPath[0] === 'sf'){
       billUrl = `/`+parsedPath[0]+`/${bill.date}/${bill.id}`
     } else if (parsedPath[0] === 'nyc'){
-      billUrl = `/`+parsedPath[0]+`/${realDate}/${bill.id}`
+      let nycDate = this.fixDate(bill.date)
+      billUrl = `/`+parsedPath[0]+`/${nycDate}/${bill.id}`
     }
     //end additions
 

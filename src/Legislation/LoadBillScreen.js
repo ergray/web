@@ -55,10 +55,12 @@ class LoadBillScreen extends Component {
     let thisPath = pathRe.exec(location.pathname)[0]
 
     if (bills[key]) {
+      console.log('here is typeof: ', typeof(bills[key]))
+      console.log(bills)
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
       //content for nyc
       if (thisPath === 'nyc'){
-        bill = bills[key].filter(b => b.id === bill_id)
+        bill = bills[key].filter(b => b.id === Number(bill_id))[0]
       }
       //end new content
       console.log('bill from LBS: ', bill)
