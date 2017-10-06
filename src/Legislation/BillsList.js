@@ -49,11 +49,10 @@ class BillsList extends Component {
           .then(response => response.json())
           .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
         } else if (location.pathname === `/nyc/${date}`){
-          fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
-          .then(response => response.json())
-          .then(response => {
+          fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
+          .then((response) => response.json())
+          .then((response) => {
             const bills = response.data
-            const date = "2017-09-07"
             dispatch({bills, date, type: 'SYNC_BILLS'})
           })
         }

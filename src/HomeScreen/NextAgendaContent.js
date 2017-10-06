@@ -16,11 +16,7 @@ class NextAgendaContent extends Component {
     super(props)
     this.state = {}
 
-    //api goes to a single tidbit of info,
-    //will need a separate api to gather
-    //nyc data
-
-    //location is pages location.pathname
+    //location parameter added for scalability, should be location.pathname
     function getNextAgenda(location) {
       if (location === '/sf'){
       fetch(`${API_URL_V1}/next-agenda`)
@@ -42,7 +38,7 @@ class NextAgendaContent extends Component {
           .then(response => response.json())
           .then((response => {
             //hard coded for the moment as we don't have a /next-agenda endpoint
-            const nextAgenda = {date: '2018-08-18', message: 'This is a hard coded message for a future agenda'}
+            const nextAgenda = {date: '2017-09-17', message: 'Holiday - Offices Closed'}
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
             if (!nextAgenda.bills){
               return

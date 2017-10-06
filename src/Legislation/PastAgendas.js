@@ -31,15 +31,11 @@ class PastAgendas extends Component {
       fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
       .then(response => response.json())
       .then(response => {
-        console.log(response)
         let dates = response.data.map(bills => bills.date)
         let trimmedDates = new Set(dates)
         let uniqueDates = Array.from(trimmedDates)
-        console.log('here comes dates: ', uniqueDates)
-        //placeholder hard coded date, in the future
-        //this will be an array of dates pulled from above fetch
-
-        // this.setState({dates: ['2017-09-07']})
+        //in the future this should filter like sf, to pull only dates that have occurred
+        //and not future agenda items
         this.setState({dates: uniqueDates})
       })
     }
