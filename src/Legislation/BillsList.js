@@ -137,7 +137,6 @@ class BillsList extends Component {
     const agendaVotes = votes[date] || {}
     const title = date ? convertDateToLongFormat(date) : 'US Congress'
 
-    // console.log('bill uid: ', bill.uid)
     return (
       <View>
         <Header history={history} location={location} title={title} />

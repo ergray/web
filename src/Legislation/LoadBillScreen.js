@@ -18,26 +18,18 @@ class LoadBillScreen extends Component {
     let thisPath = pathRe.exec(location.pathname)[0]
 
     if (date && bills) {
-      console.log('valid date and billds')
-      console.log('from this location: ', location)
-      console.log(thisPath)
       if (thisPath === 'sf'){
       fetch(`${API_URL_V1}/bills/${date}`)
         .then(response => response.json())
-        // .then(response => console.log('this is what loadedBills would be: ', response))
         .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
         //nyc addition
       } else if (thisPath === 'nyc'){
-        console.log("you're on nyc time!")
-        console.log('also here is date: ', date)
         fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
         .then(response => response.json())
         .then(response => dispatch({bills: response.data, date, type: 'SYNC_BILLS'}))
-        // .then(response => console.log(response))
       }
         //end nyc addition
     } else if (!bills.us || !bills.us.filter(b => b.uid === bill_uid).length) {
-      console.log('defaulting to legislature?')
       fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ bill_uid, legislature: 'us' })}`)
         .then(response => response.json())
         .then(loadedBills => loadedBills.map(oldBill))
@@ -48,29 +40,23 @@ class LoadBillScreen extends Component {
   render() {
     const { bills, history, location, match } = this.props
     const { date, bill_id } = match.params
-    console.log('bill_id: ', bill_id)
-    console.log('date: ', date)
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
-    console.log('bill_uid: ', bill_uid)
     const key = date || 'us'
-    //added for scope, clean this up, maybe add to a redux store
+
+    //added for scope, clean this up, maybe add to a redux store so we can always refer to it
     let pathRe = /[a-z]+/g
     let thisPath = pathRe.exec(location.pathname)[0]
 
 
 
     if (bills[key]) {
-      console.log('here is typeof: ', typeof(bills[key]))
-      console.log(bills)
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      console.log(bills[key].filter(b => console.log('b.uid: ', b.uid)))
       //content for nyc
       if (thisPath === 'nyc'){
         bill = bills[key].filter(b => b.id === Number(bill_id))[0]
         bill.uid = bill_uid
       }
       //end new content
-      console.log('bill from LBS: ', bill)
       if (!bill) {
         return (
           <View style={{ marginHorizontal: 20, marginTop: 20 }}>

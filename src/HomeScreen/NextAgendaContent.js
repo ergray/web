@@ -22,14 +22,10 @@ class NextAgendaContent extends Component {
 
     //location is pages location.pathname
     function getNextAgenda(location) {
-      console.log('here is location: ', location)
       if (location === '/sf'){
-      console.log('in sf')
-      console.log('and here is url: ',API_URL_V1 )
       fetch(`${API_URL_V1}/next-agenda`)
         .then(response => response.json())
         .then((nextAgenda) => {
-          console.log('this should be next agenda: ',nextAgenda)
           props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
 
           // Did nextAgenda not include bills?
@@ -39,17 +35,14 @@ class NextAgendaContent extends Component {
           }
 
           const { bills, date } = nextAgenda
-          console.log('should be dispatching sync right now')
           props.dispatch({ bills, date, type: 'SYNC_BILLS' })
         })
       } else if (location === '/nyc'){
           fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
           .then(response => response.json())
           .then((response => {
-            console.log('ignoring response for the moment')
-            const nextAgenda = {date: '2016-06-06', message: 'This is a hard coded message'}
-            console.log(response.data[0])
-            console.log(nextAgenda)
+            //hard coded for the moment as we don't have a /next-agenda endpoint
+            const nextAgenda = {date: '2018-08-18', message: 'This is a hard coded message for a future agenda'}
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
             if (!nextAgenda.bills){
               return
@@ -69,14 +62,9 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    console.log('calling next agenda content')
-    console.log('url call: ', API_URL_V1)
-    console.log('here are your props: ', this.props)
-    console.log(location)
     const { history, nextAgenda} = this.props
 
     if (!nextAgenda) {
-      console.log('no agenda found')
       return (
         <Text style={{
           fontSize: 18,
@@ -87,11 +75,9 @@ class NextAgendaContent extends Component {
       )
     }
 
-    console.log('about to touch date, message')
     const { date, message } = nextAgenda
 
     if (!date) {
-      console.log('no date found')
       return (<BetweenWeeks
         history={history}
         message={message}
@@ -101,7 +87,6 @@ class NextAgendaContent extends Component {
     const { bills } = nextAgenda
 
     if (!bills) {
-      console.log('no bills found')
       return (
         <ScrollView>
           <Text style={{ marginTop: 15, textAlign: 'center', textTransform: 'uppercase' }}>
@@ -118,7 +103,6 @@ class NextAgendaContent extends Component {
       )
     }
 
-    console.log('about to hit return billslist')
     return (
       <BillsList {...this.props} homescreen match={{ params: { date } }} />
     )
