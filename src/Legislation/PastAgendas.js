@@ -17,26 +17,26 @@ class PastAgendas extends Component {
     this.state = {
       dates: null,
     }
-    if (location.pathname === '/sf'){
+    if (location.pathname === '/sf') {
       fetch(`${API_URL_V1}/dates`)
         .then(response => response.json())
         .then((dates) => {
           this.setState({ dates: dates.filter(hasDatePassed) })
-        })   
-    } else if (location.pathname === '/nyc'){
+        })
+      } else if (location.pathname === '/nyc') {
       //fetch does not current do anything other than allow
       //synchronous setstate to work.
       //in the future this fetch should point to an api
       //with available dates
       fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
       .then(response => response.json())
-      .then(response => {
-        let dates = response.data.map(bills => bills.date)
-        let trimmedDates = new Set(dates)
-        let uniqueDates = Array.from(trimmedDates)
+      .then((response) => {
+        const dates = response.data.map(bills => bills.date)
+        const trimmedDates = new Set(dates)
+        const uniqueDates = Array.from(trimmedDates)
         //in the future this should filter like sf, to pull only dates that have occurred
         //and not future agenda items
-        this.setState({dates: uniqueDates})
+        this.setState({ dates: uniqueDates })
       })
     }
   }
@@ -61,7 +61,7 @@ class PastAgendas extends Component {
             key={date}
             style={{ padding: '1rem' }}
             //nyc change: adjusted for scalability - no longer hard codes in 'sf' in favor of location.pathname
-            onPress={() => this.props.history.push(this.props.history.location.pathname+`/${date}`, { backable: true })}
+            onPress={() => this.props.history.push(this.props.history.location.pathname + `/${date}`, { backable: true })}
           >
             <View style={{ flexDirection: 'row' }}>
               <Text style={{ flexGrow: 1, fontWeight: '500' }}>{ convertDateToLongFormat(date) }</Text>

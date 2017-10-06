@@ -12,7 +12,7 @@ import BetweenWeeks from './BetweenWeeks'
 const pick = require('lodash/fp/pick')
 
 class NextAgendaContent extends Component {
-  constructor(props) {  
+  constructor(props) {
     super(props)
     this.state = {}
 
@@ -36,14 +36,14 @@ class NextAgendaContent extends Component {
       } else if (location === '/nyc'){
           fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
           .then(response => response.json())
-          .then((response => {
+          .then(response => {
             //hard coded for the moment as we don't have a /next-agenda endpoint
-            const nextAgenda = {date: '2017-09-17', message: 'Holiday - Offices Closed'}
-            props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA'})
-            if (!nextAgenda.bills){
-              return
+            const nextAgenda = { date: '2017-09-17', message: 'Holiday - Offices Closed' }
+            props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
+           if (!nextAgenda.bills) {
+               return 
             }
-          }))
+          })
       }
     }
 
@@ -58,7 +58,7 @@ class NextAgendaContent extends Component {
   }
 
   render() {
-    const { history, nextAgenda} = this.props
+    const { history, nextAgenda } = this.props
 
     if (!nextAgenda) {
       return (

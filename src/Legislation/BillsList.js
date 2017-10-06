@@ -44,16 +44,16 @@ class BillsList extends Component {
     if (!this.props.bills[date]) {
       if (date) {
         //conditionals to account for nyc and different api point
-        if (location.pathname === `/sf/${date}`){
+        if (location.pathname === `/sf/${date}`) {
         fetch(`${API_URL_V1}/bills/${date}`)
           .then(response => response.json())
           .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
-        } else if (location.pathname === `/nyc/${date}`){
+        } else if (location.pathname === `/nyc/${date}`) {
           fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
           .then((response) => response.json())
           .then((response) => {
             const bills = response.data
-            dispatch({bills, date, type: 'SYNC_BILLS'})
+            dispatch({ bills, date, type: 'SYNC_BILLS' })
           })
         }
       } else {

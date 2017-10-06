@@ -41,10 +41,10 @@ class BillsListItem extends Component {
 
     //additions for nyc code
     //create a path variable for scalability
-    let pathRe = /[a-z]+/g
-    let parsedPath = pathRe.exec(location.pathname)
+    const pathRe = /[a-z]+/g
+    const parsedPath = pathRe.exec(location.pathname)
 
-    let billUrl = `/`+parsedPath[0]+`/${bill.date}/${bill.id}`
+    let billUrl = '/' + parsedPath[0] + `/${bill.date}/${bill.id}`
 
     //end additions
 
@@ -62,7 +62,7 @@ class BillsListItem extends Component {
     let yea_flex = yea
     let nay_flex = nay
 
-    if (bill.votes){
+    if (bill.votes) {
       yea = bill.votes.yea || 0
       nay = bill.votes.nay || 0
     }
@@ -116,20 +116,20 @@ class BillsListItem extends Component {
                 <Text style={metaStyle}>Last action {dateFormat(bill.last_action_date || bill.updated || bill.date, 'ddd, mmm dS')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-              {/*<Text style={metaStyle}>Yea: {bill.votes.yea}</Text>*/}
+              { /* <Text style={metaStyle}>Yea: {bill.votes.yea}</Text> */ }
                 {/*change for nyc:*/}
                 <Text style={metaStyle}>Yea: {yea}</Text>
-                {/*<Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text>*/}
-                {/*change for nyc:*/}
+                { /* <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text> */ }
+                { /* change for nyc: */ }
                 <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {nay}</Text>
               </View>
             </View>
 
           </View>
 
-          {/* Vote count indicator */}
-          {/*{ Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && (*/}
-          {/*change for nyc:*/}
+          { /* Vote count indicator */ }
+          { /* { Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && ( */ }
+          { /* change for nyc: */ }
          { Number(yea || 0) + Number(nay || 0) > 0 && (
             <View style={{
               alignItems: 'center',
@@ -141,8 +141,8 @@ class BillsListItem extends Component {
             >
               <View style={{ backgroundColor: '#2ca02c', flex: yea_flex, height: 2 }} />
               <View style={{ backgroundColor: '#d62728', flex: nay_flex, height: 2 }} />
-              {/*<View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
-              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />*/}
+              { /* <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
+              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} /> */ }
             </View>
           ) }
         </View>

@@ -14,19 +14,19 @@ class LoadBillScreen extends Component {
     const { bills, dispatch, match } = this.props
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
-    let pathRe = /[a-z]+/g
-    let thisPath = pathRe.exec(location.pathname)[0]
+    const pathRe = /[a-z]+/g
+    const thisPath = pathRe.exec(location.pathname)[0]
 
     if (date && bills) {
-      if (thisPath === 'sf'){
+      if (thisPath === 'sf') {
       fetch(`${API_URL_V1}/bills/${date}`)
         .then(response => response.json())
         .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
         //nyc addition
-      } else if (thisPath === 'nyc'){
+      } else if (thisPath === 'nyc') {
         fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
         .then(response => response.json())
-        .then(response => dispatch({bills: response.data, date, type: 'SYNC_BILLS'}))
+        .then(response => dispatch({ bills: response.data, date, type: 'SYNC_BILLS' }))
       }
         //end nyc addition
     } else if (!bills.us || !bills.us.filter(b => b.uid === bill_uid).length) {
@@ -44,15 +44,12 @@ class LoadBillScreen extends Component {
     const key = date || 'us'
 
     //added for scope, clean this up, maybe add to a redux store so we can always refer to it
-    let pathRe = /[a-z]+/g
-    let thisPath = pathRe.exec(location.pathname)[0]
-
-
-
+    const pathRe = /[a-z]+/g
+    const thisPath = pathRe.exec(location.pathname)[0]
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
       //content for nyc
-      if (thisPath === 'nyc'){
+      if (thisPath === 'nyc') {
         bill = bills[key].filter(b => b.id === Number(bill_id))[0]
         bill.uid = bill_uid
       }
