@@ -8,7 +8,6 @@ import legislatureIcon from './legislature-icon.png'
 import NextAgendaContent from './NextAgendaContent'
 const pick = require('lodash/fp/pick')
 
-console.log(location)
 
 function NextAgendaScreen({ history }) {
   return (
@@ -19,6 +18,9 @@ function NextAgendaScreen({ history }) {
 }
 
 NextAgendaScreen.titleIcon = legislatureIcon
+
+//nyc conditional addition -- possibly add a file similar to date conversion
+//to take pathname and adjust accorindgly?
 
 if (location.pathname === '/sf'){
   NextAgendaScreen.title = 'San Francisco Legislature'

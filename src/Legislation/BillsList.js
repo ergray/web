@@ -43,14 +43,12 @@ class BillsList extends Component {
     const { date } = match.params
     if (!this.props.bills[date]) {
       if (date) {
-        console.log('hi im pulling bills now')
-        console.log(location.pathname)
+        //conditionals to account for nyc and different api point
         if (location.pathname === `/sf/${date}`){
         fetch(`${API_URL_V1}/bills/${date}`)
           .then(response => response.json())
           .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
         } else if (location.pathname === `/nyc/${date}`){
-          console.log('must be in nyc')
           fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
           .then(response => response.json())
           .then(response => {
@@ -76,7 +74,6 @@ class BillsList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('in CWRP')
     if (this.props.match.params.date && !nextProps.match.params.date) {
       const { dispatch, isVerified, match, sessionId } = nextProps
       const { date } = match.params
@@ -123,14 +120,12 @@ class BillsList extends Component {
   }
 
   render() {
-    console.log('listing bills')
     const { bills, homescreen, history, location, match, votes } = this.props
     const { date } = match.params
     const key = date || 'us'
     let agenda = bills[key]
 
     if (!agenda) {
-      console.log('returning from no agenda')
       return <ActivityIndicator />
     }
 
@@ -142,6 +137,7 @@ class BillsList extends Component {
     const agendaVotes = votes[date] || {}
     const title = date ? convertDateToLongFormat(date) : 'US Congress'
 
+    // console.log('bill uid: ', bill.uid)
     return (
       <View>
         <Header history={history} location={location} title={title} />
@@ -149,8 +145,8 @@ class BillsList extends Component {
           { !date && <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />}
           { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
-            <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} />
-            /*<BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />*/
+            /*<BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} />*/
+            <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>
               {() => (!search.terms && !bills[key].synced && !match.params.date ? <ActivityIndicator /> : <span />)}

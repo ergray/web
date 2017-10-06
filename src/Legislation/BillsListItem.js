@@ -17,7 +17,6 @@ class BillsListItem extends Component {
   }
 
   render() {
-    console.log('here are the props ive received in billslistitem: ', this.props)
     const { bill, history, agendaVotes } = this.props
     const vote = agendaVotes[bill.uid]
 
@@ -43,21 +42,21 @@ class BillsListItem extends Component {
     //additions for nyc code
     console.log('location path from billslistitem: ', location)
 
-    this.fixDate = function(date){
-      let dateRe = /(\d+)\/(\d+)\/(\d+)/g
-      let parsedDate = dateRe.exec(date)
-      let month = parsedDate[1]
-      if (month.length < 2){
-        month = '0'+month
-      }
-      let year = parsedDate[3]
-      let day = parsedDate[2]
-      if (day.length < 2){
-        day = '0'+day
-      }
-      let realDate = year+'-'+month+'-'+day
-      return realDate  
-    }
+    // this.fixDate = function(date){
+    //   let dateRe = /(\d+)\/(\d+)\/(\d+)/g
+    //   let parsedDate = dateRe.exec(date)
+    //   let month = parsedDate[1]
+    //   if (month.length < 2){
+    //     month = '0'+month
+    //   }
+    //   let year = parsedDate[3]
+    //   let day = parsedDate[2]
+    //   if (day.length < 2){
+    //     day = '0'+day
+    //   }
+    //   let realDate = year+'-'+month+'-'+day
+    //   return realDate  
+    // }
 
     let pathRe = /[a-z]+/g
     let parsedPath = pathRe.exec(location.pathname)
@@ -66,8 +65,9 @@ class BillsListItem extends Component {
     if (parsedPath[0] === 'sf'){
       billUrl = `/`+parsedPath[0]+`/${bill.date}/${bill.id}`
     } else if (parsedPath[0] === 'nyc'){
-      let nycDate = this.fixDate(bill.date)
-      billUrl = `/`+parsedPath[0]+`/${nycDate}/${bill.id}`
+      console.log('here is bill.date: ',bill.date)
+      // let nycDate = this.fixDate(bill.date)
+      // billUrl = `/`+parsedPath[0]+`/${nycDate}/${bill.id}`
     }
     //end additions
 

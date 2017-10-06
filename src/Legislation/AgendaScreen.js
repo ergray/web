@@ -4,8 +4,6 @@ import {
 import BillsList from './BillsList'
 
 export default function AgendaScreen(props) {
-    console.log('called billslist')
-    console.log('props from agendascreen: ', props)
   return (
     <BillsList {...props} />
   )

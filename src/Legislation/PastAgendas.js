@@ -17,13 +17,11 @@ class PastAgendas extends Component {
     this.state = {
       dates: null,
     }
-    console.log('here is location from past agendas: ', location)
     if (location.pathname === '/sf'){
       fetch(`${API_URL_V1}/dates`)
         .then(response => response.json())
         .then((dates) => {
           this.setState({ dates: dates.filter(hasDatePassed) })
-          console.log('sf state: ', this.state)
         })   
     } else if (location.pathname === '/nyc'){
       //fetch does not current do anything other than allow
@@ -36,7 +34,6 @@ class PastAgendas extends Component {
         //this will be an array of dates pulled from above fetch
         this.setState({dates: ['2017-09-07']})
       })
-    console.log('nyc state: ', this.state)
     }
   }
   render() {
@@ -59,9 +56,7 @@ class PastAgendas extends Component {
           <HoverableListItemPanel
             key={date}
             style={{ padding: '1rem' }}
-            //this needs to be fixed to allow for nyc
-            /*onPress={() => this.props.history.push(`/sf/${date}`, { backable: true })}*/
-            //adjusted for scalability - no longer hardcodes in a location path
+            //nyc change: adjusted for scalability - no longer hard codes in 'sf' in favor of location.pathname
             onPress={() => this.props.history.push(this.props.history.location.pathname+`/${date}`, { backable: true })}
           >
             <View style={{ flexDirection: 'row' }}>

@@ -79,7 +79,6 @@ export default function reducer(state, action) {
     }
 
   case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
-    console.log('action from syc_bills: ', action)
     const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
     const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
 
@@ -107,7 +106,6 @@ export default function reducer(state, action) {
     }
 
   case 'SYNC_NEXT_AGENDA':
-    console.log('next agenda sync: ', action)
     return { ...state,
       nextAgenda: action.nextAgenda,
     }
