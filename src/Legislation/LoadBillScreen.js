@@ -48,19 +48,26 @@ class LoadBillScreen extends Component {
   render() {
     const { bills, history, location, match } = this.props
     const { date, bill_id } = match.params
+    console.log('bill_id: ', bill_id)
+    console.log('date: ', date)
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
+    console.log('bill_uid: ', bill_uid)
     const key = date || 'us'
     //added for scope, clean this up, maybe add to a redux store
     let pathRe = /[a-z]+/g
     let thisPath = pathRe.exec(location.pathname)[0]
 
+
+
     if (bills[key]) {
       console.log('here is typeof: ', typeof(bills[key]))
       console.log(bills)
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
+      console.log(bills[key].filter(b => console.log('b.uid: ', b.uid)))
       //content for nyc
       if (thisPath === 'nyc'){
         bill = bills[key].filter(b => b.id === Number(bill_id))[0]
+        bill.uid = bill_uid
       }
       //end new content
       console.log('bill from LBS: ', bill)
