@@ -16,9 +16,11 @@ class NextAgendaContent extends Component {
     super(props)
     this.state = {}
 
+    const path = location.pathname
 
     // location parameter added for scalability, should be location.pathname
     function getNextAgenda(pathname) {
+      console.log(pathname)
       if (pathname === '/sf') {
         fetch(`${API_URL_V1}/next-agenda`)
           .then(response => response.json())
@@ -49,9 +51,8 @@ class NextAgendaContent extends Component {
     }
 
     // Refresh every 5 minutes
-    this.refreshId = setInterval(() => getNextAgenda(this.location), 5 * 60 * 1000)
-
-    getNextAgenda(this.location)
+    this.refreshId = setInterval(() => getNextAgenda(path), 5 * 60 * 1000)
+    getNextAgenda(path)
   }
 
   componentWillUnmount() {

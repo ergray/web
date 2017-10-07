@@ -9,13 +9,15 @@ import ActivityIndicator from 'ActivityIndicator'
 import Text from 'Text'
 import BillScreen from 'Legislation/BillScreen'
 
+const path = location.pathname
+
 class LoadBillScreen extends Component {
   componentDidMount() {
     const { bills, dispatch, match } = this.props
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
     const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(this.location.pathname)[0]
+    const thisPath = pathRe.exec(path)[0]
 
     if (date && bills) {
       if (thisPath === 'sf') {
@@ -45,7 +47,7 @@ class LoadBillScreen extends Component {
 
     // added for scope, clean this up, maybe add to a redux store so we can always refer to it
     const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(location.pathname)[0]
+    const thisPath = pathRe.exec(path)[0]
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
       // content for nyc

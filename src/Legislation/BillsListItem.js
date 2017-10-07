@@ -9,6 +9,8 @@ import HoverableListItemPanel from '../HoverableListItemPanel'
 import Text from '../Text'
 
 const cstyle = CommonStyle()
+const path = location.pathname
+console.log('from bills list: ', path)
 
 class BillsListItem extends Component {
   constructor() {
@@ -42,7 +44,7 @@ class BillsListItem extends Component {
     // additions for nyc code
     // create a path variable for scalability
     const pathRe = /[a-z]+/g
-    const parsedPath = pathRe.exec(this.location.pathname)
+    const parsedPath = pathRe.exec(path)
 
     let billUrl = `/${parsedPath[0]}/${bill.date}/${bill.id}`
 

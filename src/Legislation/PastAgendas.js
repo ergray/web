@@ -10,6 +10,8 @@ import HoverableListItemPanel from '../HoverableListItemPanel'
 import { convertDateToLongFormat, hasDatePassed } from './convert-dates'
 
 const cstyle = CommonStyle()
+const path = location.pathname
+console.log('path from past: ', path)
 
 class PastAgendas extends Component {
   constructor(props) {
@@ -17,13 +19,13 @@ class PastAgendas extends Component {
     this.state = {
       dates: null,
     }
-    if (this.location.pathname === '/sf') {
+    if (path === '/sf') {
       fetch(`${API_URL_V1}/dates`)
         .then(response => response.json())
         .then((dates) => {
           this.setState({ dates: dates.filter(hasDatePassed) })
         })
-    } else if (this.location.pathname === '/nyc') {
+    } else if (path === '/nyc') {
     // fetch does not current do anything other than allow
     // synchronous setstate to work.
     // in the future this fetch should point to an api
@@ -61,7 +63,7 @@ class PastAgendas extends Component {
             key={date}
             style={{ padding: '1rem' }}
             // nyc change: adjusted for scalability - no longer hard codes in 'sf' in favor of location.pathname
-            onPress={() => this.props.history.push(`${this.location.pathname}/${date}`, { backable: true })}
+            onPress={() => this.props.history.push(`${path}/${date}`, { backable: true })}
           >
             <View style={{ flexDirection: 'row' }}>
               <Text style={{ flexGrow: 1, fontWeight: '500' }}>{ convertDateToLongFormat(date) }</Text>
