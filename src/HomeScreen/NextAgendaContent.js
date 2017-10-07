@@ -16,41 +16,42 @@ class NextAgendaContent extends Component {
     super(props)
     this.state = {}
 
-    //location parameter added for scalability, should be location.pathname
-    function getNextAgenda(location) {
-      if (location === '/sf'){
-      fetch(`${API_URL_V1}/next-agenda`)
-        .then(response => response.json())
-        .then((nextAgenda) => {
-          props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
 
-          // Did nextAgenda not include bills?
-          // (Upcoming break, or agenda hasn't been published yet)
-          if (!nextAgenda.bills) {
-            return
-          }
-
-          const { bills, date } = nextAgenda
-          props.dispatch({ bills, date, type: 'SYNC_BILLS' })
-        })
-      } else if (location === '/nyc'){
-          fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
+    // location parameter added for scalability, should be location.pathname
+    function getNextAgenda(pathname) {
+      if (pathname === '/sf') {
+        fetch(`${API_URL_V1}/next-agenda`)
           .then(response => response.json())
-          .then(response => {
-            //hard coded for the moment as we don't have a /next-agenda endpoint
+          .then((nextAgenda) => {
+            props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
+
+            // Did nextAgenda not include bills?
+            // (Upcoming break, or agenda hasn't been published yet)
+            if (!nextAgenda.bills) {
+              return
+            }
+
+            const { bills, date } = nextAgenda
+            props.dispatch({ bills, date, type: 'SYNC_BILLS' })
+          })
+      } else if (pathname === '/nyc') {
+        fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
+          .then(response => response.json())
+          .then(() => {
+            // hard coded for the moment as we don't have a /next-agenda endpoint
             const nextAgenda = { date: '2017-09-17', message: 'Holiday - Offices Closed' }
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
-           if (!nextAgenda.bills) {
-               return 
+            if (!nextAgenda.bills) {
+              console.log('no bill')
             }
           })
       }
     }
 
     // Refresh every 5 minutes
-    this.refreshId = setInterval(() => getNextAgenda(location.pathname), 5 * 60 * 1000)
+    this.refreshId = setInterval(() => getNextAgenda(this.location), 5 * 60 * 1000)
 
-    getNextAgenda(location.pathname)
+    getNextAgenda(this.location)
   }
 
   componentWillUnmount() {

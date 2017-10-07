@@ -15,20 +15,20 @@ class LoadBillScreen extends Component {
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
     const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(location.pathname)[0]
+    const thisPath = pathRe.exec(this.location.pathname)[0]
 
     if (date && bills) {
       if (thisPath === 'sf') {
-      fetch(`${API_URL_V1}/bills/${date}`)
-        .then(response => response.json())
-        .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
-        //nyc addition
+        fetch(`${API_URL_V1}/bills/${date}`)
+          .then(response => response.json())
+          .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
+          // nyc addition
       } else if (thisPath === 'nyc') {
         fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
-        .then(response => response.json())
-        .then(response => dispatch({ bills: response.data, date, type: 'SYNC_BILLS' }))
+          .then(response => response.json())
+          .then(response => dispatch({ bills: response.data, date, type: 'SYNC_BILLS' }))
       }
-        //end nyc addition
+      // end nyc addition
     } else if (!bills.us || !bills.us.filter(b => b.uid === bill_uid).length) {
       fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ bill_uid, legislature: 'us' })}`)
         .then(response => response.json())
@@ -43,17 +43,17 @@ class LoadBillScreen extends Component {
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
     const key = date || 'us'
 
-    //added for scope, clean this up, maybe add to a redux store so we can always refer to it
+    // added for scope, clean this up, maybe add to a redux store so we can always refer to it
     const pathRe = /[a-z]+/g
     const thisPath = pathRe.exec(location.pathname)[0]
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      //content for nyc
+      // content for nyc
       if (thisPath === 'nyc') {
         bill = bills[key].filter(b => b.id === Number(bill_id))[0]
         bill.uid = bill_uid
       }
-      //end new content
+      // end new content
       if (!bill) {
         return (
           <View style={{ marginHorizontal: 20, marginTop: 20 }}>

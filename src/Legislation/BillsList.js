@@ -43,18 +43,18 @@ class BillsList extends Component {
     const { date } = match.params
     if (!this.props.bills[date]) {
       if (date) {
-        //conditionals to account for nyc and different api point
-        if (location.pathname === `/sf/${date}`) {
-        fetch(`${API_URL_V1}/bills/${date}`)
-          .then(response => response.json())
-          .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
-        } else if (location.pathname === `/nyc/${date}`) {
+        // conditionals to account for nyc and different api point
+        if (this.location.pathname === `/sf/${date}`) {
+          fetch(`${API_URL_V1}/bills/${date}`)
+            .then(response => response.json())
+            .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
+        } else if (this.location.pathname === `/nyc/${date}`) {
           fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
-          .then((response) => response.json())
-          .then((response) => {
-            const bills = response.data
-            dispatch({ bills, date, type: 'SYNC_BILLS' })
-          })
+            .then(response => response.json())
+            .then((response) => {
+              const bills = response.data
+              dispatch({ bills, date, type: 'SYNC_BILLS' })
+            })
         }
       } else {
         fetch(`${API_URL_V2}/legislation/?json=${JSON.stringify({ legislature: 'us' })}`)
@@ -143,7 +143,7 @@ class BillsList extends Component {
           { !date && <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />}
           { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
-            /*<BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} />*/
+            /* <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} /> */
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>

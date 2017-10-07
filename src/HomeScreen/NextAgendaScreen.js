@@ -19,12 +19,12 @@ function NextAgendaScreen({ history }) {
 
 NextAgendaScreen.titleIcon = legislatureIcon
 
-//nyc conditional addition -- possibly add a file similar to date conversion
-//to take pathname and adjust accorindgly?
+// nyc conditional addition -- possibly add a file similar to date conversion
+// to take pathname and adjust accorindgly?
 
-if (location.pathname === '/sf'){
+if (this.location.pathname === '/sf') {
   NextAgendaScreen.title = 'San Francisco Legislature'
-} else if (location.pathname === '/nyc'){
+} else if (this.location.pathname === '/nyc') {
   NextAgendaScreen.title = 'New York City Legislature'
 }
 

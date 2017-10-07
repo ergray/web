@@ -1,0 +1,49 @@
+
+> liquid-web@0.0.96 test /Users/EricX/Desktop/Coding/LiquidVote/web
+> eslint . --cache && npm run build
+
+
+/Users/EricX/Desktop/Coding/LiquidVote/web/src/HomeScreen/NextAgendaContent.js
+  45:15  warning  Unexpected console statement  no-console
+
+✖ 1 problem (0 errors, 1 warning)
+
+
+> liquid-web@0.0.96 build /Users/EricX/Desktop/Coding/LiquidVote/web
+> webpack --progress --colors
+
+Hash: [1md75e5124e102063137ef[39m[22m
+Version: webpack [1m3.6.0[39m[22m
+Time: [1m8822[39m[22mms
+      [1mAsset[39m[22m       [1mSize[39m[22m  [1mChunks[39m[22m  [1m[39m[22m           [1m[39m[22m       [1mChunk Names[39m[22m
+  [1m[33mbundle.js[39m[22m     [1m[33m4.1 MB[39m[22m       [1m0[39m[22m  [1m[32m[emitted][39m[22m  [1m[33m[big][39m[22m  main
+ [1m[32mscreen.css[39m[22m    1.57 kB        [1m[39m[22m  [1m[32m[emitted][39m[22m         
+[1m[32mfavicon.png[39m[22m    12.1 kB        [1m[39m[22m  [1m[32m[emitted][39m[22m         
+ [1m[32mindex.html[39m[22m  292 bytes        [1m[39m[22m  [1m[32m[emitted][39m[22m         
+   [1m[32m404.html[39m[22m  308 bytes        [1m[39m[22m  [1m[32m[emitted][39m[22m         
+ [327] [1m./src/_screens.js[39m[22m 8.44 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [372] [1m./index.web.js[39m[22m 1.06 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [577] [1m./src/App.js[39m[22m 3.78 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [808] [1m./src/ScrollToTop.js[39m[22m 2.46 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [824] [1m./src/AboutScreen/AboutScreen.js[39m[22m 22.6 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [829] [1m./src/AuthErrorScreen.js[39m[22m 3.38 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [835] [1m./src/Delegation/ConfirmDelegateScreen.js[39m[22m 6.09 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [836] [1m./src/Delegation/RequestsScreen.js[39m[22m 15.7 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [837] [1m./src/Delegation/DelegateInfoScreen.js[39m[22m 13.1 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [838] [1m./src/Login/2-EnterSMSCodeScreen.js[39m[22m 9.15 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [839] [1m./src/FeedbackScreen.js[39m[22m 5.66 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [840] [1m./src/JoinScreen.js[39m[22m 9.2 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [841] [1m./src/JoinThankYouScreen.js[39m[22m 5.44 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [924] [1m./src/_reducer.js[39m[22m 6.33 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+ [925] [1m./package.json[39m[22m 2.48 kB {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+    + 911 hidden modules
+Child [1mhtml-webpack-plugin for "index.html"[39m[22m:
+     1 asset
+       [2] [1m(webpack)/buildin/global.js[39m[22m 509 bytes {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+       [3] [1m(webpack)/buildin/module.js[39m[22m 517 bytes {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+        + 2 hidden modules
+Child [1mhtml-webpack-plugin for "404.html"[39m[22m:
+     1 asset
+       [2] [1m(webpack)/buildin/global.js[39m[22m 509 bytes {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+       [3] [1m(webpack)/buildin/module.js[39m[22m 517 bytes {[1m[33m0[39m[22m}[1m[32m [built][39m[22m
+        + 2 hidden modules
