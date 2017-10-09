@@ -10,7 +10,6 @@ import Text from '../Text'
 
 const cstyle = CommonStyle()
 const path = location.pathname
-console.log('from bills list: ', path)
 
 class BillsListItem extends Component {
   constructor() {

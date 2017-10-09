@@ -20,12 +20,10 @@ class NextAgendaContent extends Component {
 
     // location parameter added for scalability, should be location.pathname
     function getNextAgenda(pathname) {
-      console.log(pathname)
       if (pathname === '/sf') {
         fetch(`${API_URL_V1}/next-agenda`)
           .then(response => response.json())
           .then((nextAgenda) => {
-            console.log('should be dispatching')
             props.dispatch({ nextAgenda, type: 'SYNC_NEXT_AGENDA' })
 
             // Did nextAgenda not include bills?
