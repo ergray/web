@@ -41,16 +41,19 @@ class BillsList extends Component {
   }
 
   componentDidMount() {
+    console.log('props from CDM billslist: ', this.props)
     const { dispatch, isVerified, match, sessionId } = this.props
     const { date } = match.params
     if (!this.props.bills[date]) {
       if (date) {
         // conditionals to account for nyc and different api point
-        if (path === `/sf/${date}`) {
+        if (path === `/sf` || path === `/sf/${date}`) {
+          console.log('in sf date path')
           fetch(`${API_URL_V1}/bills/${date}`)
+          // console.log('sf billslist')
             .then(response => response.json())
             .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
-        } else if (path === `/nyc/${date}`) {
+        } else if (path === `/nyc` || path === `/nyc/${date}`) {
           fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
             .then(response => response.json())
             .then((response) => {
@@ -125,7 +128,10 @@ class BillsList extends Component {
     const { date } = match.params
     const key = date || 'us'
     let agenda = bills[key]
-
+    console.log('here is bills: ', bills)
+    console.log('here is key: ', key)
+    console.log('here is bill at key: ', bills[key])
+    console.log('here is agenda: ', agenda)
     if (!agenda) {
       return <ActivityIndicator />
     }
@@ -138,6 +144,7 @@ class BillsList extends Component {
     const agendaVotes = votes[date] || {}
     const title = date ? convertDateToLongFormat(date) : 'US Congress'
 
+    console.log('headed to billslist item')
     return (
       <View>
         <Header history={history} location={location} title={title} />

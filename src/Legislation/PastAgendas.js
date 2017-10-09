@@ -11,7 +11,6 @@ import { convertDateToLongFormat, hasDatePassed } from './convert-dates'
 
 const cstyle = CommonStyle()
 const path = location.pathname
-console.log('path from past: ', path)
 
 class PastAgendas extends Component {
   constructor(props) {
@@ -59,6 +58,7 @@ class PastAgendas extends Component {
     return (
       <View style={{ margin: 30 }}>
         { dates.map(date => (
+
           <HoverableListItemPanel
             key={date}
             style={{ padding: '1rem' }}
