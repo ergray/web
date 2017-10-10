@@ -45,7 +45,7 @@ class BillsListItem extends Component {
     const pathRe = /[a-z]+/g
     const parsedPath = pathRe.exec(path)
 
-    let billUrl = `/${parsedPath[0]}/${bill.date}/${bill.id}`
+    let billUrl = parsedPath ? `/${parsedPath[0]}/${bill.date}/${bill.id}` : `us/${bill.date}/${bill.id}`
 
     // end additions
 

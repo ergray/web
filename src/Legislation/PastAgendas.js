@@ -25,10 +25,6 @@ class PastAgendas extends Component {
           this.setState({ dates: dates.filter(hasDatePassed) })
         })
     } else if (path === '/nyc') {
-    // fetch does not current do anything other than allow
-    // synchronous setstate to work.
-    // in the future this fetch should point to an api
-    // with available dates
       fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
         .then(response => response.json())
         .then((response) => {

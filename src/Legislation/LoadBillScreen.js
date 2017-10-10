@@ -16,8 +16,24 @@ class LoadBillScreen extends Component {
     const { bills, dispatch, match } = this.props
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
+
     const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(path)[0]
+    let thisPath = ''
+
+    console.log(path)
+    console.log('here is initial test: ', pathRe.test(path), ' ', path)
+    console.log('here is secondary test qualifier: ', pathRe.test(path) === true, ' ', path)
+    console.log(path)
+    // console.log(pathRe.exec(path)[0])
+    // if (pathRe.exec(path) != null){
+    if (pathRe.test(path) === true){
+      console.log('should be exec')
+      thisPath = pathRe.exec(path)[0]
+    } else {
+      console.log('but im in else instead')
+      thisPath = path
+    }
+
 
     if (date && bills) {
       if (thisPath === 'sf') {
@@ -46,26 +62,28 @@ class LoadBillScreen extends Component {
     const key = date || 'us'
 
     // added for scope, clean this up, maybe add to a redux store so we can always refer to it
-    const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(path)[0]
-    if (bills[key]) {
-      let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      // content for nyc
-      if (thisPath === 'nyc') {
-        bill = bills[key].filter(b => b.id === Number(bill_id))[0]
-        bill.uid = bill_uid
-      }
-      // end new content
-      if (!bill) {
-        return (
-          <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-            <Text>Bill {bill_uid} not found</Text>
-          </View>
-        )
-      }
-      return <BillScreen bill={bill} history={history} location={location} />
-    }
 
+      if (bills[key]) {
+        let bill = bills[key].filter(b => b.uid === bill_uid)[0]
+        // content for nyc
+        if (key === date){
+          const pathRe = /[a-z]+/g
+          const thisPath = pathRe.exec(path)[0]
+          if (thisPath === 'nyc') {
+            bill = bills[key].filter(b => b.id === Number(bill_id))[0]
+            bill.uid = bill_uid
+          }
+        }  
+        // end new content
+        if (!bill) {
+          return (
+            <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+              <Text>Bill {bill_uid} not found</Text>
+            </View>
+          )
+        }
+        return <BillScreen bill={bill} history={history} location={location} />
+      }
     return (
       <ActivityIndicator text={`Loading bill ${bill_uid}...`} />
     )

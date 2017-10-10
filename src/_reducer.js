@@ -79,12 +79,19 @@ export default function reducer(state, action) {
     }
 
   case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
+    // console.log('was sync bills called? here is action: ', action)
+    // console.log('and here is state.bills? : ', state.bills)
     const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
+    // console.log('here is old bills: ', oldBills)
     const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
-
+    // console.log('here is bills: ', bills)
+    // console.log('and here is state one last time: ', state)
     action.bills.forEach((bill) => {
+      // console.log('here is bill instead of action.bills.foreach: ', bill['uid'])
       bills[bill.bill_uid] = bill
     })
+
+    // const newBills = _.orderBy(Object.values(action.bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
 
     const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
     newBills.synced = action.synced
