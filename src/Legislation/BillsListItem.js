@@ -41,11 +41,12 @@ class BillsListItem extends Component {
 
 
     // additions for nyc code
-    // create a path variable for scalability
+    // create a path variable for scalability of future cities
+
     const pathRe = /[a-z]+/g
     const parsedPath = pathRe.exec(path)
 
-    let billUrl = parsedPath ? `/${parsedPath[0]}/${bill.date}/${bill.id}` : `us/${bill.date}/${bill.id}`
+    let billUrl = parsedPath ? `/${parsedPath[0]}/${bill.date}/${bill.id}` : `legislation/${bill.uid}`
 
     // end additions
 
@@ -53,27 +54,17 @@ class BillsListItem extends Component {
       billUrl = `/legislation/${bill.bill_uid}`
     }
 
-    // additions from nyc
-    // created separate flex version of yea/nay because NYC didn't have votes to work with
-    // this creates changes to text components below, however, doesn't fundamentally
-    // change them
+    // ternary added for future city additions, and absence of votes property
 
-    let yea = 0
-    let nay = 0
-    let yea_flex = yea
-    let nay_flex = nay
+    !bill.votes ? bill.votes = {nay: 0, yea: 0} : null
+    let yea = bill.votes.yea
+    let nay = bill.votes.nay
 
-    if (bill.votes) {
-      yea = bill.votes.yea || 0
-      nay = bill.votes.nay || 0
-    }
     // end additions
 
-    // let yea = bill.votes.yea || 0
-    // let nay = bill.votes.nay || 0
     if (yea === 0 && nay === 0) {
-      yea_flex = 1
-      nay_flex = 1
+      yea = 1
+      nay = 1
     }
 
     const metaStyle = {
@@ -117,20 +108,14 @@ class BillsListItem extends Component {
                 <Text style={metaStyle}>Last action {dateFormat(bill.last_action_date || bill.updated || bill.date, 'ddd, mmm dS')}</Text>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                { /* <Text style={metaStyle}>Yea: {bill.votes.yea}</Text> */ }
-                { /* change for nyc: */ }
-                <Text style={metaStyle}>Yea: {yea}</Text>
-                { /* <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text> */ }
-                { /* change for nyc: */ }
-                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {nay}</Text>
+                <Text style={metaStyle}>Yea: {bill.votes.yea}</Text>
+                <Text style={{ ...metaStyle, marginRight: 0 }}>Nay: {bill.votes.nay}</Text>
               </View>
             </View>
 
           </View>
 
           { /* Vote count indicator */ }
-          { /* { Number(bill.votes.yea || 0) + Number(bill.votes.nay || 0) > 0 && ( */ }
-          { /* change for nyc: */ }
           { Number(yea || 0) + Number(nay || 0) > 0 && (
             <View style={{
               alignItems: 'center',
@@ -140,10 +125,8 @@ class BillsListItem extends Component {
               opacity: 0.4,
             }}
             >
-              <View style={{ backgroundColor: '#2ca02c', flex: yea_flex, height: 2 }} />
-              <View style={{ backgroundColor: '#d62728', flex: nay_flex, height: 2 }} />
-              { /* <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
-              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} /> */ }
+              <View style={{ backgroundColor: '#2ca02c', flex: yea, height: 2 }} />
+              <View style={{ backgroundColor: '#d62728', flex: nay, height: 2 }} />
             </View>
           ) }
         </View>
