@@ -9,7 +9,6 @@ import HoverableListItemPanel from '../HoverableListItemPanel'
 import Text from '../Text'
 
 const cstyle = CommonStyle()
-const path = location.pathname
 
 class BillsListItem extends Component {
   constructor() {
@@ -20,6 +19,7 @@ class BillsListItem extends Component {
   render() {
     const { bill, history, agendaVotes } = this.props
     const vote = agendaVotes[bill.uid]
+    const path = history.location.pathname
     let position
     let isDelegated
     if (vote) {

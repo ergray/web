@@ -30,8 +30,6 @@ const searchQuery = _.debounce((terms, dispatch, setState) => {
   }
 }, 1000)
 
-const path = location.pathname
-
 class BillsList extends Component {
   constructor(props) {
     super(props)
@@ -40,17 +38,20 @@ class BillsList extends Component {
     this.visibilitySensorOnChange = this.visibilitySensorOnChange.bind(this)
   }
 
+
   componentDidMount() {
     const { dispatch, isVerified, match, sessionId } = this.props
     const { date } = match.params
+    const path = match.path
+
     if (!this.props.bills[date]) {
       if (date) {
         // conditionals to account for nyc and different api point
-        if (path === '/sf' || path === `/sf/${date}`) {
+        if (path.includes('/sf')) {
           fetch(`${API_URL_V1}/bills/${date}`)
             .then(response => response.json())
             .then(bills => dispatch({ bills, date, type: 'SYNC_BILLS' }))
-        } else if (path === '/nyc' || path === `/nyc/${date}`) {
+        } else if (path.includes('/nyc')) {
           fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
             .then(response => response.json())
             .then((response) => {

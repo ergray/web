@@ -10,7 +10,6 @@ import HoverableListItemPanel from '../HoverableListItemPanel'
 import { convertDateToLongFormat, hasDatePassed } from './convert-dates'
 
 const cstyle = CommonStyle()
-const path = location.pathname
 
 class PastAgendas extends Component {
   constructor(props) {
@@ -18,6 +17,8 @@ class PastAgendas extends Component {
     this.state = {
       dates: null,
     }
+    const path = props.history.location.pathname
+
     if (path === '/sf') {
       fetch(`${API_URL_V1}/dates`)
         .then(response => response.json())
@@ -39,6 +40,7 @@ class PastAgendas extends Component {
   }
   render() {
     const { dates } = this.state
+    const path = this.props.history.location.pathname
 
     if (!dates) {
       return (

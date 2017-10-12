@@ -9,13 +9,13 @@ import ActivityIndicator from 'ActivityIndicator'
 import Text from 'Text'
 import BillScreen from 'Legislation/BillScreen'
 
-const path = location.pathname
 
 class LoadBillScreen extends Component {
   componentDidMount() {
     const { bills, dispatch, match } = this.props
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
+    const path = match.path
 
 
     if (date && bills) {
@@ -46,7 +46,7 @@ class LoadBillScreen extends Component {
 
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      if (path.includes('/nyc')) {
+      if (match.path.includes('/nyc')) {
         bill = bills[key].filter(b => b.id === Number(bill_id))[0]
       }
       if (!bill) {

@@ -16,11 +16,11 @@ class NextAgendaContent extends Component {
     super(props)
     this.state = {}
 
-    const path = location.pathname
+    const path = props.history.location.pathname
 
     // location parameter added for scalability, should be location.pathname
-    function getNextAgenda(pathname) {
-      if (pathname === '/sf') {
+    function getNextAgenda() {
+      if (path.includes('/sf')) {
         fetch(`${API_URL_V1}/next-agenda`)
           .then(response => response.json())
           .then((nextAgenda) => {
@@ -35,7 +35,7 @@ class NextAgendaContent extends Component {
             const { bills, date } = nextAgenda
             props.dispatch({ bills, date, type: 'SYNC_BILLS' })
           })
-      } else if (pathname === '/nyc') {
+      } else if (path.includes('/nyc')) {
         fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
           .then(response => response.json())
           .then(() => {
@@ -51,7 +51,7 @@ class NextAgendaContent extends Component {
 
     // Refresh every 5 minutes
     this.refreshId = setInterval(() => getNextAgenda(path), 5 * 60 * 1000)
-    getNextAgenda(path)
+    getNextAgenda()
   }
 
   componentWillUnmount() {

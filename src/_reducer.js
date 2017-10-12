@@ -82,7 +82,7 @@ export default function reducer(state, action) {
 
     const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
     const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
-    
+
     action.bills.forEach((bill) => {
       bills[bill.bill_uid] = bill
     })
