@@ -144,7 +144,6 @@ class BillsList extends Component {
           { !date && <TextInput placeholder="Search legislation by title" style={{ marginBottom: 20 }} onChange={this.search} />}
           { agenda.length === 0 && <p>No legislation found for "{search.terms}"</p> }
           { agenda.map(bill => (
-            /* <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid || bill.id} /> */
             <BillsListItem agendaVotes={agendaVotes} bill={bill} history={history} key={bill.uid} />
           )).concat([
             <VisibilitySensor key="infinite-scroll" onChange={this.visibilitySensorOnChange}>

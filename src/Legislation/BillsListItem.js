@@ -20,7 +20,6 @@ class BillsListItem extends Component {
   render() {
     const { bill, history, agendaVotes } = this.props
     const vote = agendaVotes[bill.uid]
-
     let position
     let isDelegated
     if (vote) {
@@ -56,7 +55,7 @@ class BillsListItem extends Component {
 
     // ternary added for future city additions, and absence of votes property
 
-    !bill.votes ? bill.votes = {nay: 0, yea: 0} : null
+    !bill.votes ? bill.votes = { nay: 0, yea: 0 } : null
     let yea = bill.votes.yea
     let nay = bill.votes.nay
 

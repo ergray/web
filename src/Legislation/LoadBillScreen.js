@@ -17,17 +17,15 @@ class LoadBillScreen extends Component {
     const { date, bill_id } = match.params
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
 
-    const pathRe = /[a-z]+/g
-    const thisPath = pathRe.exec(path)[0] || ''
 
     if (date && bills) {
-      if (thisPath === 'sf') {
+      if (path.includes('/sf')) {
         fetch(`${API_URL_V1}/bills/${date}`)
           .then(response => response.json())
           .then(loadedBills => dispatch({ bills: loadedBills, date, type: 'SYNC_BILLS' }))
           // nyc addition
-      } else if (thisPath === 'nyc') {
-        fetch('https://infinite-brushlands-18740.herokuapp.com/bills')
+      } else if (path.includes('/nyc')) {
+        fetch(`https://infinite-brushlands-18740.herokuapp.com/bills?date=${date}`)
           .then(response => response.json())
           .then(response => dispatch({ bills: response.data, date, type: 'SYNC_BILLS' }))
       }
@@ -46,20 +44,11 @@ class LoadBillScreen extends Component {
     const bill_uid = date ? `${date}-${bill_id}` : bill_id
     const key = date || 'us'
 
-    // added for scope, clean this up, maybe add to a redux store so we can always refer to it
-
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      // content for nyc
-      if (key === date) {
-        const pathRe = /[a-z]+/g
-        const thisPath = pathRe.exec(path)[0]
-        if (thisPath === 'nyc') {
-          bill = bills[key].filter(b => b.id === Number(bill_id))[0]
-          bill.uid = bill_uid
-        }
+      if (path.includes('/nyc')) {
+        bill = bills[key].filter(b => b.id === Number(bill_id))[0]
       }
-      // end new content
       if (!bill) {
         return (
           <View style={{ marginHorizontal: 20, marginTop: 20 }}>
@@ -69,6 +58,7 @@ class LoadBillScreen extends Component {
       }
       return <BillScreen bill={bill} history={history} location={location} />
     }
+
     return (
       <ActivityIndicator text={`Loading bill ${bill_uid}...`} />
     )
