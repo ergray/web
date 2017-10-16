@@ -46,9 +46,6 @@ class LoadBillScreen extends Component {
 
     if (bills[key]) {
       let bill = bills[key].filter(b => b.uid === bill_uid)[0]
-      if (match.path.includes('/nyc')) {
-        bill = bills[key].filter(b => b.id === Number(bill_id))[0]
-      }
       if (!bill) {
         return (
           <View style={{ marginHorizontal: 20, marginTop: 20 }}>

@@ -81,13 +81,15 @@ export default function reducer(state, action) {
   case 'SYNC_BILLS': // eslint-disable-line no-case-declarations
 
     const oldBills = (action.replace ? [] : state.bills[action.legislature || action.date] || [])
-    const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
 
+    const bills = oldBills.reduce((obj, bill) => Object.assign(obj, { [bill.bill_uid]: bill }), {})
+  
     action.bills.forEach((bill) => {
-      bills[bill.bill_uid] = bill
+      // account for different property syntax for bills
+      bill["bill_uid"] ? bills[bill.bill_uid] = bill : bills[bill.uid] = bill
     })
 
-    const newBills = _.orderBy(Object.values(action.bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
+    const newBills = _.orderBy(Object.values(bills), ['last_action_date', 'bill_uid'], ['desc', 'desc'])
 
     newBills.synced = action.synced
 
